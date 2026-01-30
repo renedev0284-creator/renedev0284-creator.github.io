@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <div class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%d de %B, %Y" }}
+        {{ page.date | spanish_date: "%d de %B de %Y" }}
       </time>
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>

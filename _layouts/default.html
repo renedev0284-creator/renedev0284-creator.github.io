@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Estilos -->
-  <link rel="stylesheet" href="{{ '/assets/css/style-mademistakes.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   
   <!-- Feed RSS -->
   {% feed_meta %}
@@ -26,8 +26,8 @@
       <div class="header-content">
         <div class="site-branding">
           <a href="{{ '/' | relative_url }}" class="site-title">
-            {{ site.author | default: "Tu Nombre" }}
-            <span class="site-tagline">{{ site.description | truncate: 50 }}</span>
+            {{ site.author | default: "René Moya" }}
+            <span class="site-tagline">{{ site.description | truncate: 60 }}</span>
           </a>
         </div>
         <nav>

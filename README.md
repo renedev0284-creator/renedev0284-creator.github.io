@@ -1,224 +1,165 @@
-# Mi Blog Personal
+# Blog de René Moya
 
-Blog personal construido con Jekyll y alojado en GitHub Pages. Inspirado en el diseño minimalista de Tania Rascia.
+Blog personal con diseño inspirado en Made Mistakes. Construido con Jekyll y alojado en GitHub Pages.
 
-## 🚀 Instalación Local (Opcional)
+## 🚀 Instalación Rápida
 
-Si quieres previsualizar el blog localmente antes de publicar:
+### Subir a GitHub
 
-### Requisitos previos
-- Git instalado
-- Ruby instalado (versión 2.7 o superior)
+1. **Sube todos estos archivos a tu repositorio:**
+   ```
+   renedev0284-creator.github.io/
+   ```
 
-### Pasos
+2. **Activa GitHub Pages:**
+   - Settings → Pages
+   - Source: Branch `main` → `/root`
+   - Save
 
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/tuusuario/tuusuario.github.io.git
-cd tuusuario.github.io
-```
+3. **Espera 3-5 minutos**
+   - Tu blog estará en: https://renedev0284-creator.github.io
 
-2. **Instalar dependencias**
-```bash
-bundle install
-```
+## 📝 Escribir un nuevo post
 
-3. **Ejecutar servidor local**
-```bash
-bundle exec jekyll serve
-```
-
-4. **Ver el blog**
-Abre tu navegador en: `http://localhost:4000`
-
-## ✍️ Cómo escribir un nuevo post
-
-### Método 1: Directamente en GitHub (más fácil)
+### Método GitHub (más fácil)
 
 1. Ve a la carpeta `_posts` en GitHub
-2. Click en "Add file" → "Create new file"
-3. Nombre del archivo: `YYYY-MM-DD-titulo-del-post.md`
-4. Copia esta plantilla:
+2. Click "Add file" → "Create new file"
+3. Nombre: `2025-01-30-titulo-del-post.md`
+4. Usa esta plantilla:
 
 ```markdown
 ---
 layout: post
 title: "Título de tu post"
 date: 2025-01-30 10:00:00 -0600
-tags: [tag1, tag2, tag3]
+tags: [tag1, tag2]
 ---
 
-Primer párrafo de tu post...
+Primer párrafo...
 
 ## Subtítulo
 
 Contenido...
 ```
 
-5. Escribe tu contenido en Markdown
-6. Click en "Commit changes"
-7. Espera 2-3 minutos → Tu post estará publicado
+5. Commit → Espera 2 min → ¡Publicado!
 
-### Método 2: Localmente con Git
-
-1. Crea un archivo en `_posts/YYYY-MM-DD-titulo.md`
-2. Escribe tu contenido
-3. Guarda el archivo
-4. Sube los cambios:
+### Método VS Code (local)
 
 ```bash
-git add _posts/
+# 1. Crear archivo en _posts/
+# Nombre: 2025-01-30-titulo.md
+
+# 2. Escribir contenido
+
+# 3. Push
+git add .
 git commit -m "Nuevo post: [título]"
-git push origin main
-```
-
-## 📝 Formato Markdown básico
-
-```markdown
-# Título H1
-## Título H2
-### Título H3
-
-**Texto en negrita**
-*Texto en cursiva*
-
-- Lista
-- De
-- Items
-
-1. Lista
-2. Numerada
-
-[Texto del enlace](https://url.com)
-
-![Descripción imagen](/assets/images/imagen.jpg)
-
-> Cita textual
-
-`código inline`
-
-```
-bloque de código
-```
+git push
 ```
 
 ## 🎨 Personalización
 
-### Cambiar información personal
+### Cambiar tu información
 
-Edita el archivo `_config.yml`:
+Edita `_config.yml`:
 
 ```yaml
-title: Tu Nombre - Tu Tagline
+title: René Moya
 description: Tu descripción
-author: Tu Nombre
 email: tu@email.com
 twitter_username: tuusuario
-github_username: tuusuario
+github_username: renedev0284-creator
 ```
 
 ### Cambiar colores
 
-Edita `assets/css/style.css` en la sección de variables:
+Edita `assets/css/style.css` en la sección `:root`:
 
 ```css
 :root {
-  --accent-color: #5850ec; /* Color principal */
-  --text-color: #2d3748;   /* Color de texto */
-  /* ... más variables */
+  --color-accent: #d94f5c;  /* Color principal */
+  --color-bg: #fdfcfb;      /* Fondo */
+  --color-text: #1a1a1a;    /* Texto */
 }
 ```
 
-### Modificar página About
+### Editar página About
 
-Edita el archivo `about.md` con tu información personal.
+Edita `about.md` con tu información personal.
 
-## 📂 Estructura del proyecto
+## 🌐 Dominio Personalizado
+
+Para usar `blog.renemoya.com`:
+
+1. **En Cloudflare DNS:**
+   ```
+   Type: CNAME
+   Name: blog
+   Target: renedev0284-creator.github.io
+   Proxy: DNS only (gris)
+   ```
+
+2. **En GitHub Pages:**
+   - Settings → Pages → Custom domain
+   - Escribe: `blog.renemoya.com`
+   - Save
+   - Activa "Enforce HTTPS"
+
+3. **Espera 5-10 minutos** → Listo
+
+## 📂 Estructura
 
 ```
-tunombre.github.io/
-├── _config.yml          # Configuración del sitio
+blog/
+├── _config.yml          # Configuración
 ├── _layouts/            # Plantillas HTML
-│   ├── default.html     # Layout principal
-│   └── post.html        # Layout para posts
-├── _posts/              # Tus artículos van aquí
-│   └── YYYY-MM-DD-titulo.md
+│   ├── default.html
+│   └── post.html
+├── _posts/              # Tus artículos
 ├── assets/
 │   └── css/
-│       └── style.css    # Estilos del sitio
-├── index.html           # Página de inicio
-├── blog.html            # Listado completo de posts
-├── about.md             # Página "Acerca de"
-├── Gemfile              # Dependencias Ruby
-└── README.md            # Este archivo
+│       └── style.css    # Estilos
+├── index.html           # Página inicio
+├── blog.html            # Listado posts
+├── about.md             # Acerca de
+└── Gemfile              # Dependencias
 ```
 
-## 🌐 Dominio personalizado (opcional)
+## ✨ Características
 
-Para usar tu propio dominio:
+- ✅ Diseño editorial elegante
+- ✅ Tipografía refinada (Fraunces + Newsreader)
+- ✅ Layout asimétrico
+- ✅ Dark mode automático
+- ✅ Responsive
+- ✅ SEO optimizado
+- ✅ RSS feed
+- ✅ Navegación entre posts
 
-1. Compra un dominio (ej: tudominio.com)
-2. En tu registrador de dominios, crea un registro CNAME:
-   - Host: `@` o `www`
-   - Value: `tuusuario.github.io`
-3. En GitHub, Settings → Pages → Custom domain
-4. Ingresa tu dominio
-5. Espera propagación DNS (puede tomar 24-48 horas)
+## 🆘 Solución de problemas
 
-## 📊 Analytics (opcional)
+**El sitio no aparece:**
+- Espera 5 minutos
+- Verifica Settings → Pages esté activado
+- Confirma que branch sea `main`
 
-Para agregar Google Analytics:
+**CSS no carga:**
+- Ctrl + Shift + R (limpiar caché)
+- Verifica que `assets/css/style.css` existe
 
-1. Crea una cuenta en Google Analytics
-2. Obtén tu ID de seguimiento (ej: G-XXXXXXXXXX)
-3. Agrega antes de `</head>` en `_layouts/default.html`:
+**Errores en posts:**
+- Verifica front matter (entre `---`)
+- Fecha formato `YYYY-MM-DD`
+- Nombre archivo: `YYYY-MM-DD-titulo.md`
 
-```html
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
+## 📧 Contacto
 
-## 💡 Tips para escribir
-
-1. **Mantén simplicidad**: No necesitas plugins complejos al inicio
-2. **Publica regularmente**: Mejor un post corto que ninguno
-3. **No edites mientras escribes**: Primero escribe, luego edita
-4. **Usa borradores**: Crea carpeta `_drafts/` para posts no publicados
-5. **Documenta tu proceso**: El "cómo lo hice" es contenido valioso
-
-## 🐛 Solución de problemas
-
-**El sitio no se actualiza**
-- Espera 2-3 minutos después del push
-- Revisa GitHub Actions (pestaña Actions en tu repo)
-- Verifica que el nombre del repo sea exactamente `tuusuario.github.io`
-
-**Errores de formato en posts**
-- Verifica que el front matter (entre `---`) esté correcto
-- Asegúrate de que la fecha use formato `YYYY-MM-DD`
-- Revisa que no haya caracteres especiales en el nombre del archivo
-
-**El CSS no se carga**
-- Limpia caché del navegador (Ctrl + Shift + R)
-- Verifica la ruta en `_layouts/default.html`
-
-## 📚 Recursos útiles
-
-- [Documentación oficial de Jekyll](https://jekyllrb.com/docs/)
-- [Guía de Markdown](https://www.markdownguide.org/basic-syntax/)
-- [GitHub Pages docs](https://docs.github.com/en/pages)
-- [Temas Jekyll gratuitos](http://jekyllthemes.org/)
-
-## 📄 Licencia
-
-Este proyecto es de código abierto. Siéntete libre de usar este código como base para tu propio blog.
+René Moya
+- Email: tu@email.com
+- GitHub: [@renedev0284-creator](https://github.com/renedev0284-creator)
 
 ---
 
-**¿Preguntas?** Abre un issue en este repositorio o contáctame en [tu@email.com](mailto:tu@email.com)
+Hecho con ❤️ usando Jekyll y GitHub Pages

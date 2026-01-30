@@ -95,4 +95,4 @@ La variedad mantiene las cosas interesantes.
 
 ---
 
-*¿Cuál es tu mayor obstáculo para escribir consistentemente? Responde y lo discutimos.*
+*¿Cuál es tu mayor obstáculo para escribir consistentemente?*

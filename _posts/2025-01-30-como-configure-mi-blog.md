@@ -23,7 +23,7 @@ Elegí GitHub Pages por varias razones:
 
 ## El proceso de setup
 
-La configuración tomó aproximadamente 30 minutos:
+La configuración tomó aproximadamente una hora (con varios intentos):
 
 1. Crear repositorio en GitHub
 2. Activar GitHub Pages en Settings
@@ -58,4 +58,4 @@ Nos vemos en el próximo post.
 
 ---
 
-*¿También luchas con la procrastinación al escribir? Me encantaría saber tu historia. Escríbeme a [tu@email.com](mailto:tu@email.com)*
+*¿También luchas con la procrastinación al escribir? Me encantaría saber tu historia.*

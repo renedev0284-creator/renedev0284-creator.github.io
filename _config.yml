@@ -1,0 +1,43 @@
+# Configuración del sitio
+title: René Moya
+description: Escritor en desarrollo, marketer digital y constructor de experiencias web
+author: René Moya
+email: tu@email.com
+url: "https://renedev0284-creator.github.io"
+baseurl: ""
+
+# Redes sociales (actualiza con tus datos)
+twitter_username: tuusuario
+github_username: renedev0284-creator
+
+# Configuración de construcción
+markdown: kramdown
+permalink: /:title/
+timezone: America/Guatemala
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Excluir archivos
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - INICIO_RAPIDO.md
+
+# Configuración de posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: false
+
+# Idioma
+lang: es

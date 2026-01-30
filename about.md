@@ -1,5 +1,5 @@
 ---
-layout: default-mademistakes
+layout: default
 title: Acerca de René
 permalink: /about/
 ---
@@ -18,7 +18,7 @@ permalink: /about/
   <p>
     Durante años luché contra enemigos invisibles: la procrastinación, la hoja en blanco, 
     la falta de un sistema claro para escribir. Compré herramientas, leí libros sobre escritura, 
-    hice listas interminables de "proyectos que algún día comenzaré".
+    hice listas interminables de "proyectos que algún día comenzaría".
   </p>
 
   <p>
@@ -82,7 +82,7 @@ permalink: /about/
   <ul>
     <li>Email: <a href="mailto:tu@email.com">tu@email.com</a></li>
     <li>Twitter: <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener">@tuusuario</a></li>
-    <li>GitHub: <a href="https://github.com/tuusuario" target="_blank" rel="noopener">github.com/tuusuario</a></li>
+    <li>GitHub: <a href="https://github.com/renedev0284-creator" target="_blank" rel="noopener">github.com/renedev0284-creator</a></li>
   </ul>
 
   <hr>
@@ -90,7 +90,7 @@ permalink: /about/
   <p>
     <em>Este sitio está construido con Jekyll y alojado en GitHub Pages. 
     El diseño está inspirado en el trabajo editorial de Michael Rose (Made Mistakes). 
-    Todo el código es <a href="https://github.com/tuusuario/tuusuario.github.io" target="_blank" rel="noopener">código abierto</a>.</em>
+    Todo el código es <a href="https://github.com/renedev0284-creator/renedev0284-creator.github.io" target="_blank" rel="noopener">código abierto</a>.</em>
   </p>
 
   <p>

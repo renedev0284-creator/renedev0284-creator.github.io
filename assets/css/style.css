@@ -706,7 +706,7 @@ button:focus-visible {
 }
 
 /* ========================================
-   Dark Mode Support (Optional)
+   Dark Mode Support
    ======================================== */
 @media (prefers-color-scheme: dark) {
   :root {

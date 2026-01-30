@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cómo configuré mi blog en GitHub Pages"
-date: 2025-01-30 15:00:00 -0600
+date: 2025-01-30
 tags: [meta, proceso, jekyll]
 ---
 

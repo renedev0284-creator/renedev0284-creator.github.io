@@ -705,23 +705,4 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ========================================
-   Dark Mode Support
-   ======================================== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0f0f0f;
-    --color-bg-secondary: #1a1a1a;
-    --color-text: #e8e8e8;
-    --color-text-muted: #a0a0a0;
-    --color-text-light: #707070;
-    --color-accent: #ff6b7a;
-    --color-accent-soft: #4a2529;
-    --color-border: #2a2a2a;
-    --color-shadow: rgba(0, 0, 0, 0.3);
-  }
-  
-  .post-content a:hover {
-    background-color: rgba(255, 107, 122, 0.1);
-  }
-}
+

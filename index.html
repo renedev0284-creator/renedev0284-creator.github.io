@@ -1,0 +1,46 @@
+---
+layout: default-mademistakes
+title: Inicio
+---
+
+<div class="home">
+  <section class="intro">
+    <h1>René Moya</h1>
+    <p class="lead">
+      Escritor en desarrollo, especialista en marketing digital y constructor de experiencias web. 
+      Escribo sobre procesos creativos, aprendizaje continuo y el arte de documentar todo hasta el más mínimo detalle.
+    </p>
+  </section>
+
+  <section class="posts">
+    <h2 class="section-title">Escritos Recientes</h2>
+    
+    {% if site.posts.size > 0 %}
+      <div class="post-list">
+        {% for post in site.posts limit:10 %}
+          <article class="post-preview" style="--index: {{ forloop.index }};">
+            <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%d %b %Y" }}
+            </time>
+            <h3>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+            {% if post.tags %}
+              <div class="post-tags">
+                {% for tag in post.tags limit:3 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            <a href="{{ post.url | relative_url }}" class="read-more">
+              Leer completo
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="lead">Próximamente comenzaré a publicar contenido. Mientras tanto, puedes conocerme mejor en la página <a href="{{ '/about' | relative_url }}">Acerca de</a>.</p>
+    {% endif %}
+  </section>
+</div>

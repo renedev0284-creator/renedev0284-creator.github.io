@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'es' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  
+  <!-- SEO -->
+  {% seo %}
+  
+  <!-- Fuentes - Elegant serif + sans pairing -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{{ '/assets/css/style-mademistakes.css' | relative_url }}">
+  
+  <!-- Feed RSS -->
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="site-branding">
+          <a href="{{ '/' | relative_url }}" class="site-title">
+            {{ site.author | default: "Tu Nombre" }}
+            <span class="site-tagline">{{ site.description | truncate: 50 }}</span>
+          </a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+            <li><a href="{{ '/blog' | relative_url }}">Artículos</a></li>
+            <li><a href="{{ '/about' | relative_url }}">Acerca de</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}. Hecho con cuidado.</p>
+        <div class="social-links">
+          {% if site.twitter_username %}
+            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a>
+          {% endif %}
+          {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+          {% endif %}
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

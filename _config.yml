@@ -41,3 +41,9 @@ defaults:
 
 # Idioma
 lang: es
+
+# Fechas en español
+date_format: "%d de %B de %Y"
+
+# Traducción de meses
+month_names: [~, 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']

@@ -6,7 +6,12 @@ layout: default
   <header class="post-header">
     <div class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | spanish_date: "%d de %B de %Y" }}
+        {% assign day = page.date | date: "%-d" %}
+        {% assign month = page.date | date: "%-m" %}
+        {% assign year = page.date | date: "%Y" %}
+        {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+        {% assign month_index = month | minus: 1 %}
+        {{ day }} de {{ months[month_index] }} de {{ year }}
       </time>
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>

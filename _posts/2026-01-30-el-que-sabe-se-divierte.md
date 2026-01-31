@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "El que sabe, se divierte..."
+title: "Los gurús no dicen mentiras, pero sí verdades a medias"
 date: 2026-01-30
 tags: [escritura, aprendizaje]
 ---

@@ -5,7 +5,7 @@ date: 2026-01-30
 tags: [escritura, aprendizaje]
 ---
 
-A como está la tecnología en este momento, parece mentira que un día nos decidimos a aprender algo y nos fuimos directivo a Youtube a ver gurús.
+Hoy publico mi primer texto “de puño y letra” y lo dejo en modo borrador consciente: corto, directo y útil. No vengo a pelear con YouTube ni con los creadores; vengo a señalar una trampa moderna que nos hace sentir productivos mientras seguimos estancados.
 
 ## Los gurús no dicen mentiras, pero sí verdades a medias
  

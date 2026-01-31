@@ -1,3 +1,6 @@
+Index · HTML
+Copiar
+
 ---
 layout: default
 title: Inicio
@@ -20,7 +23,12 @@ title: Inicio
         {% for post in site.posts limit:10 %}
           <article class="post-preview" style="--index: {{ forloop.index }};">
             <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | spanish_date: "%d %b %Y" }}
+              {% assign day = post.date | date: "%-d" %}
+              {% assign month = post.date | date: "%-m" %}
+              {% assign year = post.date | date: "%Y" %}
+              {% assign months = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," %}
+              {% assign month_index = month | minus: 1 %}
+              {{ day }} {{ months[month_index] }} {{ year }}
             </time>
             <h3>
               <a href="{{ post.url | relative_url }}">{{ post.title }}</a>

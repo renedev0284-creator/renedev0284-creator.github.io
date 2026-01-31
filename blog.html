@@ -14,7 +14,7 @@ permalink: /blog/
     <div class="post-list">
       {% for post in site.posts %}
         <article class="post-preview" style="--index: {{ forloop.index }};">
-          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+          <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
             {{ post.date | spanish_date: "%d %b %Y" }}
           </time>
           <h3>

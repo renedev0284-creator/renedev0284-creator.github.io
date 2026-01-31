@@ -1,13 +1,13 @@
 # Configuración del sitio
-title: René Moya
-description: Escritor en desarrollo, marketer digital y constructor de experiencias web
+title: "[*RM Dev*]"
+description: Escritor en desarrollo, sistemas y marketing digital.
 author: René Moya
-email: tu@email.com
+email: renedev0284@gmail.com
 url: "https://renedev0284-creator.github.io"
 baseurl: ""
 
 # Redes sociales (actualiza con tus datos)
-twitter_username: tuusuario
+twitter_username: Rened_ev
 github_username: renedev0284-creator
 
 # Configuración de construcción

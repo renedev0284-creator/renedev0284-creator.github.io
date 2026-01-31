@@ -5,6 +5,8 @@ date: 2026-01-30
 tags: [escritura, aprendizaje]
 ---
 
+A como está la tecnología en este momento, parece mentira que un día nos decidimos a aprender algo y nos fuimos directivo a Youtube a ver gurús.
+
 ## Los gurús no dicen mentiras, pero sí verdades a medias
  
 Cuando YouTube se volvió “universidad”, entendí algo incómodo: el problema no es que haya malos tutoriales… es que **la plataforma no está hecha para que aprendas, sino para que vuelvas**.

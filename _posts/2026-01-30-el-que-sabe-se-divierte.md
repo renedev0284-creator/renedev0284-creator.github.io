@@ -8,6 +8,8 @@ tags: [escritura, aprendizaje]
 Hoy publico mi primer texto “de puño y letra” y lo dejo en modo borrador consciente: corto, directo y útil. No vengo a pelear con YouTube ni con los creadores; vengo a señalar una trampa moderna que nos hace sentir productivos mientras seguimos estancados.
 
 ## Los gurús no dicen mentiras, pero sí verdades a medias
+
+![Chica haciendo live en redes sociales](/assets/images/posts/youtube-gurus-videotutoriales.jpg)
  
 Cuando YouTube se volvió “universidad”, entendí algo incómodo: el problema no es que haya malos tutoriales… es que **la plataforma no está hecha para que aprendas, sino para que vuelvas**.
 

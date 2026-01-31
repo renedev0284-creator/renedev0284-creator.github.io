@@ -66,7 +66,7 @@ permalink: /about/
   </p>
 
   <ul>
-    <li><strong>Escritura</strong> — OneNote para captura, Word para borradores, Markdown para publicación</li>
+    <li><strong>Escritura</strong> — Journal de Apple para captura, Word para borradores, Markdown en VSCode para publicación</li>
     <li><strong>Desarrollo</strong> — PHP, MySQL, Bootstrap, Git</li>
     <li><strong>Hosting</strong> — Cloudflare Pages, GitHub Pages</li>
     <li><strong>Hardware</strong> — HP EliteBook i7, 8GB RAM, 220GB SSD</li>
@@ -80,8 +80,8 @@ permalink: /about/
   </p>
 
   <ul>
-    <li>Email: <a href="mailto:tu@email.com">tu@email.com</a></li>
-    <li>Twitter: <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener">@tuusuario</a></li>
+    <li>Email: <a href="mailto:renedev0284@gmail.com">renedev0284@gmail.com</a></li>
+    <li>Twitter: <a href="https://x.com/Rened_dev" target="_blank" rel="noopener">@Rened_dev</a></li>
     <li>GitHub: <a href="https://github.com/renedev0284-creator" target="_blank" rel="noopener">github.com/renedev0284-creator</a></li>
   </ul>
 

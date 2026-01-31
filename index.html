@@ -4,12 +4,61 @@ title: Inicio
 ---
 
 <div class="home">
-  <section class="intro">
-    <h1>Notas de campo</h1>
-    <p class="lead">
-      Minimalismo, simpleza y desarrollo personal para creadores y desarrolladores en crecimiento. 
-      Sin filtros académicos ni poses de gurú. Solo aprendizajes reales, condensados en 5 minutos de lectura. Bienvenido al laboratorio.
-    </p>
+  <section class="intro intro-with-bg">
+    <div class="intro-content">
+      <h1>Notas de campo</h1>
+      <p class="lead">
+        Minimalismo, simpleza y desarrollo personal para creadores y desarrolladores en crecimiento. 
+        Sin filtros académicos ni poses de gurú. Solo aprendizajes reales, condensados en 5 minutos de lectura. Bienvenido al laboratorio.
+      </p>
+    </div>
+    <div class="intro-visual">
+      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <!-- Escritorio con laptop -->
+        <rect x="100" y="350" width="600" height="200" fill="#f7f6f4" stroke="#e8e6e3" stroke-width="2"/>
+        <rect x="250" y="300" width="300" height="200" fill="#1a1a1a" rx="10"/>
+        <rect x="265" y="315" width="270" height="160" fill="#2d3748"/>
+        
+        <!-- Código en pantalla -->
+        <line x1="280" y1="335" x2="380" y2="335" stroke="#d94f5c" stroke-width="2"/>
+        <line x1="280" y1="355" x2="450" y2="355" stroke="#6b6b6b" stroke-width="2"/>
+        <line x1="280" y1="375" x2="420" y2="375" stroke="#6b6b6b" stroke-width="2"/>
+        <line x1="280" y1="395" x2="500" y2="395" stroke="#d94f5c" stroke-width="2"/>
+        <line x1="280" y1="415" x2="360" y2="415" stroke="#6b6b6b" stroke-width="2"/>
+        
+        <!-- Notebook y pluma -->
+        <rect x="580" y="380" width="100" height="130" fill="#fdfcfb" stroke="#e8e6e3" stroke-width="2"/>
+        <line x1="600" y1="400" x2="660" y2="400" stroke="#9a9a9a" stroke-width="1"/>
+        <line x1="600" y1="420" x2="650" y2="420" stroke="#9a9a9a" stroke-width="1"/>
+        <line x1="600" y1="440" x2="655" y2="440" stroke="#9a9a9a" stroke-width="1"/>
+        <rect x="690" y="420" width="8" height="80" fill="#d94f5c" rx="1"/>
+        
+        <!-- Taza de café -->
+        <ellipse cx="160" cy="480" rx="30" ry="10" fill="#e8e6e3"/>
+        <rect x="130" y="440" width="60" height="40" fill="#fdfcfb" stroke="#e8e6e3" stroke-width="2"/>
+        <path d="M 190 450 Q 210 450 210 470 Q 210 480 190 480" fill="none" stroke="#e8e6e3" stroke-width="2"/>
+        
+        <!-- Elementos flotantes (ideas/AI) -->
+        <circle cx="150" cy="200" r="8" fill="#d94f5c" opacity="0.3">
+          <animate attributeName="cy" values="200;180;200" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="650" cy="150" r="6" fill="#d94f5c" opacity="0.3">
+          <animate attributeName="cy" values="150;130;150" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="400" cy="180" r="10" fill="#d94f5c" opacity="0.2">
+          <animate attributeName="cy" values="180;160;180" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Iconos tecnológicos minimalistas -->
+        <g opacity="0.15">
+          <!-- Brackets de código -->
+          <text x="50" y="250" font-size="60" fill="#d94f5c" font-family="monospace">&lt;/&gt;</text>
+          <!-- Engranaje (desarrollo) -->
+          <circle cx="720" cy="250" r="25" fill="none" stroke="#d94f5c" stroke-width="3"/>
+          <circle cx="720" cy="250" r="15" fill="none" stroke="#d94f5c" stroke-width="3"/>
+        </g>
+      </svg>
+    </div>
   </section>
 
   <section class="posts">

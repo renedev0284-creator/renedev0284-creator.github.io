@@ -682,7 +682,7 @@ em {
   }
 
   .post-preview {
-    padding-left: 5px;
+    padding-left: 0px;
   }
 
   .post-date {
@@ -781,6 +781,7 @@ button:focus-visible {
 .post-preview::before {
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: top;
+  left:-10px;
 }
 
 .post-preview:hover::before {

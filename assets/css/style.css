@@ -15,10 +15,10 @@
   --color-border: #e8e6e3;
   --color-shadow: rgba(0, 0, 0, 0.08);
   
-  /* Typography - Refined serif + sans-serif pairing */
-  --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
-  --font-body: 'Newsreader', 'Merriweather', Georgia, serif;
-  --font-sans: 'DM Sans', -apple-system, sans-serif;
+/* Typography - Modern sans-serif pairing */
+  --font-display: 'Montserrat', 'Poppins', -apple-system, sans-serif;
+  --font-body: 'Poppins', 'Inter', -apple-system, sans-serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
   
   /* Spacing */
   --space-unit: 1rem;

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mi sistema anti-procrastinación para escribir"
-date: 2025-01-31
+date: 2026-01-31
 tags: [escritura, productividad, proceso]
 ---
 

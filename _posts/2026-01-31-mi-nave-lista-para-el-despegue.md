@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mi nave lista para el despegue"
-date: 2025-01-30
+date: 2026-01-31
 tags: [arranque, proceso, meta]
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scrivener: “Opciones de compilación” y “tipos de secciones”"
+title: "Scrivener: Opciones de compilación y tipos de secciones"
 date: 2026-02-02
 tags: [escritura, productividad, apps]
 ---

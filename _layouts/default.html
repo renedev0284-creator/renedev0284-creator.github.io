@@ -48,20 +48,152 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-text">
         <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}. Hecho con 👽.</p>
-        <div class="social-links">
-          {% if site.twitter_username %}
-            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a>
-          {% endif %}
-          {% if site.github_username %}
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
-          {% endif %}
-          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-        </div>
+      </div>
+      
+      <div class="social-links">
+        {% if site.twitter_username %}
+          <a href="https://twitter.com/{{ site.twitter_username }}" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="social-link"
+             aria-label="Seguir en Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Twitter</span>
+          </a>
+        {% endif %}
+        
+        {% if site.github_username %}
+          <a href="https://github.com/{{ site.github_username }}" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="social-link"
+             aria-label="Seguir en GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        {% endif %}
+        
+        <a href="{{ '/feed.xml' | relative_url }}" 
+           class="social-link"
+           aria-label="Suscribirse por RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
+          </svg>
+          <span>RSS</span>
+        </a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  margin-top: 4rem;
+  padding: 2.5rem 0 2rem;
+  background: var(--color-bg-secondary);
+  border-top: 2px solid var(--color-border);
+}
+
+.site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-text p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px var(--color-shadow);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px var(--color-shadow);
+  background: white;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.social-link svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover svg {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 2rem 0 1.5rem;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .social-link {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* Variante: Si prefieres el footer horizontal en desktop */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-text p {
+    text-align: left;
+  }
+}
+</style>
 </body>
 </html>

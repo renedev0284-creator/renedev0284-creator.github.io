@@ -13,6 +13,8 @@ Lo leí en Reddit y me pegó porque ya lo venía sintiendo: estamos rodeados de 
 
 Y sí. Porque lo que agota no es la IA como herramienta. Lo que agota es la pereza disfrazada de claridad.
 
+![Chica con manos de robot escribiendo en computadora](/assets/images/posts/ia-mal-utilizada.jpg)
+
 ## El problema no es la fórmula: es la intención
 
 La gente no se está cansando de “tips” o de estructuras. Se está cansando de sentir que le están vendiendo atención, no ideas.  

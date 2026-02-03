@@ -2,7 +2,7 @@
 layout: post
 title: "Mi nave lista para el despegue"
 date: 2026-01-31
-tags: [arranque, proceso, meta]
+tags: [escritura, proceso, meta]
 ---
 
 Parece mentira, pero si me preguntaras qué tuvo realmente claro mi 2025, no fue un plan financiero, ni una meta de gimnasio, ni “ahora sí” con la disciplina. Fue una frase simple, casi ridícula de lo directa:

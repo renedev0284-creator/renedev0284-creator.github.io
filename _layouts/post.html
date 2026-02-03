@@ -16,7 +16,7 @@ layout: default
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>
       <span>•</span>
-      <span><img src="https://hits.dwyl.com/renedev0284-creator/renedev0284-creator{{ page.url | replace: '/', '-' }}.svg?style=flat-square&show=unique" alt="visitas" style="height: 18px; vertical-align: middle;"></span>
+      <span id="gc-pageviews">cargando...</span>
     </div>
     
     <h1>{{ page.title }}</h1>
@@ -52,3 +52,20 @@ layout: default
     </nav>
   </footer>
 </article>
+
+<!-- Script de GoatCounter para mostrar visitas como texto -->
+<script>
+  // Reemplaza 'TUCODIGO' con tu código de GoatCounter
+  // Ejemplo: si tu cuenta es renedev.goatcounter.com, usa 'renedev'
+  var goatcounterCode = 'TUCODIGO';
+  
+  // Cargar contador
+  fetch('https://' + goatcounterCode + '.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('gc-pageviews').textContent = (data.count || 0) + ' visitas';
+    })
+    .catch(() => {
+      document.getElementById('gc-pageviews').style.display = 'none';
+    });
+</script>

@@ -4,7 +4,7 @@ title: "Scrivener: Opciones de compilación y tipos de secciones [Actualizado]"
 date: 2026-02-02
 tags: [escritura, productividad, apps]
 categories: [scrivener, escritores]
-excerpt: "En **Scrivener**, *compilar* no es programación.  **Compilar = armar tu manuscrito final con formato.**"
+excerpt: "En Scrivener, compilar no es programación.  Compilar = armar tu manuscrito final con formato."
 ---
 
 > “¿Hay un tutorial en YouTube sobre las opciones de compilación y los tipos de secciones?  

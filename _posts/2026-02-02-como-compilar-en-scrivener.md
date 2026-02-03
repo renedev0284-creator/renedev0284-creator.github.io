@@ -5,8 +5,6 @@ date: 2026-02-02
 tags: [escritura, productividad, apps]
 ---
 
-# Scrivener: “Opciones de compilación” y “tipos de secciones” (explicado fácil, pero útil)
-
 > “¿Hay un tutorial en YouTube sobre las opciones de compilación y los tipos de secciones?  
 > Porque, ¡uff, esto es un montón y estoy totalmente confundido!”  
 > — alguien en Reddit, hablando de **Scrivener**

@@ -4,10 +4,10 @@ title: "Nuevo en Reddit: comentar o postear primero"
 date: 2026-02-03
 categories: [reddit, estrategia]
 tags: [reddit, comunidad, karma, crecimiento]
-excerpt: "Vi a 20+ usuarios nuevos en **reddit** hacer lo mismo. Todos fracasan por el mismo motivo."
+excerpt: "Vi a muchos usuarios nuevos en reddit hacer lo mismo. Todos fracasan por el mismo motivo."
 ---
 
-Vi a 20+ usuarios nuevos en **reddit** hacer lo mismo. Todos fracasan por el mismo motivo.
+Vi a muchos usuarios nuevos en **reddit** hacer lo mismo. Todos fracasan por el mismo motivo.
 
 **Todos empiezan mal.**
 

@@ -1,44 +1,64 @@
 ---
 layout: post
-title: "Scrivener: Opciones de compilación y tipos de secciones"
+title: "Scrivener: Opciones de compilación y tipos de secciones [Actualizado]"
 date: 2026-02-02
 tags: [escritura, productividad, apps]
+categories: [scrivener, escritores]
+excerpt: "En **Scrivener**, *compilar* no es programación.  **Compilar = armar tu manuscrito final con formato.**"
 ---
 
 > “¿Hay un tutorial en YouTube sobre las opciones de compilación y los tipos de secciones?  
 > Porque, ¡uff, esto es un montón y estoy totalmente confundido!”  
 > — alguien en Reddit, hablando de **Scrivener**
 
-![maquina-de-escribir](/assets/images/posts/scrivener-app.jpg)
+> **Actualización (2026-02-03):** En los comentarios me señalaron (con razón) dos cosas:
+> 1) **Exportar** es una función distinta a **Compilar** en Scrivener.  
+> 2) Me faltó explicar el paso clave de **asignar Diseños de Sección (Section Layouts) a Tipos de Sección (Section Types)** dentro de *Compile*.  
+> Abajo está el flujo correcto, completo y sin enredos.
 
-En **Scrivener**, *compilar* no es de programación.  
-**Compilar = exportar tu manuscrito** (a PDF, DOCX, ePub, etc.) con un formato específico.
+---
+
+## La idea en una frase
+
+En **Scrivener**, *compilar* no es “programación”.  
+**Compilar = armar tu manuscrito final con formato.**
 
 Piensa así:
 
-- Tu proyecto en Scrivener es una **caja con piezas** (capítulos, escenas, notas).
-- **Compilar** es armar esas piezas en un **documento final**.
-- Los **tipos de secciones** son *etiquetas* que le dicen a Scrivener: “esto es un capítulo”, “esto es una escena”, “esto es una nota”, etc.
+- El **Binder** es tu índice (capítulos, escenas, notas).
+- Los **Tipos de Sección** dicen *qué es cada cosa* (capítulo, escena, prólogo…).
+- Los **Diseños de Sección** dicen *cómo se ve cada cosa* al salir (título grande, salto de página, separador…).
+- **Compile** aplica el formato y genera el archivo final.
 
 ---
 
-## 1) ¿Qué significa “Compilar” en Scrivener?
+## 1) Exportar ≠ Compilar (y aquí estaba la confusión)
 
-**Compilar** es el panel donde decides:
+### ✅ Compilar (Compile)
+Sirve para **armar el libro/manuscrito final**:
 
-- qué documentos entran al export final
-- en qué orden
-- con qué formato (títulos, saltos, numeración)
-- y a qué tipo de archivo exportas (PDF/DOCX/ePub…)
+- orden, estructura y selección de contenido
+- títulos, numeración, saltos de página
+- front matter / back matter
+- formato final (según el destino: PDF/DOCX/ePub)
 
-> Scrivener te deja escribir desordenado y modular,  
-> y *compilar* es lo que lo vuelve un “libro bonito”.
+### ✅ Exportar (Export)
+Sirve para **sacar archivos sueltos** del proyecto:
+
+- escenas individuales
+- notas
+- investigación
+- carpetas completas en archivos separados
+
+> Regla práctica:
+> - Si quieres un **manuscrito** listo para entregar/publicar → **Compilar**  
+> - Si quieres **archivos sueltos** para compartir/respaldar → **Exportar**
 
 ---
 
-## 2) ¿Qué son los “Tipos de Sección”?
+## 2) Tipos de Sección (Section Types): “qué es esto”
 
-En Scrivener, cada documento del Binder (capítulo, escena, etc.) puede tener un **Tipo de Sección**.
+En Scrivener, cada documento del Binder puede tener un **Tipo de Sección**.
 
 Ejemplos típicos:
 - **Capítulo**
@@ -46,98 +66,92 @@ Ejemplos típicos:
 - **Prólogo**
 - **Epílogo**
 - **Parte**
-- **Front Matter** (Portada, dedicatoria)
-- **Back Matter** (Agradecimientos, sobre el autor)
+- **Front Matter** (portada, dedicatoria)
+- **Back Matter** (agradecimientos, sobre el autor)
 
-Esto no cambia tu texto. Cambia **cómo se ve al compilar**.
-
-> Tipo de sección = “qué es esto”
-> (capítulo, escena, título, etc.)
+> El tipo no cambia tu texto.  
+> Cambia **cómo se va a tratar al compilar**.
 
 ---
 
-## 3) ¿Qué son los “Layouts de Sección” (Diseños)?
+## 3) Diseños de Sección (Section Layouts): “cómo se ve esto al compilar”
 
-Si el Tipo de sección es “qué es”, el **Layout** es “cómo se imprime/exporta”.
+El **Diseño** (Layout) define el formato que recibirá un tipo.
 
-Ejemplo:
-- Tipo: **Capítulo**
-  - Layout: “Capítulo con título grande, empieza en página nueva”
-- Tipo: **Escena**
-  - Layout: “Título pequeño o sin título, separador entre escenas”
-- Tipo: **Front Matter**
-  - Layout: “centrado, sin numeración de capítulo”
+Ejemplos de “cómo se ve”:
+- Capítulo con título grande y **salto de página**
+- Escena sin título, con **separador**
+- Prólogo centrado, sin numeración, etc.
 
-> Layout = “cómo se ve esto al exportar”
+> Tipo = “qué es”  
+> Diseño = “cómo se imprime/exporta”
 
 ---
 
-## 4) La relación clave (la que confunde a todos)
+## 4) El paso que más se salta la gente (y yo también): asignar Tipo → Diseño
 
-Scrivener hace un “mapa” así:
+Este es el “eslabón” que hace que todo funcione.
 
-- A cada documento le asignas un **Tipo de sección**
-- En Compile, dices: “este tipo usa este **Layout**”
-- Al exportar, Scrivener aplica el formato correcto automáticamente
+### Flujo correcto (cadena completa)
+1) **Binder**: cada documento tiene un **Tipo de Sección**  
+2) **Compile**: cada **Tipo** se mapea a un **Diseño (Layout)**  
+3) Scrivener aplica el formato automáticamente en el export final
 
-**En una línea:**
-- **Tipo de sección → Layout → Resultado final**
-
----
-
-## 5) “Secciones” en Scrivener (no son “secciones del archivo” como en programación)
-
-Aquí “sección” significa partes del manuscrito, por ejemplo:
-
-- **Front Matter**: portada, dedicatoria, prólogo editorial, etc.
-- **Body**: capítulos y escenas
-- **Back Matter**: agradecimientos, notas, bio, etc.
-
-> Scrivener usa “secciones” como “bloques del libro”, no como un concepto técnico.
+> En una línea: **Tipo de Sección → Diseño de Sección → Resultado final**
 
 ---
 
-## 6) Checklist práctico para dejarlo funcionando en 5 minutos
+## 5) Cómo configurarlo rápido (ejemplo novela: Capítulos + Escenas)
 
-### A) Define tus tipos de sección (una sola vez)
-- Capítulo
-- Escena
-- (Opcional) Prólogo, Epílogo, Parte
+### Paso A — Ordena tu Binder (lo básico)
+- Carpeta o documento principal por **Capítulo**
+- Dentro de cada capítulo: documentos por **Escena**
 
-### B) Asigna el tipo a cada documento del Binder
-- Los nodos grandes: **Capítulo**
-- Los hijos: **Escena**
+### Paso B — Asigna Tipos de Sección
+- A cada capítulo: Tipo = **Capítulo**
+- A cada escena: Tipo = **Escena**
+- (Opcional) Prólogo/Epílogo: Tipo = **Prólogo / Epílogo**
 
-### C) En Compile: asigna layouts
-- Capítulo → layout de capítulo (título grande, salto de página)
-- Escena → layout de escena (separador, sin salto de página)
+### Paso C — En Compile, asigna Diseños a esos Tipos
+En el panel de **Compile**, busca donde se asignan **Section Layouts / Assign Section Layouts** (los nombres varían según idioma/versión).
 
-### D) Exporta a tu formato
-- DOCX si vas a Word/Google Docs
-- PDF si quieres “verlo bonito”
-- ePub si vas a publicación digital
+Luego mapea, por ejemplo:
 
----
+- **Capítulo** → diseño “Chapter Heading” (título grande + página nueva)
+- **Escena** → diseño “Scene” (sin página nueva + separador si aplica)
+- **Front Matter** → diseño centrado (si lo usas)
+- **Back Matter** → diseño simple (si lo usas)
 
-## 7) Mini-guía mental (para no volver a enredarte)
-
-- **Binder** = estructura (qué va y en qué orden)
-- **Tipos de sección** = etiqueta (qué es cada cosa)
-- **Layouts** = formato (cómo se ve cada cosa)
-- **Compile** = export final (armar el libro)
-
-> Si algo “no se ve como quieres” al exportar:  
-> casi siempre es porque el documento tiene **tipo incorrecto** o el tipo está ligado al **layout incorrecto**.
+### Paso D — Compila una prueba
+- Primero a **PDF** (para validar visualmente)
+- Luego a **DOCX** (si vas a editar en Word/Google Docs)
 
 ---
 
-## Nota rápida
+## 6) Checklist de “por qué no se ve como quiero”
 
-> No necesitas buscar “el video perfecto”.  
-> Si entiendes **Tipo de sección → Layout → Export**, ya desbloqueaste Scrivener.
+Si al compilar el resultado sale raro, casi siempre es uno de estos:
 
-Si quieres, dime:
-- ¿estás en **Scrivener 3**?
-- ¿quieres compilar a **DOCX** o **PDF** (o ePub)?
+- [ ] El documento tiene el **Tipo de Sección** incorrecto
+- [ ] El **Tipo** no tiene un **Diseño** asignado en Compile
+- [ ] Estás compilando la selección equivocada del Binder (no todo el manuscrito)
+- [ ] Cambiaste el formato de salida (PDF/DOCX/ePub) y ese preset usa reglas distintas
 
-Y te dejo una plantilla de tipos + layouts típica para novela (Capítulo/Escena/Prólogo/Epílogo) lista para replicar.
+---
+
+## 7) Mini-resumen (10 segundos)
+
+- **Compilar** arma el manuscrito final con formato.
+- **Exportar** saca archivos sueltos.
+- **Tipos de Sección** = qué es cada parte.
+- **Diseños de Sección** = cómo se verá cada parte.
+- Lo esencial es el mapeo: **Tipo → Diseño** dentro de *Compile*.
+
+---
+
+## Nota final
+
+> Si te sientes abrumado: no estás solo.  
+> Scrivener se entiende en capas, y esta (Tipo → Diseño → Compile) es la capa que desbloquea todo.
+
+Si quieres, puedo dejarte una **plantilla estándar** (Capítulo/Escena/Prólogo/Epílogo + Front/Back matter) para que la reutilices en futuros proyectos.

@@ -1,12 +1,10 @@
-Blog stats minimal · HTML
-Copiar
-
-<!-- Estadísticas Ultra Minimalistas -->
+<!-- Estadísticas Ultra Minimalistas - Corregida -->
 <div class="blog-stats-minimal">
   <div class="stats-line">
     {% assign total_words = 0 %}
     {% for post in site.posts %}
-      {% assign total_words = total_words | plus: post.content | number_of_words %}
+      {% assign words = post.content | number_of_words %}
+      {% assign total_words = total_words | plus: words %}
     {% endfor %}
     {% assign total_k = total_words | divided_by: 1000 %}
     
@@ -31,7 +29,6 @@ Copiar
     </span>
   </div>
   
-  <!-- Pequeña línea de acento -->
   <div class="minimal-accent"></div>
 </div>
 
@@ -94,7 +91,6 @@ Copiar
   opacity: 0.5;
 }
 
-/* Animación sutil */
 @keyframes minimalFade {
   from {
     opacity: 0;
@@ -110,7 +106,6 @@ Copiar
   animation: minimalFade 0.5s ease-out;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .stats-line {
     flex-wrap: wrap;

@@ -24,24 +24,348 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <div class="site-branding">
-          <a href="{{ '/' | relative_url }}" class="site-title">
-            {{ site.author | default: "René Moya" }}
+  <div class="container">
+    <div class="header-content">
+      <div class="site-branding">
+        <a href="{{ '/' | relative_url }}" class="site-title">
+          <!-- Logo SVG -->
+          <div class="brand-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="50" height="50">
+              <defs>
+                <linearGradient id="penGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f34f29;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#d94520;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              
+              <circle cx="40" cy="40" r="38" fill="#f3f1ec" stroke="#d4cfc5" stroke-width="1.5"/>
+              
+              <text x="22" y="52" 
+                    font-family="'Palatino Linotype', Georgia, serif" 
+                    font-size="32" 
+                    font-weight="bold" 
+                    fill="#3c3026"
+                    letter-spacing="-1.5">RM</text>
+              
+              <g transform="translate(52, 20) rotate(45)">
+                <rect x="0" y="0" width="6" height="18" fill="url(#penGrad)" rx="1"/>
+                <path d="M 1,18 L 3,24 L 5,18 Z" fill="#f34f29" stroke="#3c3026" stroke-width="0.5"/>
+                <line x1="3" y1="2" x2="3" y2="18" stroke="#3c3026" stroke-width="0.4" opacity="0.3"/>
+                <rect x="1.5" y="1" width="3" height="2" fill="none" stroke="#f34f29" stroke-width="0.6" rx="0.5"/>
+              </g>
+              
+              <path d="M 55,35 Q 62,38 68,36" fill="none" stroke="#f34f29" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </div>
+          
+          <div class="brand-text">
+            <span class="brand-name">{{ site.author | default: "René Moya" }}</span>
             <span class="site-tagline">{{ site.description | truncate: 60 }}</span>
-          </a>
-        </div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
-            <li><a href="{{ '/blog' | relative_url }}">Artículos</a></li>
-            <li><a href="{{ '/about' | relative_url }}">Acerca de</a></li>
-          </ul>
-        </nav>
+          </div>
+        </a>
       </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="{{ '/' | relative_url }}" class="nav-link">Inicio</a></li>
+          <li><a href="{{ '/blog' | relative_url }}" class="nav-link">Artículos</a></li>
+          <li><a href="{{ '/about' | relative_url }}" class="nav-link">Acerca de</a></li>
+        </ul>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
+
+<style>
+.site-header {
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.site-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-branding {
+  flex: 0 0 auto;
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.site-title:hover {
+  opacity: 0.8;
+}
+
+.site-title:hover .brand-logo svg {
+  transform: scale(1.05);
+}
+
+.brand-logo {
+  flex-shrink: 0;
+}
+
+.brand-logo svg {
+  display: block;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 1px 2px rgba(60, 48, 38, 0.1));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.site-tagline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 0.15rem;
+}
+
+.main-nav {
+  flex: 1 1 auto;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-accent);
+}
+
+.nav-link.active {
+  background: var(--color-accent-soft);
+  color: white;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+.hamburger-line {
+  width: 32px;
+  height: 3px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1rem 0;
+  }
+  
+  .brand-logo svg {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  
+  .site-tagline {
+    font-size: 0.75rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--color-bg);
+    border-left: 2px solid var(--color-border);
+    box-shadow: -4px 0 12px var(--color-shadow);
+    transition: right 0.3s ease;
+    z-index: 99;
+  }
+  
+  .main-nav.active {
+    right: 0;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    padding: 5rem 1.5rem 2rem;
+    gap: 0.5rem;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    border-left-color: var(--color-orange);
+    background: var(--color-bg-secondary);
+  }
+  
+  .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+  
+  .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+  
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(60, 48, 38, 0.5);
+    z-index: 98;
+  }
+  
+  .menu-overlay.active {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-tagline {
+    display: none;
+  }
+  
+  .brand-text {
+    gap: 0;
+  }
+}
+</style>
+
+<div class="menu-overlay"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const mainNav = document.querySelector('.main-nav');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const body = document.body;
+  
+  function toggleMenu() {
+    const isActive = mainNav.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isActive);
+    
+    if (isActive) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+  }
+  
+  function closeMenu() {
+    mainNav.classList.remove('active');
+    menuToggle.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    body.style.overflow = '';
+  }
+  
+  menuToggle.addEventListener('click', toggleMenu);
+  menuOverlay.addEventListener('click', closeMenu);
+  
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+  
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath || 
+        (currentPath === '{{ site.baseurl }}/' && link.getAttribute('href') === '{{ "/" | relative_url }}')) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
 
   <main class="container">
     {{ content }}

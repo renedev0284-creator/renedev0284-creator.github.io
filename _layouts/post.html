@@ -32,6 +32,13 @@ layout: default
     {{ content }}
   </div>
 
+  <!-- Contador de visitas visible -->
+  <div style="text-align: center; margin: 30px 0; padding: 20px; background: #f6f8fa; border-radius: 8px;">
+    <img src="https://hits.sh/renedev0284-creator.github.io{{ page.url | url_encode }}.svg?label=Visitas%20totales&color=2563eb&labelColor=1e40af" 
+         alt="Contador de visitas" 
+         style="max-width: 200px;">
+  </div>
+
   <footer class="post-footer">
     <nav class="post-nav">
       {% if page.previous.url %}

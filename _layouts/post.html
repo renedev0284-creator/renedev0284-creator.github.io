@@ -36,8 +36,10 @@ layout: default
   <!-- Botones para compartir -->
   {% include share-buttons.html %}
 
-  <span align="center"><img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas" style="height: 20px; vertical-align: middle;"></span>
-
+  <div style="display: flex; justify-content: center;">
+  <span><img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas" style="height: 20px; vertical-align: middle;"></span>
+  </div>
+    
   <footer class="post-footer">
     <nav class="post-nav">
       {% if page.previous.url %}

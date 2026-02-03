@@ -16,7 +16,7 @@ layout: default
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>
       <span>•</span>
-      <span><img src="https://hits.sh/renedev0284-creator.github.io{{ page.url | url_encode }}.svg?style=flat-square&label=&extraCount=1&color=6c757d&labelColor=6c757d" alt="visitas" style="height: 14px; vertical-align: text-bottom; margin: 0; padding: 0;"> visitas</span>
+      <span><img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas" style="height: 18px; vertical-align: middle;"></span>
     </div>
     
     <h1>{{ page.title }}</h1>
@@ -52,6 +52,3 @@ layout: default
     </nav>
   </footer>
 </article>
-
-<!-- Imagen invisible para registrar la visita -->
-<img src="https://hits.sh/renedev0284-creator.github.io{{ page.url | url_encode }}.svg" alt="" style="display: none;">

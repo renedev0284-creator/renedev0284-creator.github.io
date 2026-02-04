@@ -19,6 +19,16 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCL9HD30XT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YCL9HD30XT');
+  </script>
+
   <!-- Feed RSS -->
   {% feed_meta %}
 </head>

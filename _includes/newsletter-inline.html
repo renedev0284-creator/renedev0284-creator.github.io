@@ -1,17 +1,16 @@
-<!-- Newsletter CTA Inline - Minimalista -->
+<!-- Newsletter inline - Buttondown -->
 <div class="newsletter-inline">
   <div class="newsletter-box">
     <div class="newsletter-icon">📬</div>
     <div class="newsletter-content">
-      <h4 class="newsletter-title">¿Te está gustando?</h4>
-      <p class="newsletter-text">Recibe posts nuevos directo en tu inbox. Sin spam.</p>
+      <h4 class="newsletter-title">¿Te está gustando este post?</h4>
+      <p class="newsletter-text">Recibe nuevos artículos directo en tu inbox. Sin spam.</p>
       
-      <!-- BUTTONDOWN -->
       <form
-        action="https://buttondown.email/api/emails/embed-subscribe/rmoya0284"
+        action="https://buttondown.email/api/emails/embed-subscribe/rene0284"
         method="post"
         target="popupwindow"
-        onsubmit="window.open('https://buttondown.email/rmoya0284', 'popupwindow')"
+        onsubmit="window.open('https://buttondown.com/rene0284', 'popupwindow')"
         class="newsletter-form">
         
         <input 
@@ -27,7 +26,7 @@
         </button>
       </form>
       
-      <p class="newsletter-note">Cancela cuando quieras con un click</p>
+      <p class="newsletter-note">Cancela cuando quieras</p>
     </div>
   </div>
 </div>
@@ -103,7 +102,7 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 600;
-  color: white;
+  color: white !important;
   background: var(--color-orange);
   border: none;
   border-radius: 8px;
@@ -151,23 +150,3 @@
   }
 }
 </style>
-
-<!-- 
-INSTRUCCIONES:
-
-1. Regístrate en Buttondown: https://buttondown.email/register
-2. Elige tu username (ej: renedev)
-3. Reemplaza "TU_USERNAME" arriba con tu username (2 lugares)
-4. Guarda como _includes/newsletter-inline.html
-5. Incluye donde quieras: {% include newsletter-inline.html %}
-
-ALTERNATIVA - ConvertKit:
-Si usas ConvertKit, reemplaza el form con:
-<script async data-uid="TU_FORM_ID" src="https://convertkit.com/TU_ID/TU_FORM_ID.js"></script>
-
-ALTERNATIVA - EmailOctopus:
-<form method="post" action="https://emailoctopus.com/lists/TU_LIST_ID/members/embedded/add">
-  <input type="email" name="email_address">
-  <button type="submit">Subscribe</button>
-</form>
--->

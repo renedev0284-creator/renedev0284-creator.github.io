@@ -1,0 +1,213 @@
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <p><strong>🍪 Este sitio usa cookies</strong></p>
+      <p>Utilizo cookies para mejorar tu experiencia y analizar el tráfico del sitio. 
+      <a href="/cookies/" class="cookie-link">Más información</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Aceptar</button>
+      <button onclick="rejectCookies()" class="cookie-btn cookie-reject">Rechazar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-top: 2px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgba(60, 48, 38, 0.15);
+  z-index: 9999;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cookie-text {
+  flex: 1;
+}
+
+.cookie-text p {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.cookie-text p:first-child {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.cookie-text p:last-child {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.cookie-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.cookie-link:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cookie-accept {
+  background: var(--color-orange);
+  color: white;
+}
+
+.cookie-accept:hover {
+  background: #e04420;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
+}
+
+.cookie-reject {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.cookie-reject:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+  
+  .cookie-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cookie-btn {
+    flex: 1;
+    max-width: 150px;
+  }
+}
+</style>
+
+<script>
+// Mostrar banner si no hay consentimiento
+function checkCookieConsent() {
+  const consent = getCookie('cookie_consent');
+  if (!consent) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+}
+
+// Aceptar cookies
+function acceptCookies() {
+  setCookie('cookie_consent', 'accepted', 365);
+  hideBanner();
+  // Aquí puedes activar Google Analytics u otros trackers
+  // initializeAnalytics();
+}
+
+// Rechazar cookies
+function rejectCookies() {
+  setCookie('cookie_consent', 'rejected', 365);
+  hideBanner();
+  // Aquí puedes desactivar trackers si los hay
+}
+
+// Ocultar banner
+function hideBanner() {
+  const banner = document.getElementById('cookie-banner');
+  banner.style.animation = 'slideDown 0.3s ease-out';
+  setTimeout(() => {
+    banner.style.display = 'none';
+  }, 300);
+}
+
+// Animación de cierre
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// Funciones auxiliares para cookies
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+// Verificar consentimiento al cargar la página
+document.addEventListener('DOMContentLoaded', checkCookieConsent);
+</script>

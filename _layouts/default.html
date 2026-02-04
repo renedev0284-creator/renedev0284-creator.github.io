@@ -501,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {{ content }}
   </main>
 
-  <footer class="site-footer">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-content">
       <div class="footer-text">
@@ -544,6 +544,17 @@ document.addEventListener('DOMContentLoaded', function() {
           <span>RSS</span>
         </a>
       </div>
+    </div>
+    
+    <!-- Enlaces legales - NUEVO -->
+    <div class="footer-legal">
+      <nav class="legal-nav">
+        <a href="/privacidad/">Privacidad</a>
+        <span class="legal-separator">•</span>
+        <a href="/cookies/">Cookies</a>
+        <span class="legal-separator">•</span>
+        <a href="/derechos-autor/">Derechos de Autor</a>
+      </nav>
     </div>
   </div>
 </footer>
@@ -618,6 +629,39 @@ document.addEventListener('DOMContentLoaded', function() {
   transform: scale(1.1);
 }
 
+/* Enlaces legales - NUEVO */
+.footer-legal {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+}
+
+.legal-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.legal-nav a {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.legal-nav a:hover {
+  color: var(--color-accent);
+}
+
+.legal-separator {
+  color: var(--color-border);
+  font-size: 0.85rem;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .site-footer {
@@ -633,6 +677,14 @@ document.addEventListener('DOMContentLoaded', function() {
   .social-link {
     justify-content: center;
     width: 100%;
+  }
+  
+  .legal-nav {
+    font-size: 0.8rem;
+  }
+  
+  .legal-separator:last-of-type {
+    display: none;
   }
 }
 

@@ -1,0 +1,102 @@
+<!-- Sistema de Comentarios - Utterances -->
+<div class="comments-section">
+  <h3 class="comments-title">💬 Comentarios</h3>
+  <p class="comments-subtitle">Comparte tu opinión usando tu cuenta de GitHub</p>
+  
+  <div class="utterances-container">
+    <script src="https://utteranc.es/client.js"
+            repo="renedev0284-creator/renedev0284-creator.github.io"
+            issue-term="pathname"
+            label="💬 comentario"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+  
+  <div class="comments-info">
+    <p>🔒 Los comentarios son seguros y se gestionan vía GitHub Issues</p>
+    <p>📝 Puedes editar o eliminar tus comentarios en cualquier momento</p>
+  </div>
+</div>
+
+<style>
+.comments-section {
+  margin: 4rem 0 2rem;
+  padding: 2.5rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.comments-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.comments-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0 0 2rem;
+  font-style: italic;
+}
+
+.utterances-container {
+  margin: 2rem 0;
+}
+
+.utterances {
+  max-width: 100%;
+}
+
+.comments-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.comments-info p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .comments-section {
+    padding: 1.5rem;
+    margin: 3rem 0 1.5rem;
+  }
+  
+  .comments-title {
+    font-size: 1.4rem;
+  }
+  
+  .comments-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .comments-info {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  
+  .comments-info p {
+    justify-content: center;
+  }
+}
+</style>

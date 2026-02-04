@@ -13,11 +13,11 @@ permalink: /privacidad/
   <div class="legal-content">
     <section class="legal-section">
       <h2>Introducción</h2>
-      <p>En <strong>{{ site.author }}</strong>, nos tomamos muy en serio tu privacidad. Esta política explica qué información recopilamos, cómo la usamos y cuáles son tus derechos.</p>
+      <p>En <strong>{{ site.author }}</strong>, me tomo muy en serio tu privacidad. Esta política explica qué información recopilo, cómo la uso y cuáles son tus derechos.</p>
     </section>
 
     <section class="legal-section">
-      <h2>Información que recopilamos</h2>
+      <h2>Información que recopilo</h2>
       
       <h3>Datos de navegación</h3>
       <p>Cuando visitas este blog, se recopilan automáticamente ciertos datos técnicos:</p>
@@ -29,10 +29,10 @@ permalink: /privacidad/
       </ul>
 
       <h3>Cookies y tecnologías similares</h3>
-      <p>Utilizamos cookies para mejorar tu experiencia. Consulta nuestra <a href="/cookies/">Política de Cookies</a> para más detalles.</p>
+      <p>Utilizo cookies para mejorar tu experiencia. Consulta nuestra <a href="/cookies/">Política de Cookies</a> para más detalles.</p>
 
       <h3>Información que proporcionas</h3>
-      <p>Si te suscribes a nuestra newsletter o nos contactas, recopilaremos:</p>
+      <p>Si te suscribes a mi newsletter o me contactas, recopilaré:</p>
       <ul>
         <li>Dirección de correo electrónico</li>
         <li>Nombre (opcional)</li>
@@ -41,8 +41,8 @@ permalink: /privacidad/
     </section>
 
     <section class="legal-section">
-      <h2>Cómo usamos tu información</h2>
-      <p>Usamos los datos recopilados para:</p>
+      <h2>Cómo uso tu información</h2>
+      <p>Uso los datos recopilados para:</p>
       <ul>
         <li><strong>Analítica:</strong> Entender cómo se usa el blog y mejorarlo</li>
         <li><strong>Comunicación:</strong> Enviarte actualizaciones si te suscribes (puedes cancelar en cualquier momento)</li>

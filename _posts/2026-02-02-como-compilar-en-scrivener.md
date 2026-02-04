@@ -13,10 +13,10 @@ excerpt: "En Scrivener, compilar no es programación.  Compilar = armar tu manus
 
 ![Máquina de escribir](/assets/images/posts/scrivener-app.jpg)
 
-> **Actualización (2026-02-03):** En los comentarios me señalaron (con razón) dos cosas:
-> 1) **Exportar** es una función distinta a **Compilar** en Scrivener.  
-> 2) Me faltó explicar el paso clave de **asignar Diseños de Sección (Section Layouts) a Tipos de Sección (Section Types)** dentro de *Compile*.  
-> Abajo está el flujo correcto, completo y sin enredos.
+**Actualización (2026-02-03):** En los comentarios me señalaron (con razón) dos cosas:
+1) **Exportar** es una función distinta a **Compilar** en Scrivener.  
+2) Me faltó explicar el paso clave de **asignar Diseños de Sección (Section Layouts) a Tipos de Sección (Section Types)** dentro de *Compile*.  
+Abajo está el flujo correcto, completo y sin enredos.
 
 ---
 

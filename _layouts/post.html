@@ -15,12 +15,8 @@ layout: default
       </time>
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>
-      <span>•</span>
-      <span>
-        <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" 
-             alt="visitas" 
-             style="height: 20px; vertical-align: middle;">
-      </span>
+      
+      
     </div>
     
     <h1>{{ page.title }}</h1>
@@ -37,6 +33,13 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
+
+  <!-- Contador de visitas -->
+      <span>
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" 
+             alt="visitas" 
+             style="height: 20px; vertical-align: middle;">
+      </span>
 
   <!-- Botones para compartir -->
   {% include share-buttons.html %}

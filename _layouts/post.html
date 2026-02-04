@@ -33,6 +33,10 @@ layout: default
     {{ content }}
   </div>
 
+  {% include inline-related-post.html %}
+
+  {% include newsletter-inline.html %}
+
   <div style="display: flex; justify-content: center;">
   <span><img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas" style="height: 20px; vertical-align: middle;"></span>
   </div>

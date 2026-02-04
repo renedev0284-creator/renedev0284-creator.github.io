@@ -4,6 +4,8 @@ title: Derechos de Autor
 permalink: /derechos-autor/
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">
+
 <div class="legal-page">
   <header class="legal-header">
     <h1>Derechos de Autor y Licencia</h1>
@@ -96,20 +98,16 @@ permalink: /derechos-autor/
       
       <div class="citation-box">
         <p><strong>Formato recomendado:</strong></p>
-        <code>
-          {{ site.author }} ({{ 'now' | date: "%Y" }}). [Título del artículo]. 
-          {{ site.title | default: "Blog RM" }}. 
-          Disponible en: [URL del artículo]
-        </code>
+        <code>{{ site.author }} ({{ 'now' | date: "%Y" }}). [Título del artículo]. 
+{{ site.title | default: "Blog RM" }}. 
+Disponible en: [URL del artículo]</code>
       </div>
 
       <p><strong>Ejemplo:</strong></p>
       <div class="citation-example">
-        <code>
-          René Moya (2026). Scrivener: Opciones de compilación y tipos de secciones. 
-          RM Escritor y Desarrollador. 
-          Disponible en: https://renedev0284-creator.github.io/como-compilar-en-scrivener/
-        </code>
+        <code>René Moya (2026). Scrivener: Opciones de compilación y tipos de secciones. 
+RM Escritor y Desarrollador. 
+Disponible en: https://renedev0284-creator.github.io/como-compilar-en-scrivener/</code>
       </div>
     </section>
 
@@ -181,88 +179,3 @@ permalink: /derechos-autor/
     <p><a href="/">← Volver al inicio</a></p>
   </footer>
 </div>
-
-<style>
-.copyright-notice {
-  text-align: center;
-  padding: 1.5rem;
-  background: var(--color-bg-secondary);
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  margin: 1.5rem 0;
-}
-
-.copyright-notice p {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--color-text);
-  margin: 0;
-  font-weight: 600;
-}
-
-.license-box {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-accent);
-  border-radius: 8px;
-}
-
-.license-box h3 {
-  margin-top: 0;
-  color: var(--color-text);
-  font-size: 1.2rem;
-}
-
-.license-box ul {
-  margin: 1rem 0;
-}
-
-.license-note {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  font-style: italic;
-  margin-top: 1rem;
-}
-
-.license-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-accent);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.license-link:hover {
-  background: var(--color-accent-soft);
-  transform: translateY(-2px);
-}
-
-.citation-box, .citation-example {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-}
-
-.citation-box code, .citation-example code {
-  display: block;
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.9rem;
-  color: var(--color-text);
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-.citation-example {
-  background: #f8f9fa;
-  border-left: 3px solid var(--color-orange);
-}
-</style>

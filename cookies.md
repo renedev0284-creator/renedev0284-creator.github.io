@@ -4,6 +4,8 @@ title: Política de Cookies
 permalink: /cookies/
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">
+
 <div class="legal-page">
   <header class="legal-header">
     <h1>Política de Cookies</h1>
@@ -17,7 +19,7 @@ permalink: /cookies/
     </section>
 
     <section class="legal-section">
-      <h2>Cookies que utilizamos</h2>
+      <h2>Cookies que utilizo</h2>
       
       <div class="cookie-table">
         <div class="cookie-category">
@@ -34,16 +36,8 @@ permalink: /cookies/
 
         <div class="cookie-category">
           <h3>📊 Cookies Analíticas</h3>
-          <p class="category-desc">Nos ayudan a entender cómo usas el sitio.</p>
+          <p class="category-desc">Me ayudan a entender cómo usas el sitio.</p>
           
-          <div class="cookie-item">
-            <h4>Google Analytics (si aplica)</h4>
-            <p><strong>Propósito:</strong> Análisis de tráfico y comportamiento</p>
-            <p><strong>Cookies:</strong> _ga, _gid, _gat</p>
-            <p><strong>Duración:</strong> 2 años (_ga), 24 horas (_gid)</p>
-            <p><strong>Puedes desactivarlas:</strong> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a></p>
-          </div>
-
           <div class="cookie-item">
             <h4>Contador de visitas</h4>
             <p><strong>Propósito:</strong> Mostrar número de visitas por artículo</p>
@@ -57,17 +51,17 @@ permalink: /cookies/
           <p class="category-desc">Recuerdan tus elecciones personales.</p>
           
           <div class="cookie-item">
-            <h4>Preferencias de tema (si aplica)</h4>
-            <p><strong>Propósito:</strong> Recordar si elegiste modo oscuro/claro</p>
-            <p><strong>Cookie:</strong> theme_preference</p>
-            <p><strong>Duración:</strong> 1 año</p>
-          </div>
-
-          <div class="cookie-item">
             <h4>Consentimiento de cookies</h4>
             <p><strong>Propósito:</strong> Recordar tu elección sobre el banner de cookies</p>
             <p><strong>Cookie:</strong> cookie_consent</p>
             <p><strong>Duración:</strong> 1 año</p>
+          </div>
+
+          <div class="cookie-item">
+            <h4>Reacciones locales</h4>
+            <p><strong>Propósito:</strong> Recordar tus reacciones (❤️🔥👏) en los artículos</p>
+            <p><strong>Storage:</strong> localStorage</p>
+            <p><strong>Duración:</strong> Hasta que borres el caché</p>
           </div>
         </div>
       </div>
@@ -78,12 +72,12 @@ permalink: /cookies/
       <p>Este blog puede incluir contenido de servicios externos que establecen sus propias cookies:</p>
       
       <ul>
+        <li><strong>GitHub (Utterances/Giscus):</strong> Para el sistema de comentarios</li>
         <li><strong>YouTube:</strong> Si hay videos embebidos</li>
         <li><strong>Twitter:</strong> Si hay tweets embebidos</li>
-        <li><strong>GitHub Gist:</strong> Si hay código embebido</li>
       </ul>
 
-      <p>Estos servicios tienen sus propias políticas de cookies que no controlamos.</p>
+      <p>Estos servicios tienen sus propias políticas de cookies que no controlo.</p>
     </section>
 
     <section class="legal-section">
@@ -140,101 +134,8 @@ permalink: /cookies/
 
 <script>
 function resetCookieConsent() {
-  // Borrar cookie de consentimiento
   document.cookie = "cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   alert("Preferencias restablecidas. Recarga la página para ver el banner de nuevo.");
   location.reload();
 }
 </script>
-
-<style>
-/* Reutiliza los estilos de la página de privacidad */
-.cookie-table {
-  margin: 2rem 0;
-}
-
-.cookie-category {
-  margin-bottom: 2.5rem;
-  padding: 1.5rem;
-  background: var(--color-bg-secondary);
-  border-radius: 8px;
-  border-left: 4px solid var(--color-orange);
-}
-
-.cookie-category h3 {
-  margin-top: 0;
-  font-family: var(--font-display);
-  color: var(--color-text);
-  font-size: 1.3rem;
-}
-
-.category-desc {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  margin: 0.5rem 0 1.5rem;
-  font-style: italic;
-}
-
-.cookie-item {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: var(--color-bg);
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
-}
-
-.cookie-item:last-child {
-  margin-bottom: 0;
-}
-
-.cookie-item h4 {
-  margin: 0 0 0.75rem;
-  color: var(--color-accent);
-  font-size: 1.05rem;
-}
-
-.cookie-item p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-.browser-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
-}
-
-.browser-link {
-  padding: 0.75rem 1.5rem;
-  background: var(--color-bg);
-  color: var(--color-accent);
-  text-decoration: none;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.browser-link:hover {
-  background: var(--color-accent);
-  color: white;
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
-.warning-box {
-  margin: 1.5rem 0;
-  padding: 1rem 1.5rem;
-  background: #fff3cd;
-  border: 1px solid #ffc107;
-  border-radius: 6px;
-  border-left: 4px solid #ffc107;
-}
-
-.warning-box p {
-  margin: 0;
-  color: #856404;
-}
-</style>

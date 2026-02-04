@@ -282,17 +282,21 @@
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: var(--color-accent);
-  color: white;
+  background: var(--color-orange); /* Naranja en vez de azul */
+  color: white !important;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 500;
   transition: all 0.2s;
+  border-bottom: none !important;
 }
 
 .license-link:hover {
-  background: var(--color-accent-soft);
+  background: #e04420; /* Naranja más oscuro al hover */
+  color: white !important;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
+  border-bottom: none !important;
 }
 
 /* Cajas de citación */

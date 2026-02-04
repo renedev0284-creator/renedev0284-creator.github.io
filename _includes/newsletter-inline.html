@@ -1,42 +1,173 @@
-<!-- Newsletter inline - Buttondown (minimal, estilo editorial) -->
+<!-- newsletter-inline.html (minimal) -->
 <div class="newsletter-inline" role="complementary" aria-label="Suscripción al newsletter">
-  <div class="newsletter-card">
-    <div class="newsletter-head">
-      <span class="newsletter-mark" aria-hidden="true">📬</span>
-      <div class="newsletter-copy">
-        <h4 class="newsletter-title">Si te gustó este post, te va a gustar el próximo.</h4>
-        <p class="newsletter-text">Te lo mando al inbox. Cero spam. Te sales cuando quieras.</p>
-      </div>
+  <div class="newsletter-box">
+    <div class="newsletter-icon" aria-hidden="true">📬</div>
+
+    <div class="newsletter-content">
+      <h4 class="newsletter-title">¿Te gustó este post?</h4>
+      <p class="newsletter-text">Recibe nuevos artículos directo en tu inbox. Sin spam.</p>
+
+      <form
+        action="https://buttondown.email/api/emails/embed-subscribe/rene0284"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/rene0284', 'popupwindow')"
+        class="newsletter-form"
+      >
+        <label class="sr-only" for="bd-email">Correo</label>
+        <input
+          type="email"
+          name="email"
+          id="bd-email"
+          placeholder="tu@email.com"
+          autocomplete="email"
+          required
+          class="newsletter-input"
+        />
+
+        <button type="submit" class="newsletter-button">
+          Suscribirme <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <p class="newsletter-note">Cancela cuando quieras</p>
     </div>
-
-    <form
-      action="https://buttondown.email/api/emails/embed-subscribe/rene0284"
-      method="post"
-      target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/rene0284', 'popupwindow')"
-      class="newsletter-form"
-    >
-      <label class="sr-only" for="bd-email">Correo</label>
-      <input
-        type="email"
-        name="email"
-        id="bd-email"
-        placeholder="tu@email.com"
-        autocomplete="email"
-        required
-        class="newsletter-input"
-      />
-
-      <button type="submit" class="newsletter-button">
-        Suscribirme <span aria-hidden="true">→</span>
-      </button>
-    </form>
-
-    <p class="newsletter-note">
-      Promesa simple: una idea útil por envío.
-      <span class="newsletter-note-sep" aria-hidden="true">•</span>
-      <span>Cancelas cuando quieras.</span>
-    </p>
   </div>
 </div>
 
+<style>
+/* Newsletter inline - minimal, editorial */
+.newsletter-inline{
+  margin: 3rem 0;
+  clear: both;
+}
+
+.newsletter-box{
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+}
+
+.newsletter-icon{
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transform: translateY(2px);
+}
+
+.newsletter-content{
+  flex: 1;
+  min-width: 0;
+}
+
+.newsletter-title{
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.newsletter-text{
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.9rem;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.newsletter-form{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.newsletter-input{
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.newsletter-input::placeholder{
+  color: var(--color-text-light);
+}
+
+.newsletter-input:focus{
+  outline: none;
+  border-color: rgba(243, 79, 41, 0.55);
+  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.12);
+}
+
+.newsletter-button{
+  padding: 0.78rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.newsletter-button:hover{
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  box-shadow: 0 6px 14px rgba(60, 48, 38, 0.08);
+  transform: translateY(-1px);
+}
+
+.newsletter-button:active{
+  transform: translateY(0);
+}
+
+.newsletter-note{
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+/* a11y label */
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
+
+@media (max-width: 768px){
+  .newsletter-box{
+    flex-direction: column;
+    padding: 1.25rem;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .newsletter-form{
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-button{
+    width: 100%;
+  }
+}
+</style>

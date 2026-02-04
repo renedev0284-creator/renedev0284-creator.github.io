@@ -1,0 +1,173 @@
+<!-- Newsletter CTA Inline - Minimalista -->
+<div class="newsletter-inline">
+  <div class="newsletter-box">
+    <div class="newsletter-icon">📬</div>
+    <div class="newsletter-content">
+      <h4 class="newsletter-title">¿Te está gustando?</h4>
+      <p class="newsletter-text">Recibe posts nuevos directo en tu inbox. Sin spam.</p>
+      
+      <!-- BUTTONDOWN -->
+      <form
+        action="https://buttondown.email/api/emails/embed-subscribe/rmoya0284"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.email/rmoya0284', 'popupwindow')"
+        class="newsletter-form">
+        
+        <input 
+          type="email" 
+          name="email" 
+          id="bd-email"
+          placeholder="tu@email.com"
+          required
+          class="newsletter-input" />
+        
+        <button type="submit" class="newsletter-button">
+          Suscribirme
+        </button>
+      </form>
+      
+      <p class="newsletter-note">Cancela cuando quieras con un click</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.newsletter-inline {
+  margin: 3rem 0;
+  clear: both;
+}
+
+.newsletter-box {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.newsletter-icon {
+  font-size: 3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.newsletter-content {
+  flex: 1;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+.newsletter-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.85rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.1);
+}
+
+.newsletter-button {
+  padding: 0.85rem 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-orange);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.newsletter-button:hover {
+  background: #e04420;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
+}
+
+.newsletter-button:active {
+  transform: translateY(0);
+}
+
+.newsletter-note {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .newsletter-box {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .newsletter-icon {
+    font-size: 2.5rem;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .newsletter-button {
+    width: 100%;
+  }
+}
+</style>
+
+<!-- 
+INSTRUCCIONES:
+
+1. Regístrate en Buttondown: https://buttondown.email/register
+2. Elige tu username (ej: renedev)
+3. Reemplaza "TU_USERNAME" arriba con tu username (2 lugares)
+4. Guarda como _includes/newsletter-inline.html
+5. Incluye donde quieras: {% include newsletter-inline.html %}
+
+ALTERNATIVA - ConvertKit:
+Si usas ConvertKit, reemplaza el form con:
+<script async data-uid="TU_FORM_ID" src="https://convertkit.com/TU_ID/TU_FORM_ID.js"></script>
+
+ALTERNATIVA - EmailOctopus:
+<form method="post" action="https://emailoctopus.com/lists/TU_LIST_ID/members/embedded/add">
+  <input type="email" name="email_address">
+  <button type="submit">Subscribe</button>
+</form>
+-->

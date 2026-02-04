@@ -15,7 +15,12 @@ layout: default
       </time>
       <span>•</span>
       <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>
-      
+      <span>•</span>
+      <span>
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" 
+             alt="visitas" 
+             style="height: 20px; vertical-align: middle;">
+      </span>
     </div>
     
     <h1>{{ page.title }}</h1>
@@ -33,36 +38,161 @@ layout: default
     {{ content }}
   </div>
 
-  {% include inline-related-post.html %}
-
-  {% include newsletter-inline.html %}
-
-  <div style="display: flex; justify-content: center;">
-  <span><img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas" style="height: 20px; vertical-align: middle;"></span>
-  </div>
-
   <!-- Botones para compartir -->
   {% include share-buttons.html %}
 
-<!-- Comentarios y reacciones -->
-{% include reactions-button.html %}
-{% include comments-utterances.html %}
-    
+  <!-- Navegación anterior/siguiente -->
   <footer class="post-footer">
     <nav class="post-nav">
       {% if page.previous.url %}
         <a href="{{ page.previous.url | relative_url }}" class="post-nav-item prev">
-          <span class="post-nav-label">Anterior</span>
+          <span class="post-nav-label">← Anterior</span>
           <span class="post-nav-title">{{ page.previous.title }}</span>
         </a>
       {% endif %}
       
       {% if page.next.url %}
         <a href="{{ page.next.url | relative_url }}" class="post-nav-item next">
-          <span class="post-nav-label">Siguiente</span>
+          <span class="post-nav-label">Siguiente →</span>
           <span class="post-nav-title">{{ page.next.title }}</span>
         </a>
       {% endif %}
     </nav>
   </footer>
 </article>
+
+<!-- Newsletter -->
+{% include newsletter-inline.html %}
+
+<!-- Reacciones -->
+{% include reactions-button.html %}
+
+<!-- Comentarios -->
+{% include comments-utterances.html %}
+
+<!-- Script para insertar enlace relacionado automáticamente después del párrafo 2 -->
+<script>
+(function() {
+  'use strict';
+  
+  // Datos del post actual y posts relacionados
+  var currentTags = {{ page.tags | jsonify }};
+  var allPosts = [
+    {% for post in site.posts limit:20 %}
+      {% unless post.url == page.url %}
+      {
+        title: {{ post.title | jsonify }},
+        url: {{ post.url | jsonify }},
+        excerpt: {{ post.excerpt | strip_html | truncate: 80 | jsonify }},
+        tags: {{ post.tags | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endunless %}
+    {% endfor %}
+  ];
+  
+  // Encontrar post relacionado por tags
+  var relatedPost = null;
+  if (currentTags && currentTags.length > 0) {
+    for (var i = 0; i < allPosts.length; i++) {
+      var post = allPosts[i];
+      if (!post.tags) continue;
+      
+      for (var j = 0; j < post.tags.length; j++) {
+        if (currentTags.indexOf(post.tags[j]) !== -1) {
+          relatedPost = post;
+          break;
+        }
+      }
+      if (relatedPost) break;
+    }
+  }
+  
+  if (!relatedPost) return;
+  
+  // Crear el HTML del enlace relacionado
+  var html = 
+    '<div class="inline-related-post" style="margin: 2.5rem 0; animation: fadeInUp 0.5s ease-out;">' +
+      '<div class="inline-cta" style="display: flex; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #fff 0%, var(--color-bg-secondary, #e8e5df) 100%); border: 1px solid var(--color-border, #d4cfc5); border-left: 4px solid var(--color-orange, #f34f29); border-radius: 8px; box-shadow: 0 2px 8px rgba(60, 48, 38, 0.08); transition: all 0.3s ease;">' +
+        '<div style="font-size: 2rem; line-height: 1; flex-shrink: 0; margin-top: 0.25rem;">💡</div>' +
+        '<div style="flex: 1;">' +
+          '<p style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #6e6658); margin: 0 0 0.5rem; font-weight: 600;">Artículo relacionado</p>' +
+          '<a href="' + relatedPost.url + '" style="font-family: Georgia, serif; font-size: 1.1rem; font-weight: 600; color: var(--color-text, #3c3026); text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.2s;">' +
+            relatedPost.title + ' →' +
+          '</a>' +
+          '<p style="font-family: Georgia, serif; font-size: 0.9rem; color: var(--color-text-muted, #6e6658); margin: 0; line-height: 1.5;">' + relatedPost.excerpt + '</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  
+  // Insertar después del segundo párrafo
+  function insertRelatedPost() {
+    var postContent = document.querySelector('.post-content');
+    if (!postContent) return;
+    
+    var paragraphs = Array.from(postContent.querySelectorAll('p')).filter(function(p) {
+      return p.textContent.trim().length > 50;
+    });
+    
+    // Solo insertar si hay al menos 4 párrafos
+    if (paragraphs.length >= 4 && paragraphs[1]) {
+      var div = document.createElement('div');
+      div.innerHTML = html;
+      var element = div.firstChild;
+      
+      paragraphs[1].parentNode.insertBefore(element, paragraphs[1].nextSibling);
+      
+      // Hover effect
+      element.querySelector('.inline-cta').addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 4px 16px rgba(243, 79, 41, 0.15)';
+      });
+      
+      element.querySelector('.inline-cta').addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 2px 8px rgba(60, 48, 38, 0.08)';
+      });
+    }
+  }
+  
+  // Ejecutar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', insertRelatedPost);
+  } else {
+    insertRelatedPost();
+  }
+})();
+</script>
+
+<style>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inline-related-post a:hover {
+  color: var(--color-orange, #f34f29) !important;
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .inline-related-post .inline-cta {
+    flex-direction: column !important;
+    padding: 1.25rem !important;
+    gap: 0.75rem !important;
+  }
+  
+  .inline-related-post .inline-cta > div:first-child {
+    font-size: 1.75rem !important;
+  }
+  
+  .inline-related-post .inline-cta a {
+    font-size: 1rem !important;
+  }
+}
+</style>

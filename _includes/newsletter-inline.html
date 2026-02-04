@@ -1,152 +1,191 @@
-<!-- Newsletter inline - Buttondown -->
-<div class="newsletter-inline">
-  <div class="newsletter-box">
-    <div class="newsletter-icon">📬</div>
-    <div class="newsletter-content">
-      <h4 class="newsletter-title">¿Te está gustando este post?</h4>
-      <p class="newsletter-text">Recibe nuevos artículos directo en tu inbox. Sin spam.</p>
-      
-      <form
-        action="https://buttondown.email/api/emails/embed-subscribe/rene0284"
-        method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://buttondown.com/rene0284', 'popupwindow')"
-        class="newsletter-form">
-        
-        <input 
-          type="email" 
-          name="email" 
-          id="bd-email"
-          placeholder="tu@email.com"
-          required
-          class="newsletter-input" />
-        
-        <button type="submit" class="newsletter-button">
-          Suscribirme
-        </button>
-      </form>
-      
-      <p class="newsletter-note">Cancela cuando quieras</p>
+<!-- Newsletter inline - Buttondown (minimal, estilo editorial) -->
+<div class="newsletter-inline" role="complementary" aria-label="Suscripción al newsletter">
+  <div class="newsletter-card">
+    <div class="newsletter-head">
+      <span class="newsletter-mark" aria-hidden="true">📬</span>
+      <div class="newsletter-copy">
+        <h4 class="newsletter-title">Si te gustó este post, te va a gustar el próximo.</h4>
+        <p class="newsletter-text">Te lo mando al inbox. Cero spam. Te sales cuando quieras.</p>
+      </div>
     </div>
+
+    <form
+      action="https://buttondown.email/api/emails/embed-subscribe/rene0284"
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://buttondown.com/rene0284', 'popupwindow')"
+      class="newsletter-form"
+    >
+      <label class="sr-only" for="bd-email">Correo</label>
+      <input
+        type="email"
+        name="email"
+        id="bd-email"
+        placeholder="tu@email.com"
+        autocomplete="email"
+        required
+        class="newsletter-input"
+      />
+
+      <button type="submit" class="newsletter-button">
+        Suscribirme <span aria-hidden="true">→</span>
+      </button>
+    </form>
+
+    <p class="newsletter-note">
+      Promesa simple: una idea útil por envío.
+      <span class="newsletter-note-sep" aria-hidden="true">•</span>
+      <span>Cancelas cuando quieras.</span>
+    </p>
   </div>
 </div>
 
+
 <style>
-.newsletter-inline {
-  margin: 3rem 0;
+/* Newsletter inline - minimal (pegar en tu CSS global) */
+.newsletter-inline{
+  margin: var(--space-xxl) 0;
   clear: both;
 }
 
-.newsletter-box {
+.newsletter-card{
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Encabezado */
+.newsletter-head{
   display: flex;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
-  border: 2px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px var(--color-shadow);
+  gap: var(--space-md);
+  align-items: flex-start;
+  margin-bottom: var(--space-md);
 }
 
-.newsletter-icon {
-  font-size: 3rem;
+.newsletter-mark{
+  font-size: 1.5rem;
   line-height: 1;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  transform: translateY(2px);
+  opacity: 0.9;
 }
 
-.newsletter-content {
-  flex: 1;
-}
-
-.newsletter-title {
+.newsletter-title{
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--color-text);
-  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
-.newsletter-text {
+.newsletter-text{
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--color-text-muted);
-  margin: 0 0 1rem;
   line-height: 1.6;
+  margin: 0;
+  color: var(--color-text-muted);
+  max-width: 65ch;
 }
 
-.newsletter-form {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+/* Form */
+.newsletter-form{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-md);
 }
 
-.newsletter-input {
-  flex: 1;
-  padding: 0.85rem 1.25rem;
+.newsletter-input{
+  width: 100%;
+  padding: 0.8rem 1rem;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   color: var(--color-text);
-  background: white;
-  border: 2px solid var(--color-border);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: var(--transition);
 }
 
-.newsletter-input:focus {
+.newsletter-input::placeholder{
+  color: var(--color-text-light);
+}
+
+.newsletter-input:focus{
   outline: none;
-  border-color: var(--color-orange);
-  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.1);
+  border-color: rgba(243, 79, 41, 0.55);
+  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.12);
 }
 
-.newsletter-button {
-  padding: 0.85rem 2rem;
+/* Botón más sutil (sin “bloque naranja” grande) */
+.newsletter-button{
+  padding: 0.78rem 1rem;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: white !important;
-  background: var(--color-orange);
-  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   white-space: nowrap;
 }
 
-.newsletter-button:hover {
-  background: #e04420;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
+.newsletter-button:hover{
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  box-shadow: 0 6px 14px rgba(60, 48, 38, 0.08);
+  transform: translateY(-1px);
 }
 
-.newsletter-button:active {
+.newsletter-button:active{
   transform: translateY(0);
 }
 
-.newsletter-note {
+/* Nota */
+.newsletter-note{
+  margin: var(--space-md) 0 0;
   font-family: var(--font-sans);
   font-size: 0.8rem;
   color: var(--color-text-light);
-  margin: 0;
-  font-style: italic;
 }
 
-@media (max-width: 768px) {
-  .newsletter-box {
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
-    text-align: center;
+.newsletter-note-sep{
+  margin: 0 .35rem;
+  opacity: .7;
+}
+
+/* Accesibilidad: label oculto */
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .newsletter-card{
+    padding: var(--space-md);
   }
-  
-  .newsletter-icon {
-    font-size: 2.5rem;
+
+  .newsletter-head{
+    gap: var(--space-sm);
   }
-  
-  .newsletter-form {
-    flex-direction: column;
+
+  .newsletter-form{
+    grid-template-columns: 1fr;
   }
-  
-  .newsletter-button {
+
+  .newsletter-button{
     width: 100%;
   }
 }
+
 </style>

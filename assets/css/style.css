@@ -1,9 +1,10 @@
 /* ========================================
-   Estilo El País - Compacto y Profesional
+   Made Mistakes Inspired Design
+   Elegant, Editorial, Asymmetric
    ======================================== */
 
 :root {
-  /* Color Palette */
+  /* Color Palette - Git website inspired */
   --color-bg: #f3f1ec;
   --color-bg-secondary: #e8e5df;
   --color-text: #3c3026;
@@ -13,22 +14,32 @@
   --color-accent-soft: #2e93d5;
   --color-border: #d4cfc5;
   --color-shadow: rgba(60, 48, 38, 0.08);
+  
+  /* Color adicional Git */
   --color-orange: #f34f29;
   
-  /* Typography */
+  /* Typography - Classic Serif (Escritor Pro) */
   --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-  --font-body: Georgia, 'Times New Roman', serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Georgia', 'Book Antiqua', Palatino, serif;
+  --font-sans: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif;
   
   /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 4rem;
+  --space-unit: 1rem;
+  --space-xs: calc(var(--space-unit) * 0.5);
+  --space-sm: calc(var(--space-unit) * 0.75);
+  --space-md: var(--space-unit);
+  --space-lg: calc(var(--space-unit) * 2);
+  --space-xl: calc(var(--space-unit) * 4);
+  --space-xxl: calc(var(--space-unit) * 6);
   
   /* Layout */
   --max-width: 42rem;
+  --sidebar-width: 280px;
+  
+  /* Effects */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 1px 3px rgba(60, 48, 38, 0.06), 0 1px 2px rgba(60, 48, 38, 0.08);
+  --shadow-medium: 0 4px 6px rgba(60, 48, 38, 0.08), 0 2px 4px rgba(60, 48, 38, 0.1);
 }
 
 /* ========================================
@@ -43,73 +54,119 @@
 html {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.75;
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow-x: hidden;
 }
 
 /* ========================================
-   Typography - Estilo El País
+   Typography
    ======================================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-text);
+  color: var(--color-orange);
   margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 700;
   margin-bottom: var(--space-lg);
+  color: var(--color-text);
 }
 
 h2 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-top: var(--space-lg);
-  color: var(--color-orange);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-top: var(--space-xl);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
   margin-top: var(--space-lg);
 }
 
 p {
   margin-bottom: var(--space-md);
+  max-width: 65ch;
 }
 
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
 }
 
 a:hover {
-  color: var(--color-orange);
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent-soft);
+}
+
+strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+em {
+  font-style: italic;
 }
 
 /* ========================================
-   Layout
+   Layout - Asymmetric Grid
    ======================================== */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
 }
 
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-xxl);
+}
+
+@media (min-width: 1024px) {
+  .main-grid {
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--space-xxl);
+  }
+}
+
 /* ========================================
-   Header
+   Header - Editorial Style
    ======================================== */
 .site-header {
-  padding: var(--space-lg) 0;
+  padding: var(--space-xl) 0;
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-orange) 0%, transparent 100%);
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from { width: 0; }
+  to { width: 80px; }
 }
 
 .header-content {
@@ -126,18 +183,23 @@ a:hover {
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
+  letter-spacing: -0.03em;
+  transition: var(--transition);
 }
 
 .site-title:hover {
   color: var(--color-orange);
+  border: none;
 }
 
 .site-tagline {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-top: 0.25rem;
+  margin-top: var(--space-xs);
   display: block;
 }
 
@@ -152,108 +214,67 @@ a:hover {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   font-weight: 500;
+  border: none;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-orange);
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--color-text);
 }
 
+.nav-links a:hover::after {
+  width: 100%;
+}
+
 /* ========================================
-   Hero - Como en la imagen
+   Home - Hero Section
    ======================================== */
 .intro {
-  text-align: center;
-  padding: var(--space-xl) 0;
-  max-width: 800px;
-  margin: 0 auto;
+  margin-bottom: var(--space-xxl);
+  padding-top: var(--space-xl);
 }
 
 .intro h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  color: var(--color-text);
   margin-bottom: var(--space-md);
-  letter-spacing: -0.02em;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .intro .lead {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.6;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-lg);
+  max-width: 35em;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
 }
 
-/* Stats box como en la imagen */
-.intro-stats {
-  display: inline-flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem 2rem;
-  background: white;
-  border: 2px solid var(--color-border);
-  border-radius: 50px;
-  margin-top: var(--space-lg);
-  font-family: var(--font-sans);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-.stat-item {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.stat-number {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-orange);
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-/* Iconos del hero */
-.intro-icons {
-  display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  margin-bottom: var(--space-lg);
-  font-size: 1.5rem;
-}
-
-/* Timeline decorativa */
-.intro-timeline {
-  margin-top: var(--space-xl);
-  position: relative;
-  height: 2px;
-  background: var(--color-border);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.timeline-dot {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--color-orange);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.7;
-}
-
-.timeline-dot:nth-child(1) { left: 10%; opacity: 0.4; }
-.timeline-dot:nth-child(2) { left: 35%; opacity: 0.6; }
-.timeline-dot:nth-child(3) { left: 60%; opacity: 0.8; }
-.timeline-dot:nth-child(4) { right: 10%; opacity: 1; }
 
 /* ========================================
-   Post List
+   Post List - Asymmetric Cards
    ======================================== */
 .posts {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-xxl);
 }
 
 .section-title {
@@ -264,37 +285,71 @@ a:hover {
   letter-spacing: 0.1em;
   color: var(--color-text-light);
   margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-orange);
+  position: relative;
   display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-orange);
 }
 
 .post-list {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-xxl);
 }
 
 .post-preview {
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  padding-left: 120px;
+  animation: fadeInUp 0.6s ease-out backwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+.post-preview::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-orange) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-preview:hover::before {
+  opacity: 1;
 }
 
 .post-date {
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--space-xs);
+  font-weight: 500;
 }
 
 .post-preview h3 {
-  margin: var(--space-xs) 0;
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
   font-size: clamp(1.5rem, 3vw, 2rem);
+  transition: var(--transition);
 }
 
 .post-preview h3 a {
   color: var(--color-text);
+  border: none;
+  transition: var(--transition);
 }
 
 .post-preview:hover h3 a {
@@ -303,15 +358,15 @@ a:hover {
 
 .post-excerpt {
   color: var(--color-text-muted);
-  margin: var(--space-sm) 0;
-  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
 }
 
 .post-tags {
   display: flex;
   gap: var(--space-xs);
   flex-wrap: wrap;
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
 }
 
 .tag {
@@ -321,6 +376,7 @@ a:hover {
   background-color: var(--color-bg-secondary);
   padding: 0.25rem 0.75rem;
   border-radius: 3px;
+  transition: var(--transition);
   border: 1px solid var(--color-border);
 }
 
@@ -330,17 +386,39 @@ a:hover {
   border-color: var(--color-orange);
 }
 
+.read-more {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  transition: var(--transition);
+}
+
+.read-more::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.read-more:hover::after {
+  transform: translateX(4px);
+}
+
 /* ========================================
-   Single Post - Estilo El País (compacto)
+   Single Post
    ======================================== */
 .post {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-xl) 0;
+  padding: var(--space-xxl) 0;
 }
 
 .post-header {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xxl);
   padding-bottom: var(--space-lg);
   border-bottom: 1px solid var(--color-border);
 }
@@ -360,22 +438,26 @@ a:hover {
   line-height: 1.1;
 }
 
-/* Post Content - COMPACTO ESTILO EL PAÍS */
-.post-content {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.0625rem;           /* 17px - como El País */
-  line-height: 1.58;              /* Compacto pero legible */
-  color: var(--color-text);
+.post-header .post-tags {
+  margin-top: var(--space-md);
 }
 
-.post-content p {
-  margin-bottom: 1rem;            /* Menos espacio entre párrafos */
+/* Solo copiar tu sección de Post Content y ajustarla */
+
+/* ========================================
+   Post Content - AJUSTE MÍNIMO
+   Más junto + ligeramente más grande
+   ======================================== */
+.post-content {
+  font-size: 1.0625rem;        /* 17px - un poco más grande que antes */
+  line-height: 1.65;           /* Más junto que 1.8, pero no demasiado */
+  letter-spacing: 0.01em;      /* Letras ligeramente más juntas */
 }
 
 .post-content h2,
 .post-content h3,
 .post-content h4 {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xxl);
   margin-bottom: var(--space-md);
 }
 
@@ -384,119 +466,144 @@ a:hover {
   border-top: 1px solid var(--color-border);
 }
 
+.post-content p {
+  margin-bottom: 1.25rem;      /* Entre párrafos más junto (antes 2rem) */
+}
+
 .post-content a {
   color: var(--color-accent);
-  text-decoration: underline;
-  text-decoration-color: rgba(26, 123, 179, 0.3);
+  border-bottom: 1px solid rgba(26, 123, 179, 0.3);
+  transition: var(--transition);
 }
 
 .post-content a:hover {
-  color: var(--color-orange);
-  text-decoration-color: var(--color-orange);
+  background-color: rgba(26, 123, 179, 0.08);
+  border-bottom-color: var(--color-accent);
 }
 
 .post-content img {
   max-width: 100%;
   height: auto;
-  margin: var(--space-lg) 0;
+  margin: var(--space-xl) 0;
   border-radius: 4px;
+  box-shadow: var(--shadow-medium);
 }
 
 .post-content blockquote {
-  margin: var(--space-lg) 0;
-  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
   background-color: var(--color-bg-secondary);
   border-left: 4px solid var(--color-orange);
   font-style: italic;
   color: var(--color-text-muted);
 }
 
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 .post-content code {
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Consolas', monospace;
   font-size: 0.9em;
   background-color: var(--color-bg-secondary);
   padding: 0.2em 0.4em;
   border-radius: 3px;
+  border: 1px solid var(--color-border);
   color: var(--color-orange);
 }
 
 .post-content pre {
   background-color: var(--color-bg-secondary);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   border-radius: 6px;
   overflow-x: auto;
-  margin: var(--space-lg) 0;
+  margin: var(--space-xl) 0;
+  border: 1px solid var(--color-border);
 }
 
 .post-content pre code {
   background: none;
   padding: 0;
+  border: none;
   font-size: 0.875rem;
   color: var(--color-text);
 }
 
 .post-content ul,
 .post-content ol {
-  margin: var(--space-md) 0;
+  margin: var(--space-lg) 0;
   padding-left: 1.5em;
 }
 
 .post-content li {
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 .post-content ul li::marker {
   color: var(--color-orange);
 }
 
+.post-content ol li::marker {
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
 .post-content hr {
   border: none;
   height: 1px;
-  background: var(--color-border);
-  margin: var(--space-lg) 0;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  margin: var(--space-xxl) 0;
 }
 
 /* ========================================
    Post Navigation
    ======================================== */
 .post-footer {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
+  margin-top: var(--space-xxl);
+  padding-top: var(--space-xl);
   border-top: 1px solid var(--color-border);
 }
 
 .post-nav {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .post-nav {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .post-nav-item {
-  padding: var(--space-md);
+  padding: var(--space-lg);
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: 6px;
+  transition: var(--transition);
   text-decoration: none;
   display: block;
-  transition: all 0.2s;
 }
 
 .post-nav-item:hover {
-  border-color: var(--color-orange);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-orange);
 }
 
 .post-nav-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--color-text-light);
   margin-bottom: var(--space-xs);
 }
 
 .post-nav-title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-text);
 }
@@ -506,11 +613,25 @@ a:hover {
 }
 
 /* ========================================
+   About Page
+   ======================================== */
+.about-content {
+  max-width: var(--max-width);
+  margin: var(--space-xxl) auto;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.about-content h1 {
+  margin-bottom: var(--space-lg);
+}
+
+/* ========================================
    Footer
    ======================================== */
 .site-footer {
-  margin-top: var(--space-xl);
-  padding: var(--space-lg) 0;
+  margin-top: var(--space-xxl);
+  padding: var(--space-xxl) 0 var(--space-xl);
   border-top: 1px solid var(--color-border);
   font-family: var(--font-sans);
   color: var(--color-text-muted);
@@ -527,15 +648,33 @@ a:hover {
 
 .social-links {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 .social-links a {
   color: var(--color-text-muted);
+  transition: var(--transition);
+  border: none;
 }
 
 .social-links a:hover {
   color: var(--color-orange);
+}
+
+/* ========================================
+   Blog Page
+   ======================================== */
+.blog-header {
+  margin-bottom: var(--space-xxl);
+}
+
+.blog-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.blog-header .lead {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
 }
 
 /* ========================================
@@ -546,38 +685,590 @@ a:hover {
     font-size: 16px;
   }
 
-  .intro h1 {
-    font-size: 2rem;
+  .post-preview {
+    padding-left: 0px;
   }
 
-  .intro-stats {
+  .post-date {
+    position: static;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .header-content {
     flex-direction: column;
-    gap: 1rem;
-    padding: 1.5rem;
+    align-items: flex-start;
   }
 
-  .intro-timeline {
-    display: none;
-  }
-
-  .post-nav {
-    grid-template-columns: 1fr;
-  }
-
-  .post-nav-item.next {
-    text-align: left;
+  .nav-links {
+    gap: var(--space-md);
   }
 }
 
 /* ========================================
    Accessibility
    ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Eliminar dark mode (mantener tema claro siempre) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #f3f1ec;
+    --color-bg-secondary: #e8e5df;
+    --color-text: #3c3026;
+  }
+}
+
+/* Selección de texto */
 ::selection {
   background-color: rgba(243, 79, 41, 0.2);
   color: var(--color-text);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+::-moz-selection {
+  background-color: rgba(243, 79, 41, 0.2);
+  color: var(--color-text);
 }
+
+/* ========================================
+   MEJORAS DE DINAMISMO Y VISTOSIDAD
+   ======================================== */
+
+/* Animación sutil de fondo en el hero */
+.intro {
+  position: relative;
+  overflow: hidden;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(243, 79, 41, 0.03) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+/* Efecto hover más dinámico en posts */
+.post-preview {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-preview:hover {
+  transform: translateX(8px);
+}
+
+/* Animación de la línea vertical al hacer hover */
+.post-preview::before {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: top;
+  left:-10px;
+}
+
+.post-preview:hover::before {
+  opacity: 1;
+  animation: lineGrow 0.4s ease-out;
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Efecto de brillo en títulos al hover */
+.post-preview h3 a {
+  background: linear-gradient(90deg, var(--color-text) 0%, var(--color-orange) 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: 100% 0;
+  transition: background-position 0.4s ease;
+}
+
+.post-preview:hover h3 a {
+  background-position: 0 0;
+}
+
+/* Animación de tags al hover */
+.tag {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(243, 79, 41, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(243, 79, 41, 0.15);
+}
+
+.tag:hover::before {
+  left: 100%;
+}
+
+/* Efecto de underline animado en "Leer completo" */
+.read-more {
+  position: relative;
+  display: inline-block;
+}
+
+.read-more::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.post-preview:hover .read-more::before {
+  width: calc(100% - 1.5rem);
+}
+
+/* Animación de entrada escalonada mejorada */
+.post-preview {
+  opacity: 0;
+  animation: fadeInSlide 0.6s ease-out forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto parallax sutil en la intro */
+@media (min-width: 768px) {
+  .intro {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Animación del título principal */
+.intro h1 {
+  position: relative;
+  display: inline-block;
+}
+
+.intro h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-orange), transparent);
+  border-radius: 2px;
+  animation: underlineExpand 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes underlineExpand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+/* Efecto de brillo sutil en el section-title */
+.section-title {
+  position: relative;
+}
+
+.section-title::after {
+  animation: shimmer 3s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(243, 79, 41, 0.4) 50%, 
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Transición suave en la fecha */
+.post-date {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.post-preview:hover .post-date {
+  color: var(--color-orange);
+  transform: translateY(-2px);
+}
+
+/* Efecto de sombra flotante en hover */
+.post-preview::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 120px;
+  right: 0;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.post-preview:hover::after {
+  opacity: 1;
+}
+
+/* Animación del excerpt */
+.post-excerpt {
+  transition: color 0.3s ease;
+}
+
+.post-preview:hover .post-excerpt {
+  color: var(--color-text);
+}
+
+/* Micro-interacción en el header */
+.site-header::after {
+  transition: width 0.3s ease;
+}
+
+.site-header:hover::after {
+  width: 120px;
+}
+
+/* Transición suave del lead text */
+.intro .lead {
+  transition: color 0.3s ease;
+}
+
+.intro:hover .lead {
+  color: var(--color-text);
+}
+
+/* Animación de carga inicial del hero */
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro h1,
+.intro .lead {
+  animation-fill-mode: backwards;
+}
+
+.intro h1 {
+  animation: heroFade 0.8s ease-out;
+}
+
+.intro .lead {
+  animation: heroFade 0.8s ease-out 0.2s backwards;
+}
+
+/* Responsive: reducir animaciones en móviles para mejor performance */
+@media (max-width: 768px) {
+  .intro::before {
+    display: none;
+  }
+  
+  .post-preview:hover {
+    transform: translateX(4px);
+  }
+  
+  .post-preview::after {
+    display: none;
+  }
+}
+
+/* Mejora de accesibilidad: respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .intro::before,
+  .post-preview::after {
+    display: none;
+  }
+}
+
+/* ========================================
+   CSS PARA HERO CON VISUALES
+   ======================================== */
+
+/* OPCIÓN 1: Imagen de fondo con escritorio */
+.intro-with-bg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+  min-height: 400px;
+  position: relative;
+}
+
+.intro-content {
+  z-index: 2;
+}
+
+.intro-visual {
+  opacity: 0.15;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  max-width: 500px;
+  z-index: 1;
+}
+
+.intro-visual svg {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .intro-with-bg {
+    grid-template-columns: 1fr;
+  }
+  
+  .intro-visual {
+    display: none;
+  }
+}
+
+/* OPCIÓN 2: Layout split con ilustración */
+.intro-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.intro-text {
+  padding-right: var(--space-lg);
+}
+
+.intro-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-illustration svg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(243, 79, 41, 0.1));
+}
+
+@media (max-width: 968px) {
+  .intro-split {
+    grid-template-columns: 1fr;
+  }
+  
+  .intro-illustration {
+    margin-top: var(--space-lg);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-illustration {
+    display: none;
+  }
+}
+
+/* OPCIÓN 3: Badges/Iconos integrados */
+.intro-icons {
+  text-align: center;
+}
+
+.intro-badges {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-orange);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.badge:hover {
+  background-color: var(--color-orange);
+  color: var(--color-bg);
+  border-color: var(--color-orange);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(243, 79, 41, 0.25);
+}
+
+.badge svg {
+  width: 24px;
+  height: 24px;
+}
+
+.intro-icons h1 {
+  margin-top: var(--space-lg);
+}
+
+.intro-icons .lead {
+  max-width: 45em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-decoration {
+  margin-top: var(--space-xl);
+  opacity: 0.6;
+}
+
+.intro-decoration svg {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .intro-badges {
+    gap: var(--space-sm);
+  }
+  
+  .badge {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .badge svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .intro-decoration {
+    display: none;
+  }
+}
+
+/* Mejoras generales para todas las opciones */
+
+/* Animación de entrada para los SVG */
+.intro-visual svg,
+.intro-illustration svg,
+.intro-decoration svg {
+  animation: fadeInScale 1s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mejora de contraste para texto sobre visuales */
+.intro-with-bg h1,
+.intro-with-bg .lead {
+  text-shadow: 0 2px 10px rgba(253, 252, 251, 0.8);
+}
+
+/* Hover effect para toda la intro */
+.intro:hover .intro-visual,
+.intro:hover .intro-illustration {
+  opacity: 0.25;
+}
+
+.intro-visual,
+.intro-illustration {
+  transition: opacity 0.5s ease;
+}
+
+/* Responsive: mejor spacing en móvil */
+@media (max-width: 768px) {
+  .intro {
+    text-align: center;
+  }
+  
+  .intro h1::after {
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+}
+

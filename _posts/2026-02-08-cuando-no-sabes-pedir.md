@@ -13,7 +13,7 @@ Su defecto más visible no es la ambición, sino la necesidad de influir. Cuando
 
 Por fuera parece seguridad. Por dentro suele ser otra cosa: miedo a no tener control, miedo a fallar, miedo a quedarse sin salida.
 
-![Hombre despreocupado, pero con su cara si lo parece](/assets/images/posts/metanoia-no-sabes-pedirjpg)
+![Hombre despreocupado, pero con su cara si lo parece](/assets/images/posts/metanoia-no-sabes-pedir.jpg)
 
 Su filosofía es simple y peligrosa: “No necesito, merezco”. Porque creerlo los hace actuar mejor. Los vuelve insistentes, estratégicos, casi inevitables. Y muchas veces funciona.
 

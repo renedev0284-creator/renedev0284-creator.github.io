@@ -26,6 +26,9 @@ layout: default
         {% for tag in page.tags %}
           <span class="tag">{{ tag }}</span>
         {% endfor %}
+      
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>  
+        
       </div>
     {% endif %}
 

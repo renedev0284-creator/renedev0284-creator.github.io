@@ -4,38 +4,38 @@ layout: default
 
 <article class="post">
   <header class="post-header">
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {% assign day = page.date | date: "%-d" %}
-        {% assign month = page.date | date: "%-m" %}
-        {% assign year = page.date | date: "%Y" %}
-        {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-        {% assign month_index = month | minus: 1 %}
-        {{ day }} de {{ months[month_index] }} de {{ year }}
-      </time>
-      <span>•</span>
-      <span>{{ page.content | number_of_words | divided_by: 200 }} min de lectura</span>
-      
-      
+  <div class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+      {% assign day = page.date | date: "%-d" %}
+      {% assign month = page.date | date: "%-m" %}
+      {% assign year = page.date | date: "%Y" %}
+      {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+      {% assign month_index = month | minus: 1 %}
+      {{ day }} de {{ months[month_index] }} de {{ year }}
+    </time>
+    <span>•</span>
+    <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
+  </div>
+
+  <h1>{{ page.title }}</h1>
+
+  {% if page.tags %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
     </div>
-    
-    <h1>{{ page.title }}</h1>
-    
-    {% if page.tags %}
-      <div class="post-tags">
-        {% for tag in page.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      
-      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>  
-        
-      </div>
-    {% endif %}
+  {% endif %}
 
-    <!-- Info de autor -->
-    {% include post-author-minimal.html %}
+  {%- assign _excerpt = page.excerpt | default: "" -%}
+  {% if _excerpt != "" %}
+    <p class="post-excerpt">{{ _excerpt | strip_html | strip_newlines | truncate: 220 }}</p>
+  {% endif %}
 
-  </header>
+  <!-- Info de autor -->
+  {% include post-author-minimal.html %}
+</header>
+
 
   <div class="post-content">
     {{ content }}

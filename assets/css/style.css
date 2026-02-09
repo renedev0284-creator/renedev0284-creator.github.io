@@ -79,19 +79,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 2.75rem);      /* Antes: 2.25-3.5rem → Ahora: 2-2.75rem */
   font-weight: 700;
   margin-bottom: var(--space-lg);
   color: var(--color-text);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);       /* Antes: 1.75-2.5rem → Ahora: 1.5-2rem */
   margin-top: var(--space-xl);
 }
 
 h3 {
-  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);    /* Antes: 1.35-1.75rem → Ahora: 1.25-1.5rem */
   margin-top: var(--space-lg);
 }
 

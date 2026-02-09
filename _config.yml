@@ -41,3 +41,6 @@ defaults:
 
 # Idioma
 lang: es
+
+# Social image
+social_image: /assets/images/social-default.png

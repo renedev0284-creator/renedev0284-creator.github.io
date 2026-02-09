@@ -4,3 +4,27 @@
 
 <!-- Para compatibilidad con navegadores antiguos -->
 <link rel="shortcut icon" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+
+<!-- Social cards (Open Graph + Twitter/X) -->
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc  = page.excerpt | strip_html | strip_newlines | truncate: 200 | default: site.description -%}
+{%- assign img_rel    = page.image | default: site.social_image -%}
+{%- if img_rel -%}
+  {%- assign img_abs = img_rel | absolute_url -%}
+{%- endif -%}
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{%- if img_abs -%}
+<meta property="og:image" content="{{ img_abs }}">
+{%- endif -%}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc }}">
+{%- if img_abs -%}
+<meta name="twitter:image" content="{{ img_abs }}">
+{%- endif -%}

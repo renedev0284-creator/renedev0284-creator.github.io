@@ -452,7 +452,7 @@ em {
   font-size: 1.25rem;          /* 20px - MÁS GRANDE como en imagen 2 */
   line-height: 1.7;            /* Interlineado más junto */
   letter-spacing: 0.01em;      /* Letras ligeramente más juntas */
-  margin-top: 1.5rem;  /* O 1rem para que esté más pegado */
+  margin-top: 1.05rem;  /* O 1rem para que esté más pegado */
 }
 
 .post-content h2,

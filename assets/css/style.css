@@ -415,6 +415,7 @@ em {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-xxl) 0;
+  padding-top: 1.2rem;   /* prueba 0.75rem–1.5rem */
 }
 
 .post-header {
@@ -440,6 +441,7 @@ em {
 
 .post-header .post-tags {
   margin-top: var(--space-md);
+  margin-bottom: 1.1rem; /* reduce separación antes del contenido */
 }
 
 /* Solo copiar tu sección de Post Content y ajustarla */
@@ -448,11 +450,11 @@ em {
    Post Content - AJUSTE MÍNIMO
    Más junto + ligeramente más grande
    ======================================== */
-.post-content {
-  font-size: 1.25rem;          /* 20px - MÁS GRANDE como en imagen 2 */
-  line-height: 1.7;            /* Interlineado más junto */
-  letter-spacing: 0.01em;      /* Letras ligeramente más juntas */
-  margin-top: 1.05rem;  /* O 1rem para que esté más pegado */
+.post-content{
+  margin-top: .65rem;    /* en vez de 1.05rem */
+  font-size: 1.25rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 .post-content h2,
@@ -1289,3 +1291,8 @@ button:focus-visible {
   flex-wrap: wrap;
 }
 
+/* 3) Reduce espacios internos del lead (si lo estás usando) */
+.post-lead{
+  margin: .9rem 0 1rem;
+  padding: .8rem .95rem;
+}

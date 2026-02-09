@@ -449,8 +449,8 @@ em {
    Más junto + ligeramente más grande
    ======================================== */
 .post-content {
-  font-size: 1.0625rem;        /* 17px - un poco más grande que antes */
-  line-height: 1.65;           /* Más junto que 1.8, pero no demasiado */
+  font-size: 1.25rem;          /* 20px - MÁS GRANDE como en imagen 2 */
+  line-height: 1.7;            /* Interlineado más junto */
   letter-spacing: 0.01em;      /* Letras ligeramente más juntas */
 }
 
@@ -467,7 +467,7 @@ em {
 }
 
 .post-content p {
-  margin-bottom: 1.25rem;      /* Entre párrafos más junto (antes 2rem) */
+  margin-bottom: 1.5rem;       /* Espacio entre párrafos moderado */
 }
 
 .post-content a {

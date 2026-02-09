@@ -27,14 +27,21 @@ layout: default
     </div>
   {% endif %}
 
-  {%- assign _excerpt = page.excerpt | default: "" -%}
-  {% if _excerpt != "" %}
-    <p class="post-excerpt">{{ _excerpt | strip_html | strip_newlines | truncate: 220 }}</p>
+  {%- assign _lead = page.lead | default: "" -%}
+  {%- assign _fallback = page.excerpt | default: "" -%}
+  {%- assign _blurb = _lead | default: _fallback -%}
+
+  {% if _blurb != "" %}
+    <div class="post-lead">
+      <div class="post-lead-label">EN ESTE POST</div>
+      <p class="post-excerpt">{{ _blurb | strip_html | strip_newlines | truncate: 220 }}</p>
+    </div>
   {% endif %}
 
   <!-- Info de autor -->
   {% include post-author-minimal.html %}
 </header>
+
 
 
   <div class="post-content">

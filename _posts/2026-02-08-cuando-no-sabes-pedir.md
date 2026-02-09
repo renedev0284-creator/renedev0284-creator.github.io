@@ -4,7 +4,8 @@ title: "Cuando no sabes pedir, terminas empujando"
 date: 2026-02-08
 tags: [conciencia, ansiedad, control, relaciones]
 categories: [psicologia, vida]
-excerpt: "A veces no es ambición: es miedo. El patrón se disfraza de determinación, pero por debajo empuja, presiona y aprende el mensaje equivocado."
+excerpt: "A veces no es ambición: es miedo. El patrón se disfraza de determinación..."
+lead: "Si sientes que empujas la vida en vez de pedir, probablemente no es ambición: es un miedo bien entrenado."
 ---
 
 Hay personas que no saben pedir sin sentir culpa. Entonces no piden: empujan.

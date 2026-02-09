@@ -10,8 +10,6 @@
       <form
         action="https://buttondown.email/api/emails/embed-subscribe/rmoya0284"
         method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://buttondown.com/rmoya0284', 'popupwindow')"
         class="newsletter-form"
       >
         <label class="sr-only" for="bd-email">Correo</label>
@@ -25,10 +23,15 @@
           class="newsletter-input"
         />
 
+        <!-- IMPORTANTE: indica que es embed y a dónde volver -->
+        <input type="hidden" name="embed" value="1" />
+        <input type="hidden" name="redirect_url" value="https://renemoya.com/gracias.html/" />
+
         <button type="submit" class="newsletter-button">
           Suscribirme <span aria-hidden="true">→</span>
         </button>
       </form>
+
 
       <p class="newsletter-note">Cancela cuando quieras</p>
     </div>

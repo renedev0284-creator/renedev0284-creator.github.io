@@ -1,0 +1,68 @@
+---
+layout: default
+title: Gracias por suscribirte
+permalink: /gracias/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">
+
+<div class="legal-page">
+  <header class="legal-header">
+    <h1>Gracias por suscribirte</h1>
+    <p class="legal-date">Actualizado: {{ 'now' | date: "%-d de %B de %Y" }}</p>
+  </header>
+
+  <div class="legal-content">
+    <section class="legal-section">
+      <h2>Listo. Estás a un paso.</h2>
+      <p>Te acabo de registrar en el newsletter de <strong>{{ site.title }}</strong>.</p>
+      <p><strong>Importante:</strong> revisa tu bandeja de entrada (y también <em>Spam</em> o <em>Promociones</em>) para confirmar tu suscripción.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Si no llega el correo</h2>
+      <ul>
+        <li>Espera 2–3 minutos y vuelve a revisar.</li>
+        <li>Busca “Buttondown” o “RM Blog”.</li>
+        <li>Agrega <a href="mailto:rmoya0284@gmail.com">rmoya0284@gmail.com</a> a tus contactos.</li>
+      </ul>
+      <p class="legal-cta">Si necesitas ayuda, escríbeme a: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Qué recibirás</h2>
+      <p>Envío actualizaciones cuando haya algo que valga la pena (sin spam, sin relleno):</p>
+      <ul>
+        <li>Ideas prácticas sobre escritura, sistemas y trabajo creativo</li>
+        <li>Notas de laboratorio: procesos, aprendizajes, mini frameworks</li>
+        <li>Artículos nuevos directamente en tu inbox</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>¿Quieres volver al blog?</h2>
+      <div class="service-list">
+        <div class="service-item">
+          <h4>Seguir leyendo</h4>
+          <p>Regresa al inicio o explora los posts más recientes.</p>
+          <a href="{{ '/' | relative_url }}">Volver al inicio →</a>
+        </div>
+
+        <div class="service-item">
+          <h4>Política de Privacidad</h4>
+          <p>Detalles sobre datos, cookies y terceros.</p>
+          <a href="{{ '/privacidad/' | relative_url }}">Leer privacidad →</a>
+        </div>
+
+        <div class="service-item">
+          <h4>Cancelar suscripción</h4>
+          <p class="service-note">Cada correo incluye un link para darte de baja en 1 clic.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="legal-footer">
+    <p><a href="{{ '/' | relative_url }}">← Volver al inicio</a></p>
+  </footer>
+</div>

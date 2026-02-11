@@ -8,89 +8,83 @@ permalink: /about/
   <h1>Hola, soy René Moya</h1>
 
   <p>
-    Soy un escritor en desarrollo que está aprendiendo a escribir en público. 
-    Trabajo en marketing digital, construyo landing pages con Cloudflare y GitHub, 
-    y programo con PHP, MySQL y Bootstrap.
-  </p>
-
-  <h2>El viaje de mil palabras</h2>
-
-  <p>
-    Durante años luché contra enemigos invisibles: la procrastinación, la hoja en blanco, 
-    la falta de un sistema claro para escribir. Compré herramientas, leí libros sobre escritura, 
-    hice listas interminables de "proyectos que algún día comenzaría".
+    Escribo para pensar mejor y para construirme por dentro. Estoy aprendiendo a escribir en público, sin poses ni “perfume” de productividad.
+    Trabajé en marketing digital (puedo hacerlo bien), actualmente en un departamento de TI, puedo construir landing pages con Cloudflare y GitHub, y programo con PHP, MySQL y Bootstrap.
   </p>
 
   <p>
-    Este blog es mi línea en la arena. Un compromiso público de documentar mi proceso, 
-    compartir lo que aprendo y, lo más importante, <strong>escribir de forma consistente</strong>.
+    <strong>Metanoia</strong> es mi laboratorio: un lugar para documentar lo que aprendo, lo que pruebo y lo que me cuesta.
+    A veces son relatos cortos. A veces son notas técnicas. A veces son verdades incómodas.
   </p>
 
-  <h2>Filosofía de trabajo</h2>
+  <h2>Por qué existe este blog</h2>
 
   <p>
-    Creo en algunas verdades fundamentales:
+    Durante años peleé con lo mismo que pelea mucha gente: procrastinación, miedo a empezar, la hoja en blanco,
+    y esa obsesión por “prepararme” antes de escribir.
+    Compré herramientas, leí libros, hice listas de proyectos que “algún día” iba a comenzar.
   </p>
+
+  <p>
+    Este sitio es mi línea en la arena: un compromiso público para escribir con consistencia, mejorar con el tiempo
+    y dejar registro del proceso (con todo y sus tropiezos).
+  </p>
+
+  <h2>Cómo pienso y cómo trabajo</h2>
+
+  <p>Estas son las ideas que más me sostienen:</p>
 
   <ul>
     <li>Aprender en público acelera el crecimiento</li>
-    <li>Documentar todo, hasta el más mínimo detalle, crea conocimiento compuesto</li>
-    <li>El progreso imperfecto supera infinitamente a la perfección paralizante</li>
+    <li>Documentar incluso lo pequeño crea conocimiento compuesto</li>
+    <li>El progreso imperfecto supera a la perfección paralizante</li>
     <li>Los sistemas importan más que la motivación</li>
-    <li>La consistencia vence al talento a largo plazo</li>
+    <li>La consistencia gana a largo plazo</li>
   </ul>
 
-  <h2>Qué encontrarás aquí</h2>
-
-  <p>
-    Este espacio es mi laboratorio público de escritura y aprendizaje:
-  </p>
+  <h2>Qué vas a encontrar aquí</h2>
 
   <ul>
-    <li><strong>Proceso de escritura</strong> — Cómo construyo un hábito de escritura sostenible</li>
-    <li><strong>Marketing digital</strong> — Estrategias, experimentos y lecciones aprendidas</li>
-    <li><strong>Desarrollo web</strong> — Proyectos, herramientas y soluciones técnicas</li>
-    <li><strong>Sistemas de productividad</strong> — Flujos de trabajo que realmente funcionan</li>
-    <li><strong>Aprendizaje continuo</strong> — Todo lo que descubro cada día</li>
+    <li><strong>Escritura</strong> — hábitos, fricción, estilo y proceso real</li>
+    <li><strong>Marketing</strong> — ideas prácticas, experimentos y lecciones sin humo</li>
+    <li><strong>Desarrollo web</strong> — proyectos, herramientas y soluciones técnicas</li>
+    <li><strong>Productividad con criterio</strong> — sistemas que sirven (y los que no)</li>
+    <li><strong>Aprendizaje</strong> — notas y descubrimientos en el camino</li>
   </ul>
 
   <p>
-    No todo será brillante. Algunos posts serán exploraciones incompletas, otros serán 
-    reflexiones a medio cocer. Pero todos serán honestos.
+    No todo estará pulido. Algunos posts serán borradores públicos, exploraciones incompletas o ideas a medio cocer.
+    Pero la regla es simple: <strong>honestidad</strong> y <strong>utilidad</strong>.
   </p>
 
-  <h2>Herramientas y Stack</h2>
-
-  <p>
-    Por si tienes curiosidad sobre cómo trabajo:
-  </p>
+  <h2>Herramientas</h2>
 
   <ul>
-    <li><strong>Escritura</strong> — Journal de Apple para captura, Word para borradores, Markdown en VSCode para publicación</li>
+    <li><strong>Escritura</strong> — Journal (captura), Word (borradores), Markdown en VSCode (publicación)</li>
     <li><strong>Desarrollo</strong> — PHP, MySQL, Bootstrap, Git</li>
     <li><strong>Hosting</strong> — Cloudflare Pages, GitHub Pages</li>
-    <li><strong>Hardware</strong> — HP EliteBook i7, 8GB RAM, 220GB SSD</li>
+    <li><strong>Equipo</strong> — HP EliteBook i7, 8GB RAM, 220GB SSD</li>
   </ul>
 
   <h2>Conectemos</h2>
 
   <p>
-    Me encantaría conocer tu historia, especialmente si también estás en este viaje 
-    de aprender a escribir, construir en público o dominar tus propios sistemas de trabajo.
+    Si estás construyendo, escribiendo, aprendiendo o rearmando tus propios sistemas, me va a gustar leerte.
   </p>
 
   <ul>
     <li>Email: <a href="mailto:renedev0284@gmail.com">renedev0284@gmail.com</a></li>
-    <li>Twitter: <a href="https://x.com/Rened_dev" target="_blank" rel="noopener">@Rened_dev</a></li>
+    <li>X/Twitter: <a href="https://x.com/Rened_dev" target="_blank" rel="noopener">@Rened_dev</a></li>
     <li>GitHub: <a href="https://github.com/renedev0284-creator" target="_blank" rel="noopener">github.com/renedev0284-creator</a></li>
   </ul>
 
   <hr>
 
   <p>
-    <em>Este sitio está construido con Jekyll y alojado en GitHub Pages. 
-    El diseño está inspirado en el trabajo editorial de Michael Rose (Made Mistakes). 
-    Todo el código es <a href="https://github.com/renedev0284-creator/renedev0284-creator.github.io" target="_blank" rel="noopener">código abierto</a>.</em>
+    <em>
+      Este sitio está construido con Jekyll y alojado en GitHub Pages. El diseño está inspirado en el trabajo editorial de Michael Rose (Made Mistakes).
+      Todo el código es <a href="https://github.com/renedev0284-creator/renedev0284-creator.github.io" target="_blank" rel="noopener">código abierto</a>.
+    </em>
   </p>
 
   <p>

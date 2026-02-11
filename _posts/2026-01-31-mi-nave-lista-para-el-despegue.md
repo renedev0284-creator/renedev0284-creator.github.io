@@ -3,6 +3,7 @@ layout: post
 title: "Mi nave lista para el despegue"
 date: 2026-01-31
 tags: [escritura, proceso, meta]
+excerpt: "Poder no siempre es querer, y si alguien te dice lo contrario es porque no ha intentado cosas que requieren orden, seguir un proceso, obtener mucho conocimiento."
 ---
 
 Parece mentira, pero si me preguntaras qué tuvo realmente claro mi 2025, no fue un plan financiero, ni una meta de gimnasio, ni “ahora sí” con la disciplina. Fue una frase simple, casi ridícula de lo directa:

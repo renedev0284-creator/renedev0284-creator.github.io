@@ -2,88 +2,95 @@
 layout: default
 ---
 
-<article class="post">
-  <header class="post-header">
-  <div class="post-meta">
-    <time datetime="{{ page.date | date_to_xmlschema }}">
-      {% assign day = page.date | date: "%-d" %}
-      {% assign month = page.date | date: "%-m" %}
-      {% assign year = page.date | date: "%Y" %}
-      {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-      {% assign month_index = month | minus: 1 %}
-      {{ day }} de {{ months[month_index] }} de {{ year }}
-    </time>
-    <span>•</span>
-    <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
-  </div>
+<div class="post-container-with-sidebar">
+  <!-- Contenido Principal del Post -->
+  <article class="post">
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {% assign day = page.date | date: "%-d" %}
+          {% assign month = page.date | date: "%-m" %}
+          {% assign year = page.date | date: "%Y" %}
+          {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+          {% assign month_index = month | minus: 1 %}
+          {{ day }} de {{ months[month_index] }} de {{ year }}
+        </time>
+        <span>•</span>
+        <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
+      </div>
 
-  <h1>{{ page.title }}</h1>
+      <h1>{{ page.title }}</h1>
 
-  {% if page.tags %}
-    <div class="post-tags">
-      {% for tag in page.tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
+      {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {%- assign _lead = page.lead | default: "" -%}
+      {%- assign _fallback = page.excerpt | default: "" -%}
+
+      {% if _lead != "" %}
+        <p class="post-excerpt">{{ _lead | strip_html | strip_newlines | truncate: 220 }}</p>
+      {% elsif _fallback != "" %}
+        <p class="post-excerpt">{{ _fallback | strip_html | strip_newlines | truncate: 220 }}</p>
+      {% endif %}
+
+      <!-- Info de autor -->
+      {% include post-author-minimal.html %}
+    </header>
+
+    <div class="post-content">
+      {{ content }}
     </div>
-  {% endif %}
 
-  {%- assign _lead = page.lead | default: "" -%}
-  {%- assign _fallback = page.excerpt | default: "" -%}
+    <!-- Contador de visitas -->
+    <span>
+      <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" 
+           alt="visitas" 
+           style="height: 20px; vertical-align: middle;">
+    </span>
 
-  {% if _lead != "" %}
-    <p class="post-excerpt">{{ _lead | strip_html | strip_newlines | truncate: 220 }}</p>
-  {% elsif _fallback != "" %}
-    <p class="post-excerpt">{{ _fallback | strip_html | strip_newlines | truncate: 220 }}</p>
-  {% endif %}
+    <!-- Botones para compartir -->
+    {% include share-buttons.html %}
 
+    <!-- Navegación anterior/siguiente -->
+    <footer class="post-footer">
+      <nav class="post-nav">
+        {% if page.previous.url %}
+          <a href="{{ page.previous.url | relative_url }}" class="post-nav-item prev">
+            <span class="post-nav-label">← Anterior</span>
+            <span class="post-nav-title">{{ page.previous.title }}</span>
+          </a>
+        {% endif %}
+        
+        {% if page.next.url %}
+          <a href="{{ page.next.url | relative_url }}" class="post-nav-item next">
+            <span class="post-nav-label">Siguiente →</span>
+            <span class="post-nav-title">{{ page.next.title }}</span>
+          </a>
+        {% endif %}
+      </nav>
+    </footer>
+  </article>
 
-  <!-- Info de autor -->
-  {% include post-author-minimal.html %}
-</header>
+  <!-- Sidebar -->
+  {% include post-sidebar.html %}
+</div>
 
+<!-- Newsletter, Reacciones y Comentarios (ancho completo) -->
+<div class="post-interactions">
+  <!-- Newsletter -->
+  {% include newsletter-inline.html %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+  <!-- Reacciones -->
+  {% include reactions-button.html %}
 
-  <!-- Contador de visitas -->
-      <span>
-        <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" 
-             alt="visitas" 
-             style="height: 20px; vertical-align: middle;">
-      </span>
-
-  <!-- Botones para compartir -->
-  {% include share-buttons.html %}
-
-  <!-- Navegación anterior/siguiente -->
-  <footer class="post-footer">
-    <nav class="post-nav">
-      {% if page.previous.url %}
-        <a href="{{ page.previous.url | relative_url }}" class="post-nav-item prev">
-          <span class="post-nav-label">← Anterior</span>
-          <span class="post-nav-title">{{ page.previous.title }}</span>
-        </a>
-      {% endif %}
-      
-      {% if page.next.url %}
-        <a href="{{ page.next.url | relative_url }}" class="post-nav-item next">
-          <span class="post-nav-label">Siguiente →</span>
-          <span class="post-nav-title">{{ page.next.title }}</span>
-        </a>
-      {% endif %}
-    </nav>
-  </footer>
-</article>
-
-<!-- Newsletter -->
-{% include newsletter-inline.html %}
-
-<!-- Reacciones -->
-{% include reactions-button.html %}
-
-<!-- Comentarios -->
-{% include comments-utterances.html %}
+  <!-- Comentarios -->
+  {% include comments-utterances.html %}
+</div>
 
 <!-- Script para insertar enlace relacionado INLINE después del párrafo 2 -->
 <script>
@@ -230,6 +237,30 @@ layout: default
 </script>
 
 <style>
+/* Layout con Sidebar */
+.post-container-with-sidebar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-xxl) var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.post {
+  max-width: 42rem;
+  padding: 0;
+}
+
+/* Interacciones abajo (ancho completo) */
+.post-interactions {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg) var(--space-xxl);
+}
+
+/* Animación del enlace relacionado */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -241,7 +272,23 @@ layout: default
   }
 }
 
-/* Responsive para móvil */
+/* Responsive: Sin sidebar en tablets/móviles */
+@media (max-width: 1024px) {
+  .post-container-with-sidebar {
+    grid-template-columns: 1fr;
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .post {
+    max-width: 100%;
+  }
+  
+  .post-interactions {
+    padding: 0 var(--space-md) var(--space-xl);
+  }
+}
+
+/* Responsive para enlace relacionado en móvil */
 @media (max-width: 768px) {
   .inline-related-post .inline-cta {
     flex-direction: column !important;

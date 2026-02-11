@@ -1,0 +1,68 @@
+<style>
+/* Tooltips informativos */
+.tooltip-word {
+  position: relative;
+  color: var(--color-orange);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--color-orange);
+  cursor: help;
+  font-weight: 500;
+}
+
+.tooltip-word::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  padding: 0.75rem 1rem;
+  background: var(--color-text);
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 400;
+  border-radius: 8px;
+  max-width: 300px;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.tooltip-word::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-2px);
+  border: 6px solid transparent;
+  border-top-color: var(--color-text);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.tooltip-word:hover::before,
+.tooltip-word:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+@media (max-width: 768px) {
+  .tooltip-word::before {
+    max-width: 250px;
+    font-size: 0.8rem;
+  }
+  
+  .tooltip-word:active::before,
+  .tooltip-word:active::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+</style>

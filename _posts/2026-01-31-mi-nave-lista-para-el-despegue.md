@@ -28,7 +28,7 @@ mi problema no era la herramienta.
 
 Era yo.
 
-Soy un **tinkerer** compulsivo: me encanta instalar, probar, comparar, optimizar… y sentir esa mini dosis de satisfacción por “tener el sistema perfecto”. Aunque el sistema perfecto no escriba una sola línea por mí.
+Soy un <span class="tooltip-word" data-tooltip="Persona que disfruta experimentar, probar y optimizar herramientas constantemente">**tinkerer**</span> compulsivo: me encanta instalar, probar, comparar, optimizar… y sentir esa mini dosis de satisfacción por “tener el sistema perfecto”. Aunque el sistema perfecto no escriba una sola línea por mí.
 
 Y ojo: no lo digo como excusa. Lo digo porque ya lo vi clarito:
 

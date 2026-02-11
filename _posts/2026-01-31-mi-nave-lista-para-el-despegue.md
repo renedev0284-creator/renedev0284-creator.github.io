@@ -56,5 +56,7 @@ Y eso —aunque suene simple— es lo que hace que una meta deje de ser fantasí
 **Mi nave está lista.**
 Ahora toca despegar, aunque el cielo no esté despejado del todo.
 
+Dale un vistazo a mi post sobre [Mitos de productividad]({% post_url 2026-02-04-mitos-sobre-la-productividad %}) que no me dejaban avanzar.
+
 ¿Y tú?
 ¿Qué meta te tomó años decir en voz alta… y apenas hoy empezaste a creerla en serio?

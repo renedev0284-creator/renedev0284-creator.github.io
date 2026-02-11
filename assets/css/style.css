@@ -1377,23 +1377,23 @@ body.texture-visible::before {
 
 /* Widgets de sidebar con fondo más claro para contraste */
 .sidebar-widget {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(251, 244, 229, 0.95);
   backdrop-filter: blur(10px);
 }
 
-/* Enlaces a tags con icono */
+/* Enlaces a tags con icono
 a[href^="/tag/"]::before {
   content: "🏷️ ";
 }
 
-/* Enlaces internos con flecha */
+/* Enlaces internos con flecha
 a[href*="/2026/"]::after {
   content: " →";
   color: var(--color-orange);
-}
+} */
 
 /* Enlaces a anclas con icono */
-a[href^="#"]::before {
+/* a[href^="#"]::before {
   content: "⚓ ";
   opacity: 0.5;
-}
+} */

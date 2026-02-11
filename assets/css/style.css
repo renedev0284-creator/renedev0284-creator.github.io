@@ -1380,3 +1380,20 @@ body.texture-visible::before {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
 }
+
+/* Enlaces a tags con icono */
+a[href^="/tag/"]::before {
+  content: "🏷️ ";
+}
+
+/* Enlaces internos con flecha */
+a[href*="/2026/"]::after {
+  content: " →";
+  color: var(--color-orange);
+}
+
+/* Enlaces a anclas con icono */
+a[href^="#"]::before {
+  content: "⚓ ";
+  opacity: 0.5;
+}

@@ -1,98 +1,39 @@
 ---
 layout: post
-title: "Mi sistema anti-procrastinación para escribir"
+title: "Mi sistema anti-procrastinación para escribir (sin esperar inspiración)"
 date: 2026-01-31
 tags: [escritura, productividad, proceso]
+excerpt: "No encontré la app perfecta. Encontré una rutina mínima: capturar sin filtro, escribir 15 minutos y publicar aunque no esté “listo”."
 ---
 
-Después de años luchando contra la hoja en blanco, finalmente encontré un sistema que funciona para mí. No es perfecto, pero me mantiene escribiendo.
+Durante años me peleé con la hoja en blanco como si fuera un enemigo con voluntad propia. Abría el documento, veía el cursor parpadear… y mi mente hacía lo que mejor sabe hacer cuando algo importa: inventar excusas elegantes.
 
-## El problema con "esperar la inspiración"
+Esperar “la inspiración” fue la más cara. Porque suena romántico, pero en la práctica es una trampa: te deja escribiendo una vez al mes, si tienes suerte, y el resto del tiempo te mantiene sintiéndote culpable.
 
-Durante mucho tiempo esperaba sentirme "inspirado" para escribir. Resultado: escribía una vez al mes, si tenía suerte.
+La verdad incómoda: **la inspiración llega mientras escribes, no antes**.
 
-La verdad incómoda es que **la inspiración llega mientras escribes, no antes**.
+Yo necesitaba un sistema que me empujara sin drama. No perfecto. No heroico. Solo uno que me mantuviera en movimiento.
 
-## Mi sistema de 3 pasos
+Y lo encontré cuando dejé de preguntarme “¿qué escribo?” y empecé a preguntarme “¿qué hago cuando no tengo ganas?”.
 
-### 1. Captura sin filtro (OneNote)
+---
 
-Tengo una sección llamada "Inbox" en OneNote donde tiro cualquier idea, sin importar qué tan tonta parezca:
+## Mi sistema (3 movimientos, cero épica)
+
+**1) Capturo sin filtro (OneNote)**
+Tengo una sección llamada **Inbox**: ahí tiro cualquier cosa que me pique la cabeza.
 
 - Una frase que escuché
 - Una pregunta random
-- Una observación sobre algo
+- Una observación incómoda
 - Un concepto que no entiendo
 
-**Regla clave**: Sin juicio, sin edición. Solo captura.
+**Regla clave:** no juzgo, no edito, no mejoro. Solo capturo.  
+Esto mata el perfeccionismo en su fase más peligrosa: cuando todavía no existe nada.
 
-### 2. Expansión diaria (15 minutos)
+**2) Expando 15 minutos (diario)**
+Cada mañana elijo **UNA** idea del Inbox y escribo 15 minutos sin parar.  
+No es para “crear una obra”. Es para **mover el músculo**.
 
-Cada mañana, elijo UNA idea del Inbox y escribo sobre ella durante 15 minutos sin parar.
+Uso una plantilla mínima para no empezar desde cero:
 
-No importa si es bueno o malo. El objetivo es **escribir**, no crear una obra maestra.
-
-Uso esta plantilla simple:
-
-```
-Tema: [lo que sea]
-¿Por qué me interesa?: [2-3 oraciones]
-¿Qué sé al respecto?: [escribe sin parar]
-¿Qué preguntas tengo?: [lista rápida]
-```
-
-### 3. Publicación semanal
-
-De todo lo que escribo en la semana, elijo UNA pieza para publicar. La edito, le doy formato y la subo.
-
-No tiene que ser perfecta. Solo tiene que ser **honesta y útil**.
-
-## Lo que cambió
-
-Antes: Escribía 1-2 posts al mes, con mucha ansiedad.
-
-Ahora: Escribo 15 minutos diarios, publico semanalmente, casi sin fricción.
-
-## Las herramientas no importan tanto
-
-Probé Notion, Obsidian, Roam Research, Scrivener. Todas son excelentes.
-
-Pero el sistema importa más que la herramienta. Yo uso:
-
-- **OneNote**: Captura rápida (sincroniza en móvil)
-- **Word**: Expansión y borrador
-- **GitHub Pages**: Publicación
-
-Simple, aburrido, funcional.
-
-## Consejos prácticos
-
-**Para vencer la hoja en blanco**:
-- Nunca empieces con una página vacía. Usa una plantilla.
-- Escribe primero el "¿por qué me importa esto?" antes del contenido.
-- Date permiso de escribir basura. Puedes editarlo después.
-
-**Para mantener consistencia**:
-- Mismo horario cada día (yo escribo a las 6am)
-- Meta ridículamente pequeña (15 min, no "escribir 1000 palabras")
-- Tracking visible (marco X en un calendario físico cada día que escribo)
-
-**Para publicar sin miedo**:
-- Recuerda: nadie te está leyendo todavía (liberador, ¿no?)
-- Publica antes de sentirte "listo"
-- Mejora en público
-
-## Lo siguiente
-
-Voy a experimentar con diferentes formatos:
-
-- Listas cortas (5 cosas que aprendí esta semana)
-- Tutoriales técnicos
-- Reflexiones personales
-- Micro-posts de 200 palabras
-
-La variedad mantiene las cosas interesantes.
-
----
-
-*¿Cuál es tu mayor obstáculo para escribir consistentemente?*

@@ -80,72 +80,49 @@ title: Inicio
     <h2 class="section-title">Escritos Recientes</h2>
     
     {% if site.posts.size > 0 %}
-      <div class="post-list-enhanced">
+      <div class="post-list-minimal">
         {% for post in site.posts limit:10 %}
-          <article class="post-card" style="--index: {{ forloop.index }};">
-            <!-- Imagen destacada -->
+          <article class="post-item" style="--index: {{ forloop.index }};">
+            
+            <!-- Imagen sutil (opcional) -->
             {% if post.image %}
-              <a href="{{ post.url | relative_url }}" class="post-thumbnail">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-              </a>
-            {% else %}
-              <a href="{{ post.url | relative_url }}" class="post-thumbnail post-thumbnail-default">
-                <div class="default-image">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
+              <a href="{{ post.url | relative_url }}" class="post-image-link">
+                <div class="post-image">
+                  <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
                 </div>
               </a>
             {% endif %}
 
-            <div class="post-card-content">
-              <!-- Fecha mejorada con ícono -->
-              <div class="post-meta-date">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <time datetime="{{ post.date | date_to_xmlschema }}">
-                  {% assign day = post.date | date: "%-d" %}
-                  {% assign month = post.date | date: "%-m" %}
-                  {% assign year = post.date | date: "%Y" %}
-                  {% assign months = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," %}
-                  {% assign month_index = month | minus: 1 %}
-                  {{ day }} {{ months[month_index] }} {{ year }}
-                </time>
-              </div>
+            <div class="post-body">
+              <!-- Fecha minimalista -->
+              <time class="post-date-minimal" datetime="{{ post.date | date_to_xmlschema }}">
+                {% assign day = post.date | date: "%-d" %}
+                {% assign month = post.date | date: "%-m" %}
+                {% assign year = post.date | date: "%Y" %}
+                {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+                {% assign month_index = month | minus: 1 %}
+                {{ day }} de {{ months[month_index] }}, {{ year }}
+              </time>
 
               <!-- Título -->
-              <h3 class="post-card-title">
+              <h3 class="post-title-minimal">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
               </h3>
 
-              <!-- Excerpt con Palatino -->
-              <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+              <!-- Excerpt limpio -->
+              <p class="post-excerpt-minimal">{{ post.excerpt | strip_html | truncate: 180 }}</p>
 
-              <!-- Tags mejorados -->
+              <!-- Tags simples -->
               {% if post.tags %}
-                <div class="post-card-tags">
+                <div class="post-tags-minimal">
                   {% for tag in post.tags limit:3 %}
-                    <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}/" class="tag-elegant">{{ tag }}</a>
+                    <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}/" class="tag-minimal">{{ tag }}</a>
                   {% endfor %}
                 </div>
               {% endif %}
 
-              <!-- Botón leer más -->
-              <a href="{{ post.url | relative_url }}" class="read-more-elegant">
-                Leer completo
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
+              <!-- Enlace sutil -->
+              <a href="{{ post.url | relative_url }}" class="read-link-minimal">Leer completo</a>
             </div>
           </article>
         {% endfor %}
@@ -158,33 +135,31 @@ title: Inicio
 
 <style>
 /* ========================================
-   POST CARDS MEJORADOS
+   POST LIST MINIMALISTA Y ARTÍSTICO
    ======================================== */
 
-.post-list-enhanced {
-  display: grid;
-  gap: 2.5rem;
-  margin-top: 2rem;
+.post-list-minimal {
+  max-width: 720px;
+  margin: 3rem auto 0;
 }
 
-.post-card {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2rem;
-  padding: 1.5rem;
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.post-item {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(60, 48, 38, 0.1);
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: calc(var(--index) * 0.1s);
+  animation: gentleFadeIn 0.8s ease forwards;
+  animation-delay: calc(var(--index) * 0.15s);
 }
 
-@keyframes fadeInUp {
+.post-item:last-child {
+  border-bottom: none;
+}
+
+@keyframes gentleFadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -192,180 +167,123 @@ title: Inicio
   }
 }
 
-/* Hover impactante */
-.post-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(60, 48, 38, 0.12);
-  border-color: var(--color-orange);
-}
-
-/* Imagen destacada */
-.post-thumbnail {
-  position: relative;
+/* Imagen sutil y opcional */
+.post-image-link {
   display: block;
-  width: 100%;
-  height: 200px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f3f1ec 0%, #e8e6e3 100%);
+  margin-bottom: 1.5rem;
 }
 
-.post-thumbnail img {
+.post-image {
+  width: 100%;
+  max-width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.post-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  filter: grayscale(20%) contrast(0.95);
+  transition: all 0.6s ease;
 }
 
-.post-card:hover .post-thumbnail img {
-  transform: scale(1.1);
+.post-item:hover .post-image img {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.02);
 }
 
-/* Imagen por defecto */
-.post-thumbnail-default {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.default-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  background: rgba(243, 79, 41, 0.1);
-  border-radius: 50%;
-  color: var(--color-orange);
-  transition: all 0.3s ease;
-}
-
-.post-card:hover .default-image {
-  transform: rotate(10deg) scale(1.1);
-  background: rgba(243, 79, 41, 0.15);
-}
-
-/* Contenido del card */
-.post-card-content {
+/* Contenido del post */
+.post-body {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-/* Fecha con ícono */
-.post-meta-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+/* Fecha minimalista */
+.post-date-minimal {
+  display: block;
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 400;
   color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
 }
 
-.post-meta-date svg {
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-.post-meta-date time {
-  font-weight: 500;
-}
-
-/* Título */
-.post-card-title {
+/* Título limpio */
+.post-title-minimal {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 600;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.post-card-title a {
+.post-title-minimal a {
   color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease;
-  background-image: linear-gradient(transparent calc(100% - 2px), var(--color-orange) 2px);
-  background-size: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.4s ease, color 0.3s ease;
 }
 
-.post-card:hover .post-card-title a {
+.post-item:hover .post-title-minimal a {
   color: var(--color-orange);
-  background-size: 100% 100%;
 }
 
 /* Excerpt con Palatino */
-.post-card-excerpt {
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+.post-excerpt-minimal {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
   font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--color-text);
-  margin: 0;
-  font-style: normal;
+  line-height: 1.75;
+  color: rgba(60, 48, 38, 0.85);
+  margin: 0.5rem 0 1rem;
 }
 
-/* Tags elegantes */
-.post-card-tags {
+/* Tags minimalistas */
+.post-tags-minimal {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
 }
 
-.tag-elegant {
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
+.tag-minimal {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: #6b5d52;
-  background: rgba(243, 79, 41, 0.08);
-  border: 1px solid rgba(243, 79, 41, 0.15);
-  border-radius: 6px;
+  color: rgba(60, 48, 38, 0.6);
   text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
-.tag-elegant:hover {
-  background: rgba(243, 79, 41, 0.12);
-  border-color: var(--color-orange);
+.tag-minimal:hover {
   color: var(--color-orange);
-  transform: translateY(-2px);
+  border-bottom-color: var(--color-orange);
 }
 
-/* Botón leer más elegante */
-.read-more-elegant {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding: 0.7rem 1.2rem;
+/* Enlace de lectura sutil */
+.read-link-minimal {
+  display: inline-block;
+  margin-top: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-orange);
-  background: transparent;
-  border: 2px solid var(--color-orange);
-  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
   text-decoration: none;
+  border-bottom: 1px solid var(--color-text-muted);
   transition: all 0.3s ease;
-  align-self: flex-start;
+  padding-bottom: 2px;
 }
 
-.read-more-elegant svg {
-  transition: transform 0.3s ease;
-}
-
-.read-more-elegant:hover {
-  background: var(--color-orange);
-  color: white;
-  transform: translateX(4px);
-}
-
-.read-more-elegant:hover svg {
-  transform: translateX(4px);
+.read-link-minimal:hover {
+  color: var(--color-orange);
+  border-bottom-color: var(--color-orange);
 }
 
 /* ========================================
@@ -373,68 +291,49 @@ title: Inicio
    ======================================== */
 
 @media (max-width: 768px) {
-  .post-card {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.25rem;
+  .post-list-minimal {
+    margin-top: 2rem;
   }
 
-  .post-thumbnail {
-    height: 180px;
+  .post-item {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
   }
 
-  .post-card-title {
-    font-size: 1.3rem;
+  .post-image {
+    height: 220px;
   }
 
-  .post-card-excerpt {
+  .post-title-minimal {
+    font-size: 1.5rem;
+  }
+
+  .post-excerpt-minimal {
     font-size: 1rem;
-  }
-
-  .post-card:hover {
-    transform: translateY(-4px);
+    line-height: 1.65;
   }
 }
 
 @media (max-width: 480px) {
-  .post-list-enhanced {
-    gap: 1.5rem;
+  .post-image {
+    height: 180px;
   }
 
-  .post-card {
-    padding: 1rem;
+  .post-title-minimal {
+    font-size: 1.35rem;
   }
 
-  .post-thumbnail {
-    height: 160px;
-  }
-
-  .post-card-title {
-    font-size: 1.2rem;
-  }
-
-  .post-card-excerpt {
+  .post-excerpt-minimal {
     font-size: 0.95rem;
   }
 }
 
-/* SEO - Schema markup hint */
-.post-card {
-  position: relative;
+/* Efecto hover muy sutil en el artículo completo */
+.post-item {
+  transition: transform 0.3s ease;
 }
 
-.post-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  opacity: 0;
-  background: linear-gradient(135deg, rgba(243, 79, 41, 0.05) 0%, transparent 100%);
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.post-card:hover::before {
-  opacity: 1;
+.post-item:hover {
+  transform: translateX(4px);
 }
 </style>

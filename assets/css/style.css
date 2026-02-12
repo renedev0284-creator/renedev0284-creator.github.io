@@ -14,15 +14,15 @@
   --color-accent-soft: #2e93d5;
   --color-border: #d4cfc5;
   --color-shadow: rgba(60, 48, 38, 0.08);
-
+  
   /* Color adicional Git */
   --color-orange: #f34f29;
-
+  
   /* Typography - Classic Serif (Escritor Pro) */
   --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
   --font-body: 'Georgia', 'Book Antiqua', Palatino, serif;
   --font-sans: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', sans-serif;
-
+  
   /* Spacing */
   --space-unit: 1rem;
   --space-xs: calc(var(--space-unit) * 0.5);
@@ -31,11 +31,11 @@
   --space-lg: calc(var(--space-unit) * 2);
   --space-xl: calc(var(--space-unit) * 4);
   --space-xxl: calc(var(--space-unit) * 6);
-
+  
   /* Layout */
   --max-width: 42rem;
   --sidebar-width: 280px;
-
+  
   /* Effects */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-soft: 0 1px 3px rgba(60, 48, 38, 0.06), 0 1px 2px rgba(60, 48, 38, 0.08);
@@ -931,9 +931,9 @@ button:focus-visible {
 
 .section-title::after {
   animation: shimmer 3s ease-in-out infinite;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(243, 79, 41, 0.4) 50%,
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(243, 79, 41, 0.4) 50%, 
     transparent 100%
   );
   background-size: 200% 100%;
@@ -1029,11 +1029,11 @@ button:focus-visible {
   .intro::before {
     display: none;
   }
-
+  
   .post-preview:hover {
     transform: translateX(4px);
   }
-
+  
   .post-preview::after {
     display: none;
   }
@@ -1048,7 +1048,7 @@ button:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
+  
   .intro::before,
   .post-preview::after {
     display: none;
@@ -1093,7 +1093,7 @@ button:focus-visible {
   .intro-with-bg {
     grid-template-columns: 1fr;
   }
-
+  
   .intro-visual {
     display: none;
   }
@@ -1128,7 +1128,7 @@ button:focus-visible {
   .intro-split {
     grid-template-columns: 1fr;
   }
-
+  
   .intro-illustration {
     margin-top: var(--space-lg);
     max-width: 300px;
@@ -1210,17 +1210,17 @@ button:focus-visible {
   .intro-badges {
     gap: var(--space-sm);
   }
-
+  
   .badge {
     width: 40px;
     height: 40px;
   }
-
+  
   .badge svg {
     width: 20px;
     height: 20px;
   }
-
+  
   .intro-decoration {
     display: none;
   }
@@ -1268,7 +1268,7 @@ button:focus-visible {
   .intro {
     text-align: center;
   }
-
+  
   .intro h1::after {
     margin: 0 auto;
     margin-top: 10px;
@@ -1318,9 +1318,9 @@ body::before {
   z-index: -1;
   opacity: 0.4;
   pointer-events: none;
-
+  
   /* Textura de papel con líneas cruzadas sutiles */
-  background-image:
+  background-image: 
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -1335,9 +1335,9 @@ body::before {
       rgba(60, 48, 38, 0.015) 2px,
       rgba(60, 48, 38, 0.015) 4px
     );
-
+  
   /* Agregar ruido sutil */
-  background-image:
+  background-image: 
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -1358,7 +1358,7 @@ body::before {
 /* Alternativa: Textura más visible (si la anterior es muy sutil) */
 body.texture-visible::before {
   opacity: 0.6;
-  background-image:
+  background-image: 
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -1379,136 +1379,6 @@ body.texture-visible::before {
 .sidebar-widget {
   background: rgba(251, 244, 229, 0.95);
   backdrop-filter: blur(10px);
-}
-
-/* ========================================
-   ICONOS POR TEMA (sin librerías)
-   Uso: agrega clases a tus tags/badges:
-   <span class="tag tag--marketing-1">Marketing</span>
-   <span class="tag tag--marketing-2">Marketing</span>
-   ... etc.
-   ======================================== */
-
-/* Base para tags con icono */
-.tag[class*="tag--"]{
-  padding-left: 0.65rem; /* mantiene proporción con icono */
-}
-
-.tag[class*="tag--"]::before{
-  /* se sobreescribe el brillo anterior SOLO si hay clase tag-- */
-  content: '';
-  position: static;
-  display: inline-block;
-  width: 1.05em;
-  height: 1.05em;
-  margin-right: 0.35rem;
-  vertical-align: -0.14em;
-
-  /* estilo “icono editorial” */
-  border-radius: 0.25em;
-  background: rgba(243, 79, 41, 0.12);
-  border: 1px solid rgba(243, 79, 41, 0.22);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.65) inset;
-}
-
-/* El brillo animado original del .tag::before (shimmer) era absoluto.
-   Aquí lo neutralizamos SOLO cuando es un tag temático. */
-.tag[class*="tag--"]{
-  overflow: visible;
-}
-.tag[class*="tag--"]::after{
-  /* mantiene tu hover sin romperlo */
-  content: none;
-}
-
-/* Marketing (2) */
-.tag--marketing-1::before{ content: "📣"; background: rgba(243,79,41,0.14); border-color: rgba(243,79,41,0.25); }
-.tag--marketing-2::before{ content: "📈"; background: rgba(26,123,179,0.12); border-color: rgba(26,123,179,0.22); }
-
-/* Blogging (2) */
-.tag--blogging-1::before{ content: "📰"; background: rgba(60,48,38,0.08); border-color: rgba(60,48,38,0.14); }
-.tag--blogging-2::before{ content: "🌐"; background: rgba(46,147,213,0.10); border-color: rgba(46,147,213,0.18); }
-
-/* Escritura (2) */
-.tag--escritura-1::before{ content: "✍️"; background: rgba(243,79,41,0.12); border-color: rgba(243,79,41,0.22); }
-.tag--escritura-2::before{ content: "🖋️"; background: rgba(60,48,38,0.08); border-color: rgba(60,48,38,0.14); }
-
-/* Lectura (2) */
-.tag--lectura-1::before{ content: "📚"; background: rgba(60,48,38,0.08); border-color: rgba(60,48,38,0.14); }
-.tag--lectura-2::before{ content: "🔎"; background: rgba(26,123,179,0.10); border-color: rgba(26,123,179,0.18); }
-
-/* Código (2) */
-.tag--codigo-1::before{ content: "💻"; background: rgba(46,147,213,0.10); border-color: rgba(46,147,213,0.18); }
-.tag--codigo-2::before{ content: "🧩"; background: rgba(243,79,41,0.12); border-color: rgba(243,79,41,0.22); }
-
-/* Filosofía (2) */
-.tag--filosofia-1::before{ content: "🧠"; background: rgba(60,48,38,0.08); border-color: rgba(60,48,38,0.14); }
-.tag--filosofia-2::before{ content: "🧭"; background: rgba(243,79,41,0.10); border-color: rgba(243,79,41,0.18); }
-
-/* Ajuste hover para tags temáticos: más “clean” y consistente */
-.tag[class*="tag--"]:hover{
-  background-color: rgba(243, 79, 41, 0.10);
-  color: var(--color-text);
-  border-color: rgba(243, 79, 41, 0.35);
-  box-shadow: 0 6px 14px rgba(60, 48, 38, 0.08);
-}
-.tag[class*="tag--"]:hover::before{
-  transform: translateY(-1px);
-  box-shadow: 0 6px 12px rgba(243, 79, 41, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Opcional: fila de iconos en hero (2 por tema). HTML sugerido:
-   <div class="topic-icons">
-     <span class="topic-ico topic-ico--marketing-1" title="Marketing"></span> ...
-   </div>
-*/
-.topic-icons{
-  display: flex;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-  margin-top: var(--space-md);
-  align-items: center;
-}
-.topic-ico{
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  color: var(--color-orange);
-  box-shadow: var(--shadow-soft);
-  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
-}
-.topic-ico:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-  border-color: rgba(243,79,41,0.55);
-  background: rgba(243,79,41,0.08);
-}
-.topic-ico::before{ font-size: 16px; line-height: 1; }
-
-/* 2 por tema */
-.topic-ico--marketing-1::before{ content:"📣"; }
-.topic-ico--marketing-2::before{ content:"📈"; }
-.topic-ico--blogging-1::before{ content:"📰"; }
-.topic-ico--blogging-2::before{ content:"🌐"; }
-.topic-ico--escritura-1::before{ content:"✍️"; }
-.topic-ico--escritura-2::before{ content:"🖋️"; }
-.topic-ico--lectura-1::before{ content:"📚"; }
-.topic-ico--lectura-2::before{ content:"🔎"; }
-.topic-ico--codigo-1::before{ content:"💻"; }
-.topic-ico--codigo-2::before{ content:"🧩"; }
-.topic-ico--filosofia-1::before{ content:"🧠"; }
-.topic-ico--filosofia-2::before{ content:"🧭"; }
-
-/* Responsive micro-ajuste */
-@media (max-width: 768px){
-  .topic-ico{ width: 32px; height: 32px; border-radius: 9px; }
-  .topic-ico::before{ font-size: 15px; }
 }
 
 /* Enlaces a tags con icono

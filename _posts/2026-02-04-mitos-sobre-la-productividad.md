@@ -9,6 +9,8 @@ excerpt: "No me faltaban herramientas. Me faltaba una regla simple para proteger
 
 Te lo digo como amigo: yo también caí en la trampa de “ser más productivo” como si fuera comprar una app y ya. Al final no me faltaban herramientas. Me faltaba una regla simple.
 
+![Joven peresozo](/assets/images/posts/productividad.jpg)
+
 ## Mito 1: “Si no estoy ocupado, no estoy avanzando”
 Ocupado es fácil. Avanzar es otra cosa. Estar lleno de pendientes da una falsa sensación de control, pero muchas veces solo estar aumentando tu ansiedad.
 

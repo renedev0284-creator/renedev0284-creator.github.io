@@ -1,0 +1,75 @@
+<!-- Componente de Comentarios con Giscus -->
+<div class="comments-section">
+  <h3 class="comments-title">Comentarios</h3>
+  <p class="comments-subtitle">Comparte tus pensamientos sobre este artículo</p>
+  
+  <div class="giscus-wrapper">
+    <script src="https://giscus.app/client.js"
+            data-repo="renedev0284-creator/renedev0284-creator.github.io"
+            data-repo-id="R_kgDORFLwpg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDORFLwps4C2S61"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="es"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+</div>
+
+<style>
+/* Sección de comentarios */
+.comments-section {
+  max-width: 720px;
+  margin: 4rem auto 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(60, 48, 38, 0.1);
+}
+
+.comments-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.comments-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 0 2rem;
+}
+
+.giscus-wrapper {
+  margin-top: 2rem;
+}
+
+/* Ajustes para el iframe de Giscus */
+.giscus, .giscus-frame {
+  width: 100%;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comments-section {
+    margin: 3rem auto 2rem;
+    padding-top: 2rem;
+  }
+
+  .comments-title {
+    font-size: 1.3rem;
+  }
+
+  .comments-subtitle {
+    font-size: 0.85rem;
+  }
+}
+</style>

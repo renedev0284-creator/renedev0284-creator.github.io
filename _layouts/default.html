@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
 
   <!-- SEO -->
   {% seo %}
   
-  <!-- Fuentes - Elegant serif + sans pairing -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -19,13 +20,12 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCL9HD30XT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-YCL9HD30XT');
   </script>
 
@@ -33,87 +33,19 @@
   {% feed_meta %}
 </head>
 <body>
-  <header class="site-header">
-  <div class="container">
-    <div class="header-content">
-      <!-- Reemplazar desde línea 39 hasta línea 194 en default.html -->
 
+<!-- HEADER -->
 <header class="site-header">
   <div class="container">
     <div class="header-content">
       <div class="site-branding">
         <a href="{{ '/' | relative_url }}" class="site-title">
-          <!-- Logo PNG -->
           <div class="brand-logo">
             <img src="{{ '/assets/images/logo-header.png' | relative_url }}" 
                  alt="René Moya Logo" 
                  width="56" 
                  height="56">
           </div>
-
-          <style>
-          .brand-logo {
-            position: relative;
-            display: inline-block;
-          }
-
-          .brand-logo img {
-            display: block;
-            width: 56px;
-            height: 56px;
-            filter: drop-shadow(0 3px 6px rgba(60, 48, 38, 0.08));
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          }
-
-          .site-title:hover .brand-logo img {
-            transform: scale(1.08) rotate(-1deg);
-            filter: drop-shadow(0 6px 12px rgba(243, 79, 41, 0.18));
-          }
-
-          /* Animación de entrada profesional */
-          @keyframes logoFadeSlide {
-            from {
-              opacity: 0;
-              transform: translateY(-8px) scale(0.95);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0) scale(1);
-            }
-          }
-
-          .brand-logo img {
-            animation: logoFadeSlide 0.6s ease-out;
-          }
-
-          /* Resplandor sutil al hover */
-          .site-title:hover .brand-logo::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, rgba(243, 79, 41, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: glowPulse 1.5s ease-in-out infinite;
-          }
-
-          @keyframes glowPulse {
-            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-          }
-          
-          /* Responsive */
-          @media (max-width: 768px) {
-            .brand-logo img {
-              width: 42px;
-              height: 42px;
-            }
-          }
-          </style>
           
           <div class="brand-text">
             <span class="brand-name">{{ site.author | default: "René Moya" }}</span>
@@ -138,80 +70,68 @@
     </div>
   </div>
 </header>
+
+<!-- Overlay del menú móvil -->
+<div class="menu-overlay"></div>
+
+<!-- ESTILOS DEL HEADER -->
+<style>
+/* Logo */
+.brand-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.brand-logo img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 3px 6px rgba(60, 48, 38, 0.08));
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.site-title:hover .brand-logo img {
+  transform: scale(1.08) rotate(-1deg);
+  filter: drop-shadow(0 6px 12px rgba(243, 79, 41, 0.18));
+}
+
+@keyframes logoFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.brand-logo img {
+  animation: logoFadeSlide 0.6s ease-out;
+}
+
+.site-title:hover .brand-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(243, 79, 41, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 1.5s ease-in-out infinite;
+}
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
   50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
-</style>
-          
-          <div class="brand-text">
-            <span class="brand-name">{{ site.author | default: "René Moya" }}</span>
-            <span class="site-tagline">{{ site.description | truncate: 60 }}</span>
-          </div>
-        </a>
-      </div>
-      
-      <button class="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-      
-      <nav class="main-nav">
-        <ul class="nav-links">
-          <li><a href="{{ '/' | relative_url }}" class="nav-link">Inicio</a></li>
-          <li><a href="{{ '/blog' | relative_url }}" class="nav-link">Artículos</a></li>
-          <li><a href="{{ '/about' | relative_url }}" class="nav-link">Acerca de</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
 
-<style>
+/* Header */
 .site-header {
-  background: var(--color-bg);
-  border-bottom: 2px solid var(--color-border);
-  padding: 1.25rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px var(--color-shadow);
-}
-
-.site-header .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-}
-
-.site-branding {
-  flex: 0 0 auto;
-}
-
-.site-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-/* ========================================
-   REEMPLAZAR ESTE CSS EN default.html
-   (Desde línea 260 hasta antes del </style>)
-   ======================================== */
-
-.site-header {
-  background: var(--color-bg);
+  background: rgba(243, 241, 236, 0.95);
   border-bottom: 2px solid var(--color-border);
   padding: 1.25rem 0;
   position: sticky;
@@ -219,7 +139,6 @@
   z-index: 100;
   box-shadow: 0 2px 8px var(--color-shadow);
   backdrop-filter: blur(10px);
-  background: rgba(243, 241, 236, 0.95);
 }
 
 .site-header .container {
@@ -237,7 +156,7 @@
 
 .site-branding {
   flex: 0 0 auto;
-  z-index: 102; /* ← MÁS ALTO que el menú */
+  z-index: 102;
   position: relative;
 }
 
@@ -253,18 +172,8 @@
   opacity: 0.8;
 }
 
-.site-title:hover .brand-logo svg {
-  transform: scale(1.05);
-}
-
 .brand-logo {
   flex-shrink: 0;
-}
-
-.brand-logo svg {
-  display: block;
-  transition: transform 0.2s ease;
-  filter: drop-shadow(0 1px 2px rgba(60, 48, 38, 0.1));
 }
 
 .brand-text {
@@ -289,6 +198,7 @@
   margin-top: 0.15rem;
 }
 
+/* Navegación */
 .main-nav {
   flex: 1 1 auto;
 }
@@ -312,7 +222,6 @@
   text-decoration: none;
   border-radius: 6px;
   transition: all 0.2s ease;
-  position: relative;
 }
 
 .nav-link:hover {
@@ -325,6 +234,7 @@
   color: white;
 }
 
+/* Hamburger */
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
@@ -335,7 +245,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 102; /* ← MISMO QUE EL LOGO */
+  z-index: 102;
   position: relative;
 }
 
@@ -348,15 +258,13 @@
   transform-origin: center;
 }
 
-/* ========================================
-   MOBILE MENU - CORREGIDO
-   ======================================== */
+/* MOBILE */
 @media (max-width: 768px) {
   .site-header {
     padding: 1rem 0;
   }
   
-  .brand-logo svg {
+  .brand-logo img {
     width: 42px;
     height: 42px;
   }
@@ -369,12 +277,10 @@
     font-size: 0.75rem;
   }
   
-  /* Toggle visible en móvil */
   .mobile-menu-toggle {
     display: flex;
   }
   
-  /* Menú móvil lateral */
   .main-nav {
     position: fixed;
     top: 0;
@@ -385,7 +291,7 @@
     border-left: 2px solid var(--color-border);
     box-shadow: -4px 0 16px rgba(60, 48, 38, 0.15);
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 101; /* ← DEBAJO del logo y hamburger */
+    z-index: 101;
     overflow-y: auto;
   }
   
@@ -393,10 +299,9 @@
     right: 0;
   }
   
-  /* Nav links en columna CON ESPACIO ARRIBA */
   .nav-links {
     flex-direction: column;
-    padding: 6rem 0 2rem; /* ← MÁS ESPACIO ARRIBA para evitar montarse */
+    padding: 6rem 0 2rem;
     gap: 0;
   }
   
@@ -423,7 +328,6 @@
     background: var(--color-bg-secondary);
   }
   
-  /* Animación del hamburger a X */
   .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
     transform: rotate(45deg) translate(8px, 8px);
     background: var(--color-orange);
@@ -438,7 +342,6 @@
     background: var(--color-orange);
   }
   
-  /* Overlay de fondo */
   .menu-overlay {
     display: none;
     position: fixed;
@@ -447,7 +350,7 @@
     width: 100%;
     height: 100%;
     background: rgba(60, 48, 38, 0.5);
-    z-index: 100; /* ← DEBAJO de todo */
+    z-index: 100;
     backdrop-filter: blur(2px);
   }
   
@@ -471,7 +374,6 @@
     gap: 0;
   }
   
-  /* Menú más ancho en pantallas pequeñas */
   .main-nav {
     width: 85%;
     max-width: 320px;
@@ -479,14 +381,15 @@
 }
 </style>
 
-<div class="menu-overlay"></div>
-
+<!-- JAVASCRIPT DEL MENÚ -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.mobile-menu-toggle');
   const mainNav = document.querySelector('.main-nav');
   const menuOverlay = document.querySelector('.menu-overlay');
   const body = document.body;
+  
+  if (!menuToggle || !mainNav || !menuOverlay) return;
   
   function toggleMenu() {
     const isActive = mainNav.classList.toggle('active');
@@ -512,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
   menuToggle.addEventListener('click', toggleMenu);
   menuOverlay.addEventListener('click', closeMenu);
   
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-link').forEach(function(link) {
     link.addEventListener('click', closeMenu);
   });
   
@@ -523,19 +426,22 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   const currentPath = window.location.pathname;
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('href') === currentPath || 
-        (currentPath === '{{ site.baseurl }}/' && link.getAttribute('href') === '{{ "/" | relative_url }}')) {
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    const linkPath = link.getAttribute('href');
+    if (linkPath === currentPath || 
+        (currentPath === '{{ site.baseurl }}/' && linkPath === '{{ "/" | relative_url }}')) {
       link.classList.add('active');
     }
   });
 });
 </script>
 
-  <main class="container">
-    {{ content }}
-  </main>
+<!-- MAIN CONTENT -->
+<main class="container">
+  {{ content }}
+</main>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-content">
@@ -581,7 +487,6 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
     
-    <!-- Enlaces legales - NUEVO -->
     <div class="footer-legal">
       <nav class="legal-nav">
         <a href="/privacidad/">Privacidad</a>
@@ -594,6 +499,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </footer>
 
+<!-- ESTILOS DEL FOOTER -->
 <style>
 .site-footer {
   margin-top: 4rem;
@@ -664,7 +570,6 @@ document.addEventListener('DOMContentLoaded', function() {
   transform: scale(1.1);
 }
 
-/* Enlaces legales - NUEVO */
 .footer-legal {
   margin-top: 2rem;
   padding-top: 1.5rem;
@@ -697,7 +602,6 @@ document.addEventListener('DOMContentLoaded', function() {
   font-size: 0.85rem;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .site-footer {
     padding: 2rem 0 1.5rem;
@@ -723,7 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 
-/* Variante: Si prefieres el footer horizontal en desktop */
 @media (min-width: 768px) {
   .footer-content {
     flex-direction: row;

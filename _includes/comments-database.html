@@ -1,4 +1,4 @@
-<!-- Componente de Comentarios Mejorado con Avatares SVG -->
+<!-- Componente de Comentarios Mejorado -->
 <div class="comments-section-custom">
   <h3 class="comments-title">💬 Comentarios</h3>
   <p class="comments-subtitle">Únete a la conversación</p>
@@ -42,12 +42,12 @@
                 maxlength="5000" 
                 rows="4"></textarea>
       <div class="char-counter">
-        <span id="char-count">0</span> / 5000 caracteres
+        <span id="char-count">0</span> / 5000
       </div>
     </div>
     
     <button type="submit" class="btn-submit" id="btn-submit">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="22" y1="2" x2="11" y2="13"></line>
         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
       </svg>
@@ -65,7 +65,7 @@
 
 <style>
 /* ========================================
-   COMENTARIOS PRO Y ATRACTIVOS
+   COMENTARIOS MEJORADOS
    ======================================== */
 
 .comments-section-custom {
@@ -81,9 +81,6 @@
   font-weight: 700;
   color: var(--color-text);
   margin: 0 0 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .comments-subtitle {
@@ -116,7 +113,6 @@
 
 .form-group {
   margin-bottom: 1rem;
-  position: relative;
 }
 
 .form-group input,
@@ -189,7 +185,7 @@
 }
 
 .btn-submit:hover svg {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 .form-message {
@@ -215,7 +211,7 @@
   border: 1px solid #fc8181;
 }
 
-/* Lista de Comentarios - ATRACTIVA */
+/* Lista de Comentarios Mejorada */
 .comments-list {
   margin-top: 2rem;
 }
@@ -246,7 +242,7 @@
   transform: translateY(-2px);
 }
 
-/* Avatar SVG Único */
+/* Avatar SVG */
 .comment-avatar {
   flex-shrink: 0;
   width: 48px;
@@ -368,8 +364,8 @@
 (function() {
   'use strict';
   
-  // Configuración
-  const API_BASE = 'https://comentarios.finanzasreales.com/api';
+  // Configuración - EXACTAMENTE IGUAL AL ORIGINAL
+  const API_BASE = 'https://renemoya.com/api';
   const POST_SLUG = '{{ page.url | remove: ".html" | remove: "/" }}';
   
   // Elementos
@@ -381,9 +377,11 @@
   const charCount = document.getElementById('char-count');
   
   // Contador de caracteres
-  comentarioField.addEventListener('input', function() {
-    charCount.textContent = this.value.length;
-  });
+  if (comentarioField && charCount) {
+    comentarioField.addEventListener('input', function() {
+      charCount.textContent = this.value.length;
+    });
+  }
   
   // Cargar comentarios al inicio
   cargarComentarios();
@@ -401,7 +399,7 @@
     };
     
     btnSubmit.disabled = true;
-    btnSubmit.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Enviando...';
+    btnSubmit.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Enviando...';
     formMessage.className = 'form-message';
     formMessage.style.display = 'none';
     
@@ -420,7 +418,7 @@
         formMessage.className = 'form-message success';
         formMessage.textContent = '✓ ' + resultado.mensaje;
         form.reset();
-        charCount.textContent = '0';
+        if (charCount) charCount.textContent = '0';
         
         setTimeout(() => {
           cargarComentarios();
@@ -438,7 +436,7 @@
     }
     
     btnSubmit.disabled = false;
-    btnSubmit.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Publicar comentario';
+    btnSubmit.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Publicar comentario';
   });
   
   // Función para cargar comentarios
@@ -459,7 +457,7 @@
     }
   }
   
-  // Función para generar avatar SVG único basado en el nombre
+  // Función para generar avatar SVG
   function generarAvatar(nombre) {
     const colores = [
       ['#667eea', '#764ba2'],
@@ -481,12 +479,12 @@
     return `
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="grad-${inicial}" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="grad-${inicial}-${index}" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style="stop-color:${color1};stop-opacity:1" />
             <stop offset="100%" style="stop-color:${color2};stop-opacity:1" />
           </linearGradient>
         </defs>
-        <circle cx="50" cy="50" r="50" fill="url(#grad-${inicial})" />
+        <circle cx="50" cy="50" r="50" fill="url(#grad-${inicial}-${index})" />
         <text x="50" y="50" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">${inicial}</text>
       </svg>
     `;

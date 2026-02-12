@@ -8,46 +8,81 @@ layout: default
     {% include reading-progress.html %}
     
     <header class="post-header">
-      <div class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">
-          {% assign day = page.date | date: "%-d" %}
-          {% assign month = page.date | date: "%-m" %}
-          {% assign year = page.date | date: "%Y" %}
-          {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-          {% assign month_index = month | minus: 1 %}
-          {{ day }} de {{ months[month_index] }} de {{ year }}
-        </time>
-        <span>•</span>
-        <!-- Estadísticas del post -->
-      <div class="post-stats">
-        <span class="stat-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-          <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas">
-        </span>
-        
-        <span class="stat-divider">•</span>
-        
-        <span class="stat-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
-        </span>
-        
-        <span class="stat-divider">•</span>
-        
-        <span class="stat-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          </svg>
-          <span>{{ page.content | number_of_words }} palabras</span>
-        </span>
-      </div>
-      </div>
+      <!-- Post Meta Mejorado (reemplazar en _layouts/post.html) -->
+
+<div class="post-meta">
+  <div class="post-date">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+    </svg>
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+      {% assign day = page.date | date: "%-d" %}
+      {% assign month = page.date | date: "%-m" %}
+      {% assign year = page.date | date: "%Y" %}
+      {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+      {% assign month_index = month | minus: 1 %}
+      {{ day }} de {{ months[month_index] }} de {{ year }}
+    </time>
+  </div>
+  
+  <span class="meta-divider">•</span>
+  
+  <div class="post-reading-time">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
+    <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
+  </div>
+</div>
+
+<!-- CSS Mejorado -->
+<style>
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.post-date,
+.post-reading-time {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.post-date svg,
+.post-reading-time svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.post-date time {
+  line-height: 1;
+}
+
+.meta-divider {
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .post-meta {
+    font-size: 0.8rem;
+  }
+  
+  .meta-divider {
+    display: none;
+  }
+}
+</style>
 
       <h1>{{ page.title }}</h1>
 

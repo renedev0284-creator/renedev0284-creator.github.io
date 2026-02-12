@@ -2,52 +2,52 @@
 <div class="comments-section-custom">
   <h3 class="comments-title">Comentarios</h3>
   <p class="comments-subtitle">Comparte tus pensamientos</p>
-  
+
   <!-- Formulario de nuevo comentario -->
   <form id="comment-form" class="comment-form">
     <div class="form-group">
-      <input type="text" 
-             id="nombre" 
-             name="nombre" 
-             placeholder="Tu nombre *" 
-             required 
+      <input type="text"
+             id="nombre"
+             name="nombre"
+             placeholder="Tu nombre *"
+             required
              maxlength="100">
     </div>
-    
+
     <div class="form-group">
-      <input type="email" 
-             id="email" 
-             name="email" 
-             placeholder="Tu email * (no se publicará)" 
-             required 
+      <input type="email"
+             id="email"
+             name="email"
+             placeholder="Tu email * (no se publicará)"
+             required
              maxlength="150">
     </div>
-    
+
     <div class="form-group">
-      <input type="url" 
-             id="website" 
-             name="website" 
-             placeholder="Tu sitio web (opcional)" 
+      <input type="url"
+             id="website"
+             name="website"
+             placeholder="Tu sitio web (opcional)"
              maxlength="255">
     </div>
-    
+
     <div class="form-group">
-      <textarea id="comentario" 
-                name="comentario" 
-                placeholder="Escribe tu comentario... *" 
-                required 
-                minlength="10" 
-                maxlength="5000" 
+      <textarea id="comentario"
+                name="comentario"
+                placeholder="Escribe tu comentario... *"
+                required
+                minlength="10"
+                maxlength="5000"
                 rows="5"></textarea>
     </div>
-    
+
     <button type="submit" class="btn-submit" id="btn-submit">
       Publicar comentario
     </button>
-    
+
     <p class="form-message" id="form-message"></p>
   </form>
-  
+
   <!-- Lista de comentarios -->
   <div class="comments-list" id="comments-list">
     <p class="loading">Cargando comentarios...</p>
@@ -248,24 +248,54 @@
 <script>
 (function() {
   'use strict';
-  
+
   // Configuración
-  const API_BASE = 'https://comentarios.finanzasreales.com/api'; // ← CAMBIAR por tu URL
-  const POST_SLUG = '{{ page.url | remove: ".html" | remove: "/" }}';
-  
+  const API_BASE = 'https://comentarios.finanzasreales.com/api';
+
+  // Slug robusto + fallback (evita vacío)
+  const POST_SLUG = (
+    '{{ page.url | replace: ".html","" | replace: "/","-" | replace: "--","-" | replace_first: "-","" }}'
+  ) || 'home';
+
   // Elementos
   const form = document.getElementById('comment-form');
   const btnSubmit = document.getElementById('btn-submit');
   const formMessage = document.getElementById('form-message');
   const commentsList = document.getElementById('comments-list');
-  
+
+  // Helpers UI
+  function showFormMessage(type, text) {
+    formMessage.className = 'form-message ' + type;
+    formMessage.textContent = text;
+    formMessage.style.display = 'block';
+  }
+
+  function clearFormMessage() {
+    formMessage.className = 'form-message';
+    formMessage.textContent = '';
+    formMessage.style.display = 'none';
+  }
+
+  // Leer JSON de forma segura (si el backend devuelve HTML, lo loguea)
+  async function safeJson(respuesta) {
+    const raw = await respuesta.text();
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.error('Respuesta no es JSON. Status:', respuesta.status, 'Body:', raw);
+      return { success: false, error: 'La API no devolvió JSON válido (ver consola)' };
+    }
+  }
+
   // Cargar comentarios al inicio
   cargarComentarios();
-  
+
   // Enviar comentario
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
+    clearFormMessage();
+
     const datos = {
       post_slug: POST_SLUG,
       nombre: document.getElementById('nombre').value.trim(),
@@ -273,92 +303,93 @@
       website: document.getElementById('website').value.trim(),
       comentario: document.getElementById('comentario').value.trim()
     };
-    
+
     // Deshabilitar botón
     btnSubmit.disabled = true;
     btnSubmit.textContent = 'Enviando...';
-    formMessage.className = 'form-message';
-    formMessage.style.display = 'none';
-    
+
     try {
       const respuesta = await fetch(`${API_BASE}/comentarios.php`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });
-      
-      const resultado = await respuesta.json();
-      
+
+      const resultado = await safeJson(respuesta);
+
       if (resultado.success) {
-        formMessage.className = 'form-message success';
-        formMessage.textContent = resultado.mensaje;
+        showFormMessage('success', resultado.mensaje || 'Comentario enviado');
         form.reset();
-        
-        // Recargar comentarios
+
         setTimeout(() => {
           cargarComentarios();
-          formMessage.style.display = 'none';
-        }, 3000);
+          clearFormMessage();
+        }, 2000);
       } else {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = resultado.error || 'Error al enviar el comentario';
+        showFormMessage('error', resultado.error || 'Error al enviar el comentario');
       }
-      
+
     } catch (error) {
       console.error('Error:', error);
-      formMessage.className = 'form-message error';
-      formMessage.textContent = 'Error de conexión. Intenta de nuevo.';
+      showFormMessage('error', 'Error de conexión. Intenta de nuevo.');
     }
-    
+
     // Rehabilitar botón
     btnSubmit.disabled = false;
     btnSubmit.textContent = 'Publicar comentario';
   });
-  
+
   // Función para cargar comentarios
   async function cargarComentarios() {
+    commentsList.innerHTML = '<p class="loading">Cargando comentarios...</p>';
+
     try {
-      const respuesta = await fetch(`${API_BASE}/comentarios.php?post_slug=${encodeURIComponent(POST_SLUG)}`);
-      const resultado = await respuesta.json();
-      
+      const url = `${API_BASE}/comentarios.php?post_slug=${encodeURIComponent(POST_SLUG)}`;
+      const respuesta = await fetch(url);
+
+      const resultado = await safeJson(respuesta);
+
       if (resultado.success) {
-        mostrarComentarios(resultado.comentarios);
+        mostrarComentarios(Array.isArray(resultado.comentarios) ? resultado.comentarios : []);
       } else {
-        commentsList.innerHTML = '<p class="no-comments">Error al cargar comentarios</p>';
+        commentsList.innerHTML = `<p class="no-comments">${resultado.error || 'Error al cargar comentarios'}</p>`;
       }
-      
+
     } catch (error) {
       console.error('Error al cargar comentarios:', error);
       commentsList.innerHTML = '<p class="no-comments">Error al cargar comentarios</p>';
     }
   }
-  
+
   // Función para mostrar comentarios
   function mostrarComentarios(comentarios) {
-    if (comentarios.length === 0) {
+    if (!comentarios || comentarios.length === 0) {
       commentsList.innerHTML = '<p class="no-comments">Sé el primero en comentar</p>';
       return;
     }
-    
+
     let html = '';
     comentarios.forEach(function(comentario) {
-      const autorHTML = comentario.website 
-        ? `<a href="${comentario.website}" class="comment-author" target="_blank" rel="nofollow">${comentario.nombre}</a>`
-        : `<span class="comment-author">${comentario.nombre}</span>`;
-      
+      const nombre = comentario.nombre || 'Anónimo';
+      const website = (comentario.website || '').trim();
+      const fecha = comentario.fecha_formateada || '';
+      const cuerpo = comentario.comentario || '';
+
+      const autorHTML = website
+        ? `<a href="${website}" class="comment-author" target="_blank" rel="nofollow noopener">${nombre}</a>`
+        : `<span class="comment-author">${nombre}</span>`;
+
       html += `
         <div class="comment-item">
           <div class="comment-header">
             ${autorHTML}
-            <span class="comment-date">${comentario.fecha_formateada}</span>
+            <span class="comment-date">${fecha}</span>
           </div>
-          <p class="comment-body">${comentario.comentario}</p>
+          <p class="comment-body">${cuerpo}</p>
         </div>
       `;
     });
-    
+
     commentsList.innerHTML = html;
   }
 })();

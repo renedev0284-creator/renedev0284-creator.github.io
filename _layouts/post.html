@@ -8,84 +8,61 @@ layout: default
     {% include reading-progress.html %}
     
     <header class="post-header">
-      <!-- Post Meta Mejorado (reemplazar en _layouts/post.html) -->
+      <!-- Meta: Fecha y Tiempo de Lectura -->
+      <div class="post-meta">
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {% assign day = page.date | date: "%-d" %}
+            {% assign month = page.date | date: "%-m" %}
+            {% assign year = page.date | date: "%Y" %}
+            {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+            {% assign month_index = month | minus: 1 %}
+            {{ day }} de {{ months[month_index] }} de {{ year }}
+          </time>
+        </div>
+        
+        <span class="meta-divider">•</span>
+        
+        <!-- Estadísticas inline -->
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <img src="https://visitor-badge.laobi.icu/badge?page_id=renedev{{ page.url | replace: '/', '.' | remove: '.html' }}" alt="visitas">
+        </div>
+        
+        <span class="meta-divider">•</span>
+        
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
+        </div>
+        
+        <span class="meta-divider">•</span>
+        
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>{{ page.content | number_of_words }} palabras</span>
+        </div>
+      </div>
 
-<div class="post-meta">
-  <div class="post-date">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-      <line x1="16" y1="2" x2="16" y2="6"></line>
-      <line x1="8" y1="2" x2="8" y2="6"></line>
-      <line x1="3" y1="10" x2="21" y2="10"></line>
-    </svg>
-    <time datetime="{{ page.date | date_to_xmlschema }}">
-      {% assign day = page.date | date: "%-d" %}
-      {% assign month = page.date | date: "%-m" %}
-      {% assign year = page.date | date: "%Y" %}
-      {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-      {% assign month_index = month | minus: 1 %}
-      {{ day }} de {{ months[month_index] }} de {{ year }}
-    </time>
-  </div>
-  
-  <span class="meta-divider">•</span>
-  
-  <div class="post-reading-time">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
-    <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
-  </div>
-</div>
-
-<!-- CSS Mejorado -->
-<style>
-.post-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.post-date,
-.post-reading-time {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.post-date svg,
-.post-reading-time svg {
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-.post-date time {
-  line-height: 1;
-}
-
-.meta-divider {
-  opacity: 0.3;
-}
-
-@media (max-width: 768px) {
-  .post-meta {
-    font-size: 0.8rem;
-  }
-  
-  .meta-divider {
-    display: none;
-  }
-}
-</style>
-
+      <!-- Título del Post -->
       <h1>{{ page.title }}</h1>
 
+      <!-- Tags -->
       {% if page.tags %}
         <div class="post-tags">
           {% for tag in page.tags %}
@@ -96,6 +73,7 @@ layout: default
         </div>
       {% endif %}
 
+      <!-- Excerpt -->
       {%- assign _lead = page.lead | default: "" -%}
       {%- assign _fallback = page.excerpt | default: "" -%}
 
@@ -107,10 +85,9 @@ layout: default
 
       <!-- Info de autor -->
       {% include post-author-minimal.html %}
-      
-      
     </header>
 
+    <!-- Contenido del Post -->
     <div class="post-content">
       {{ content }}
     </div>
@@ -181,38 +158,42 @@ layout: default
   padding: 0 var(--space-lg) var(--space-xxl);
 }
 
-/* Estadísticas del Post */
-.post-stats {
+/* Post Meta (Fecha + Stats) */
+.post-meta {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 0;
-  margin-top: 1rem;
+  flex-wrap: wrap;
   font-family: var(--font-sans);
   font-size: 0.875rem;
   color: var(--color-text-muted);
-  border-top: 1px solid var(--color-border);
-  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
-.post-stats .stat-item {
+.post-meta .meta-item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-.post-stats .stat-item svg {
-  opacity: 0.6;
+.post-meta .meta-item svg {
   flex-shrink: 0;
+  opacity: 0.6;
 }
 
-.post-stats .stat-item img {
+.post-meta .meta-item time,
+.post-meta .meta-item span {
+  line-height: 1;
+}
+
+.post-meta .meta-item img {
   height: 18px;
   vertical-align: middle;
 }
 
-.post-stats .stat-divider {
+.post-meta .meta-divider {
   opacity: 0.3;
+  line-height: 1;
 }
 
 /* Animación del enlace relacionado */
@@ -245,12 +226,12 @@ layout: default
 
 /* Responsive para móvil */
 @media (max-width: 768px) {
-  .post-stats {
+  .post-meta {
     font-size: 0.8rem;
     gap: 0.5rem;
   }
   
-  .post-stats .stat-divider {
+  .post-meta .meta-divider {
     display: none;
   }
   

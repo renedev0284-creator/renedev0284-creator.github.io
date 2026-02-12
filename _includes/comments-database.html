@@ -1,4 +1,4 @@
-<!-- Componente de Comentarios Mejorado -->
+<!-- Componente de Comentarios con Base de Datos Propia -->
 <div class="comments-section-custom">
   <h3 class="comments-title">💬 Comentarios</h3>
   <p class="comments-subtitle">Únete a la conversación</p>
@@ -109,6 +109,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .form-group {
@@ -313,19 +314,10 @@
   background: linear-gradient(135deg, rgba(243, 79, 41, 0.05) 0%, rgba(243, 79, 41, 0.02) 100%);
   border-radius: 12px;
   border: 2px dashed rgba(243, 79, 41, 0.2);
-}
-
-.no-comments p {
   font-family: var(--font-sans);
   font-size: 1.1rem;
   color: var(--color-text);
-  margin: 0 0 0.5rem;
   font-weight: 500;
-}
-
-.no-comments small {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
 }
 
 /* Responsive */
@@ -356,6 +348,7 @@
   .comment-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.25rem;
   }
 }
 </style>
@@ -363,11 +356,13 @@
 <script>
 (function() {
   'use strict';
-  
-  // Configuración - EXACTAMENTE IGUAL AL ORIGINAL
+
+  // Configuración - EXACTAMENTE COMO EL ARCHIVO QUE FUNCIONA
   const API_BASE = 'https://comentarios.finanzasreales.com/api';
-  const POST_SLUG = '{{ page.url | remove: ".html" | remove: "/" }}';
-  
+  const POST_SLUG = (
+    '{{ page.url | replace: ".html","" | replace: "/","-" | replace: "--","-" | replace_first: "-","" }}'
+  ) || 'home';
+
   // Elementos
   const form = document.getElementById('comment-form');
   const btnSubmit = document.getElementById('btn-submit');
@@ -375,21 +370,47 @@
   const commentsList = document.getElementById('comments-list');
   const comentarioField = document.getElementById('comentario');
   const charCount = document.getElementById('char-count');
-  
+
   // Contador de caracteres
   if (comentarioField && charCount) {
     comentarioField.addEventListener('input', function() {
       charCount.textContent = this.value.length;
     });
   }
-  
+
+  // Helpers UI - IGUAL AL ORIGINAL
+  function showFormMessage(type, text) {
+    formMessage.className = 'form-message ' + type;
+    formMessage.textContent = text;
+    formMessage.style.display = 'block';
+  }
+
+  function clearFormMessage() {
+    formMessage.className = 'form-message';
+    formMessage.textContent = '';
+    formMessage.style.display = 'none';
+  }
+
+  // Leer JSON de forma segura - IGUAL AL ORIGINAL
+  async function safeJson(respuesta) {
+    const raw = await respuesta.text();
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.error('Respuesta no es JSON. Status:', respuesta.status, 'Body:', raw);
+      return { success: false, error: 'La API no devolvió JSON válido (ver consola)' };
+    }
+  }
+
   // Cargar comentarios al inicio
   cargarComentarios();
-  
-  // Enviar comentario
+
+  // Enviar comentario - IGUAL AL ORIGINAL
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
+    clearFormMessage();
+
     const datos = {
       post_slug: POST_SLUG,
       nombre: document.getElementById('nombre').value.trim(),
@@ -397,67 +418,66 @@
       website: document.getElementById('website').value.trim(),
       comentario: comentarioField.value.trim()
     };
-    
+
+    // Deshabilitar botón
     btnSubmit.disabled = true;
-    btnSubmit.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Enviando...';
-    formMessage.className = 'form-message';
-    formMessage.style.display = 'none';
-    
+    btnSubmit.innerHTML = 'Enviando...';
+
     try {
       const respuesta = await fetch(`${API_BASE}/comentarios.php`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });
-      
-      const resultado = await respuesta.json();
-      
+
+      const resultado = await safeJson(respuesta);
+
       if (resultado.success) {
-        formMessage.className = 'form-message success';
-        formMessage.textContent = '✓ ' + resultado.mensaje;
+        showFormMessage('success', resultado.mensaje || 'Comentario enviado');
         form.reset();
         if (charCount) charCount.textContent = '0';
-        
+
         setTimeout(() => {
           cargarComentarios();
-          formMessage.style.display = 'none';
+          clearFormMessage();
         }, 2000);
       } else {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = '✗ ' + (resultado.error || 'Error al enviar el comentario');
+        showFormMessage('error', resultado.error || 'Error al enviar el comentario');
       }
-      
+
     } catch (error) {
       console.error('Error:', error);
-      formMessage.className = 'form-message error';
-      formMessage.textContent = '✗ Error de conexión. Intenta de nuevo.';
+      showFormMessage('error', 'Error de conexión. Intenta de nuevo.');
     }
-    
+
+    // Rehabilitar botón
     btnSubmit.disabled = false;
     btnSubmit.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Publicar comentario';
   });
-  
-  // Función para cargar comentarios
+
+  // Función para cargar comentarios - IGUAL AL ORIGINAL
   async function cargarComentarios() {
+    commentsList.innerHTML = '<p class="loading">Cargando comentarios...</p>';
+
     try {
-      const respuesta = await fetch(`${API_BASE}/comentarios.php?post_slug=${encodeURIComponent(POST_SLUG)}`);
-      const resultado = await respuesta.json();
-      
+      const url = `${API_BASE}/comentarios.php?post_slug=${encodeURIComponent(POST_SLUG)}`;
+      const respuesta = await fetch(url);
+
+      const resultado = await safeJson(respuesta);
+
       if (resultado.success) {
-        mostrarComentarios(resultado.comentarios);
+        mostrarComentarios(Array.isArray(resultado.comentarios) ? resultado.comentarios : []);
       } else {
-        commentsList.innerHTML = '<div class="no-comments"><p>Error al cargar comentarios</p></div>';
+        commentsList.innerHTML = `<p class="no-comments">${resultado.error || 'Error al cargar comentarios'}</p>`;
       }
-      
+
     } catch (error) {
       console.error('Error al cargar comentarios:', error);
-      commentsList.innerHTML = '<div class="no-comments"><p>Error al cargar comentarios</p></div>';
+      commentsList.innerHTML = '<p class="no-comments">Error al cargar comentarios</p>';
     }
   }
-  
-  // Función para generar avatar SVG
+
+  // Función para generar avatar SVG - NUEVA FUNCIONALIDAD
   function generarAvatar(nombre) {
     const colores = [
       ['#667eea', '#764ba2'],
@@ -489,23 +509,29 @@
       </svg>
     `;
   }
-  
-  // Función para mostrar comentarios
+
+  // Función para mostrar comentarios - IGUAL AL ORIGINAL + AVATARES
   function mostrarComentarios(comentarios) {
-    if (comentarios.length === 0) {
-      commentsList.innerHTML = '<div class="no-comments"><p>🎉 Sé el primero en comentar</p><small>Tu opinión es muy valiosa</small></div>';
+    if (!comentarios || comentarios.length === 0) {
+      commentsList.innerHTML = '<p class="no-comments">🎉 Sé el primero en comentar</p>';
       return;
     }
-    
+
     let html = '';
     comentarios.forEach(function(comentario) {
-      const avatar = generarAvatar(comentario.nombre);
+      const nombre = comentario.nombre || 'Anónimo';
+      const website = (comentario.website || '').trim();
+      const fecha = comentario.fecha_formateada || '';
+      const cuerpo = comentario.comentario || '';
+      
+      // Generar avatar
+      const avatar = generarAvatar(nombre);
       const esAutor = comentario.email === 'renedev0284@gmail.com';
-      
-      const autorHTML = comentario.website 
-        ? `<a href="${comentario.website}" class="comment-author" target="_blank" rel="nofollow">${comentario.nombre}</a>`
-        : `<span class="comment-author">${comentario.nombre}</span>`;
-      
+
+      const autorHTML = website
+        ? `<a href="${website}" class="comment-author" target="_blank" rel="nofollow noopener">${nombre}</a>`
+        : `<span class="comment-author">${nombre}</span>`;
+
       html += `
         <div class="comment-item">
           <div class="comment-avatar">
@@ -515,14 +541,14 @@
             <div class="comment-header">
               ${autorHTML}
               ${esAutor ? '<span class="comment-badge">Autor</span>' : ''}
-              <span class="comment-date">${comentario.fecha_formateada}</span>
+              <span class="comment-date">${fecha}</span>
             </div>
-            <p class="comment-body">${comentario.comentario}</p>
+            <p class="comment-body">${cuerpo}</p>
           </div>
         </div>
       `;
     });
-    
+
     commentsList.innerHTML = html;
   }
 })();

@@ -11,6 +11,9 @@ Llevo 4 días en Reddit y he visto el mismo patrón 50 veces: alguien pregunta c
 
 Pero hay algo que casi nadie dice: **la mayoría de esas respuestas están diseñadas para que vuelvas a preguntar.**
 
+![Chico feliz frente a su computadora](/assets/images/posts/reddit.jpg)
+
+
 No es malicia consciente. Es que quien responde también necesita tráfico, karma, autoridad. Entonces te da la respuesta suficiente para que lo sigas, pero no completa para que lo dejes atrás. Te dice "haz una landing page" pero no te explica que antes necesitas saber a quién le hablas. Te recomienda herramientas premium cuando todavía no validaste si alguien pagaría un peso por lo que ofreces.
 
 He construido más de 20 landing pages con Cloudflare y GitHub. La mayoría fracasaron. ¿Sabes cuándo empezaron a funcionar? Cuando dejé de buscar "la estrategia" y empecé a resolver UN problema específico para UNA persona específica.

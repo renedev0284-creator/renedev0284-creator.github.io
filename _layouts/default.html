@@ -36,161 +36,108 @@
   <header class="site-header">
   <div class="container">
     <div class="header-content">
+      <!-- Reemplazar desde línea 39 hasta línea 194 en default.html -->
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
       <div class="site-branding">
         <a href="{{ '/' | relative_url }}" class="site-title">
-          <!-- Logo SVG moderno-profesional -->
-<div class="brand-logo">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="56" height="56">
-    <defs>
-      <!-- Degradado sofisticado para fondo -->
-      <radialGradient id="bgRadial" cx="40%" cy="40%">
-        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#f3f1ec;stop-opacity:1" />
-      </radialGradient>
-      
-      <!-- Degradado para pluma con más profundidad -->
-      <linearGradient id="penModern" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#ff6347;stop-opacity:1" />
-        <stop offset="35%" style="stop-color:#f34f29;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#d94520;stop-opacity:1" />
-      </linearGradient>
-      
-      <!-- Sombra profesional -->
-      <filter id="professionalShadow">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
-        <feOffset dx="0" dy="1.5" result="offsetblur"/>
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="0.2"/>
-        </feComponentTransfer>
-        <feMerge>
-          <feMergeNode/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    
-    <!-- Círculo base con degradado radial -->
-    <circle cx="50" cy="50" r="47" fill="url(#bgRadial)"/>
-    
-    <!-- Doble borde elegante -->
-    <circle cx="50" cy="50" r="47" fill="none" stroke="#d4cfc5" stroke-width="2.5"/>
-    <circle cx="50" cy="50" r="43.5" fill="none" stroke="#e8e5df" stroke-width="1" opacity="0.5"/>
-    
-    <!-- Iniciales RM con kerning perfecto -->
-    <g filter="url(#professionalShadow)">
-      <text x="23" y="63" 
-            font-family="'Palatino Linotype', 'Book Antiqua', Georgia, serif" 
-            font-size="44" 
-            font-weight="700" 
-            fill="#3c3026"
-            letter-spacing="-3">RM</text>
-    </g>
-    
-    <!-- Underline minimalista debajo de las iniciales -->
-    <line x1="23" y1="68" x2="70" y2="68" 
-          stroke="#f34f29" 
-          stroke-width="2" 
-          stroke-linecap="round" 
-          opacity="0.3"/>
-    
-    <!-- Pluma moderna y estilizada -->
-    <g transform="translate(66, 20) rotate(38)">
-      <!-- Cuerpo con gradiente -->
-      <path d="M 1,0 L 0,28 Q 4.5,30 9,28 L 8,0 Q 4.5,-1 1,0 Z" 
-            fill="url(#penModern)" 
-            stroke="#d94520" 
-            stroke-width="0.5"/>
-      
-      <!-- Highlight realista -->
-      <ellipse cx="2.5" cy="10" rx="1.2" ry="8" fill="#ffffff" opacity="0.4"/>
-      
-      <!-- Banda decorativa -->
-      <rect x="0" y="7" width="9" height="3" fill="#3c3026" opacity="0.15"/>
-      <line x1="0" y1="8.5" x2="9" y2="8.5" stroke="#f34f29" stroke-width="0.4" opacity="0.6"/>
-      
-      <!-- Punta refinada -->
-      <path d="M 0,28 L 4.5,37 L 9,28 Z" 
-            fill="#d94520" 
-            stroke="#3c3026" 
-            stroke-width="0.8" 
-            stroke-linejoin="round"/>
-      
-      <!-- Ranura de tinta detallada -->
-      <line x1="4.5" y1="28" x2="4.5" y2="35" stroke="#3c3026" stroke-width="0.7"/>
-      <circle cx="4.5" cy="35.5" r="0.8" fill="#3c3026"/>
-      
-      <!-- Clip elegante -->
-      <path d="M 3.5,0.5 Q 4.5,-0.5 5.5,0.5 L 5.5,7 Q 4.5,8 3.5,7 Z" 
-            fill="none" 
-            stroke="#f34f29" 
-            stroke-width="1.2" 
-            stroke-linecap="round"/>
-    </g>
-    
-    <!-- Elementos decorativos sutiles -->
-    <g opacity="0.12">
-      <path d="M 18,82 Q 30,80 42,82" fill="none" stroke="#f34f29" stroke-width="1"/>
-      <circle cx="80" cy="78" r="1.5" fill="#f34f29"/>
-      <circle cx="20" cy="22" r="2" fill="#3c3026"/>
-    </g>
-    
-    <!-- Trazo de tinta artístico -->
-    <path d="M 72,38 Q 78,41 84,39 Q 88,37 90,34" 
-          fill="none" 
-          stroke="#f34f29" 
-          stroke-width="1.5" 
-          stroke-linecap="round" 
-          opacity="0.35"
-          stroke-dasharray="2,1"/>
-  </svg>
-</div>
+          <!-- Logo PNG -->
+          <div class="brand-logo">
+            <img src="{{ '/assets/images/logo-header.png' | relative_url }}" 
+                 alt="René Moya Logo" 
+                 width="56" 
+                 height="56">
+          </div>
 
-<style>
-.brand-logo {
-  position: relative;
-  display: inline-block;
-}
+          <style>
+          .brand-logo {
+            position: relative;
+            display: inline-block;
+          }
 
-.brand-logo svg {
-  filter: drop-shadow(0 3px 6px rgba(60, 48, 38, 0.08));
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+          .brand-logo img {
+            display: block;
+            width: 56px;
+            height: 56px;
+            filter: drop-shadow(0 3px 6px rgba(60, 48, 38, 0.08));
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
 
-.site-title:hover .brand-logo svg {
-  transform: scale(1.08) rotate(-1deg);
-  filter: drop-shadow(0 6px 12px rgba(243, 79, 41, 0.18));
-}
+          .site-title:hover .brand-logo img {
+            transform: scale(1.08) rotate(-1deg);
+            filter: drop-shadow(0 6px 12px rgba(243, 79, 41, 0.18));
+          }
 
-/* Animación de entrada profesional */
-@keyframes logoFadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+          /* Animación de entrada profesional */
+          @keyframes logoFadeSlide {
+            from {
+              opacity: 0;
+              transform: translateY(-8px) scale(0.95);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          }
 
-.brand-logo svg {
-  animation: logoFadeSlide 0.6s ease-out;
-}
+          .brand-logo img {
+            animation: logoFadeSlide 0.6s ease-out;
+          }
 
-/* Resplandor sutil al hover */
-.site-title:hover .brand-logo::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: radial-gradient(circle, rgba(243, 79, 41, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: glowPulse 1.5s ease-in-out infinite;
-}
+          /* Resplandor sutil al hover */
+          .site-title:hover .brand-logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, rgba(243, 79, 41, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: glowPulse 1.5s ease-in-out infinite;
+          }
+
+          @keyframes glowPulse {
+            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+          }
+          
+          /* Responsive */
+          @media (max-width: 768px) {
+            .brand-logo img {
+              width: 42px;
+              height: 42px;
+            }
+          }
+          </style>
+          
+          <div class="brand-text">
+            <span class="brand-name">{{ site.author | default: "René Moya" }}</span>
+            <span class="site-tagline">{{ site.description | truncate: 60 }}</span>
+          </div>
+        </a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="{{ '/' | relative_url }}" class="nav-link">Inicio</a></li>
+          <li><a href="{{ '/blog' | relative_url }}" class="nav-link">Artículos</a></li>
+          <li><a href="{{ '/about' | relative_url }}" class="nav-link">Acerca de</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }

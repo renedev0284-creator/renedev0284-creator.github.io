@@ -1,0 +1,365 @@
+<!-- Componente de Comentarios con Base de Datos Propia -->
+<div class="comments-section-custom">
+  <h3 class="comments-title">Comentarios</h3>
+  <p class="comments-subtitle">Comparte tus pensamientos</p>
+  
+  <!-- Formulario de nuevo comentario -->
+  <form id="comment-form" class="comment-form">
+    <div class="form-group">
+      <input type="text" 
+             id="nombre" 
+             name="nombre" 
+             placeholder="Tu nombre *" 
+             required 
+             maxlength="100">
+    </div>
+    
+    <div class="form-group">
+      <input type="email" 
+             id="email" 
+             name="email" 
+             placeholder="Tu email * (no se publicará)" 
+             required 
+             maxlength="150">
+    </div>
+    
+    <div class="form-group">
+      <input type="url" 
+             id="website" 
+             name="website" 
+             placeholder="Tu sitio web (opcional)" 
+             maxlength="255">
+    </div>
+    
+    <div class="form-group">
+      <textarea id="comentario" 
+                name="comentario" 
+                placeholder="Escribe tu comentario... *" 
+                required 
+                minlength="10" 
+                maxlength="5000" 
+                rows="5"></textarea>
+    </div>
+    
+    <button type="submit" class="btn-submit" id="btn-submit">
+      Publicar comentario
+    </button>
+    
+    <p class="form-message" id="form-message"></p>
+  </form>
+  
+  <!-- Lista de comentarios -->
+  <div class="comments-list" id="comments-list">
+    <p class="loading">Cargando comentarios...</p>
+  </div>
+</div>
+
+<style>
+/* Sección de comentarios */
+.comments-section-custom {
+  max-width: 720px;
+  margin: 4rem auto 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(60, 48, 38, 0.1);
+}
+
+.comments-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.comments-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 0 2rem;
+}
+
+/* Formulario */
+.comment-form {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: white;
+  border: 1px solid rgba(60, 48, 38, 0.2);
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-orange);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.btn-submit {
+  padding: 0.75rem 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-orange);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-submit:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+}
+
+.btn-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  display: none;
+}
+
+.form-message.success {
+  display: block;
+  color: #2d5016;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+  display: block;
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Lista de comentarios */
+.comments-list {
+  margin-top: 2rem;
+}
+
+.loading {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+.comment-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(60, 48, 38, 0.05);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.comment-author {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.comment-author:hover {
+  color: var(--color-orange);
+}
+
+.comment-date {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.comment-body {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.no-comments {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comments-section-custom {
+    margin: 3rem auto 2rem;
+    padding-top: 2rem;
+  }
+
+  .comment-form {
+    padding: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Configuración
+  const API_BASE = 'https://renemoya.com/api'; // ← CAMBIAR por tu URL
+  const POST_SLUG = '{{ page.url | remove: ".html" | remove: "/" }}';
+  
+  // Elementos
+  const form = document.getElementById('comment-form');
+  const btnSubmit = document.getElementById('btn-submit');
+  const formMessage = document.getElementById('form-message');
+  const commentsList = document.getElementById('comments-list');
+  
+  // Cargar comentarios al inicio
+  cargarComentarios();
+  
+  // Enviar comentario
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const datos = {
+      post_slug: POST_SLUG,
+      nombre: document.getElementById('nombre').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      website: document.getElementById('website').value.trim(),
+      comentario: document.getElementById('comentario').value.trim()
+    };
+    
+    // Deshabilitar botón
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Enviando...';
+    formMessage.className = 'form-message';
+    formMessage.style.display = 'none';
+    
+    try {
+      const respuesta = await fetch(`${API_BASE}/comentarios.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+      
+      const resultado = await respuesta.json();
+      
+      if (resultado.success) {
+        formMessage.className = 'form-message success';
+        formMessage.textContent = resultado.mensaje;
+        form.reset();
+        
+        // Recargar comentarios
+        setTimeout(() => {
+          cargarComentarios();
+          formMessage.style.display = 'none';
+        }, 3000);
+      } else {
+        formMessage.className = 'form-message error';
+        formMessage.textContent = resultado.error || 'Error al enviar el comentario';
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      formMessage.className = 'form-message error';
+      formMessage.textContent = 'Error de conexión. Intenta de nuevo.';
+    }
+    
+    // Rehabilitar botón
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = 'Publicar comentario';
+  });
+  
+  // Función para cargar comentarios
+  async function cargarComentarios() {
+    try {
+      const respuesta = await fetch(`${API_BASE}/comentarios.php?post_slug=${encodeURIComponent(POST_SLUG)}`);
+      const resultado = await respuesta.json();
+      
+      if (resultado.success) {
+        mostrarComentarios(resultado.comentarios);
+      } else {
+        commentsList.innerHTML = '<p class="no-comments">Error al cargar comentarios</p>';
+      }
+      
+    } catch (error) {
+      console.error('Error al cargar comentarios:', error);
+      commentsList.innerHTML = '<p class="no-comments">Error al cargar comentarios</p>';
+    }
+  }
+  
+  // Función para mostrar comentarios
+  function mostrarComentarios(comentarios) {
+    if (comentarios.length === 0) {
+      commentsList.innerHTML = '<p class="no-comments">Sé el primero en comentar</p>';
+      return;
+    }
+    
+    let html = '';
+    comentarios.forEach(function(comentario) {
+      const autorHTML = comentario.website 
+        ? `<a href="${comentario.website}" class="comment-author" target="_blank" rel="nofollow">${comentario.nombre}</a>`
+        : `<span class="comment-author">${comentario.nombre}</span>`;
+      
+      html += `
+        <div class="comment-item">
+          <div class="comment-header">
+            ${autorHTML}
+            <span class="comment-date">${comentario.fecha_formateada}</span>
+          </div>
+          <p class="comment-body">${comentario.comentario}</p>
+        </div>
+      `;
+    });
+    
+    commentsList.innerHTML = html;
+  }
+})();
+</script>

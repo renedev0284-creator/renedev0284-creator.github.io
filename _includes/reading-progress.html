@@ -1,9 +1,6 @@
-<!-- Barra de Progreso de Lectura -->
-
 <div id="reading-progress-bar"></div>
 
 <style>
-/* Barra de Progreso */
 #reading-progress-bar {
   position: fixed;
   top: 0;
@@ -16,13 +13,12 @@
   box-shadow: 0 2px 4px rgba(243, 79, 41, 0.3);
 }
 
-/* Animación de pulso sutil cuando llegas al final */
 #reading-progress-bar.complete {
   animation: progressComplete 0.6s ease;
 }
 
 @keyframes progressComplete {
-  0%, 80% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
@@ -30,35 +26,9 @@
   }
 }
 
-/* Variante: Barra con porcentaje */
-#reading-progress-bar::after {
-  content: attr(data-progress) '%';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: white;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.15rem 0.5rem;
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-#reading-progress-bar:hover::after {
-  opacity: 1;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   #reading-progress-bar {
     height: 3px;
-  }
-  
-  #reading-progress-bar::after {
-    display: none; /* Sin porcentaje en móvil */
   }
 }
 </style>
@@ -70,185 +40,66 @@
   const progressBar = document.getElementById('reading-progress-bar');
   if (!progressBar) return;
   
-  function updateProgressBar() {
-    // Calcular scroll progress
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  // Esperar a que el DOM esté completamente cargado
+  function initProgressBar() {
+    // Buscar el contenido del post específicamente
+    const postContent = document.querySelector('.post-content');
     
-    // Calcular porcentaje
-    const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-    const progress = Math.min(Math.max(scrollPercent, 0), 100);
-    
-    // Actualizar barra
-    progressBar.style.width = progress + '%';
-    progressBar.setAttribute('data-progress', Math.round(progress));
-    
-    // Añadir clase cuando se complete
-    if (progress >= 99) {
-      progressBar.classList.add('complete');
-    } else {
-      progressBar.classList.remove('complete');
+    if (!postContent) {
+      console.warn('No se encontró .post-content, usando documento completo');
+      return;
     }
-  }
-  
-  // Actualizar al scroll
-  window.addEventListener('scroll', updateProgressBar, { passive: true });
-  
-  // Actualizar al cargar
-  updateProgressBar();
-  
-  // Actualizar al redimensionar
-  window.addEventListener('resize', updateProgressBar, { passive: true });
-})();
-</script>
-
-<!-- VARIANTE 2: Barra con Gradiente Animado -->
-<style>
-#reading-progress-bar.animated {
-  background: linear-gradient(
-    90deg,
-    var(--color-orange) 0%,
-    #ff6b4a 25%,
-    var(--color-orange) 50%,
-    #ff6b4a 75%,
-    var(--color-orange) 100%
-  );
-  background-size: 200% 100%;
-  animation: progressGradient 3s linear infinite;
-}
-
-@keyframes progressGradient {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 200% 0%;
-  }
-}
-</style>
-
-<!-- VARIANTE 3: Barra Circular (Esquina inferior derecha) -->
-<div id="reading-progress-circle">
-  <svg width="60" height="60" viewBox="0 0 60 60">
-    <circle class="progress-bg" cx="30" cy="30" r="26" />
-    <circle class="progress-fill" cx="30" cy="30" r="26" />
-  </svg>
-  <span class="progress-text">0%</span>
-</div>
-
-<style>
-#reading-progress-circle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  z-index: 999;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s ease;
-}
-
-#reading-progress-circle.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-#reading-progress-circle:hover {
-  transform: scale(1.1);
-}
-
-#reading-progress-circle svg {
-  transform: rotate(-90deg);
-}
-
-.progress-bg {
-  fill: none;
-  stroke: var(--color-border);
-  stroke-width: 4;
-}
-
-.progress-fill {
-  fill: none;
-  stroke: var(--color-orange);
-  stroke-width: 4;
-  stroke-dasharray: 163.36; /* 2 * π * 26 */
-  stroke-dashoffset: 163.36;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 0.3s ease;
-}
-
-.progress-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-text);
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  #reading-progress-circle {
-    width: 50px;
-    height: 50px;
-    bottom: 1rem;
-    right: 1rem;
-  }
-  
-  #reading-progress-circle svg {
-    width: 50px;
-    height: 50px;
-  }
-}
-</style>
-
-<script>
-(function() {
-  'use strict';
-  
-  const circle = document.getElementById('reading-progress-circle');
-  if (!circle) return;
-  
-  const progressFill = circle.querySelector('.progress-fill');
-  const progressText = circle.querySelector('.progress-text');
-  const circumference = 163.36; // 2 * π * 26
-  
-  function updateCircularProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-    const progress = Math.min(Math.max(scrollPercent, 0), 100);
-    
-    // Actualizar círculo
-    const offset = circumference - (progress / 100) * circumference;
-    progressFill.style.strokeDashoffset = offset;
-    
-    // Actualizar texto
-    progressText.textContent = Math.round(progress) + '%';
-    
-    // Mostrar/ocultar según scroll
-    if (scrollTop > 300) {
-      circle.classList.add('visible');
-    } else {
-      circle.classList.remove('visible');
+    function updateProgressBar() {
+      // Obtener posición del contenido del post
+      const postTop = postContent.offsetTop;
+      const postHeight = postContent.offsetHeight;
+      const postBottom = postTop + postHeight;
+      
+      // Scroll actual
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      
+      // Calcular progreso solo dentro del post-content
+      let progress = 0;
+      
+      if (scrollTop + windowHeight >= postTop && scrollTop <= postBottom) {
+        // Estamos en el rango del post
+        const scrolledInPost = Math.max(0, scrollTop + windowHeight - postTop);
+        const totalScrollable = postHeight + windowHeight;
+        progress = (scrolledInPost / totalScrollable) * 100;
+      } else if (scrollTop > postBottom) {
+        // Ya pasamos el post
+        progress = 100;
+      }
+      
+      // Limitar entre 0 y 100
+      progress = Math.min(Math.max(progress, 0), 100);
+      
+      // Actualizar barra
+      progressBar.style.width = progress + '%';
+      
+      // Añadir clase cuando se complete
+      if (progress >= 99) {
+        progressBar.classList.add('complete');
+      } else {
+        progressBar.classList.remove('complete');
+      }
     }
+    
+    // Eventos
+    window.addEventListener('scroll', updateProgressBar, { passive: true });
+    window.addEventListener('resize', updateProgressBar, { passive: true });
+    
+    // Primera actualización
+    updateProgressBar();
   }
   
-  // Scroll to top al hacer clic
-  circle.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-  
-  window.addEventListener('scroll', updateCircularProgress, { passive: true });
-  updateCircularProgress();
+  // Ejecutar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProgressBar);
+  } else {
+    initProgressBar();
+  }
 })();
 </script>

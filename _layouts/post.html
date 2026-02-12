@@ -2,11 +2,10 @@
 layout: default
 ---
 
-{% include reading-progress.html %}
-
 <div class="post-container-with-sidebar">
   <!-- Contenido Principal del Post -->
   <article class="post">
+    {% include reading-progress.html %}
     <header class="post-header">
       <div class="post-meta">
         <time datetime="{{ page.date | date_to_xmlschema }}">

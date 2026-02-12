@@ -18,34 +18,7 @@ layout: default
           {{ day }} de {{ months[month_index] }} de {{ year }}
         </time>
         <span>•</span>
-        <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura</span>
-      </div>
-
-      <h1>{{ page.title }}</h1>
-
-      {% if page.tags %}
-        <div class="post-tags">
-          {% for tag in page.tags %}
-            <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}/" class="tag">
-              {{ tag }}
-            </a>
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {%- assign _lead = page.lead | default: "" -%}
-      {%- assign _fallback = page.excerpt | default: "" -%}
-
-      {% if _lead != "" %}
-        <p class="post-excerpt">{{ _lead | strip_html | strip_newlines | truncate: 220 }}</p>
-      {% elsif _fallback != "" %}
-        <p class="post-excerpt">{{ _fallback | strip_html | strip_newlines | truncate: 220 }}</p>
-      {% endif %}
-
-      <!-- Info de autor -->
-      {% include post-author-minimal.html %}
-      
-      <!-- Estadísticas del post -->
+        <!-- Estadísticas del post -->
       <div class="post-stats">
         <span class="stat-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -74,6 +47,33 @@ layout: default
           <span>{{ page.content | number_of_words }} palabras</span>
         </span>
       </div>
+      </div>
+
+      <h1>{{ page.title }}</h1>
+
+      {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}/" class="tag">
+              {{ tag }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {%- assign _lead = page.lead | default: "" -%}
+      {%- assign _fallback = page.excerpt | default: "" -%}
+
+      {% if _lead != "" %}
+        <p class="post-excerpt">{{ _lead | strip_html | strip_newlines | truncate: 220 }}</p>
+      {% elsif _fallback != "" %}
+        <p class="post-excerpt">{{ _fallback | strip_html | strip_newlines | truncate: 220 }}</p>
+      {% endif %}
+
+      <!-- Info de autor -->
+      {% include post-author-minimal.html %}
+      
+      
     </header>
 
     <div class="post-content">

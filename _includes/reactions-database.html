@@ -1,0 +1,208 @@
+<!-- Componente de Reacciones -->
+<div class="reactions-section">
+  <p class="reactions-question">¿Te gustó este artículo?</p>
+  
+  <div class="reactions-container" id="reactions-container">
+    <button class="reaction-btn" data-reaction="like" title="Me gusta">
+      <span class="reaction-emoji">👍</span>
+      <span class="reaction-count">0</span>
+    </button>
+    
+    <button class="reaction-btn" data-reaction="love" title="Me encanta">
+      <span class="reaction-emoji">❤️</span>
+      <span class="reaction-count">0</span>
+    </button>
+    
+    <button class="reaction-btn" data-reaction="insightful" title="Interesante">
+      <span class="reaction-emoji">💡</span>
+      <span class="reaction-count">0</span>
+    </button>
+    
+    <button class="reaction-btn" data-reaction="useful" title="Útil">
+      <span class="reaction-emoji">✓</span>
+      <span class="reaction-count">0</span>
+    </button>
+    
+    <button class="reaction-btn" data-reaction="fire" title="Increíble">
+      <span class="reaction-emoji">🔥</span>
+      <span class="reaction-count">0</span>
+    </button>
+  </div>
+</div>
+
+<style>
+.reactions-section {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+}
+
+.reactions-question {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+}
+
+.reactions-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.reaction-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 2px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.reaction-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--color-orange);
+  box-shadow: 0 4px 12px rgba(60, 48, 38, 0.1);
+}
+
+.reaction-btn.active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  transform: scale(1.1);
+}
+
+.reaction-btn.active .reaction-emoji {
+  transform: scale(1.2);
+}
+
+.reaction-btn.active .reaction-count {
+  color: white;
+  font-weight: 700;
+}
+
+.reaction-emoji {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.reaction-btn:hover .reaction-emoji {
+  transform: scale(1.2);
+}
+
+.reaction-count {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .reactions-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .reaction-btn {
+    padding: 0.5rem 0.75rem;
+    min-width: 50px;
+  }
+
+  .reaction-emoji {
+    font-size: 1.25rem;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Configuración
+  const API_BASE = 'https://renemoya.com/api'; // ← CAMBIAR por tu URL
+  const POST_SLUG = '{{ page.url | remove: ".html" | remove: "/" }}';
+  
+  const container = document.getElementById('reactions-container');
+  const botones = container.querySelectorAll('.reaction-btn');
+  
+  // Cargar reacciones al inicio
+  cargarReacciones();
+  
+  // Manejar clics en botones
+  botones.forEach(function(boton) {
+    boton.addEventListener('click', async function() {
+      const tipoReaccion = this.getAttribute('data-reaction');
+      
+      // Deshabilitar temporalmente
+      botones.forEach(b => b.disabled = true);
+      
+      try {
+        const respuesta = await fetch(`${API_BASE}/reacciones.php`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            post_slug: POST_SLUG,
+            tipo_reaccion: tipoReaccion
+          })
+        });
+        
+        const resultado = await respuesta.json();
+        
+        if (resultado.success) {
+          // Recargar reacciones
+          cargarReacciones();
+        }
+        
+      } catch (error) {
+        console.error('Error al procesar reacción:', error);
+      }
+      
+      // Rehabilitar botones
+      botones.forEach(b => b.disabled = false);
+    });
+  });
+  
+  // Función para cargar reacciones
+  async function cargarReacciones() {
+    try {
+      const respuesta = await fetch(`${API_BASE}/reacciones.php?post_slug=${encodeURIComponent(POST_SLUG)}`);
+      const resultado = await respuesta.json();
+      
+      if (resultado.success) {
+        // Actualizar contadores
+        Object.keys(resultado.reacciones).forEach(function(tipo) {
+          const boton = container.querySelector(`[data-reaction="${tipo}"]`);
+          if (boton) {
+            const contador = boton.querySelector('.reaction-count');
+            contador.textContent = resultado.reacciones[tipo];
+          }
+        });
+        
+        // Marcar reacción del usuario
+        botones.forEach(b => b.classList.remove('active'));
+        if (resultado.usuario_reaccion) {
+          const botonActivo = container.querySelector(`[data-reaction="${resultado.usuario_reaccion}"]`);
+          if (botonActivo) {
+            botonActivo.classList.add('active');
+          }
+        }
+      }
+      
+    } catch (error) {
+      console.error('Error al cargar reacciones:', error);
+    }
+  }
+})();
+</script>

@@ -4,7 +4,7 @@ title: "Sobrepensar no es ego: es defensa"
 date: 2026-02-11
 tags: [ansiedad, conciencia, mente, autocontrol]
 categories: [psicologia, vida]
-excerpt: "No quiero ser el centro. Quiero estar preparado. El problema es que vivir preparado todo el tiempo también cansa."
+excerpt: "No quiero ser el centro de atención. Quiero estar preparado. El problema es que vivir preparado todo el tiempo también cansa."
 ---
 
 Sobrepensar pasa factura. No es narcisismo, ni ego, ni ganas de sentirme importante. En mi caso, nunca me ha interesado ser el popular ni que me exalten.

@@ -634,5 +634,165 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% include cookie-banner.html %}
 
+<!-- Books Popup (solo desktop, discreto) -->
+<div class="books-toast" id="booksToast" aria-live="polite" aria-label="Recomendación de libros">
+  <button class="books-toast-close" type="button" aria-label="Cerrar">×</button>
+
+  <div class="books-toast-body">
+    <div class="books-toast-kicker">Mis libros en Amazon</div>
+    <div class="books-toast-title">Bitácora real + ficción cósmica</div>
+    <div class="books-toast-text">
+      Dos títulos publicados en KDP. Si te gusta leer sin filtro, aquí están.
+    </div>
+
+    <div class="books-toast-actions">
+      <a class="books-toast-btn primary" href="{{ '/libros/' | relative_url }}">Ver Mis Libros</a>
+      <a class="books-toast-btn" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener">Glucosa</a>
+      <a class="books-toast-btn" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener">Kreación</a>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Solo desktop: no aparece en móvil */
+@media (max-width: 1024px){
+  .books-toast{ display:none !important; }
+}
+
+.books-toast{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 340px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(60,48,38,.14);
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(60,48,38,.14);
+  padding: 14px 14px 12px;
+  z-index: 9999;
+
+  transform: translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.books-toast.show{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.books-toast-close{
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: rgba(60,48,38,.65);
+  transition: background .2s ease, color .2s ease;
+}
+.books-toast-close:hover{
+  background: rgba(243,79,41,.08);
+  color: var(--color-orange);
+}
+
+.books-toast-kicker{
+  font-family: var(--font-sans, Inter, system-ui, -apple-system, sans-serif);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-text-muted, rgba(60,48,38,.65));
+  margin-bottom: 6px;
+}
+
+.books-toast-title{
+  font-family: var(--font-display, Montserrat, system-ui, -apple-system, sans-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text, #3c3026);
+  margin-bottom: 6px;
+}
+
+.books-toast-text{
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  font-size: .98rem;
+  line-height: 1.55;
+  color: rgba(60,48,38,.82);
+  margin-bottom: 10px;
+}
+
+.books-toast-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.books-toast-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--font-sans, Inter, system-ui, -apple-system, sans-serif);
+  font-size: .88rem;
+  font-weight: 600;
+  border: 1px solid rgba(60,48,38,.18);
+  color: var(--color-text, #3c3026);
+  background: #fff;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.books-toast-btn.primary{
+  background: var(--color-orange);
+  color: #fff;
+  border-color: rgba(243,79,41,.25);
+}
+
+.books-toast-btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(60,48,38,.10);
+  border-color: rgba(243,79,41,.35);
+}
+</style>
+
+<script>
+(function(){
+  const toast = document.getElementById('booksToast');
+  if (!toast) return;
+
+  // Solo desktop real (además del media query)
+  if (window.matchMedia('(max-width: 1024px)').matches) return;
+
+  const KEY = 'books_toast_dismissed';
+  const dismissed = sessionStorage.getItem(KEY) === '1';
+  if (dismissed) return;
+
+  // Aparece con delay discreto (no inmediato)
+  window.setTimeout(() => {
+    toast.classList.add('show');
+  }, 4500);
+
+  const closeBtn = toast.querySelector('.books-toast-close');
+  closeBtn?.addEventListener('click', () => {
+    toast.classList.remove('show');
+    sessionStorage.setItem(KEY, '1');
+  });
+
+  // Si hacen click en cualquier CTA, también lo ocultamos por sesión
+  toast.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => sessionStorage.setItem(KEY, '1'));
+  });
+})();
+</script>
+
+
 </body>
 </html>

@@ -1,13 +1,13 @@
 ---
 layout: default
 title: "Mis Libros"
-permalink: /libros/
+permalink: /libross/
 ---
 
 ---
 layout: default
 title: "Mis Libros - René Moya"
-permalink: /libros/
+permalink: /libross/
 ---
 
 <!DOCTYPE html>

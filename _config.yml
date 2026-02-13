@@ -1,14 +1,27 @@
 # Configuración del sitio
 title: "Metanoia"
-description: por René Moya.
-author: Metanoia
+description: "Blog personal de René Moya sobre productividad, escritura y reflexiones."
+author: René Moya
 email: renedev0284@gmail.com
 url: "https://renemoya.com"
 baseurl: ""
 
-# Redes sociales (actualiza con tus datos)
+# Imagen por defecto para compartir en redes sociales
+image: /assets/images/og-image.jpg
+
+# Redes sociales
 twitter_username: Rened_ev
 github_username: renedev0284-creator
+
+twitter:
+  username: Rened_ev
+  card: summary_large_image
+
+social:
+  name: René Moya
+  links:
+    - https://x.com/Rened_ev
+    - https://github.com/renedev0284-creator
 
 # Configuración de construcción
 markdown: kramdown
@@ -41,14 +54,3 @@ defaults:
 
 # Idioma
 lang: es
-
-# Social image
-social_image: /assets/images/social-default.png
-
-twitter:
-  card: summary_large_image
-
-social:
-  name: Metanoia
-  links:
-    - https://x.com/Rened_ev

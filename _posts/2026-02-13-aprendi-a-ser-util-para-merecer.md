@@ -13,7 +13,7 @@ Cuando resuelvo, cuando soy necesario, cuando cargo cosas que no son mías, pero
 ![Preocupado trabajando](/assets/images/posts/productividad-merecimiento.jpg)
 
 
-Hombre respondiendo mensajes ajenos, notificaciones acumuladas. Es porque me gusta ayudar sin esperar nada a cambio, pero te mata porque lo convierto en un sistema de merecimiento.
+Hombre respondiendo mensajes ajenos, notificaciones acumuladas. Es porque me gusta ayudar sin esperar nada a cambio, pero me cansa porque lo convierto en un sistema de merecimiento.
 
 Si soy útil, me aceptan.
 
@@ -35,7 +35,7 @@ Y poco a poco te conviertes en una herramienta con sentimientos.
 
 Lo duro es que el cuerpo te avisa, pero tú no escuchas.
 
-Cansancio. Irritabilidad. <span class="tooltip-word" data-tooltip="La anhedonia es un término médico y psicológico que hace referencia a la **incapacidad para experimentar placer en actividades que previamente eran consideradas agradables o gratificantes**.">Anhedonia</span>. Falta de ganas.
+Cansancio. Irritabilidad. <span class="tooltip-word" data-tooltip="La anhedonia es un término médico y psicológico que hace referencia a la incapacidad para experimentar placer en actividades que previamente eran consideradas agradables o gratificantes.">Anhedonia</span>. Falta de ganas.
 
 Y aún así sigues, porque parar se siente como traición a tu identidad.
 

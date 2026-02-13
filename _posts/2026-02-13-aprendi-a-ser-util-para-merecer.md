@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Aprendí a ser útil para merecer"
+image: /assets/images/posts/productividad-merecimiento.jpg  # ⬅️ Imagen específica
 date: 2026-02-13
 tags: [ansiedad, conciencia, productividad]
 categories: [psicologia, trabajo, familia]

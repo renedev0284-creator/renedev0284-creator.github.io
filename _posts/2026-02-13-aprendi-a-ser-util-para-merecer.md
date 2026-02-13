@@ -10,6 +10,9 @@ A veces siento que valgo únicamente cuando soy útil en algo.
 
 Cuando resuelvo, cuando soy necesario, cuando cargo cosas que no son mías, pero como si fueran.
 
+![Preocupado trabajando](/assets/images/posts/productividad-merecimiento.jpg)
+
+
 Hombre respondiendo mensajes ajenos, notificaciones acumuladas. Es porque me gusta ayudar sin esperar nada a cambio, pero te mata porque lo convierto en un sistema de merecimiento.
 
 Si soy útil, me aceptan.

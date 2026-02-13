@@ -1,0 +1,925 @@
+---
+layout: default
+title: "Newsletter - Metanoia"
+permalink: /newsletter/
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter - Metanoia por René Moya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="newsletter-landing">
+
+<div class="nl-hero">
+  <!-- Patrón de fondo -->
+  <div class="nl-pattern"></div>
+  
+  <div class="nl-container">
+    <!-- Badge premium -->
+    <div class="nl-badge" data-aos="fade-down">
+      <span class="badge-dot"></span>
+      Contenido directo a tu inbox
+    </div>
+    
+    <!-- Headline editorial -->
+    <h1 class="nl-headline" data-aos="fade-up" data-aos-delay="100">
+      Ideas que <span class="highlight">transforman</span><br>
+      tu forma de pensar
+    </h1>
+    
+    <p class="nl-subhead" data-aos="fade-up" data-aos-delay="200">
+      Reflexiones sobre productividad, escritura y vida. Sin spam, sin vender cursos,<br>
+      solo pensamiento profundo cada semana.
+    </p>
+    
+    <!-- Formulario inline -->
+    <form id="nl-form" class="nl-form" data-aos="fade-up" data-aos-delay="300">
+      <div class="form-group">
+        <input type="text" 
+               id="nl-name" 
+               name="nombre" 
+               placeholder="Tu nombre"
+               class="nl-input">
+        
+        <input type="email" 
+               id="nl-email" 
+               name="email" 
+               placeholder="tu@email.com" 
+               required
+               class="nl-input">
+        
+        <button type="submit" class="nl-submit" id="nl-submit">
+          <span class="btn-text">Suscribirme gratis</span>
+          <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+      
+      <p class="nl-message" id="nl-message"></p>
+      <p class="nl-privacy">🔒 Tu email está seguro. Cancela cuando quieras.</p>
+    </form>
+    
+    <!-- Stats sociales -->
+    <div class="nl-stats" data-aos="fade-up" data-aos-delay="400">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Lectores</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">Gratis</div>
+        <div class="stat-label">Sin paywall</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">1x/semana</div>
+        <div class="stat-label">Frecuencia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sección: Qué recibirás -->
+<section class="nl-benefits">
+  <div class="nl-container">
+    <h2 class="section-title" data-aos="fade-up">¿Qué recibirás cada semana?</h2>
+    
+    <div class="benefits-grid">
+      <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="benefit-icon">📝</div>
+        <h3>Reflexiones originales</h3>
+        <p>No copypaste de Twitter. Pensamiento profundo sobre temas que importan.</p>
+      </div>
+      
+      <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="benefit-icon">💡</div>
+        <h3>Técnicas probadas</h3>
+        <p>Estrategias de productividad y escritura que realmente funcionan.</p>
+      </div>
+      
+      <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="benefit-icon">🎯</div>
+        <h3>Lecturas curadas</h3>
+        <p>Los mejores artículos y libros que encontré durante la semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Preview de email -->
+<section class="nl-preview">
+  <div class="nl-container">
+    <div class="preview-layout">
+      <div class="preview-text" data-aos="fade-right">
+        <h2 class="section-title">Como leer un buen libro</h2>
+        <p class="preview-desc">
+          Cada email es una experiencia de lectura cuidada. Sin distracciones, 
+          sin diseños sobrecargados, solo texto bien escrito que vale la pena leer.
+        </p>
+        <ul class="preview-list">
+          <li>✓ Formato limpio y minimalista</li>
+          <li>✓ Optimizado para lectura en móvil</li>
+          <li>✓ Links relevantes sin afiliados spam</li>
+          <li>✓ Un click para cancelar suscripción</li>
+        </ul>
+      </div>
+      
+      <div class="preview-mockup" data-aos="fade-left">
+        <div class="email-window">
+          <div class="email-header">
+            <div class="email-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="email-title">Nueva reflexión de Metanoia</div>
+          </div>
+          <div class="email-body">
+            <h3>Sobrepensar no es ego, es defensa</h3>
+            <p>El sobrepensar no es vanidad ni exceso de autoestima...</p>
+            <p>Es una respuesta adaptativa ante la incertidumbre.</p>
+            <div class="email-cta">Leer en el blog →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Testimonios -->
+<section class="nl-testimonials">
+  <div class="nl-container">
+    <h2 class="section-title" data-aos="fade-up">Lo que dicen los lectores</h2>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-quote">"</div>
+        <p>Uno de los pocos newsletters que leo completo. René escribe con honestidad brutal.</p>
+        <div class="testimonial-author">
+          <strong>Carlos M.</strong>
+          <span>Desarrollador</span>
+        </div>
+      </div>
+      
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-quote">"</div>
+        <p>No vende cursos, no promociona nada. Solo contenido genuino. Refrescante.</p>
+        <div class="testimonial-author">
+          <strong>Ana L.</strong>
+          <span>Diseñadora</span>
+        </div>
+      </div>
+      
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="testimonial-quote">"</div>
+        <p>Sus reflexiones sobre productividad me ayudaron a replantear mi sistema completo.</p>
+        <div class="testimonial-author">
+          <strong>Miguel R.</strong>
+          <span>Emprendedor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="nl-cta-final">
+  <div class="nl-container">
+    <div class="cta-box" data-aos="zoom-in">
+      <h2>Únete a 500+ lectores</h2>
+      <p>Recibe reflexiones que valen la pena cada semana</p>
+      
+      <form id="nl-form-footer" class="nl-form-simple">
+        <input type="email" 
+               id="footer-email" 
+               placeholder="tu@email.com" 
+               required
+               class="simple-input">
+        <button type="submit" class="simple-btn" id="footer-submit">
+          Suscribirme
+        </button>
+      </form>
+      
+      <p class="nl-message" id="footer-message"></p>
+      <p class="cta-note">Gratis. Sin spam. Cancela cuando quieras.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ============================================
+   NEWSLETTER LANDING - EDITORIAL STYLE
+   ============================================ */
+
+.newsletter-landing {
+  background: #fafaf9;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Hero Section */
+.nl-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  overflow: hidden;
+}
+
+.nl-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 36px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 36px);
+}
+
+.nl-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.nl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #F34F29;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.nl-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: #F34F29;
+  font-style: italic;
+  position: relative;
+  display: inline-block;
+}
+
+.nl-subhead {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 3rem;
+  max-width: 700px;
+}
+
+/* Formulario Hero */
+.nl-form {
+  margin-bottom: 3rem;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr auto;
+  gap: 0.75rem;
+  max-width: 800px;
+}
+
+.nl-input {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
+}
+
+.nl-input:focus {
+  outline: none;
+  border-color: #F34F29;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(243, 79, 41, 0.2);
+}
+
+.nl-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: #F34F29;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nl-submit:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(243, 79, 41, 0.4);
+}
+
+.nl-submit:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.nl-message {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: none;
+  text-align: center;
+}
+
+.nl-message.success {
+  display: block;
+  background: rgba(72, 187, 120, 0.2);
+  border: 2px solid #48bb78;
+  color: #c6f6d5;
+}
+
+.nl-message.error {
+  display: block;
+  background: rgba(245, 101, 101, 0.2);
+  border: 2px solid #fc8181;
+  color: #fed7d7;
+}
+
+.nl-privacy {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* Stats */
+.nl-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #F34F29;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Benefits Section */
+.nl-benefits {
+  padding: 6rem 0;
+  background: white;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #1a1a1a;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  padding: 2.5rem;
+  background: #fafaf9;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #F34F29;
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.benefit-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Preview Section */
+.nl-preview {
+  padding: 6rem 0;
+  background: #fafaf9;
+}
+
+.preview-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.preview-desc {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.preview-list {
+  list-style: none;
+  padding: 0;
+}
+
+.preview-list li {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.preview-list li:last-child {
+  border-bottom: none;
+}
+
+/* Email Mockup */
+.email-window {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.email-header {
+  background: #f5f5f5;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.email-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.email-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.email-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.email-body {
+  padding: 2rem;
+}
+
+.email-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.email-body p {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.email-cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #F34F29;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.email-cta:hover {
+  background: #d94520;
+  transform: translateX(4px);
+}
+
+/* Testimonials */
+.nl-testimonials {
+  padding: 6rem 0;
+  background: white;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  padding: 2rem;
+  background: #fafaf9;
+  border-left: 4px solid #F34F29;
+  border-radius: 8px;
+  position: relative;
+}
+
+.testimonial-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: #F34F29;
+  opacity: 0.3;
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+}
+
+.testimonial-card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 2rem 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-author span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* CTA Final */
+.nl-cta-final {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+}
+
+.cta-box {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-box > p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.nl-form-simple {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.simple-input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #1a1a1a;
+}
+
+.simple-input:focus {
+  outline: none;
+  border-color: #F34F29;
+  background: white;
+}
+
+.simple-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: #F34F29;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.simple-btn:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+}
+
+.cta-note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  .nl-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .preview-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .nl-form-simple {
+    flex-direction: column;
+  }
+}
+
+/* AOS Animations */
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+}
+
+[data-aos="fade-down"] {
+  transform: translateY(-30px);
+}
+
+[data-aos="fade-down"].aos-animate {
+  transform: translateY(0);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-30px);
+}
+
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(30px);
+}
+
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0);
+}
+
+[data-aos="zoom-in"] {
+  transform: scale(0.95);
+}
+
+[data-aos="zoom-in"].aos-animate {
+  transform: scale(1);
+}
+</style>
+
+<script>
+// Simple AOS-like animations
+document.addEventListener('DOMContentLoaded', function() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+  
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    observer.observe(el);
+  });
+});
+
+// Newsletter Form - Hero
+const form = document.getElementById('nl-form');
+const btnSubmit = document.getElementById('nl-submit');
+const message = document.getElementById('nl-message');
+const nameField = document.getElementById('nl-name');
+const emailField = document.getElementById('nl-email');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const datos = {
+    nombre: nameField.value.trim(),
+    email: emailField.value.trim(),
+    fuente: 'landing-newsletter'
+  };
+  
+  btnSubmit.disabled = true;
+  btnSubmit.innerHTML = '<span>Enviando...</span>';
+  message.className = 'nl-message';
+  message.style.display = 'none';
+  
+  try {
+    const respuesta = await fetch('https://comentarios.finanzasreales.com/api/newsletter.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+    });
+    
+    const resultado = await respuesta.json();
+    
+    if (resultado.success) {
+      message.className = 'nl-message success';
+      message.textContent = '✓ ' + resultado.mensaje;
+      form.reset();
+      
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 8000);
+    } else {
+      message.className = 'nl-message error';
+      message.textContent = '✗ ' + (resultado.error || 'Error al suscribirse');
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+    message.className = 'nl-message error';
+    message.textContent = '✗ Error de conexión. Intenta de nuevo.';
+  }
+  
+  btnSubmit.disabled = false;
+  btnSubmit.innerHTML = '<span class="btn-text">Suscribirme gratis</span><svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+});
+
+// Newsletter Form - Footer
+const formFooter = document.getElementById('nl-form-footer');
+const btnFooter = document.getElementById('footer-submit');
+const messageFooter = document.getElementById('footer-message');
+const emailFooter = document.getElementById('footer-email');
+
+formFooter.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const datos = {
+    nombre: '',
+    email: emailFooter.value.trim(),
+    fuente: 'landing-newsletter-footer'
+  };
+  
+  btnFooter.disabled = true;
+  btnFooter.textContent = 'Enviando...';
+  messageFooter.className = 'nl-message';
+  messageFooter.style.display = 'none';
+  
+  try {
+    const respuesta = await fetch('https://comentarios.finanzasreales.com/api/newsletter.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+    });
+    
+    const resultado = await respuesta.json();
+    
+    if (resultado.success) {
+      messageFooter.className = 'nl-message success';
+      messageFooter.textContent = '✓ ' + resultado.mensaje;
+      formFooter.reset();
+      
+      setTimeout(() => {
+        messageFooter.style.display = 'none';
+      }, 8000);
+    } else {
+      messageFooter.className = 'nl-message error';
+      messageFooter.textContent = '✗ ' + (resultado.error || 'Error');
+    }
+    
+  } catch (error) {
+    messageFooter.className = 'nl-message error';
+    messageFooter.textContent = '✗ Error de conexión';
+  }
+  
+  btnFooter.disabled = false;
+  btnFooter.textContent = 'Suscribirme';
+});
+</script>
+
+</body>
+</html>

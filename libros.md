@@ -1,0 +1,334 @@
+---
+layout: default
+title: Mis Libros
+permalink: /libros/
+---
+
+<div class="home">
+  <section class="intro intro-icons">
+    <div class="intro-badges">
+      <span class="badge" title="Libros">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </span>
+      <span class="badge" title="Amazon KDP">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          <path d="M8 7h8"></path>
+          <path d="M8 11h8"></path>
+          <path d="M8 15h6"></path>
+        </svg>
+      </span>
+    </div>
+
+    <h1>Mis Libros</h1>
+    <p class="lead">
+      Dos títulos publicados en <strong>Amazon KDP</strong>. Uno es vida real con datos. El otro es ficción cósmica con alma.
+    </p>
+  </section>
+
+  <section class="posts">
+    <h2 class="section-title">Publicados</h2>
+
+    <div class="books-grid">
+      <!-- LIBRO 1 -->
+      <article class="book-card" style="--index: 1;">
+        <a class="book-cover" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener" aria-label="Ver libro en Amazon">
+          <img src="{{ '/assets/images/libros/libro-1.jpg' | relative_url }}" alt="Cómo logré bajar mis niveles de glucosa en sangre" loading="lazy">
+        </a>
+
+        <div class="book-body">
+          <div class="book-kicker">Salud • Historia real • Bitácora</div>
+
+          <h3 class="book-title">Cómo logré bajar mis niveles de glucosa en sangre</h3>
+
+          <p class="book-subtitle">
+            <strong>Sin medicamentos los primeros 15 días.</strong> Con dieta, ejercicio y la determinación de un padre que eligió vivir.
+          </p>
+
+          <p class="book-proof">
+            <span class="proof-badge" title="Dato documentado">386 → 95 mg/dL</span>
+            <span class="proof-note">Proceso real documentado (registro diario + decisiones concretas).</span>
+          </p>
+
+          <p class="book-desc">
+            Si un día viste un número que te dejó helado —y sentiste que tu vida cambió en un segundo— este libro es para ti.
+            Aquí no hay promesas mágicas: hay un camino contado sin filtros, con datos, hábitos y fricción real.
+          </p>
+
+          <ul class="book-bullets">
+            <li><strong>📊 Registro diario</strong> con app: progreso con números, no con “fe”.</li>
+            <li><strong>🥗 Recetas simples</strong> que funcionan sin vivir castigado.</li>
+            <li><strong>🧠 Hábitos sostenibles</strong> cuando la motivación baja.</li>
+            <li><strong>🔬 Respaldo en estudios</strong> explicado en lenguaje humano.</li>
+          </ul>
+
+          <div class="book-actions">
+            <a class="book-btn" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener">Ver en Amazon</a>
+            <a class="book-btn ghost" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener">Leer muestra</a>
+          </div>
+
+          <p class="book-disclaimer">
+            <em>No es un manual clínico. Es una historia real que puede encender el interruptor.</em>
+          </p>
+        </div>
+      </article>
+
+      <!-- LIBRO 2 -->
+      <article class="book-card" style="--index: 2;">
+        <a class="book-cover" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener" aria-label="Ver libro en Amazon">
+          <img src="{{ '/assets/images/libros/libro-2.jpg' | relative_url }}" alt="Kreación" loading="lazy">
+        </a>
+
+        <div class="book-body">
+          <div class="book-kicker">Fantasía cósmica • Espiritualidad • Reencarnación</div>
+
+          <h3 class="book-title">Kreación</h3>
+
+          <p class="book-subtitle">
+            En <strong>Némora</strong>, la humanidad no vive: <strong>se prueba</strong>.
+          </p>
+
+          <p class="book-desc">
+            Némora no es un planeta. Es un filtro espiritual, una máquina antigua diseñada por los Eternos para destilar almas
+            a través de experiencia, dolor, amor y olvido. Cada vida tiene una razón. Cada muerte es un reinicio.
+          </p>
+
+          <p class="book-desc">
+            Durante eones, el sistema funcionó… hasta que una grieta se abrió entre dimensiones. Algo cruzó.
+            Y para salvar lo que él mismo ayudó a crear, el Dios de la Ascensión debe pagar un precio impensable:
+            olvidar su divinidad, vivir como humano, caer como humano… y aun así volver a la luz.
+          </p>
+
+          <p class="book-proof">
+            <span class="proof-badge" title="Protagonista">Kaelar</span>
+            <span class="proof-note">Y lo que está en juego no es un mundo: es el sentido mismo de la existencia.</span>
+          </p>
+
+          <ul class="book-bullets">
+            <li><strong>⚔️ Guerra invisible</strong> entre dioses y humanidad.</li>
+            <li><strong>♻️ Reencarnación</strong> como mecanismo y condena.</li>
+            <li><strong>✨ Eteron</strong>: evolución espiritual o caída definitiva.</li>
+            <li><strong>🕳️ La grieta</strong>: el caos aprendiendo a reencarnarse.</li>
+          </ul>
+
+          <div class="book-actions">
+            <a class="book-btn" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener">Ver en Amazon</a>
+            <a class="book-btn ghost" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener">Leer muestra</a>
+          </div>
+
+          <p class="book-disclaimer">
+            <em>Si te gustan las historias que revelan su verdad capítulo a capítulo como un golpe de realidad, Némora te va a perseguir.</em>
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<style>
+/* ============================================
+   BOOKS (MISMO BRANDING QUE EL HOME)
+   ============================================ */
+
+.books-grid{
+  max-width: 980px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.book-card{
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 1.6rem;
+  padding: 1.35rem;
+  background: rgba(255,255,255,0.30);
+  border: 1px solid rgba(60, 48, 38, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(60, 48, 38, 0.06);
+  opacity: 0;
+  animation: gentleFadeIn 0.8s ease forwards;
+  animation-delay: calc(var(--index) * 0.15s);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.book-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(243,79,41,0.45);
+  box-shadow: 0 12px 28px rgba(60, 48, 38, 0.10);
+}
+
+.book-cover{
+  display:block;
+  border-radius: 10px;
+  overflow:hidden;
+  border: 1px solid rgba(60,48,38,0.14);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 6px 18px rgba(60,48,38,0.10);
+}
+
+.book-cover img{
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  display:block;
+  filter: grayscale(8%) contrast(0.98);
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.book-card:hover .book-cover img{
+  transform: scale(1.02);
+  filter: grayscale(0%) contrast(1);
+}
+
+.book-body{
+  display:flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.book-kicker{
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(60,48,38,0.65);
+}
+
+.book-title{
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.book-subtitle{
+  margin: 0;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+  color: rgba(60,48,38,0.88);
+}
+
+.book-desc{
+  margin: 0.15rem 0;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(60,48,38,0.85);
+  max-width: 70ch;
+}
+
+.book-proof{
+  margin: .35rem 0 .15rem;
+  display:flex;
+  gap: .75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.proof-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(243,79,41,0.35);
+  background: rgba(243,79,41,0.10);
+  color: rgba(60,48,38,0.92);
+  font-family: var(--font-sans);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.proof-note{
+  font-family: var(--font-sans);
+  font-size: .9rem;
+  color: rgba(60,48,38,0.68);
+}
+
+.book-bullets{
+  margin: .35rem 0 .15rem;
+  padding-left: 1.1rem;
+}
+
+.book-bullets li{
+  margin: .4rem 0;
+  color: rgba(60,48,38,0.86);
+  line-height: 1.55;
+}
+
+.book-bullets li::marker{
+  color: var(--color-orange);
+}
+
+.book-actions{
+  display:flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: .35rem;
+}
+
+.book-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: .62rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(243,79,41,0.40);
+  background: rgba(243,79,41,0.10);
+  color: var(--color-text);
+  text-decoration:none;
+  font-family: var(--font-sans);
+  font-size: .92rem;
+  font-weight: 700;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.book-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(243,79,41,0.16);
+  border-color: rgba(243,79,41,0.65);
+  color: var(--color-orange);
+}
+
+.book-btn.ghost{
+  background: transparent;
+  border-color: rgba(60,48,38,0.18);
+  color: rgba(60,48,38,0.65);
+}
+
+.book-btn.ghost:hover{
+  border-color: rgba(243,79,41,0.5);
+  color: var(--color-orange);
+}
+
+.book-disclaimer{
+  margin: .4rem 0 0;
+  font-family: var(--font-sans);
+  font-size: .92rem;
+  color: rgba(60,48,38,0.68);
+}
+
+@media (max-width: 820px){
+  .book-card{
+    grid-template-columns: 1fr;
+  }
+  .book-cover img{
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px){
+  .book-cover img{
+    height: 280px;
+  }
+}
+</style>

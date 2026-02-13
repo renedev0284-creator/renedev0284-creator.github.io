@@ -1,0 +1,317 @@
+<!-- Componente de Newsletter -->
+<div class="newsletter-section">
+  <div class="newsletter-container">
+    <div class="newsletter-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </div>
+    
+    <div class="newsletter-content">
+      <h3 class="newsletter-title">📬 Suscríbete al Newsletter</h3>
+      <p class="newsletter-description">
+        Recibe mis nuevos artículos directamente en tu correo. Sin spam, solo contenido de valor.
+      </p>
+      
+      <form id="newsletter-form" class="newsletter-form">
+        <div class="form-group-inline">
+          <input type="text" 
+                 id="nl-nombre" 
+                 name="nombre" 
+                 placeholder="Tu nombre" 
+                 maxlength="100">
+          
+          <input type="email" 
+                 id="nl-email" 
+                 name="email" 
+                 placeholder="tu@email.com *" 
+                 required 
+                 maxlength="150">
+          
+          <button type="submit" class="btn-newsletter" id="btn-newsletter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            Suscribirme
+          </button>
+        </div>
+        
+        <p class="newsletter-message" id="nl-message"></p>
+        <p class="newsletter-privacy">🔒 Tu email está seguro. Puedes cancelar cuando quieras.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ========================================
+   NEWSLETTER ATRACTIVO
+   ======================================== */
+
+.newsletter-section {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.newsletter-container {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(243, 79, 41, 0.05) 0%, rgba(243, 79, 41, 0.02) 100%);
+  border: 2px solid rgba(243, 79, 41, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(60, 48, 38, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.newsletter-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-orange) 0%, #d94520 100%);
+}
+
+.newsletter-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(60, 48, 38, 0.12);
+  border-color: var(--color-orange);
+}
+
+.newsletter-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.2);
+}
+
+.newsletter-icon svg {
+  color: var(--color-orange);
+}
+
+.newsletter-content {
+  flex: 1;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.newsletter-description {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+/* Formulario */
+.newsletter-form {
+  margin-top: 1.5rem;
+}
+
+.form-group-inline {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr auto;
+  gap: 0.75rem;
+}
+
+.form-group-inline input {
+  padding: 0.875rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: white;
+  border: 2px solid rgba(60, 48, 38, 0.15);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.form-group-inline input:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.1);
+}
+
+.btn-newsletter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-orange);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(243, 79, 41, 0.3);
+}
+
+.btn-newsletter:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.4);
+}
+
+.btn-newsletter:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-newsletter svg {
+  transition: transform 0.3s;
+}
+
+.btn-newsletter:hover svg {
+  transform: translateX(3px);
+}
+
+.newsletter-message {
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  border-radius: 8px;
+  display: none;
+}
+
+.newsletter-message.success {
+  display: block;
+  color: #22543d;
+  background: #c6f6d5;
+  border: 1px solid #9ae6b4;
+}
+
+.newsletter-message.error {
+  display: block;
+  color: #c53030;
+  background: #fed7d7;
+  border: 1px solid #fc8181;
+}
+
+.newsletter-privacy {
+  margin-top: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter-container {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .newsletter-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+  }
+
+  .newsletter-content {
+    text-align: center;
+  }
+
+  .form-group-inline {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-newsletter {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Configuración
+  const API_BASE = 'https://comentarios.finanzasreales.com/api';
+  
+  // Elementos
+  const form = document.getElementById('newsletter-form');
+  const btnNewsletter = document.getElementById('btn-newsletter');
+  const nlMessage = document.getElementById('nl-message');
+  const nombreField = document.getElementById('nl-nombre');
+  const emailField = document.getElementById('nl-email');
+  
+  // Enviar suscripción
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const datos = {
+      nombre: nombreField.value.trim(),
+      email: emailField.value.trim(),
+      fuente: 'blog'
+    };
+    
+    // Deshabilitar botón
+    btnNewsletter.disabled = true;
+    btnNewsletter.innerHTML = 'Enviando...';
+    nlMessage.className = 'newsletter-message';
+    nlMessage.style.display = 'none';
+    
+    try {
+      const respuesta = await fetch(`${API_BASE}/newsletter.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+      
+      const resultado = await respuesta.json();
+      
+      if (resultado.success) {
+        nlMessage.className = 'newsletter-message success';
+        nlMessage.textContent = '✓ ' + resultado.mensaje;
+        form.reset();
+        
+        // Ocultar mensaje después de 5 segundos
+        setTimeout(() => {
+          nlMessage.style.display = 'none';
+        }, 5000);
+      } else {
+        nlMessage.className = 'newsletter-message error';
+        nlMessage.textContent = '✗ ' + (resultado.error || 'Error al suscribirse');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      nlMessage.className = 'newsletter-message error';
+      nlMessage.textContent = '✗ Error de conexión. Intenta de nuevo.';
+    }
+    
+    // Rehabilitar botón
+    btnNewsletter.disabled = false;
+    btnNewsletter.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Suscribirme';
+  });
+})();
+</script>

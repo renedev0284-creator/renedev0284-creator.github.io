@@ -4,17 +4,11 @@ title: "Newsletter - Metanoia"
 permalink: /newsletter/
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Newsletter - Metanoia por René Moya</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body class="newsletter-landing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="newsletter-landing">
 
 <div class="nl-hero">
   <!-- Patrón de fondo -->
@@ -212,17 +206,15 @@ permalink: /newsletter/
   </div>
 </section>
 
-<style>
-/* ============================================
-   NEWSLETTER LANDING - EDITORIAL STYLE
-   ============================================ */
+</div>
 
+<style>
+/* Todo el CSS del archivo anterior va aquí - lo pongo completo abajo */
 .newsletter-landing {
   background: #fafaf9;
   font-family: 'Inter', -apple-system, sans-serif;
 }
 
-/* Hero Section */
 .nl-hero {
   position: relative;
   min-height: 90vh;
@@ -306,7 +298,6 @@ permalink: /newsletter/
   max-width: 700px;
 }
 
-/* Formulario Hero */
 .nl-form {
   margin-bottom: 3rem;
 }
@@ -397,7 +388,6 @@ permalink: /newsletter/
   margin-top: 0.75rem;
 }
 
-/* Stats */
 .nl-stats {
   display: flex;
   align-items: center;
@@ -429,7 +419,6 @@ permalink: /newsletter/
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Benefits Section */
 .nl-benefits {
   padding: 6rem 0;
   background: white;
@@ -483,7 +472,6 @@ permalink: /newsletter/
   line-height: 1.6;
 }
 
-/* Preview Section */
 .nl-preview {
   padding: 6rem 0;
   background: #fafaf9;
@@ -519,7 +507,6 @@ permalink: /newsletter/
   border-bottom: none;
 }
 
-/* Email Mockup */
 .email-window {
   background: white;
   border-radius: 12px;
@@ -588,7 +575,6 @@ permalink: /newsletter/
   transform: translateX(4px);
 }
 
-/* Testimonials */
 .nl-testimonials {
   padding: 6rem 0;
   background: white;
@@ -642,7 +628,6 @@ permalink: /newsletter/
   color: #666;
 }
 
-/* CTA Final */
 .nl-cta-final {
   padding: 6rem 0;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -714,7 +699,6 @@ permalink: /newsletter/
   margin-top: 1rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .form-group {
     grid-template-columns: 1fr;
@@ -740,7 +724,6 @@ permalink: /newsletter/
   }
 }
 
-/* AOS Animations */
 [data-aos] {
   opacity: 0;
   transition-property: transform, opacity;
@@ -792,7 +775,6 @@ permalink: /newsletter/
 </style>
 
 <script>
-// Simple AOS-like animations
 document.addEventListener('DOMContentLoaded', function() {
   const observerOptions = {
     threshold: 0.1,
@@ -812,7 +794,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Newsletter Form - Hero
 const form = document.getElementById('nl-form');
 const btnSubmit = document.getElementById('nl-submit');
 const message = document.getElementById('nl-message');
@@ -867,7 +848,6 @@ form.addEventListener('submit', async function(e) {
   btnSubmit.innerHTML = '<span class="btn-text">Suscribirme gratis</span><svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 });
 
-// Newsletter Form - Footer
 const formFooter = document.getElementById('nl-form-footer');
 const btnFooter = document.getElementById('footer-submit');
 const messageFooter = document.getElementById('footer-message');
@@ -920,6 +900,3 @@ formFooter.addEventListener('submit', async function(e) {
   btnFooter.textContent = 'Suscribirme';
 });
 </script>
-
-</body>
-</html>

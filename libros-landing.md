@@ -1,5 +1,11 @@
 ---
 layout: default
+title: "Mis Libros"
+permalink: /libros/
+---
+
+---
+layout: default
 title: "Mis Libros - René Moya"
 permalink: /libros/
 ---

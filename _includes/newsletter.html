@@ -9,7 +9,7 @@
     </div>
     
     <div class="newsletter-content">
-      <h3 class="newsletter-title">📬 Suscríbete al Newsletter</h3>
+      <h3 class="newsletter-title">Suscríbete al Newsletter</h3>
       <p class="newsletter-description">
         Recibe mis nuevos artículos directamente en tu correo. Sin spam, solo contenido de valor.
       </p>
@@ -130,6 +130,7 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr auto;
   gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .form-group-inline input {
@@ -261,6 +262,8 @@
   const nlMessage = document.getElementById('nl-message');
   const nombreField = document.getElementById('nl-nombre');
   const emailField = document.getElementById('nl-email');
+  
+  if (!form) return;
   
   // Enviar suscripción
   form.addEventListener('submit', async function(e) {

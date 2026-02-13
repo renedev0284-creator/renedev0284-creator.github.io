@@ -1,26 +1,40 @@
+---
+layout: default
+title: Mis Libros
+permalink: /libros/
+---
+
 <div class="home">
   <section class="intro intro-icons">
     <div class="intro-badges">
-      <span class="badge" title="Libros">
+      <span class="badge" title="Escritura">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+          <path d="M2 2l7.586 7.586"></path>
         </svg>
       </span>
-      <span class="badge" title="Amazon KDP">
+
+      <span class="badge" title="Salud con datos">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          <path d="M8 7h8"></path>
-          <path d="M8 11h8"></path>
-          <path d="M8 15h6"></path>
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+      </span>
+
+      <span class="badge" title="Fantasía">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="3"></circle>
+          <line x1="12" y1="2" x2="12" y2="6"></line>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
         </svg>
       </span>
     </div>
 
     <h1>Mis Libros</h1>
     <p class="lead">
-      Dos títulos publicados en <strong>Amazon KDP</strong>. Uno es vida real con datos. El otro es ficción cósmica con alma.
+      Dos proyectos publicados en Amazon KDP. Uno es bitácora real con datos. El otro, ficción cósmica: un filtro espiritual llamado Némora.
+      Si lees esto, ya estás dentro del laboratorio.
     </p>
   </section>
 
@@ -28,151 +42,136 @@
     <h2 class="section-title">Publicados</h2>
 
     <div class="books-grid">
-      <!-- LIBRO 1 -->
+
+      <!-- Libro 1 -->
       <article class="book-card" style="--index: 1;">
-        <a class="book-cover" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener" aria-label="Ver libro en Amazon">
-          <img src="{{ '/assets/images/libros/libro-1.jpg' | relative_url }}" alt="Cómo logré bajar mis niveles de glucosa en sangre" loading="lazy">
-        </a>
+        <div class="book-cover">
+          <!-- Coloca tu portada aquí -->
+          <img src="{{ '/assets/images/libros/glucosa.jpg' | relative_url }}"
+               alt="Portada: Cómo logré bajar mis niveles de glucosa en sangre"
+               loading="lazy">
+        </div>
 
         <div class="book-body">
-          <div class="book-kicker">Salud • Historia real • Bitácora</div>
-
+          <p class="book-kicker">Historia real documentada</p>
           <h3 class="book-title">Cómo logré bajar mis niveles de glucosa en sangre</h3>
 
           <p class="book-subtitle">
-            <strong>Sin medicamentos los primeros 15 días.</strong> Con dieta, ejercicio y la determinación de un padre que eligió vivir.
+            Sin medicamentos los primeros 15 días. Con dieta, ejercicio y la determinación de un padre que eligió vivir.
           </p>
 
-          <p class="book-proof">
-            <span class="proof-badge" title="Dato documentado">386 → 95 mg/dL</span>
-            <span class="proof-note">Proceso real documentado (registro diario + decisiones concretas).</span>
-          </p>
+          <div class="book-highlight">
+            <span class="metric">386 → 95</span>
+            <span class="metric-label">mg/dL</span>
+          </div>
 
-          <p class="book-desc">
-            Si un día viste un número que te dejó helado —y sentiste que tu vida cambió en un segundo— este libro es para ti.
-            Aquí no hay promesas mágicas: hay un camino contado sin filtros, con datos, hábitos y fricción real.
+          <p class="book-excerpt">
+            No hay promesas mágicas. Hay registro diario, decisiones concretas y resultados medibles: qué comí, cómo me moví,
+            qué pensé, qué funcionó y qué no.
           </p>
 
           <ul class="book-bullets">
-            <li><strong>📊 Registro diario</strong> con app: progreso con números, no con “fe”.</li>
-            <li><strong>🥗 Recetas simples</strong> que funcionan sin vivir castigado.</li>
-            <li><strong>🧠 Hábitos sostenibles</strong> cuando la motivación baja.</li>
-            <li><strong>🔬 Respaldo en estudios</strong> explicado en lenguaje humano.</li>
+            <li>📊 Progreso con datos (bitácora real)</li>
+            <li>🥗 Recetas simples que sí funcionan</li>
+            <li>🧠 Hábitos para sostener el cambio</li>
+            <li>🔬 Estudios explicados en lenguaje humano</li>
           </ul>
 
           <div class="book-actions">
-            <a class="book-btn" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener">Ver en Amazon</a>
-            <a class="book-btn ghost" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener">Leer muestra</a>
+            <a class="book-btn" href="https://a.co/d/07CClbnv" target="_blank" rel="noopener noreferrer">
+              Ver en Amazon
+            </a>
+            <a class="book-btn ghost" href="{{ '/about/' | relative_url }}">
+              Sobre el autor
+            </a>
           </div>
-
-          <p class="book-disclaimer">
-            <em>No es un manual clínico. Es una historia real que puede encender el interruptor.</em>
-          </p>
         </div>
       </article>
 
-      <!-- LIBRO 2 -->
+      <!-- Libro 2 -->
       <article class="book-card" style="--index: 2;">
-        <a class="book-cover" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener" aria-label="Ver libro en Amazon">
-          <img src="{{ '/assets/images/libros/libro-2.jpg' | relative_url }}" alt="Kreación" loading="lazy">
-        </a>
+        <div class="book-cover">
+          <!-- Coloca tu portada aquí -->
+          <img src="{{ '/assets/images/libros/kreacion.jpg' | relative_url }}"
+               alt="Portada: Kreación"
+               loading="lazy">
+        </div>
 
         <div class="book-body">
-          <div class="book-kicker">Fantasía cósmica • Espiritualidad • Reencarnación</div>
-
+          <p class="book-kicker">Fantasía cósmica / espiritualidad</p>
           <h3 class="book-title">Kreación</h3>
 
           <p class="book-subtitle">
-            En <strong>Némora</strong>, la humanidad no vive: <strong>se prueba</strong>.
+            En Némora, la humanidad no vive: se prueba.
           </p>
 
-          <p class="book-desc">
-            Némora no es un planeta. Es un filtro espiritual, una máquina antigua diseñada por los Eternos para destilar almas
-            a través de experiencia, dolor, amor y olvido. Cada vida tiene una razón. Cada muerte es un reinicio.
-          </p>
-
-          <p class="book-desc">
-            Durante eones, el sistema funcionó… hasta que una grieta se abrió entre dimensiones. Algo cruzó.
-            Y para salvar lo que él mismo ayudó a crear, el Dios de la Ascensión debe pagar un precio impensable:
-            olvidar su divinidad, vivir como humano, caer como humano… y aun así volver a la luz.
-          </p>
-
-          <p class="book-proof">
-            <span class="proof-badge" title="Protagonista">Kaelar</span>
-            <span class="proof-note">Y lo que está en juego no es un mundo: es el sentido mismo de la existencia.</span>
+          <p class="book-excerpt">
+            Némora no es un planeta: es un filtro. Una máquina antigua diseñada para destilar almas a través de experiencia,
+            dolor, amor y olvido. Algo cruzó una grieta entre dimensiones… y el sistema dejó de ser estable.
           </p>
 
           <ul class="book-bullets">
-            <li><strong>⚔️ Guerra invisible</strong> entre dioses y humanidad.</li>
-            <li><strong>♻️ Reencarnación</strong> como mecanismo y condena.</li>
-            <li><strong>✨ Eteron</strong>: evolución espiritual o caída definitiva.</li>
-            <li><strong>🕳️ La grieta</strong>: el caos aprendiendo a reencarnarse.</li>
+            <li>♾️ Reencarnación, memoria y ciclos</li>
+            <li>⚔️ Guerra invisible entre dioses y humanidad</li>
+            <li>🧩 Verdad que se revela capítulo a capítulo</li>
+            <li>🌌 Kaelar: olvidar la divinidad para salvarlo todo</li>
           </ul>
 
           <div class="book-actions">
-            <a class="book-btn" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener">Ver en Amazon</a>
-            <a class="book-btn ghost" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener">Leer muestra</a>
+            <a class="book-btn" href="https://a.co/d/030jsmbG" target="_blank" rel="noopener noreferrer">
+              Ver en Amazon
+            </a>
+            <a class="book-btn ghost" href="{{ '/blog/' | relative_url }}">
+              Leer escritos
+            </a>
           </div>
-
-          <p class="book-disclaimer">
-            <em>Si te gustan las historias que revelan su verdad capítulo a capítulo como un golpe de realidad, Némora te va a perseguir.</em>
-          </p>
         </div>
       </article>
+
     </div>
   </section>
 </div>
 
 <style>
-/* ============================================
-   BOOKS (MISMO BRANDING QUE EL HOME)
-   ============================================ */
+/* ========================================
+   MIS LIBROS — MISMO BRANDING (Metanoia)
+   ======================================== */
 
 .books-grid{
-  max-width: 980px;
+  max-width: 900px;
   margin: 3rem auto 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 2.25rem;
 }
 
 .book-card{
   display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 1.6rem;
-  padding: 1.35rem;
-  background: rgba(255,255,255,0.30);
-  border: 1px solid rgba(60, 48, 38, 0.12);
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(60, 48, 38, 0.06);
+  grid-template-columns: 220px 1fr;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(60,48,38,0.12);
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(60,48,38,0.06);
   opacity: 0;
   animation: gentleFadeIn 0.8s ease forwards;
   animation-delay: calc(var(--index) * 0.15s);
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-.book-card:hover{
-  transform: translateY(-2px);
-  border-color: rgba(243,79,41,0.45);
-  box-shadow: 0 12px 28px rgba(60, 48, 38, 0.10);
 }
 
 .book-cover{
-  display:block;
-  border-radius: 10px;
-  overflow:hidden;
-  border: 1px solid rgba(60,48,38,0.14);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(60,48,38,0.10);
   background: var(--color-bg-secondary);
-  box-shadow: 0 6px 18px rgba(60,48,38,0.10);
+  height: 320px;
 }
 
 .book-cover img{
   width: 100%;
-  height: 245px;
+  height: 100%;
   object-fit: cover;
-  display:block;
-  filter: grayscale(8%) contrast(0.98);
-  transition: transform .45s ease, filter .45s ease;
+  filter: grayscale(12%) contrast(0.98);
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .book-card:hover .book-cover img{
@@ -181,148 +180,133 @@
 }
 
 .book-body{
-  display:flex;
+  display: flex;
   flex-direction: column;
-  gap: .65rem;
+  gap: 0.75rem;
 }
 
 .book-kicker{
   font-family: var(--font-sans);
-  font-size: .78rem;
-  letter-spacing: .09em;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(60,48,38,0.65);
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
 .book-title{
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.42rem;
+  font-size: 1.55rem;
   line-height: 1.25;
   color: var(--color-text);
 }
 
 .book-subtitle{
   margin: 0;
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-  font-size: 1.06rem;
-  line-height: 1.65;
-  color: rgba(60,48,38,0.88);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(60,48,38,0.85);
 }
 
-.book-desc{
-  margin: 0.15rem 0;
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+.book-excerpt{
+  margin: 0.35rem 0 0.25rem;
+  font-family: var(--font-body);
   font-size: 1.02rem;
   line-height: 1.75;
-  color: rgba(60,48,38,0.85);
-  max-width: 70ch;
+  color: var(--color-text-muted);
+  max-width: 62ch;
 }
 
-.book-proof{
-  margin: .35rem 0 .15rem;
-  display:flex;
-  gap: .75rem;
-  align-items: center;
-  flex-wrap: wrap;
+.book-highlight{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(243,79,41,0.25);
+  background: rgba(243,79,41,0.06);
 }
 
-.proof-badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: .35rem .7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(243,79,41,0.35);
-  background: rgba(243,79,41,0.10);
-  color: rgba(60,48,38,0.92);
+.metric{
   font-family: var(--font-sans);
-  font-size: .85rem;
-  font-weight: 700;
-  letter-spacing: .02em;
+  font-weight: 800;
+  color: var(--color-orange);
+  font-size: 1.15rem;
 }
 
-.proof-note{
+.metric-label{
   font-family: var(--font-sans);
-  font-size: .9rem;
-  color: rgba(60,48,38,0.68);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
 }
 
 .book-bullets{
-  margin: .35rem 0 .15rem;
-  padding-left: 1.1rem;
+  margin: 0.5rem 0 0.25rem;
+  padding-left: 1.15rem;
 }
 
 .book-bullets li{
-  margin: .4rem 0;
-  color: rgba(60,48,38,0.86);
-  line-height: 1.55;
-}
-
-.book-bullets li::marker{
-  color: var(--color-orange);
+  margin: 0.35rem 0;
+  color: rgba(60,48,38,0.85);
 }
 
 .book-actions{
-  display:flex;
-  gap: .75rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
   flex-wrap: wrap;
-  margin-top: .35rem;
 }
 
 .book-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: .62rem 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(243,79,41,0.40);
-  background: rgba(243,79,41,0.10);
-  color: var(--color-text);
-  text-decoration:none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
   font-family: var(--font-sans);
-  font-size: .92rem;
-  font-weight: 700;
-  transition: transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid rgba(243,79,41,0.35);
+  background: var(--color-orange);
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 8px 18px rgba(243,79,41,0.18);
 }
 
 .book-btn:hover{
-  transform: translateY(-1px);
-  background: rgba(243,79,41,0.16);
-  border-color: rgba(243,79,41,0.65);
-  color: var(--color-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(243,79,41,0.22);
 }
 
 .book-btn.ghost{
   background: transparent;
-  border-color: rgba(60,48,38,0.18);
-  color: rgba(60,48,38,0.65);
+  color: var(--color-orange);
+  box-shadow: none;
 }
 
 .book-btn.ghost:hover{
-  border-color: rgba(243,79,41,0.5);
-  color: var(--color-orange);
-}
-
-.book-disclaimer{
-  margin: .4rem 0 0;
-  font-family: var(--font-sans);
-  font-size: .92rem;
-  color: rgba(60,48,38,0.68);
+  background: rgba(243,79,41,0.07);
 }
 
 @media (max-width: 820px){
   .book-card{
     grid-template-columns: 1fr;
   }
-  .book-cover img{
-    height: 320px;
+  .book-cover{
+    height: 360px;
+    max-width: 420px;
   }
 }
 
-@media (max-width: 480px){
-  .book-cover img{
-    height: 280px;
+@media (max-width: 520px){
+  .book-cover{
+    height: 320px;
+  }
+  .book-title{
+    font-size: 1.35rem;
   }
 }
 </style>

@@ -122,25 +122,7 @@
   </div>
 
   <!-- Widget: Newsletter -->
-  <div class="sidebar-widget widget-newsletter">
-    <h4 class="widget-heading">📬 Newsletter</h4>
-    <p class="newsletter-desc">Recibe nuevos posts directo en tu inbox</p>
-    <form action="https://buttondown.email/api/emails/embed-subscribe/renedev" 
-          method="post" 
-          target="popupwindow"
-          onsubmit="window.open('https://buttondown.email/renedev', 'popupwindow')"
-          class="newsletter-form-sidebar">
-      <input type="email" 
-             name="email" 
-             placeholder="tu@email.com" 
-             required
-             class="newsletter-input-sidebar">
-      <button type="submit" class="newsletter-button-sidebar">
-        Suscribirme
-      </button>
-    </form>
-    <p class="newsletter-note">Sin spam. Cancela cuando quieras.</p>
-  </div>
+{% include newsletter-sidebar.html %}
 
 </aside>
 

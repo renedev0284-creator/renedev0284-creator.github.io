@@ -1,0 +1,110 @@
+<!-- Widget: Newsletter -->
+<div class="sidebar-widget widget-newsletter">
+  <h4 class="widget-heading">📬 Newsletter</h4>
+  <p class="newsletter-desc">Recibe nuevos posts directo en tu inbox</p>
+  
+  <form id="newsletter-form-sidebar" class="newsletter-form-sidebar">
+    <input type="email" 
+           id="sidebar-email" 
+           name="email" 
+           placeholder="tu@email.com" 
+           required
+           class="newsletter-input-sidebar">
+    
+    <button type="submit" class="newsletter-button-sidebar" id="sidebar-submit">
+      Suscribirme
+    </button>
+  </form>
+  
+  <p class="newsletter-message-sidebar" id="sidebar-message"></p>
+  <p class="newsletter-note">Sin spam. Cancela cuando quieras.</p>
+</div>
+
+<style>
+/* Mensaje de feedback en sidebar */
+.newsletter-message-sidebar {
+  display: none;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.newsletter-message-sidebar.success {
+  display: block;
+  color: #22543d;
+  background: #c6f6d5;
+  border: 1px solid #9ae6b4;
+}
+
+.newsletter-message-sidebar.error {
+  display: block;
+  color: #c53030;
+  background: #fed7d7;
+  border: 1px solid #fc8181;
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  const API_BASE = 'https://comentarios.finanzasreales.com/api';
+  
+  const form = document.getElementById('newsletter-form-sidebar');
+  const btnSubmit = document.getElementById('sidebar-submit');
+  const message = document.getElementById('sidebar-message');
+  const emailField = document.getElementById('sidebar-email');
+  
+  if (!form) return;
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const datos = {
+      nombre: '',
+      email: emailField.value.trim(),
+      fuente: 'sidebar'
+    };
+    
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Enviando...';
+    message.className = 'newsletter-message-sidebar';
+    message.style.display = 'none';
+    
+    try {
+      const respuesta = await fetch(`${API_BASE}/newsletter.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+      
+      const resultado = await respuesta.json();
+      
+      if (resultado.success) {
+        message.className = 'newsletter-message-sidebar success';
+        message.textContent = '✓ ¡Suscrito!';
+        form.reset();
+        
+        setTimeout(() => {
+          message.style.display = 'none';
+        }, 4000);
+      } else {
+        message.className = 'newsletter-message-sidebar error';
+        message.textContent = '✗ ' + (resultado.error || 'Error');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      message.className = 'newsletter-message-sidebar error';
+      message.textContent = '✗ Error de conexión';
+    }
+    
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = 'Suscribirme';
+  });
+})();
+</script>

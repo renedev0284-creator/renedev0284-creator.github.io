@@ -38,7 +38,9 @@
         </button>
       </div>
       
-      <p class="newsletter-message" id="nl-message"></p>
+      <!-- MENSAJE MEJORADO -->
+      <div class="newsletter-message" id="nl-message"></div>
+      
       <p class="newsletter-privacy">Tu email está seguro. Puedes cancelar cuando quieras.</p>
     </form>
   </div>
@@ -108,7 +110,7 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr auto;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .nl-input {
@@ -153,27 +155,56 @@
   transform: none;
 }
 
+/* MENSAJE MEJORADO Y MÁS VISIBLE */
 .newsletter-message {
-  padding: 0.75rem;
+  padding: 1rem 1.25rem;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
   display: none;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .newsletter-message.success {
   display: block;
   color: #22543d;
   background: #c6f6d5;
-  border: 1px solid #9ae6b4;
+  border: 2px solid #9ae6b4;
+  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.2);
+}
+
+.newsletter-message.success::before {
+  content: "✓ ";
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }
 
 .newsletter-message.error {
   display: block;
   color: #c53030;
   background: #fed7d7;
-  border: 1px solid #fc8181;
+  border: 2px solid #fc8181;
+  box-shadow: 0 2px 8px rgba(245, 101, 101, 0.2);
+}
+
+.newsletter-message.error::before {
+  content: "✗ ";
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }
 
 .newsletter-privacy {
@@ -261,21 +292,31 @@
       
       if (resultado.success) {
         nlMessage.className = 'newsletter-message success';
-        nlMessage.textContent = '✓ ' + resultado.mensaje;
+        nlMessage.textContent = resultado.mensaje || '¡Gracias por suscribirte! Te mantendremos informado.';
         form.reset();
         
+        // Ocultar después de 8 segundos
+        setTimeout(() => {
+          nlMessage.style.display = 'none';
+        }, 8000);
+      } else {
+        nlMessage.className = 'newsletter-message error';
+        nlMessage.textContent = resultado.error || 'Error al procesar tu suscripción. Intenta de nuevo.';
+        
+        // Ocultar error después de 5 segundos
         setTimeout(() => {
           nlMessage.style.display = 'none';
         }, 5000);
-      } else {
-        nlMessage.className = 'newsletter-message error';
-        nlMessage.textContent = '✗ ' + (resultado.error || 'Error al suscribirse');
       }
       
     } catch (error) {
       console.error('Error:', error);
       nlMessage.className = 'newsletter-message error';
-      nlMessage.textContent = '✗ Error de conexión. Intenta de nuevo.';
+      nlMessage.textContent = 'Error de conexión. Por favor, verifica tu internet e intenta de nuevo.';
+      
+      setTimeout(() => {
+        nlMessage.style.display = 'none';
+      }, 5000);
     }
     
     btnNewsletter.disabled = false;

@@ -4,7 +4,7 @@ title: "Aprendí a ser útil para merecer"
 date: 2026-02-13
 tags: [ansiedad, conciencia, productividad]
 categories: [psicologia, trabajo, familia]
-excerpt: "Muchas veces me he sentido como el p*nd3j0 útil, pero es ser útil por elección no por miedo. Pero hay quienes se aprovechan de eso."
+excerpt: "Muchas veces me he sentido como el p*nd3j0 útil, pero es ser útil por elección no por miedo. Y hay quienes se aprovechan de eso."
 ---
 A veces siento que valgo únicamente cuando soy útil en algo.
 

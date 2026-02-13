@@ -1,12 +1,9 @@
-<!-- Favicon personalizado (PNG) -->
-<link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png">
-<link rel="shortcut icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png">
+<!-- Favicon personalizado -->
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+<link rel="alternate icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png">
 
-<!-- Opcional (si tienes variantes):
-<link rel="icon" href="{{ '/assets/images/favicon-32.png' | relative_url }}" type="image/png" sizes="32x32">
-<link rel="icon" href="{{ '/assets/images/favicon-16.png' | relative_url }}" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" sizes="180x180">
--->
+<!-- Para compatibilidad con navegadores antiguos -->
+<link rel="shortcut icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
 
 <!-- Social cards (Open Graph + Twitter/X) -->
 {%- assign page_title = page.title | default: site.title -%}
@@ -31,3 +28,4 @@
 {%- if img_abs -%}
 <meta name="twitter:image" content="{{ img_abs }}">
 {%- endif -%}
+

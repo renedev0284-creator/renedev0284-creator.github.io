@@ -111,7 +111,7 @@ permalink: /libross/
     <article class="book-card-light reverse" data-fade>
       <div class="book-visual">
         <div class="book-cover-container">
-          <img src="{{ '/assets/images/libros/creacion.jpg' | relative_url }}" 
+          <img src="{{ '/assets/images/libros/kreacion.jpg' | relative_url }}" 
                alt="Kreación - René Moya"
                class="book-cover-img">
         </div>
@@ -123,19 +123,20 @@ permalink: /libross/
           <span class="tag-year">2024</span>
         </div>
         
-        <h2 class="book-name">Kreación</h2>
-        <p class="book-subtitle">Una distopía sobre creatividad y control</p>
+        <h2 class="book-title">Kreación</h2>
+        <p class="book-tagline">En Némora, la humanidad no vive: se prueba.</p>
         
         <p class="book-description">
-          En un futuro donde la creatividad está regulada por el Estado,
-          un grupo de artistas clandestinos busca recuperar la libertad de crear.
-          Una novela corta intensa y directa.
+          En un filtro espiritual que simula un planeta donde viven los "eternos",
+          los seres que se encargan del equilibrio en el universo, donde tienen una
+          máquina antigua diseñada para destilar almas a través de una mezcla hermosa
+          de experiencia, dolor, amor y olvido. Allí cada vida tiene una razón.
         </p>
         
-        <ul class="book-highlights">
-          <li>Ciencia ficción social</li>
-          <li>Lectura rápida (2-3 horas)</li>
-          <li>Reflexión sobre libertad creativa</li>
+        <ul class="book-features">
+          <li>✓ Ciencia ficción universal</li>
+          <li>✓ Lectura rápida (2-3 horas)</li>
+          <li>✓ Reflexión sobre la vida y el bien que hacemos</li>
         </ul>
         
         <div class="book-ctas">

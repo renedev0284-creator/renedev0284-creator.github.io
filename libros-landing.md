@@ -124,7 +124,7 @@ permalink: /libross/
         </div>
         
         <h2 class="book-title">Kreación</h2>
-        <p class="book-tagline">En Némora, la humanidad no vive: se prueba.</p>
+        <p class="book-subtitle">En Némora, la humanidad no vive: se prueba.</p>
         
         <p class="book-description">
           En un filtro espiritual que simula un planeta donde viven los "eternos",
@@ -133,7 +133,7 @@ permalink: /libross/
           de experiencia, dolor, amor y olvido. Allí cada vida tiene una razón.
         </p>
         
-        <ul class="book-features">
+        <ul class="book-highlights">
           <li>✓ Ciencia ficción universal</li>
           <li>✓ Lectura rápida (2-3 horas)</li>
           <li>✓ Reflexión sobre la vida y el bien que hacemos</li>

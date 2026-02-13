@@ -158,31 +158,32 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.5rem;
+  gap: 0.35rem; /* MÁS PEQUEÑO */
   justify-content: flex-end;
   align-items: center;
 }
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: 0.35rem 0.75rem; /* MÁS COMPACTO */
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif; /* PALATINO */
+  font-size: 0.82rem; /* MÁS PEQUEÑO */
+  font-weight: 600;   /* MEJOR LECTURA EN SERIF */
   color: var(--color-text-muted);
   text-decoration: none;
   border-radius: 6px;
   transition: all 0.2s ease;
   position: relative;
+  letter-spacing: 0.01em;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0.25rem;
+  bottom: 0.2rem; /* AJUSTE FINO */
   left: 50%;
   transform: translateX(-50%) scaleX(0);
-  width: 18px;
+  width: 16px; /* MÁS PEQUEÑO */
   height: 2px;
   background: var(--color-orange);
   border-radius: 2px;
@@ -200,7 +201,7 @@
 
 .nav-link.active {
   color: var(--color-orange);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .nav-link.active::after {
@@ -295,11 +296,12 @@
   .nav-link {
     width: 100%;
     text-align: left;
-    padding: 1.25rem 2rem;
+    padding: 1.1rem 2rem; /* LIGERAMENTE MÁS COMPACTO */
     border-left: 3px solid transparent;
     border-radius: 0;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.98rem;
+    font-weight: 600;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif; /* PALATINO EN MOBILE */
     color: var(--color-text);
   }
   
@@ -364,7 +366,7 @@
   }
   
   .nav-link {
-    padding: 1.125rem 1.75rem;
+    padding: 1.05rem 1.75rem; /* MÁS COMPACTO */
     font-size: 0.95rem;
   }
 }

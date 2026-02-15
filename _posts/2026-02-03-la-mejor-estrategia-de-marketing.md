@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "La mejor estrategia de marketing que vi en la calle no tenía logo"
+image: /assets/images/posts/marketing-fidelidad.jpg  # ⬅️ Imagen específica
 date: 2026-02-03
 tags: [marketing, negocios, freelancers, emprendimiento]
 categories: [marketing, negocio]

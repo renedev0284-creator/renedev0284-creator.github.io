@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Tres mitos de productividad que me estaban dejando sin energía"
+image: /assets/images/posts/productividad.jpg  # ⬅️ Imagen específica
 date: 2026-02-04
 tags: [productividad, habitos, herramientas]
 categories: [psicologia, trabajo]

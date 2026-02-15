@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Estoy cansado del contenido con “perfume” de IA"
+image: /assets/images/posts/ia-mal-utilizada.jpg  # ⬅️ Imagen específica
 date: 2026-02-03
 tags: [escritura, ia, practicas]
 categories: [chatgpt, contenido]

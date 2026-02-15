@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Nuevo en Reddit: comentar o postear primero"
+image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
 date: 2026-02-03
 categories: [reddit, estrategia]
 tags: [reddit, comunidad, karma, crecimiento]

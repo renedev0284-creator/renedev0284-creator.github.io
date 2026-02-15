@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cuando no sabes pedir, terminas empujando"
+image: /assets/images/posts/metanoia-no-sabes-pedir.jpg  # ⬅️ Imagen específica
 date: 2026-02-08
 tags: [conciencia, ansiedad, control, relaciones]
 categories: [psicologia, vida]

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Los gurús no dicen mentiras, pero sí verdades a medias"
+image: /assets/images/posts/youtube-gurus-videotutoriales.jpg  # ⬅️ Imagen específica
 date: 2026-01-30
 tags: [escritura, aprendizaje]
 ---

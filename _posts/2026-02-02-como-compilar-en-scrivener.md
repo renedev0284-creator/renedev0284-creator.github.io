@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Scrivener: Opciones de compilación y tipos de secciones [Actualizado]"
+image: /assets/images/posts/scrivener-app.jpg  # ⬅️ Imagen específica
 date: 2026-02-02
 tags: [escritura, productividad, apps]
 categories: [scrivener, escritores]

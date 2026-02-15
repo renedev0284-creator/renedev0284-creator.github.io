@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mi nave lista para el despegue"
+image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
 date: 2026-01-31
 tags: [escritura, proceso, meta]
 excerpt: "2025 no me dejó disciplina perfecta: me dejó claridad brutal. No era la herramienta. Era el hábito. Y por primera vez, mi “quiero escribir” ya no suena a deseo: suena a ruta."

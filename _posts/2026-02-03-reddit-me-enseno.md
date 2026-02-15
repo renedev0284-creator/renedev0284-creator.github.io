@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Reddit me enseñó por qué la mayoría nunca monetiza"
+image: /assets/images/posts/reddit.jpg  # ⬅️ Imagen específica
 date: 2026-02-03
 categories: [marketing, emprendimiento]
 tags: [monetización, reddit, marketing-digital, realidad]

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cómo configuré mi blog en GitHub Pages"
+image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
 date: 2026-01-30
 tags: [meta, proceso, jekyll]
 ---

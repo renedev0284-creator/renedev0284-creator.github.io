@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Sobrepensar no es ego: es defensa"
+image: /assets/images/posts/sobrepensar-ego.jpg  # ⬅️ Imagen específica
 date: 2026-02-11
 tags: [ansiedad, conciencia, mente, autocontrol]
 categories: [psicologia, vida]

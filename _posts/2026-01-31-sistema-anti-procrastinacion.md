@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mi sistema anti-procrastinación para escribir (sin esperar inspiración)"
+image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
 date: 2026-01-31
 tags: [escritura, productividad, proceso]
 excerpt: "No encontré la app perfecta. Encontré una rutina mínima: capturar sin filtro, escribir 15 minutos y publicar aunque no esté “listo”."

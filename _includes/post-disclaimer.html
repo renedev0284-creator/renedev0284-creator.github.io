@@ -1,0 +1,71 @@
+<!-- DISCLAIMER POST - Incluir en _includes/post-disclaimer.html -->
+
+<div class="post-disclaimer">
+  <div class="disclaimer-content">
+    <p class="disclaimer-text">
+      Los escritos en este blog reflejan mis experiencias personales y opiniones. 
+      No están basados en la vida de nadie en particular. Si encuentras similitudes 
+      con tu propia experiencia, es coincidencia — todos compartimos más de lo que creemos.
+    </p>
+    <div class="disclaimer-cta">
+      <a href="{{ '/blog' | relative_url }}" class="disclaimer-link">Seguir leyendo →</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.post-disclaimer {
+  margin: 4rem 0 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom, #faf9f7 0%, #f5f3f0 100%);
+  border: 1px solid rgba(60, 48, 38, 0.08);
+  border-radius: 4px;
+}
+
+.disclaimer-content {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.disclaimer-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #888;
+  margin: 0 0 1rem;
+  font-style: italic;
+}
+
+.disclaimer-cta {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(60, 48, 38, 0.08);
+}
+
+.disclaimer-link {
+  font-size: 0.8rem;
+  color: #999;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.disclaimer-link:hover {
+  color: #F34F29;
+}
+
+@media (max-width: 768px) {
+  .post-disclaimer {
+    padding: 1.25rem;
+    margin: 3rem 0 1.5rem;
+  }
+  
+  .disclaimer-text {
+    font-size: 0.8rem;
+  }
+  
+  .disclaimer-link {
+    font-size: 0.75rem;
+  }
+}
+</style>

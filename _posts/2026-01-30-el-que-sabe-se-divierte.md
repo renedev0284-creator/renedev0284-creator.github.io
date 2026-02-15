@@ -4,6 +4,7 @@ title: "Los gurús no dicen mentiras, pero sí verdades a medias"
 image: /assets/images/posts/youtube-gurus-videotutoriales.jpg  # ⬅️ Imagen específica
 date: 2026-01-30
 tags: [escritura, aprendizaje]
+excerpt: "Vengo a señalar una trampa moderna: ese “aprendizaje” que te hace sentir productivo, pero solo te entretiene con progreso falso. Si te ha pasado que consumes horas de contenido y aun así sigues en el mismo punto, este post es para ti."
 ---
 
 Hoy publico mi primer texto “de puño y letra” y lo dejo en modo borrador consciente: corto, directo y útil. No vengo a pelear con YouTube ni con los creadores; vengo a señalar una trampa moderna que nos hace sentir productivos mientras seguimos estancados.

@@ -1,0 +1,769 @@
+---
+layout: default
+title: "Test de Bienestar Emocional - Metanoia"
+permalink: /test-bienestar/
+---
+
+<div class="quiz-page">
+
+  <!-- Paso 1: Captura de Email -->
+  <section id="step-email" class="quiz-step active">
+    <div class="quiz-container">
+      <div class="quiz-intro">
+        <div class="quiz-icon">🧠</div>
+        <h1>Test de Bienestar Emocional</h1>
+        <p class="quiz-lead">
+          Un cuestionario breve para ayudarte a identificar áreas de tu vida emocional 
+          que podrían necesitar atención.
+        </p>
+        
+        <div class="quiz-benefits">
+          <div class="benefit">✓ 5 minutos para completar</div>
+          <div class="benefit">✓ Resultados inmediatos</div>
+          <div class="benefit">✓ Basado en terapia emocional</div>
+        </div>
+
+        <div class="email-disclaimer">
+          <p>
+            <strong>Importante:</strong> Este test es orientativo, no sustituye 
+            una evaluación profesional. Si sientes que necesitas ayuda, 
+            consulta con un profesional de salud mental.
+          </p>
+        </div>
+      </div>
+
+      <form id="email-form" class="email-form">
+        <div class="form-group">
+          <label for="user-email">Tu email para recibir los resultados</label>
+          <input type="email" 
+                 id="user-email" 
+                 name="email" 
+                 placeholder="tu@email.com" 
+                 required
+                 class="email-input">
+        </div>
+        
+        <button type="submit" class="btn-start">
+          Comenzar Test
+        </button>
+        
+        <p class="privacy-note">
+          🔒 Tu email se guardará de forma segura. Puedes darte de baja cuando quieras.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Paso 2: Preguntas del Quiz -->
+  <section id="step-quiz" class="quiz-step">
+    <div class="quiz-container">
+      
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+        <span class="progress-text" id="progress-text">Pregunta 1 de 8</span>
+      </div>
+
+      <!-- Preguntas -->
+      <div id="questions-container"></div>
+
+      <!-- Navegación -->
+      <div class="quiz-nav">
+        <button id="btn-prev" class="btn-nav" style="display: none;">
+          ← Anterior
+        </button>
+        <button id="btn-next" class="btn-nav btn-primary">
+          Siguiente →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paso 3: Resultados -->
+  <section id="step-results" class="quiz-step">
+    <div class="quiz-container">
+      <div class="results-header">
+        <div class="results-icon">📊</div>
+        <h2>Tus Resultados</h2>
+        <p class="results-intro">
+          Basado en tus respuestas, aquí tienes un panorama de tu bienestar emocional:
+        </p>
+      </div>
+
+      <div id="results-content"></div>
+
+      <div class="results-actions">
+        <a href="{{ '/blog' | relative_url }}" class="btn-blog">
+          Leer artículos sobre bienestar
+        </a>
+        <a href="{{ '/newsletter' | relative_url }}" class="btn-newsletter">
+          Suscribirme al newsletter
+        </a>
+      </div>
+
+      <div class="results-footer">
+        <p>
+          <strong>Recuerda:</strong> Este test es orientativo. 
+          Si tus resultados te preocupan, considera hablar con un profesional.
+        </p>
+        <p class="therapist-resources">
+          <a href="https://www.psychologytoday.com/intl/counsellors" target="_blank" rel="noopener">
+            Encontrar terapeuta →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+/* ============================================
+   QUIZ STYLES - MINIMALISTA CLARO
+   ============================================ */
+
+.quiz-page {
+  background: #fafaf9;
+  min-height: 80vh;
+  padding: 3rem 0;
+}
+
+.quiz-step {
+  display: none;
+}
+
+.quiz-step.active {
+  display: block;
+}
+
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Intro */
+.quiz-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.quiz-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-intro h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: #3c3026;
+}
+
+.quiz-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.quiz-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.benefit {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.email-disclaimer {
+  padding: 1.5rem;
+  background: rgba(243, 79, 41, 0.05);
+  border-left: 4px solid #F34F29;
+  border-radius: 4px;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.email-disclaimer p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Email Form */
+.email-form {
+  background: #fff;
+  padding: 2.5rem;
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(60, 48, 38, 0.06);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #3c3026;
+}
+
+.email-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  background: #fafaf9;
+  border: 2px solid rgba(60, 48, 38, 0.15);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #F34F29;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(243, 79, 41, 0.1);
+}
+
+.btn-start {
+  width: 100%;
+  padding: 1.25rem;
+  background: #F34F29;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(243, 79, 41, 0.2);
+}
+
+.btn-start:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 79, 41, 0.3);
+}
+
+.privacy-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: relative;
+  height: 8px;
+  background: #e5e5e5;
+  border-radius: 100px;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #F34F29, #ff6b47);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.progress-text {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  font-size: 0.85rem;
+  color: #999;
+  font-weight: 600;
+}
+
+/* Question */
+.question {
+  background: #fff;
+  padding: 2.5rem;
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+.question.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.question-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #3c3026;
+  line-height: 1.4;
+}
+
+.question-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option {
+  padding: 1.25rem 1.5rem;
+  background: #fafaf9;
+  border: 2px solid rgba(60, 48, 38, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.option:hover {
+  border-color: #F34F29;
+  background: rgba(243, 79, 41, 0.05);
+  transform: translateX(4px);
+}
+
+.option.selected {
+  border-color: #F34F29;
+  background: rgba(243, 79, 41, 0.1);
+  font-weight: 600;
+  color: #F34F29;
+}
+
+/* Navigation */
+.quiz-nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.btn-nav {
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 2px solid rgba(60, 48, 38, 0.2);
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.btn-nav:hover {
+  border-color: #F34F29;
+  color: #F34F29;
+  background: rgba(243, 79, 41, 0.05);
+}
+
+.btn-nav.btn-primary {
+  background: #F34F29;
+  border-color: #F34F29;
+  color: #fff;
+}
+
+.btn-nav.btn-primary:hover {
+  background: #d94520;
+}
+
+.btn-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Results */
+.results-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.results-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: #3c3026;
+}
+
+.results-intro {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.result-category {
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-left: 4px solid;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.result-category.low {
+  border-left-color: #48bb78;
+}
+
+.result-category.medium {
+  border-left-color: #F59E0B;
+}
+
+.result-category.high {
+  border-left-color: #EF4444;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.category-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3c3026;
+  margin: 0;
+}
+
+.category-score {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.category-score.low { color: #48bb78; }
+.category-score.medium { color: #F59E0B; }
+.category-score.high { color: #EF4444; }
+
+.category-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.category-recommendation {
+  padding: 1rem;
+  background: #fafaf9;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+}
+
+.results-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-blog,
+.btn-newsletter {
+  flex: 1;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.btn-blog {
+  background: transparent;
+  border: 2px solid rgba(60, 48, 38, 0.2);
+  color: #3c3026;
+}
+
+.btn-blog:hover {
+  border-color: #F34F29;
+  color: #F34F29;
+  background: rgba(243, 79, 41, 0.05);
+}
+
+.btn-newsletter {
+  background: #F34F29;
+  border: 2px solid #F34F29;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(243, 79, 41, 0.2);
+}
+
+.btn-newsletter:hover {
+  background: #d94520;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(243, 79, 41, 0.3);
+}
+
+.results-footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(243, 79, 41, 0.05);
+  border-radius: 4px;
+  margin-top: 3rem;
+}
+
+.results-footer p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.therapist-resources a {
+  color: #F34F29;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 79, 41, 0.3);
+}
+
+.therapist-resources a:hover {
+  border-bottom-color: #F34F29;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quiz-intro h1 {
+    font-size: 2rem;
+  }
+
+  .email-form {
+    padding: 2rem;
+  }
+
+  .question {
+    padding: 2rem;
+  }
+
+  .question-title {
+    font-size: 1.5rem;
+  }
+
+  .results-actions {
+    flex-direction: column;
+  }
+
+  .btn-blog,
+  .btn-newsletter {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+// Configuración del Quiz
+const quizData = {
+  categories: [
+    { id: 'ansiedad', name: 'Ansiedad', icon: '😰' },
+    { id: 'estres', name: 'Estrés', icon: '😓' },
+    { id: 'tristeza', name: 'Tristeza', icon: '😢' },
+    { id: 'ira', name: 'Ira/Frustración', icon: '😤' },
+    { id: 'energia', name: 'Falta de Energía', icon: '😴' },
+    { id: 'concentracion', name: 'Dificultad para Concentrarse', icon: '🤯' },
+    { id: 'soledad', name: 'Soledad', icon: '😔' },
+    { id: 'autocuidado', name: 'Descuido Personal', icon: '🥱' }
+  ],
+  
+  options: [
+    { value: 0, label: 'Nada / Nunca' },
+    { value: 1, label: 'Poco / Rara vez' },
+    { value: 2, label: 'Moderado / A veces' },
+    { value: 3, label: 'Bastante / Frecuentemente' },
+    { value: 4, label: 'Mucho / Siempre' }
+  ]
+};
+
+let userEmail = '';
+let currentQuestion = 0;
+let answers = {};
+
+// Iniciar Quiz
+document.getElementById('email-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  userEmail = document.getElementById('user-email').value;
+  
+  // Guardar email en BD
+  try {
+    const response = await fetch('https://comentarios.finanzasreales.com/api/newsletter.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nombre: '',
+        email: userEmail,
+        fuente: 'quiz-bienestar'
+      })
+    });
+    
+    const result = await response.json();
+    console.log('Email guardado:', result);
+  } catch (error) {
+    console.error('Error guardando email:', error);
+  }
+  
+  // Ir al quiz
+  showStep('step-quiz');
+  renderQuestions();
+  showQuestion(0);
+});
+
+// Renderizar preguntas
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  
+  quizData.categories.forEach((category, index) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.className = 'question';
+    questionDiv.dataset.index = index;
+    
+    questionDiv.innerHTML = `
+      <h3 class="question-title">
+        ${category.icon} ¿Con qué frecuencia has sentido ${category.name.toLowerCase()} en las últimas 2 semanas?
+      </h3>
+      <div class="question-options">
+        ${quizData.options.map(opt => `
+          <div class="option" data-value="${opt.value}" onclick="selectOption(${index}, ${opt.value})">
+            ${opt.label}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    
+    container.appendChild(questionDiv);
+  });
+}
+
+// Mostrar pregunta
+function showQuestion(index) {
+  document.querySelectorAll('.question').forEach((q, i) => {
+    q.classList.toggle('active', i === index);
+  });
+  
+  currentQuestion = index;
+  updateProgress();
+  updateNavigation();
+}
+
+// Seleccionar opción
+function selectOption(questionIndex, value) {
+  answers[quizData.categories[questionIndex].id] = value;
+  
+  const questionDiv = document.querySelector(`.question[data-index="${questionIndex}"]`);
+  questionDiv.querySelectorAll('.option').forEach(opt => {
+    opt.classList.toggle('selected', parseInt(opt.dataset.value) === value);
+  });
+  
+  // Auto-avanzar después de 300ms
+  setTimeout(() => {
+    if (currentQuestion < quizData.categories.length - 1) {
+      showQuestion(currentQuestion + 1);
+    }
+  }, 300);
+}
+
+// Actualizar progreso
+function updateProgress() {
+  const progress = ((currentQuestion + 1) / quizData.categories.length) * 100;
+  document.getElementById('progress-fill').style.width = progress + '%';
+  document.getElementById('progress-text').textContent = 
+    `Pregunta ${currentQuestion + 1} de ${quizData.categories.length}`;
+}
+
+// Actualizar navegación
+function updateNavigation() {
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  
+  btnPrev.style.display = currentQuestion > 0 ? 'block' : 'none';
+  
+  if (currentQuestion === quizData.categories.length - 1) {
+    btnNext.textContent = 'Ver Resultados →';
+    btnNext.onclick = showResults;
+  } else {
+    btnNext.textContent = 'Siguiente →';
+    btnNext.onclick = () => showQuestion(currentQuestion + 1);
+  }
+  
+  btnNext.disabled = !answers[quizData.categories[currentQuestion].id] && 
+                     answers[quizData.categories[currentQuestion].id] !== 0;
+}
+
+// Botón anterior
+document.getElementById('btn-prev').onclick = () => {
+  if (currentQuestion > 0) {
+    showQuestion(currentQuestion - 1);
+  }
+};
+
+// Mostrar resultados
+function showResults() {
+  const resultsContainer = document.getElementById('results-content');
+  
+  quizData.categories.forEach(category => {
+    const score = answers[category.id] || 0;
+    let level, levelClass, description, recommendation;
+    
+    if (score <= 1) {
+      level = 'Bajo';
+      levelClass = 'low';
+      description = `Tu nivel de ${category.name.toLowerCase()} está en un rango saludable.`;
+      recommendation = `Mantén tus hábitos actuales. Sigue cuidando tu bienestar.`;
+    } else if (score <= 2) {
+      level = 'Moderado';
+      levelClass = 'medium';
+      description = `Experimentas ${category.name.toLowerCase()} de forma ocasional.`;
+      recommendation = `Considera técnicas de manejo emocional como meditación, ejercicio o hablar con alguien de confianza.`;
+    } else {
+      level = 'Alto';
+      levelClass = 'high';
+      description = `Estás experimentando niveles significativos de ${category.name.toLowerCase()}.`;
+      recommendation = `Considera hablar con un profesional de salud mental. No estás solo y hay ayuda disponible.`;
+    }
+    
+    const resultDiv = document.createElement('div');
+    resultDiv.className = `result-category ${levelClass}`;
+    resultDiv.innerHTML = `
+      <div class="category-header">
+        <h3 class="category-name">${category.icon} ${category.name}</h3>
+        <div class="category-score ${levelClass}">${level}</div>
+      </div>
+      <p class="category-description">${description}</p>
+      <div class="category-recommendation">
+        <strong>Recomendación:</strong> ${recommendation}
+      </div>
+    `;
+    
+    resultsContainer.appendChild(resultDiv);
+  });
+  
+  showStep('step-results');
+}
+
+// Mostrar paso
+function showStep(stepId) {
+  document.querySelectorAll('.quiz-step').forEach(step => {
+    step.classList.remove('active');
+  });
+  document.getElementById(stepId).classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>

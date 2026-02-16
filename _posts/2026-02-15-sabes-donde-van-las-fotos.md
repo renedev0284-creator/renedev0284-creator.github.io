@@ -27,8 +27,7 @@ Otra para miniatura.
 Otra para previsualización.
 Y luego las copias invisibles que nadie te muestra: las que se usan para que todo cargue rápido, para “mejorar el servicio”, para seguridad, para investigación de fallos, para que si mañana se cae un servidor no se caiga tu vida digital con él.
 
-No lo digo como teoría conspiranoica. Lo digo como lógica de sistemas… y como algo que las políticas suelen describir de forma aburrida: que guardan información mientras sea necesaria para prestar servicios, o hasta que elimines tu cuenta (y aun así hay ventanas de retención y procesos internos). :contentReference[oaicite:0]{index=0}
-
+No lo digo como teoría conspiranoica. Lo digo como lógica de sistemas… y como algo que las políticas suelen describir de forma aburrida: que guardan información mientras sea necesaria para prestar servicios, o hasta que elimines tu cuenta (y aun así hay ventanas de retención y procesos internos).
 Y no solo es *dónde* se guarda.
 
 Es *qué más* se guarda alrededor de esa foto.
@@ -54,7 +53,7 @@ Y ahí aparece la pregunta incómoda:
 
 ¿Cuántas fotos tuyas siguen vivas en lugares donde ya no tenés control… aunque creas que sí?
 
-A veces el tema se pone más sensible cuando uno entiende que estas plataformas no solo “guardan”, también **analizan**. En los últimos años se volvió común que las empresas de redes sociales usen contenido público (según región y configuraciones) para entrenar o mejorar modelos de IA y sistemas de recomendación. :contentReference[oaicite:1]{index=1}
+A veces el tema se pone más sensible cuando uno entiende que estas plataformas no solo “guardan”, también **analizan**. En los últimos años se volvió común que las empresas de redes sociales usen contenido público (según región y configuraciones) para entrenar o mejorar modelos de IA y sistemas de recomendación.
 
 No estoy diciendo “te están espiando en la ducha”.
 Estoy diciendo algo más simple y más real: **subir una foto es cederle una parte del control a una máquina diseñada para aprender de lo que hacemos.**

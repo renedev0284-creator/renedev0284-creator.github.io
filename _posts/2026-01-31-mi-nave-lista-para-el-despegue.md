@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mi nave lista para el despegue"
-image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
+image: /assets/images/posts/mi-nave.jpg  # ⬅️ Imagen específica
 date: 2026-01-31
 tags: [escritura, proceso, meta]
 excerpt: "2025 no me dejó disciplina perfecta: me dejó claridad brutal. No era la herramienta. Era el hábito. Y por primera vez, mi “quiero escribir” ya no suena a deseo: suena a ruta."
@@ -14,6 +14,8 @@ Parece mentira, pero si me preguntaras qué tuvo realmente claro mi 2025, no fue
 Y lo más raro es que no lo digo como promesa bonita. Lo digo como quien por fin encontró la ruta. Porque en pleno inicio de 2026 puedo decirlo sin temblar: **ya voy encaminado**.
 
 ## Mi nave lista para el despegue
+
+![Nave espacial en el universo](/assets/images/posts/mi-nave.jpg)
 
 No es metáfora de película. Es esa sensación concreta de tener el motor encendido, el panel iluminado, y el cinturón puesto. No porque todo esté perfecto… sino porque entendí algo que me faltó por años:
 

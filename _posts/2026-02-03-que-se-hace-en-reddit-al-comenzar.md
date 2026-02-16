@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Nuevo en Reddit: comentar o postear primero"
-image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
+image: /assets/images/posts/nuevo-en-reddit.jpg  # ⬅️ Imagen específica
 date: 2026-02-03
 categories: [reddit, estrategia]
 tags: [reddit, comunidad, karma, crecimiento]
@@ -19,6 +19,8 @@ La respuesta es simple: **Reddit premia conversaciones, no anuncios.**
 ## Por qué comentar primero funciona
 
 Reddit no es Instagram. No es Twitter. Es un foro con esteroides.
+
+![Reddit la red social para aprender](/assets/images/posts/nuevo-en-reddit.jpg)
 
 Los subreddits tienen reglas estrictas para cuentas nuevas:
 - Karma mínimo para postear (varía por subreddit)

@@ -71,4 +71,4 @@ Y sí, “para siempre” suena dramático. Pero en internet, la duración real 
 
 La decide el ecosistema.
 
-**Pregunta de cierre:** si hoy te dijeran “esta foto va a sobrevivirte”, ¿igual la subirías?
+Si hoy te dijeran **“esta foto tuya se quedará para siempre en la web”**, ¿igual la subirías?

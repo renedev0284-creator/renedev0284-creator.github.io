@@ -1,13 +1,15 @@
 ---
 layout: post
 title: "Mi sistema anti-procrastinación para escribir (sin esperar inspiración)"
-image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
+image: /assets/images/posts/no-procrastinar.jpg  # ⬅️ Imagen específica
 date: 2026-01-31
 tags: [escritura, productividad, proceso]
 excerpt: "No encontré la app perfecta. Encontré una rutina mínima: capturar sin filtro, escribir 15 minutos y publicar aunque no esté “listo”."
 ---
 
 Durante años me peleé con la hoja en blanco como si fuera un enemigo con voluntad propia. Abría el documento, veía el cursor parpadear… y mi mente hacía lo que mejor sabe hacer cuando algo importa: inventar excusas elegantes.
+
+![Chica frente a su computador evitando procrastinar](/assets/images/posts/no-procrastinar.jpg)
 
 Esperar “la inspiración” fue la más cara. Porque suena romántico, pero en la práctica es una trampa: te deja escribiendo una vez al mes, si tienes suerte, y el resto del tiempo te mantiene sintiéndote culpable.
 

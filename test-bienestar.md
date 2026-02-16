@@ -672,7 +672,10 @@ function selectOption(questionIndex, value) {
     opt.classList.toggle('selected', parseInt(opt.dataset.value) === value);
   });
   
-  // Auto-avanzar después de 300ms
+  // Actualizar navegación para habilitar botón
+  updateNavigation();
+  
+  // Auto-avanzar después de 300ms (solo si no es la última pregunta)
   setTimeout(() => {
     if (currentQuestion < quizData.categories.length - 1) {
       showQuestion(currentQuestion + 1);

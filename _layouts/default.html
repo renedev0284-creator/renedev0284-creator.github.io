@@ -53,7 +53,7 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER CON DROPDOWN RECURSOS -->
 <header class="site-header">
   <div class="container">
     <div class="header-content">
@@ -81,27 +81,26 @@
       <nav class="main-nav">
         <ul class="nav-links">
           <li><a href="{{ '/' | relative_url }}" class="nav-link">Inicio</a></li>
-
-          <!-- Dropdown: Recursos -->
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          <li><a href="{{ '/blog' | relative_url }}" class="nav-link">Artículos</a></li>
+          
+          <!-- DROPDOWN RECURSOS -->
+          <li class="nav-dropdown">
+            <button class="nav-link nav-dropdown-toggle" aria-expanded="false">
               Recursos
-            </a>
-            <ul class="dropdown-menu" aria-label="Recursos">
-              <li>
-                <a href="{{ '/test-bienestar/' | relative_url }}" class="nav-link dropdown-link">
-                  Test de Bienestar
-                </a>
-              </li>
+              <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="{{ '/test-bienestar/' | relative_url }}">Test de Bienestar</a></li>
+              <li><a href="{{ '/newsletter/' | relative_url }}">Newsletter</a></li>
+              <li><a href="{{ '/libros/' | relative_url }}">Mis Libros</a></li>
             </ul>
           </li>
-
-          <li><a href="{{ '/blog' | relative_url }}" class="nav-link">Artículos</a></li>
+          
           <li><a href="{{ '/about' | relative_url }}" class="nav-link">Acerca de</a></li>
-          <li><a href="{{ '/libros/' | relative_url }}" class="nav-link">Mis Libros</a></li>
         </ul>
       </nav>
-
     </div>
   </div>
 </header>
@@ -111,7 +110,7 @@
 
 <style>
 /* ============================================
-   HEADER LIMPIO Y COMPACTO
+   HEADER CON DROPDOWN
    ============================================ */
 
 .site-header {
@@ -120,7 +119,7 @@
   padding: 0.875rem 0;
   position: sticky;
   top: 0;
-  z-index: 1000;  /* Z-INDEX ALTO */
+  z-index: 1000;
   box-shadow: 0 2px 4px rgba(60, 48, 38, 0.04);
 }
 
@@ -139,7 +138,7 @@
 
 .site-branding {
   flex: 0 0 auto;
-  z-index: 1002;  /* ENCIMA DE TODO */
+  z-index: 1002;
 }
 
 .site-title {
@@ -211,6 +210,9 @@
   transition: all 0.2s ease;
   position: relative;
   letter-spacing: 0.01em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-link::after {
@@ -244,6 +246,71 @@
   transform: translateX(-50%) scaleX(1);
 }
 
+/* Dropdown Desktop */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: #fff;
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(60, 48, 38, 0.12);
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: 'Palatino Linotype', Georgia, serif;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(243, 79, 41, 0.06);
+  border-left-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
 /* Hamburger */
 .mobile-menu-toggle {
   display: none;
@@ -256,7 +323,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1002;  /* ENCIMA DEL OVERLAY */
+  z-index: 1002;
   position: relative;
 }
 
@@ -270,7 +337,7 @@
 }
 
 /* ============================================
-   RESPONSIVE MOBILE - Z-INDEX CORRECTO
+   RESPONSIVE MOBILE
    ============================================ */
 
 @media (max-width: 768px) {
@@ -295,7 +362,7 @@
     display: flex;
   }
   
-  /* Menú lateral - Z-INDEX MÁS ALTO QUE OVERLAY */
+  /* Menú lateral */
   .main-nav {
     position: fixed;
     top: 0;
@@ -306,7 +373,7 @@
     border-left: 1px solid rgba(60, 48, 38, 0.12);
     box-shadow: -2px 0 16px rgba(60, 48, 38, 0.15);
     transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1001;  /* MÁS ALTO QUE OVERLAY (999) */
+    z-index: 1001;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -322,23 +389,22 @@
     align-items: stretch;
   }
   
-  .nav-links li {
+  .nav-links > li {
     border-bottom: 1px solid rgba(60, 48, 38, 0.08);
   }
   
-  .nav-links li:last-child {
+  .nav-links > li:last-child {
     border-bottom: none;
   }
   
   .nav-link {
     width: 100%;
     text-align: left;
-    padding: 1.1rem 2rem;
+    padding: 1.25rem 2rem;
     border-left: 3px solid transparent;
     border-radius: 0;
-    font-size: 0.98rem;
-    font-weight: 600;
-    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--color-text);
   }
   
@@ -351,6 +417,42 @@
     border-left-color: var(--color-orange);
     background: rgba(243, 79, 41, 0.08);
     color: var(--color-orange);
+  }
+  
+  /* Dropdown en móvil */
+  .nav-dropdown {
+    position: static;
+  }
+  
+  .nav-dropdown-toggle {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .nav-dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(243, 79, 41, 0.03);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .nav-dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+    max-height: 300px;
+  }
+  
+  .dropdown-menu a {
+    padding: 0.875rem 2rem 0.875rem 3rem;
+    font-size: 0.95rem;
   }
   
   /* Animación X del hamburger */
@@ -369,7 +471,7 @@
     background: var(--color-orange);
   }
   
-  /* Overlay DEBAJO DEL MENÚ */
+  /* Overlay */
   .menu-overlay {
     display: none;
     position: fixed;
@@ -377,8 +479,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(60, 48, 38, 0.5);
-    z-index: 999;  /* DEBAJO DEL MENÚ (1001) */
+    background: rgba(60, 48, 38, 0.4);
+    z-index: 999;
   }
   
   .menu-overlay.active {
@@ -403,8 +505,12 @@
   }
   
   .nav-link {
-    padding: 1.05rem 1.75rem;
+    padding: 1.125rem 1.75rem;
     font-size: 0.95rem;
+  }
+  
+  .dropdown-menu a {
+    padding: 0.875rem 1.75rem 0.875rem 2.75rem;
   }
 }
 
@@ -422,6 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const mainNav = document.querySelector('.main-nav');
   const menuOverlay = document.querySelector('.menu-overlay');
   const body = document.body;
+  const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
   
   if (!menuToggle || !mainNav || !menuOverlay) return;
   
@@ -439,6 +546,11 @@ document.addEventListener('DOMContentLoaded', function() {
     menuOverlay.classList.remove('active');
     body.classList.remove('menu-open');
     menuToggle.setAttribute('aria-expanded', 'false');
+    
+    // Cerrar dropdown también
+    if (dropdownToggle) {
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
   }
   
   function toggleMenu() {
@@ -460,7 +572,20 @@ document.addEventListener('DOMContentLoaded', function() {
     closeMenu();
   });
   
-  document.querySelectorAll('.nav-link').forEach(function(link) {
+  // Toggle dropdown en móvil
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function(e) {
+      // Solo toggle en móvil
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+      }
+    });
+  }
+  
+  // Cerrar menú al hacer click en links
+  document.querySelectorAll('.nav-link:not(.nav-dropdown-toggle), .dropdown-menu a').forEach(function(link) {
     link.addEventListener('click', closeMenu);
   });
   
@@ -470,8 +595,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // Marcar link activo
   const currentPath = window.location.pathname;
-  document.querySelectorAll('.nav-link').forEach(function(link) {
+  document.querySelectorAll('.nav-link, .dropdown-menu a').forEach(function(link) {
     const linkPath = link.getAttribute('href');
     if (linkPath === currentPath || 
         (currentPath === '{{ site.baseurl }}/' && linkPath === '{{ "/" | relative_url }}')) {

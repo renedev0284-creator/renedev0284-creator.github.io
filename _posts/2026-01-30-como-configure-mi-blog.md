@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cómo configuré mi blog en GitHub Pages"
-image: /assets/images/posts/og-image.jpg  # ⬅️ Imagen específica
+image: /assets/images/posts/mi-blog.jpg  # ⬅️ Imagen específica
 date: 2026-01-30
 tags: [meta, proceso, jekyll]
 ---
@@ -11,6 +11,8 @@ Hoy logré algo que llevaba meses posponiendo: configurar mi blog personal. No u
 ## El círculo vicioso de la procrastinación
 
 Durante años he querido escribir de forma consistente. Compré libretas, probé apps, instalé software de escritura "definitivo". Nada funcionaba. El problema no eran las herramientas, era **la falta de un sistema claro**.
+
+![Blog escrito en la pantalla de laptop](/assets/images/posts/mi-blog.jpg)
 
 ## Por qué GitHub Pages
 

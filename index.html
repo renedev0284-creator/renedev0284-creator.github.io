@@ -56,7 +56,43 @@ title: Inicio
     
     <!-- Estadísticas del blog -->
     {% include blog-stats.html %}
-    
+
+    <!-- Slider de lectura recomendada -->
+    <div class="rec-slider">
+      <p class="rec-slider-label">Lectura recomendada</p>
+      <div class="rec-track">
+        {% assign featured_posts = site.posts | where: "featured", true %}
+        {% if featured_posts.size < 3 %}
+          {% assign featured_posts = site.posts %}
+        {% endif %}
+        {% for post in featured_posts limit: 6 %}
+          {% assign words = post.content | number_of_words %}
+          {% assign read_time = words | divided_by: 200 | plus: 1 %}
+          <a href="{{ post.url | relative_url }}" class="rec-card">
+            <div class="rec-card-image{% unless post.image %} rec-card-no-img{% endunless %}">
+              {% if post.image %}
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+              {% else %}
+                <span class="rec-card-initial">{{ post.title | slice: 0, 1 | upcase }}</span>
+              {% endif %}
+            </div>
+            <div class="rec-card-body">
+              {% if post.tags and post.tags.size > 0 %}
+                <span class="rec-card-tag">{{ post.tags.first }}</span>
+              {% endif %}
+              <h3 class="rec-card-title">{{ post.title | truncate: 60 }}</h3>
+              <div class="rec-card-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b, %Y" }}</time>
+                <span aria-hidden="true">·</span>
+                <span>{{ read_time }} min</span>
+              </div>
+              <p class="rec-card-excerpt">{{ post.excerpt | strip_html | truncate: 95 }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
     <div class="intro-decoration">
       <svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg">
         <line x1="100" y1="50" x2="700" y2="50" stroke="#e8e6e3" stroke-width="2"/>
@@ -146,6 +182,176 @@ title: Inicio
     </div>
 
 <style>
+
+/* ========================================
+   SLIDER LECTURA RECOMENDADA
+   ======================================== */
+
+.rec-slider {
+  margin: 0 0 2.5rem;
+  width: 100%;
+}
+
+.rec-slider-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem 0;
+  opacity: 0.7;
+}
+
+.rec-track {
+  display: flex;
+  gap: 0.875rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 94%, transparent 100%);
+}
+
+.rec-track::-webkit-scrollbar {
+  display: none;
+}
+
+.rec-card {
+  flex: 0 0 230px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.rec-card:hover {
+  border-color: rgba(217, 79, 92, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(60, 48, 38, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.rec-card-image {
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rec-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.rec-card:hover .rec-card-image img {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+.rec-card-no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(60,48,38,0.04) 0%, rgba(60,48,38,0.09) 100%);
+}
+
+.rec-card-initial {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba(60, 48, 38, 0.12);
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.rec-card-body {
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.rec-card-tag {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-orange);
+  opacity: 0.85;
+}
+
+.rec-card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.rec-card:hover .rec-card-title {
+  color: var(--color-orange);
+}
+
+.rec-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+  margin-top: 0.1rem;
+}
+
+.rec-card-excerpt {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: rgba(60, 48, 38, 0.65);
+  margin: 0.25rem 0 0;
+}
+
+@media (max-width: 640px) {
+  .rec-card {
+    flex: 0 0 72vw;
+  }
+  .rec-card-image {
+    height: 85px;
+  }
+  .rec-card-title {
+    font-size: 0.9rem;
+  }
+  .rec-card-excerpt {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .rec-card {
+    flex: 0 0 80vw;
+  }
+  .rec-card-image {
+    display: none;
+  }
+}
 
 .view-all-cta{
   max-width: 520px;

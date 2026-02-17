@@ -1414,8 +1414,8 @@ body::before {
   z-index: -1;
   opacity: 0.03;
   pointer-events: none;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233c3026' stroke-width='1.5'%3E%3C!-- Pluma --%3E%3Cpath d='M15,10 L15,35 M13,35 L17,40 L17,35 Z' transform='translate(10,15)'/%3E%3C!-- Libro --%3E%3Cpath d='M40,20 L50,20 L50,35 L40,35 Z M43,23 L47,23 M43,26 L47,26' transform='translate(30,10)'/%3E%3C!-- Código --%3E%3Cpath d='M65,25 L60,30 L65,35 M75,25 L80,30 L75,35' transform='translate(10,30)'/%3E%3C!-- Café --%3E%3Cpath d='M20,70 L20,80 L30,80 L30,70 M32,73 Q35,73 35,76 M18,70 Q20,68 22,70' transform='translate(50,0)'/%3E%3C!-- Bombilla --%3E%3Cpath d='M75,55 Q75,50 80,50 Q85,50 85,55 Q85,60 82,62 L78,62 Q75,60 75,55 M78,62 L78,65 L82,65' transform='translate(0,15)'/%3E%3C!-- Estrella --%3E%3Cpath d='M50,8 L52,14 L58,14 L53,18 L55,24 L50,20 L45,24 L47,18 L42,14 L48,14 Z' transform='translate(25,50)'/%3E%3C!-- Corazón --%3E%3Cpath d='M12,85 Q10,83 10,80 Q10,77 12,75 Q14,77 15,80 Q16,77 18,75 Q20,77 20,80 Q20,83 18,85 L15,90 Z' transform='translate(60,15)'/%3E%3C!-- Música --%3E%3Cpath d='M85,80 L85,95 M85,80 L95,75 L95,90 M83,93 Q83,96 85,96 Q87,96 87,93' transform='translate(0,0)'/%3E%3C/g%3E%3C/svg%3E");
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233c3026' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20,12 L20,42 M18,42 L22,50 L22,42 Z'/%3E%3Cpath d='M45,18 L65,18 L65,48 L45,48 Z M50,25 L60,25 M50,31 L60,31 M50,37 L60,37'/%3E%3Cpath d='M78,18 L72,28 L78,38 M98,18 L104,28 L98,38'/%3E%3Cpath d='M14,65 L14,88 L38,88 L38,65 M40,70 Q47,70 47,76 Q47,82 40,82'/%3E%3Cpath d='M58,62 L60,70 L68,70 L62,75 L64,83 L58,78 L52,83 L54,75 L48,70 L56,70 Z'/%3E%3Cpath d='M92,65 Q88,60 83,65 Q79,70 83,75 L92,85 L101,75 Q105,70 101,65 Q96,60 92,65 Z'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 600px 600px;
   background-position: center center;
 }

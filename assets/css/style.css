@@ -1403,7 +1403,7 @@ a[href*="/2026/"]::after {
    Agregar al final de assets/css/style.css
    ======================================== */
 
-/* Patrón de fondo con iconos */
+/* Patrón de fondo con iconos — temas: escritura, psicología, inteligencia, marketing, redes sociales */
 body::before {
   content: '';
   position: fixed;
@@ -1412,12 +1412,12 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.03;
+  opacity: 0.05;
   pointer-events: none;
   background-image:
-    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233c3026' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20,12 L20,42 M18,42 L22,50 L22,42 Z'/%3E%3Cpath d='M45,18 L65,18 L65,48 L45,48 Z M50,25 L60,25 M50,31 L60,31 M50,37 L60,37'/%3E%3Cpath d='M78,18 L72,28 L78,38 M98,18 L104,28 L98,38'/%3E%3Cpath d='M14,65 L14,88 L38,88 L38,65 M40,70 Q47,70 47,76 Q47,82 40,82'/%3E%3Cpath d='M58,62 L60,70 L68,70 L62,75 L64,83 L58,78 L52,83 L54,75 L48,70 L56,70 Z'/%3E%3Cpath d='M92,65 Q88,60 83,65 Q79,70 83,75 L92,85 L101,75 Q105,70 101,65 Q96,60 92,65 Z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 600px 600px;
-  background-position: center center;
+    url("data:image/svg+xml,%3Csvg width='180' height='180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233c3026' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(6,6)'%3E%3Cpath d='M14,2 L16,4 L7,13 L4,14 L5,11 Z M11,5 L5,11'/%3E%3C/g%3E%3Cg transform='translate(84,4)'%3E%3Cpath d='M1,3 L6,3 L6,13 L1,13 Z M10,3 L15,3 L15,13 L10,13 M6,3 Q8,2 10,3 M6,13 Q8,14 10,13 M3,6 L5,6 M3,8 L5,8 M3,10 L5,10 M11,6 L14,6 M11,8 L14,8 M11,10 L14,10'/%3E%3C/g%3E%3Cg transform='translate(154,6)'%3E%3Cpath d='M2,1 L14,1 Q15,1 15,2 L15,10 Q15,11 14,11 L6,11 L4,14 L4,11 L2,11 Q1,11 1,10 L1,2 Q1,1 2,1 Z'/%3E%3C/g%3E%3Cg transform='translate(26,82)'%3E%3Cpath d='M8,1 Q12,1 12,5 Q12,8 10,9 L10,12 L6,12 L6,9 Q4,8 4,5 Q4,1 8,1 Z M6,13 L10,13 M7,14.5 L9,14.5'/%3E%3C/g%3E%3Cg transform='translate(100,78)'%3E%3Cpath d='M0,15 L16,15 M1,11 L1,15 L4,15 L4,11 Z M5,7 L5,15 L8,15 L8,7 Z M9,9 L9,15 L12,15 L12,9 Z M13,4 L13,15 L16,15 L16,4 Z'/%3E%3C/g%3E%3Cg transform='translate(156,80)'%3E%3Cpath d='M5,1 L4,15 M11,1 L10,15 M1,5 L15,5 M1,11 L15,11'/%3E%3C/g%3E%3Cg transform='translate(4,152)'%3E%3Cpath d='M8,1 Q13,1 13,6 Q15,7 15,9 Q15,12 13,12 L12,14 L4,14 L3,12 Q1,12 1,9 Q1,7 3,6 Q3,1 8,1 Z M8,5 Q10,6 10,8 Q10,10 8,11'/%3E%3C/g%3E%3Cg transform='translate(82,154)'%3E%3Cpath d='M1,6 L1,10 L4,10 L11,14 L11,2 L4,6 Z M13,5 Q16,8 13,11'/%3E%3C/g%3E%3Cg transform='translate(150,152)'%3E%3Cpath d='M4,4 L12,4 L12,12 L4,12 Z M7,2 L7,4 M9,2 L9,4 M7,12 L7,14 M9,12 L9,14 M2,7 L4,7 M2,9 L4,9 M12,7 L14,7 M12,9 L14,9'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size: 450px 450px;
+  background-repeat: repeat;
 }
 
 /* Variante con más densidad de iconos */
@@ -1432,10 +1432,10 @@ body.sparse-pattern::before {
   opacity: 0.025;
 }
 
-/* Alternar patrón (opcional - más variedad) */
+/* Patrón en escritorio */
 @media (min-width: 768px) {
   body::before {
-    background-size: 700px 700px;
+    background-size: 500px 500px;
   }
 }
 

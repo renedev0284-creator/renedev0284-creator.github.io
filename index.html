@@ -149,6 +149,47 @@ title: Inicio
     })();
     </script>
 
+    <script>
+    /* Contador de lecturas en la lista de posts */
+    (function () {
+      var API    = 'https://comentarios.finanzasreales.com/api/visitas.php?top=100';
+      var badges = document.querySelectorAll('.post-view-badge[data-view-slug]');
+      if (!badges.length) return;
+
+      function fmt(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 1000)    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+        return n.toLocaleString('es');
+      }
+
+      fetch(API)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.success || !data.data) return;
+
+          /* Construir mapa slug → views */
+          var map = {};
+          data.data.forEach(function (item) {
+            map[item.post_slug] = item.views;
+          });
+
+          badges.forEach(function (el) {
+            var slug = el.getAttribute('data-view-slug');
+            var views = map[slug];
+            if (!views || views < 1) return;
+            el.innerHTML =
+              '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">'
+              + '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>'
+              + '<circle cx="12" cy="12" r="3"/>'
+              + '</svg>'
+              + fmt(views);
+            el.classList.add('loaded');
+          });
+        })
+        .catch(function () { /* sin datos, badges permanecen ocultos */ });
+    })();
+    </script>
+
     <div class="intro-decoration">
       <svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg">
         <line x1="100" y1="50" x2="700" y2="50" stroke="#e8e6e3" stroke-width="2"/>
@@ -186,15 +227,20 @@ title: Inicio
             {% endif %}
 
             <div class="post-body">
-              <!-- Fecha minimalista -->
-              <time class="post-date-minimal" datetime="{{ post.date | date_to_xmlschema }}">
-                {% assign day = post.date | date: "%-d" %}
-                {% assign month = post.date | date: "%-m" %}
-                {% assign year = post.date | date: "%Y" %}
-                {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-                {% assign month_index = month | minus: 1 %}
-                {{ day }} de {{ months[month_index] }}, {{ year }}
-              </time>
+              <!-- Fecha + contador de lecturas -->
+              <div class="post-date-row">
+                <time class="post-date-minimal" datetime="{{ post.date | date_to_xmlschema }}">
+                  {% assign day = post.date | date: "%-d" %}
+                  {% assign month = post.date | date: "%-m" %}
+                  {% assign year = post.date | date: "%Y" %}
+                  {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+                  {% assign month_index = month | minus: 1 %}
+                  {{ day }} de {{ months[month_index] }}, {{ year }}
+                </time>
+                <span class="post-view-badge"
+                      data-view-slug="{{ post.url | remove: '.html' | split: '/' | join: '-' | remove_first: '-' }}"
+                      aria-hidden="true"></span>
+              </div>
 
               <!-- Título -->
               <h3 class="post-title-minimal">
@@ -238,6 +284,51 @@ title: Inicio
     </div>
 
 <style>
+
+/* ========================================
+   FECHA + BADGE DE LECTURAS (post list)
+   ======================================== */
+
+.post-date-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.post-date-row .post-date-minimal {
+  margin-bottom: 0; /* override del margin en la clase original */
+}
+
+.post-view-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: rgba(217, 79, 92, 0.07);
+  border: 1px solid rgba(217, 79, 92, 0.15);
+  padding: 0.18rem 0.55rem 0.18rem 0.4rem;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.post-view-badge.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.post-view-badge svg {
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
 
 /* ========================================
    SLIDER LECTURA RECOMENDADA

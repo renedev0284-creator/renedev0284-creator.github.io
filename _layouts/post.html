@@ -245,3 +245,16 @@ layout: default
   }
 }
 </style>
+
+<script>
+/* Tracking de visitas — llama a visitas.php con el slug del post */
+(function () {
+  const API = 'https://comentarios.finanzasreales.com/api/visitas.php';
+  const slug = '{{ page.url | remove: ".html" | split: "/" | join: "-" | remove_first: "-" }}';
+  fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ post_slug: slug })
+  }).catch(function () {}); // silencioso si la API no está lista aún
+})();
+</script>

@@ -57,10 +57,11 @@ title: Inicio
     <!-- Estadísticas del blog -->
     {% include blog-stats.html %}
 
-    <!-- Slider de lectura recomendada -->
+    <!-- Slider: posts más populares (dinámico) con fallback estático -->
     <div class="rec-slider">
-      <p class="rec-slider-label">Lectura recomendada</p>
-      <div class="rec-track">
+      <p class="rec-slider-label">Lo más leído</p>
+      <div class="rec-track" id="rec-track">
+        <!-- Fallback estático: se reemplaza por JS si la API responde -->
         {% assign featured_posts = site.posts | where: "featured", true %}
         {% if featured_posts.size < 3 %}
           {% assign featured_posts = site.posts %}
@@ -92,6 +93,61 @@ title: Inicio
         {% endfor %}
       </div>
     </div>
+
+    <script>
+    /* Slider de populares — reemplaza el contenido estático con datos reales de visitas */
+    (function () {
+      var API  = 'https://comentarios.finanzasreales.com/api/visitas.php?top=6';
+      var META = '{{ "/posts.json" | relative_url }}';
+      var track = document.getElementById('rec-track');
+
+      function cardHTML(p, views) {
+        var img = p.image
+          ? '<div class="rec-card-image"><img src="' + p.image + '" alt="' + p.title.replace(/"/g,'') + '" loading="lazy"></div>'
+          : '<div class="rec-card-image rec-card-no-img"><span class="rec-card-initial">' + (p.title[0] || '').toUpperCase() + '</span></div>';
+        var tag = (p.tags && p.tags[0])
+          ? '<span class="rec-card-tag">' + p.tags[0] + '</span>'
+          : '';
+        var viewsBadge = views != null
+          ? '<span class="rec-card-views">' + views.toLocaleString() + ' lecturas</span>'
+          : '';
+        return '<a href="' + p.url + '" class="rec-card">'
+          + img
+          + '<div class="rec-card-body">'
+          + tag
+          + '<h3 class="rec-card-title">' + p.title + '</h3>'
+          + '<div class="rec-card-meta">'
+          +   '<time datetime="' + p.dateISO + '">' + p.date + '</time>'
+          +   '<span aria-hidden="true">·</span>'
+          +   '<span>' + p.readTime + ' min</span>'
+          +   viewsBadge
+          + '</div>'
+          + '<p class="rec-card-excerpt">' + (p.excerpt || '') + '</p>'
+          + '</div>'
+          + '</a>';
+      }
+
+      Promise.all([
+        fetch(API).then(function(r){ return r.json(); }),
+        fetch(META).then(function(r){ return r.json(); })
+      ]).then(function(results) {
+        var popular = results[0];
+        var allPosts = results[1];
+        if (!popular.success || !popular.data || !popular.data.length) return;
+
+        var ordered = popular.data.map(function(item) {
+          var post = allPosts.find(function(p) { return p.slug === item.post_slug; });
+          return post ? { post: post, views: item.views } : null;
+        }).filter(Boolean);
+
+        if (ordered.length < 3) return; // muy pocos datos aún, mantener fallback
+
+        track.innerHTML = ordered.map(function(item) {
+          return cardHTML(item.post, item.views);
+        }).join('');
+      }).catch(function() { /* mantiene el fallback estático */ });
+    })();
+    </script>
 
     <div class="intro-decoration">
       <svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg">
@@ -327,6 +383,16 @@ title: Inicio
   line-height: 1.55;
   color: rgba(60, 48, 38, 0.65);
   margin: 0.25rem 0 0;
+}
+
+.rec-card-views {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  opacity: 0.75;
+  background: rgba(217, 79, 92, 0.07);
+  padding: 0.1rem 0.4rem;
+  border-radius: 100px;
 }
 
 @media (max-width: 640px) {

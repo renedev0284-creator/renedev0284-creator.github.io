@@ -3,7 +3,7 @@ layout: post
 title: "El primer borrador tiene que ser malo. De verdad. No es metáfora."
 description: "Todos escuchamos que el primer borrador debe ser imperfecto. Pero seguimos intentando que salga bien. Ese es el problema. Acá está la diferencia."
 image: /assets/images/posts/borrador-escritura-proceso.jpg
-date: 2026-02-19
+date: 2026-02-18
 tags: [escritura, proceso, perfeccionismo, novatos]
 categories: [escritura, vida]
 excerpt: "Todos sabemos que el primer borrador puede ser malo. El problema es que seguimos intentando que no lo sea. Y eso lo mata todo."

@@ -3,7 +3,7 @@ layout: post
 title: "La página en blanco no es tu problema"
 description: "Si llevas meses queriendo escribir y no podés empezar, el problema no es la página. Es lo que esperás de vos mismo antes de teclear la primera palabra."
 image: /assets/images/posts/pagina-en-blanco-escritura.jpg
-date: 2026-02-19
+date: 2026-02-18
 tags: [escritura, proceso, bloqueo, novatos]
 categories: [escritura, vida]
 excerpt: "Querés escribir. Abrís el documento. Mirás la pantalla. No sale nada. Y concluís que no tenés ideas. Mentira."

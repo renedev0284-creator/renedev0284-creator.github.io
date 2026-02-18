@@ -3,7 +3,7 @@ layout: post
 title: "¿Quién sos vos para escribir esto?"
 description: "La pregunta que paraliza a casi todos los escritores novatos. Creés que necesitás más credenciales, más experiencia, más permiso. No es así."
 image: /assets/images/posts/escritor-impostor-novato.jpg
-date: 2026-02-19
+date: 2026-02-18
 tags: [escritura, proceso, impostor, novatos, conciencia]
 categories: [escritura, psicologia]
 excerpt: "En algún momento, todo escritor novato se pregunta lo mismo: ¿quién soy yo para escribir sobre esto? La respuesta no es la que esperás."

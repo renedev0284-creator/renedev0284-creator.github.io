@@ -5,9 +5,11 @@ author: René Moya
 email: renedev0284@gmail.com
 url: "https://renemoya.com"
 baseurl: ""
+locale: es_GT
 
 # Imagen por defecto para compartir en redes sociales
 image: /assets/images/og-image.jpg
+og_image: /assets/images/og-image.jpg
 
 # Redes sociales
 twitter_username: Rened_ev
@@ -34,7 +36,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Excluir archivos
+# Excluir archivos del build
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -42,6 +44,11 @@ exclude:
   - vendor
   - README.md
   - INICIO_RAPIDO.md
+  - GUIA_MARKDOWN.md
+  - docs/
+  - fix-urgente.sh
+  - generate-tags.sh
+  - relacionados.txt
 
 # Configuración de posts
 defaults:

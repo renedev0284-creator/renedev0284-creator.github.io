@@ -1,62 +1,38 @@
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-<meta property="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:title" content="{{ page.title | default: site.title }}">
-<meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
-<meta property="og:site_name" content="{{ site.title | default: site.author }}">
+{% comment %}
+  Campos OG/Twitter EXTRA que jekyll-seo-tag no genera por defecto.
+  jekyll-seo-tag ya maneja: og:title, og:description, og:type, og:url,
+  og:image, twitter:card, twitter:title, twitter:description, twitter:image,
+  twitter:site y canonical.
+{% endcomment %}
 
-<!-- Imagen Open Graph - SIEMPRE presente -->
 {% if page.image %}
-  {% assign og_image = page.image | absolute_url %}
-{% elsif site.og_image %}
-  {% assign og_image = site.og_image | absolute_url %}
+  {% assign _og_img = page.image | absolute_url %}
 {% else %}
-  {% assign og_image = '/assets/images/og-default.png' | absolute_url %}
+  {% assign _og_img = site.image | absolute_url %}
 {% endif %}
 
-<meta property="og:image" content="{{ og_image }}">
-<meta property="og:image:secure_url" content="{{ og_image }}">
+<!-- OG image: dimensiones y metadatos extra -->
+<meta property="og:image:secure_url" content="{{ _og_img }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{ page.title | default: site.title }}">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="{{ page.title | default: site.title | escape }}">
 <meta property="og:locale" content="es_GT">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
 {% if site.twitter_username %}
-<meta name="twitter:site" content="@{{ site.twitter_username }}">
 <meta name="twitter:creator" content="@{{ site.twitter_username }}">
 {% endif %}
-<meta name="twitter:title" content="{{ page.title | default: site.title }}">
-<meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
-<meta name="twitter:image" content="{{ og_image }}">
-<meta name="twitter:image:alt" content="{{ page.title | default: site.title }}">
 
 <!-- Article metadata (solo para posts) -->
 {% if page.layout == 'post' %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="article:author" content="{{ site.author }}">
-  
-  {% if page.modified_date %}
-    <meta property="article:modified_time" content="{{ page.modified_date | date_to_xmlschema }}">
+  <meta property="article:author" content="{{ site.url }}/about">
+  {% if page.last_modified_at %}
+  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
   {% endif %}
-  
-  {% if page.tags %}
-    {% for tag in page.tags %}
-      <meta property="article:tag" content="{{ tag }}">
-    {% endfor %}
-  {% endif %}
-  
-  {% if page.categories %}
-    {% for category in page.categories %}
-      <meta property="article:section" content="{{ category }}">
-    {% endfor %}
-  {% endif %}
+  {% for tag in page.tags %}
+  <meta property="article:tag" content="{{ tag }}">
+  {% endfor %}
+  {% for cat in page.categories %}
+  <meta property="article:section" content="{{ cat }}">
+  {% endfor %}
 {% endif %}
-
-<!-- Canonical URL -->
-<link rel="canonical" href="{{ page.url | absolute_url }}">
-
-<!-- Meta description general -->
-<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">

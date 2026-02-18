@@ -108,6 +108,238 @@
 <!-- Overlay del menú móvil -->
 <div class="menu-overlay"></div>
 
+<!-- ── Banner: Test de Bienestar ───────────────────────────── -->
+<div class="wb-banner" id="wb-banner" role="region" aria-label="Promoción">
+  <div class="wb-inner">
+    <span class="wb-emoji" aria-hidden="true">🧠</span>
+    <p class="wb-msg" id="wb-msg" aria-live="polite"></p>
+    <a href="{{ '/test-bienestar/' | relative_url }}" class="wb-cta">
+      Hacer el test
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+    <button class="wb-close" id="wb-close" aria-label="Cerrar banner">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+/* ── Banner bienestar ───────────────────────────────────────── */
+
+.wb-banner {
+  position: sticky;
+  top: 72px;          /* ≈ altura del header */
+  z-index: 999;
+  background: linear-gradient(90deg,
+    rgba(253, 246, 236, 0.97) 0%,
+    rgba(255, 250, 243, 0.97) 50%,
+    rgba(253, 246, 236, 0.97) 100%);
+  background-size: 200% 100%;
+  animation: wb-shimmer 6s ease infinite;
+  border-bottom: 1px solid rgba(217, 79, 92, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
+}
+
+.wb-banner.wb-hiding {
+  opacity: 0;
+  transform: translateY(-6px);
+  max-height: 0;
+  overflow: hidden;
+  border: none;
+}
+
+@keyframes wb-shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.wb-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.wb-emoji {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  animation: wb-pulse 3s ease-in-out infinite;
+}
+
+@keyframes wb-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15) rotate(-5deg); }
+}
+
+.wb-msg {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: rgba(60, 48, 38, 0.85);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.5s ease;
+}
+
+.wb-msg.wb-fading {
+  opacity: 0;
+}
+
+.wb-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(217, 79, 92, 0.35);
+  border-radius: 100px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.wb-cta:hover {
+  background: var(--color-orange);
+  color: #fff;
+  border-color: var(--color-orange);
+}
+
+.wb-close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(60, 48, 38, 0.4);
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease;
+  padding: 0;
+}
+
+.wb-close:hover {
+  background: rgba(60, 48, 38, 0.08);
+  color: rgba(60, 48, 38, 0.8);
+}
+
+/* Móvil: no sticky, más compacto */
+@media (max-width: 768px) {
+  .wb-banner {
+    position: relative;
+    top: auto;
+  }
+  .wb-inner {
+    height: 40px;
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  .wb-emoji {
+    font-size: 1rem;
+  }
+  .wb-msg {
+    font-size: 0.78rem;
+  }
+  .wb-cta {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.55rem;
+  }
+}
+
+@media (max-width: 420px) {
+  /* En pantallas muy pequeñas solo mostramos emoji + CTA */
+  .wb-msg {
+    display: none;
+  }
+  .wb-emoji {
+    display: none;
+  }
+  .wb-inner {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .wb-cta {
+    font-size: 0.8rem;
+    padding: 0.35rem 1rem;
+  }
+  .wb-close {
+    position: absolute;
+    right: 0.75rem;
+  }
+  .wb-inner {
+    position: relative;
+  }
+}
+</style>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'wb_banner_dismissed';
+  var banner = document.getElementById('wb-banner');
+  var msgEl  = document.getElementById('wb-msg');
+  var closeBtn = document.getElementById('wb-close');
+
+  // Si ya fue cerrado, ocultar de inmediato
+  if (localStorage.getItem(STORAGE_KEY)) {
+    banner.style.display = 'none';
+    return;
+  }
+
+  var messages = [
+    '¿Cómo estás realmente? Descúbrelo en 5 minutos',
+    'Tu bienestar importa · Conoce tu estado emocional hoy',
+    '¿Qué tan bien estás? El test revela más de lo que imaginas 👀',
+    'Psicología aplicada, gratis y sin rodeos · Haz el test'
+  ];
+  var current = 0;
+
+  function showMsg(idx) {
+    msgEl.classList.add('wb-fading');
+    setTimeout(function () {
+      msgEl.textContent = messages[idx];
+      msgEl.classList.remove('wb-fading');
+    }, 450);
+  }
+
+  // Mostrar primer mensaje
+  msgEl.textContent = messages[0];
+
+  // Rotar cada 5 s
+  setInterval(function () {
+    current = (current + 1) % messages.length;
+    showMsg(current);
+  }, 5000);
+
+  // Cerrar
+  closeBtn.addEventListener('click', function () {
+    banner.classList.add('wb-hiding');
+    setTimeout(function () {
+      banner.style.display = 'none';
+    }, 400);
+    localStorage.setItem(STORAGE_KEY, '1');
+  });
+})();
+</script>
+
 <style>
 /* ============================================
    HEADER CON DROPDOWN

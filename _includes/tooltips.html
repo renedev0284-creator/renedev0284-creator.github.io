@@ -1,5 +1,6 @@
 <style>
-/* Tooltips informativos */
+/* ── Tooltips informativos ─────────────────────────────────────── */
+
 .tooltip-word {
   position: relative;
   color: var(--color-orange);
@@ -10,59 +11,115 @@
   font-weight: 500;
 }
 
+/* ─────────────────────────────────────────────────────────────────
+   DESKTOP (≥ 769px): el tooltip aparece a la DERECHA de la palabra
+   → aspecto horizontal, no interfiere con el texto que se lee
+   ───────────────────────────────────────────────────────────────── */
+
 .tooltip-word::before {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  padding: 0.75rem 1rem;
+  /* Posición: a la derecha, centrado verticalmente */
+  top: 50%;
+  left: calc(100% + 14px);
+  bottom: auto;
+  /* Estado inicial: ligeramente desplazado hacia la izquierda */
+  transform: translateY(-50%) translateX(-6px);
+  /* Apariencia */
+  padding: 0.65rem 0.9rem;
   background: var(--color-text);
-  color: white;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1.55;
   font-weight: 400;
   border-radius: 8px;
-  max-width: 300px;
+  width: 270px;
   white-space: normal;
+  /* Visibilidad */
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   pointer-events: none;
 }
 
+/* Flecha apuntando a la IZQUIERDA (hacia la palabra) */
 .tooltip-word::after {
   content: '';
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-2px);
+  top: 50%;
+  left: calc(100% + 2px);
+  bottom: auto;
+  transform: translateY(-50%) translateX(-4px);
   border: 6px solid transparent;
-  border-top-color: var(--color-text);
+  border-right-color: var(--color-text);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
 }
 
-.tooltip-word:hover::before,
+/* Hover desktop */
+.tooltip-word:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
 .tooltip-word:hover::after {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(-12px);
+  transform: translateY(-50%) translateX(0);
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   MÓVIL (≤ 768px): el tooltip aparece ARRIBA de la palabra
+   → aspecto vertical, compacto y legible con toque
+   ───────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .tooltip-word::before {
-    max-width: 250px;
+    /* Reposicionar: encima de la palabra */
+    top: auto;
+    left: 0;
+    bottom: calc(100% + 10px);
+    /* Estado inicial: ligeramente abajo */
+    transform: translateY(5px);
+    width: auto;
+    max-width: min(240px, calc(100vw - 2.5rem));
     font-size: 0.8rem;
+    padding: 0.6rem 0.85rem;
   }
-  
+
+  /* Flecha apuntando hacia ABAJO (hacia la palabra) */
+  .tooltip-word::after {
+    top: auto;
+    left: 10px;
+    bottom: calc(100% + 0px);
+    transform: translateY(3px);
+    border-right-color: transparent;
+    border-top-color: var(--color-text);
+  }
+
+  /* Hover en móvil */
+  .tooltip-word:hover::before {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .tooltip-word:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Touch: activo con toque (móvil) */
   .tooltip-word:active::before,
   .tooltip-word:active::after {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
   }
 }
 </style>

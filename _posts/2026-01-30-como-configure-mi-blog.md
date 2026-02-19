@@ -6,13 +6,17 @@ date: 2026-01-30
 tags: [meta, proceso, jekyll]
 ---
 
-Hoy logré algo que llevaba meses posponiendo: configurar mi blog personal. No un blog más en Medium o Substack, sino **mi propio espacio** donde tengo control total del contenido y el diseño.
+Hoy logré por fin configurar mi blog personal. No un simple blog, porque de esos ya hice al menos 50 y no me llenaban, me terminaban estancando, ahora lo puedo decir con emoción que es **mi propio espacio** donde tengo control total del contenido y el diseño.
 
 ## El círculo vicioso de la procrastinación
 
-Durante años he querido escribir de forma consistente. Compré libretas, probé apps, instalé software de escritura "definitivo". Nada funcionaba. El problema no eran las herramientas, era **la falta de un sistema claro**.
+Durante años he intentado de todo para sentirme bien con el diseño, he usado todas las plantillas que hay, desde revista digital, multipropósito, ventas online, etc. Pero nada que me llene y esto que me pasé horas y horas configurándo todas estas plantillas a mi antojo. Compré libretas, probé apps, instalé software de escritura "definitivo". Nada funcionaba. El problema no eran las herramientas, era **la falta de un sistema claro**.
 
 ![Blog escrito en la pantalla de laptop](/assets/images/posts/mi-blog.jpg)
+
+A este párrafo en específico tengo que mencionar y aceptar que para lograr estar en este nivel, he tenido que optar por mis conocimientos de programación, marketing, uso de IA, suscripciones pagas a ciertas herramientas y a una mejor disciplina.
+
+Elegí un camino que recién conocí por trabajo y que es digna de implementar por lo fácil, aunque no es visualmente atractiva porque debes escribir un post desde un editor de código, publicarlo y conocer herramientas como "Github" y su integración de Github Pages.
 
 ## Por qué GitHub Pages
 
@@ -40,7 +44,7 @@ La configuración tomó aproximadamente una hora (con varios intentos):
 
 **Lección 1**: No necesitas un blog perfecto para empezar. Este diseño es simple, pero funciona.
 
-**Lección 2**: El perfeccionismo mata más proyectos que la falta de habilidad.
+**Lección 2**: El perfeccionismo mata más proyectos que la falta de habilidad, comienza, publica y lo pules en el camino.
 
 **Lección 3**: Publicar en tu propio dominio se siente diferente. Hay más compromiso.
 

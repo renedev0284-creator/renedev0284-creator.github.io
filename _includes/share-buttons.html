@@ -1,181 +1,324 @@
-<!-- Botones para compartir -->
-<div class="share-buttons">
-  <h3 class="share-title">Compartir este artículo</h3>
-  <div class="share-buttons-container">
-    <!-- Twitter -->
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}&via=Rened_ev" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="share-button share-twitter"
-       aria-label="Compartir en Twitter">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<!-- ── Compartir artículo ─────────────────────────────────────────── -->
+<div class="share-section">
+
+  <div class="share-header">
+    <span class="share-eyebrow">¿Te fue útil?</span>
+    <p class="share-heading">Compartilo con alguien que lo necesite.</p>
+  </div>
+
+  <div class="share-networks">
+
+    <!-- X / Twitter -->
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}&via=Rened_ev"
+       target="_blank" rel="noopener noreferrer"
+       class="share-icon-btn share-x" aria-label="Compartir en X">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
       </svg>
-      <span>Twitter</span>
+      <span>X</span>
     </a>
-    
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="share-button share-linkedin"
-       aria-label="Compartir en LinkedIn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      <span>LinkedIn</span>
-    </a>
-    
+
     <!-- WhatsApp -->
-    <a href="https://wa.me/?text={{ page.title | url_encode }}%20{{ page.url | absolute_url | url_encode }}" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="share-button share-whatsapp"
-       aria-label="Compartir por WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <a href="https://wa.me/?text={{ page.title | url_encode }}%20{{ page.url | absolute_url | url_encode }}"
+       target="_blank" rel="noopener noreferrer"
+       class="share-icon-btn share-wa" aria-label="Compartir por WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
       </svg>
       <span>WhatsApp</span>
     </a>
-    
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}"
+       target="_blank" rel="noopener noreferrer"
+       class="share-icon-btn share-li" aria-label="Compartir en LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+
     <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="share-button share-facebook"
-       aria-label="Compartir en Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}"
+       target="_blank" rel="noopener noreferrer"
+       class="share-icon-btn share-fb" aria-label="Compartir en Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
         <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
       </svg>
       <span>Facebook</span>
     </a>
-    
-    <!-- Copiar enlace -->
-    <button class="share-button share-copy" 
-            onclick="copyPostLink()" 
-            aria-label="Copiar enlace">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+
+  </div>
+
+  <!-- Copiar enlace -->
+  <div class="share-copy-row">
+    <div class="share-url-field">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
       </svg>
-      <span>Copiar link</span>
+      <span class="share-url-text">{{ page.url | absolute_url }}</span>
+    </div>
+    <button class="share-copy-btn" onclick="copyShareLink(this)" aria-label="Copiar enlace">
+      <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+      <svg class="icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span class="btn-label">Copiar</span>
     </button>
   </div>
+
 </div>
 
 <style>
-.share-buttons {
-  margin: 3rem 0 2rem;
-  padding: 2rem;
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+/* ── Sección compartir ───────────────────────────────────────────── */
+.share-section {
+  margin: 3.5rem 0 2rem;
+  padding: 2rem 2rem 1.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-top: 3px solid var(--color-orange);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(60, 48, 38, 0.06);
+  backdrop-filter: blur(4px);
 }
 
-.share-title {
+/* Header */
+.share-header {
+  margin-bottom: 1.5rem;
+}
+
+.share-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-orange);
+  margin-bottom: 0.25rem;
+}
+
+.share-heading {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-text);
-  margin: 0 0 1.25rem 0;
-  text-align: center;
+  margin: 0;
+  line-height: 1.3;
 }
 
-.share-buttons-container {
+/* Botones de red social */
+.share-networks {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 1.25rem;
 }
 
-.share-button {
+.share-icon-btn {
   display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 72px;
+  padding: 0.75rem 0 0.6rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.share-icon-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.share-icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.share-icon-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Colores por red — tinte sutil por defecto, lleno en hover */
+.share-x {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.share-x:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.share-wa {
+  background: rgba(37, 211, 102, 0.1);
+  color: #1da851;
+  border-color: rgba(37, 211, 102, 0.2);
+}
+.share-wa:hover {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+}
+
+.share-li {
+  background: rgba(10, 102, 194, 0.08);
+  color: #0A66C2;
+  border-color: rgba(10, 102, 194, 0.15);
+}
+.share-li:hover {
+  background: #0A66C2;
+  color: #fff;
+  border-color: #0A66C2;
+}
+
+.share-fb {
+  background: rgba(24, 119, 242, 0.08);
+  color: #1877F2;
+  border-color: rgba(24, 119, 242, 0.15);
+}
+.share-fb:hover {
+  background: #1877F2;
+  color: #fff;
+  border-color: #1877F2;
+}
+
+/* Fila copiar enlace */
+.share-copy-row {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  background: var(--color-bg);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  background: rgba(60, 48, 38, 0.04);
+  border: 1px solid rgba(60, 48, 38, 0.1);
+  border-radius: 8px;
+  padding: 0.45rem 0.45rem 0.45rem 0.85rem;
+}
+
+.share-url-field {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1;
+  min-width: 0;
+  color: var(--color-text-muted);
+}
+
+.share-url-field svg {
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.share-url-text {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: rgba(60, 48, 38, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.share-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding: 0.45rem 0.9rem;
+  background: var(--color-orange);
+  color: #fff;
+  border: none;
   border-radius: 6px;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 1px 3px var(--color-shadow);
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.share-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--color-shadow);
-  background: white;
+.share-copy-btn:hover {
+  background: #c0404c;
+  transform: translateY(-1px);
 }
 
-.share-button svg {
-  flex-shrink: 0;
-}
+/* Estado copiado */
+.share-copy-btn .icon-check { display: none; }
 
-.share-twitter:hover {
-  border-color: #1DA1F2;
-  color: #1DA1F2;
+.share-copy-btn.copied {
+  background: #1da851;
 }
-
-.share-linkedin:hover {
-  border-color: #0077B5;
-  color: #0077B5;
-}
-
-.share-whatsapp:hover {
-  border-color: #25D366;
-  color: #25D366;
-}
-
-.share-facebook:hover {
-  border-color: #1877F2;
-  color: #1877F2;
-}
-
-.share-copy:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.share-copy.copied {
-  background: var(--color-accent);
-  color: white;
-  border-color: var(--color-accent);
-}
+.share-copy-btn.copied .icon-copy  { display: none; }
+.share-copy-btn.copied .icon-check { display: block; }
+.share-copy-btn.copied .btn-label  { content: '¡Listo!'; }
 
 /* Responsive */
-@media (max-width: 600px) {
-  .share-buttons-container {
-    flex-direction: column;
+@media (max-width: 640px) {
+  .share-section {
+    padding: 1.5rem 1.25rem 1.25rem;
   }
-  
-  .share-button {
-    justify-content: center;
-    width: 100%;
+  .share-networks {
+    gap: 0.6rem;
+  }
+  .share-icon-btn {
+    width: 64px;
+    font-size: 0.62rem;
+  }
+  .share-url-text {
+    font-size: 0.72rem;
+  }
+  .share-copy-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .share-networks {
+    justify-content: space-between;
+  }
+  .share-icon-btn {
+    flex: 1;
   }
 }
 </style>
 
 <script>
-function copyPostLink() {
-  const url = "{{ page.url | absolute_url }}";
-  const button = event.currentTarget;
-  
-  navigator.clipboard.writeText(url).then(function() {
-    const originalText = button.querySelector('span').textContent;
-    button.querySelector('span').textContent = '¡Copiado!';
-    button.classList.add('copied');
-    
-    setTimeout(function() {
-      button.querySelector('span').textContent = originalText;
-      button.classList.remove('copied');
-    }, 2000);
-  }).catch(function(err) {
-    console.error('Error al copiar:', err);
+function copyShareLink(btn) {
+  var url = '{{ page.url | absolute_url }}';
+  navigator.clipboard.writeText(url).then(function () {
+    var label = btn.querySelector('.btn-label');
+    label.textContent = '¡Listo!';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      label.textContent = 'Copiar';
+      btn.classList.remove('copied');
+    }, 2200);
+  }).catch(function () {
+    /* Fallback para navegadores sin clipboard API */
+    var tmp = document.createElement('input');
+    tmp.value = url;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand('copy');
+    document.body.removeChild(tmp);
+    var label = btn.querySelector('.btn-label');
+    label.textContent = '¡Listo!';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      label.textContent = 'Copiar';
+      btn.classList.remove('copied');
+    }, 2200);
   });
 }
 </script>

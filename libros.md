@@ -2,6 +2,7 @@
 layout: default
 title: Mis Libros
 permalink: /libros/
+published: false
 ---
 
 <div class="home books-page">

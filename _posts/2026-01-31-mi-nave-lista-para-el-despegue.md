@@ -11,21 +11,21 @@ Parece mentira, pero si me preguntaras qué tuvo realmente claro mi 2025, no fue
 
 **“Este sí será el año en el que me convertiré en escritor.”**
 
-Y lo más raro es que no lo digo como promesa bonita. Lo digo como quien por fin encontró la ruta. Porque en pleno inicio de 2026 puedo decirlo sin temblar: **ya voy encaminado**.
+Y lo más raro es que no lo digo como promesa bonita. Lo digo como quien por fin encontró la ruta. Porque en pleno inicio de 2026 puedo decirlo sin titubeos: **ya voy encaminado**.
 
 ## Mi nave lista para el despegue
 
 ![Nave espacial en el universo](/assets/images/posts/mi-nave.jpg)
 
-No es metáfora de película. Es esa sensación concreta de tener el motor encendido, el panel iluminado, y el cinturón puesto. No porque todo esté perfecto… sino porque entendí algo que me faltó por años:
+No es metáfora de película. Es esa sensación de tener el motor encendido, las manos listas para escribir lo que estoy pensando, el no criticar mi texto mientras escribo. No porque ya tengo título de escritor… sino porque entendí algo que me faltó por años:
 
 **no necesito sentirme listo, necesito seguir avanzando.**
 
-Y sí: el proceso ha sido menos romántico de lo que suena.
+Y sí: el proceso ha sido "un poco feo" y es la verdad.
 
-## Tinkerer compulsivo: el villano (y también mi aliado)
+## Soy un tikerer a mucha honra
 
-No ha sido fácil. Probé herramientas como quien prueba zapatos: me quedan, camino un poco… y al mes: para afuera. Algunas ni alcanzaron a durar semanas. Otras me hicieron sacar la tarjeta porque “esta sí”. Y al final, el golpe fue el mismo:
+No ha sido fácil. Probé herramientas a diestra y siniestra: esta se lee bonita, este contenido dice que sirve bastante… y al día siguiente: para afuera. Algunas ni alcanzaron a durar horas. Otras me hicieron sacar la tarjeta porque “esta sí la compro”. Y al final, el golpe fue el mismo:
 
 mi problema no era la herramienta.
 
@@ -35,7 +35,7 @@ Soy un <span class="tooltip-word" data-tooltip="Persona que disfruta experimenta
 
 Y ojo: no lo digo como excusa. Lo digo porque ya lo vi clarito:
 
-> Una herramienta nueva se siente como progreso.  
+> Una herramienta nueva se siente como progreso y hasta te pone profesional.  
 > Progreso real es cuando hay páginas.
 
 Esa es la diferencia entre estar entretenido y estar construyendo.

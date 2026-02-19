@@ -36,11 +36,11 @@ permalink: /recursos/
     </p>
 
     <div class="recursos-stats">
-      <span class="rstat"><strong>5</strong> recursos disponibles</span>
+      <span class="rstat"><strong>{% assign rc_count = site.recursos | size %}{{ rc_count }}</strong> recursos disponibles</span>
       <span class="rstat-sep">·</span>
       <span class="rstat">100% <strong>gratis</strong></span>
       <span class="rstat-sep">·</span>
-      <span class="rstat">Optimizados para <strong>imprimir o PDF</strong></span>
+      <span class="rstat">Plantillas <strong>imprimibles</strong> + herramientas <strong>online</strong></span>
     </div>
   </section>
 
@@ -60,6 +60,8 @@ permalink: /recursos/
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           {% elsif recurso.category == 'planificacion' %}
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg>
+          {% elsif recurso.category == 'salud' %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           {% else %}
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           {% endif %}
@@ -87,6 +89,41 @@ permalink: /recursos/
       {% endfor %}
     </div>
 
+  </section>
+
+  <section class="posts">
+    <h2 class="section-title">Herramientas online</h2>
+    <p class="section-subtitle">Calculadoras y generadores interactivos que podés usar directamente en el navegador.</p>
+
+    <div class="recursos-grid recursos-grid--tools">
+
+      <article class="recurso-card recurso-card--tool" style="--index: 1;">
+        <div class="rc-icon rc-icon--tool">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+          </svg>
+        </div>
+
+        <div class="rc-body">
+          <span class="rc-badge rc-badge--tool">Planificación</span>
+          <h3 class="rc-title">Calculadora NaNoWriMo</h3>
+          <p class="rc-desc">Calculá cuántas palabras por día necesitás para alcanzar tu meta, cuánto llevás de avance y cuándo terminás si seguís el ritmo actual.</p>
+
+          <ul class="rc-benefits">
+            <li>Meta personalizable (no solo 50.000)</li>
+            <li>Ajuste automático según días transcurridos</li>
+            <li>Fecha estimada de finalización</li>
+          </ul>
+        </div>
+
+        <a href="{{ '/calculadora-nanowrimo/' | relative_url }}" class="rc-btn rc-btn--tool">
+          Usar herramienta
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </article>
+
+    </div>
   </section>
 
   <section class="recursos-cta">
@@ -199,6 +236,8 @@ permalink: /recursos/
 .rc-icon--relato       { background: rgba(72,187,120,0.1); color: #38a169; }
 .rc-icon--planificacion{ background: rgba(237,137,54,0.1); color: #dd6b20; }
 .rc-icon--edicion      { background: rgba(128,90,213,0.1); color: #805ad5; }
+.rc-icon--salud        { background: rgba(56,161,105,0.1); color: #2f855a; }
+.rc-icon--tool         { background: rgba(26,123,179,0.1); color: var(--color-accent); }
 
 /* ── Body ─────────────────────────────────────────────────── */
 .rc-body { flex: 1; }
@@ -219,6 +258,8 @@ permalink: /recursos/
 .rc-badge--relato        { background: rgba(72,187,120,0.1); color: #38a169; }
 .rc-badge--planificacion { background: rgba(237,137,54,0.1); color: #dd6b20; }
 .rc-badge--edicion       { background: rgba(128,90,213,0.1); color: #805ad5; }
+.rc-badge--salud         { background: rgba(56,161,105,0.1); color: #2f855a; }
+.rc-badge--tool          { background: rgba(26,123,179,0.1); color: var(--color-accent); }
 
 .rc-title {
   font-family: var(--font-display);
@@ -328,6 +369,37 @@ permalink: /recursos/
 .recursos-cta .rc-btn {
   align-self: center;
   margin: 0 auto;
+}
+
+/* ── Section subtitle ────────────────────────────────────── */
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: -0.5rem auto 0;
+  max-width: 560px;
+}
+
+/* ── Tool card variant ───────────────────────────────────── */
+.recursos-grid--tools {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.recurso-card--tool::before {
+  background: linear-gradient(90deg, var(--color-accent), #0d5fa3);
+}
+
+.rc-btn--tool {
+  color: var(--color-accent);
+  background: rgba(26,123,179,0.07);
+  border-color: rgba(26,123,179,0.2);
+}
+.rc-btn--tool:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(26,123,179,0.25);
 }
 
 /* ── Animation ────────────────────────────────────────────── */

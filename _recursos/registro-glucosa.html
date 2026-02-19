@@ -1,0 +1,244 @@
+---
+layout: recurso
+title: "Registro Diario de Glucosa — 30 días"
+slug: registro-glucosa
+description: "Plantilla imprimible para registrar tu glucosa diaria durante 30 días: ayunas, post-comidas, medicación y actividad física. Lista para imprimir o guardar como PDF."
+category: salud
+order: 6
+keywords: [registro glucosa, plantilla glucosa diaria, control diabetes, registro azúcar en sangre, diario glucosa]
+benefits:
+  - "30 días de registro en una sola planilla"
+  - "Glucosa en ayunas y post-desayuno, almuerzo y cena"
+  - "Columna de medicación con dosis"
+  - "Registro de actividad física y notas"
+  - "Optimizada para impresión en hoja A4 apaisada"
+---
+
+<div class="rp-doc rp-doc--glucosa">
+
+<div class="rp-glucosa-header">
+  <div class="rp-glucosa-meta">
+    <div class="rp-field rp-field--half"><label>Nombre del paciente</label><div class="rp-input-line"></div></div>
+    <div class="rp-field rp-field--quarter"><label>Mes / Año</label><div class="rp-input-line"></div></div>
+    <div class="rp-field rp-field--quarter"><label>Médico tratante</label><div class="rp-input-line"></div></div>
+  </div>
+  <div class="rp-glucosa-ref">
+    <span class="rp-ref-label">Valores de referencia:</span>
+    <span class="rp-ref-item rp-ref--ok">Normal: 70–99 mg/dL (ayunas)</span>
+    <span class="rp-ref-sep">·</span>
+    <span class="rp-ref-item rp-ref--warn">Pre-diabetes: 100–125</span>
+    <span class="rp-ref-sep">·</span>
+    <span class="rp-ref-item rp-ref--alert">Diabetes: ≥126</span>
+  </div>
+</div>
+
+<div class="rp-glucosa-table-wrap">
+<table class="rp-table rp-glucosa-table">
+  <thead>
+    <tr>
+      <th class="col-dia">Día</th>
+      <th class="col-fecha">Fecha</th>
+      <th class="col-glucosa">Ayunas<br><small>mg/dL</small></th>
+      <th class="col-glucosa">Post-Desayuno<br><small>2h · mg/dL</small></th>
+      <th class="col-glucosa">Post-Almuerzo<br><small>2h · mg/dL</small></th>
+      <th class="col-glucosa">Post-Cena<br><small>2h · mg/dL</small></th>
+      <th class="col-med">Medicación / Dosis</th>
+      <th class="col-act">Actividad Física</th>
+      <th class="col-notas">Notas</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (1..30) %}
+    <tr class="{% cycle 'row-a', 'row-b' %}">
+      <td class="col-dia">{{ i }}</td>
+      <td class="col-fecha"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-glucosa"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-glucosa"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-glucosa"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-glucosa"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-med"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-act"><div class="rp-input-line rp-input-line--sm"></div></td>
+      <td class="col-notas"><div class="rp-input-line rp-input-line--sm"></div></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="rp-glucosa-footer">
+  <div class="rp-glucosa-summary">
+    <h3>Resumen del mes</h3>
+    <div class="rp-field-group rp-field-group--inline">
+      <div class="rp-field rp-field--fifth"><label>Promedio ayunas</label><div class="rp-input-line"></div></div>
+      <div class="rp-field rp-field--fifth"><label>Valor más alto</label><div class="rp-input-line"></div></div>
+      <div class="rp-field rp-field--fifth"><label>Valor más bajo</label><div class="rp-input-line"></div></div>
+      <div class="rp-field rp-field--fifth"><label>Días dentro de rango</label><div class="rp-input-line"></div></div>
+      <div class="rp-field rp-field--fifth"><label>Hemoglobina A1c (si disponible)</label><div class="rp-input-line"></div></div>
+    </div>
+  </div>
+
+  <div class="rp-glucosa-obs">
+    <h3>Observaciones generales</h3>
+    <div class="rp-input-line rp-input-line--wide"></div>
+    <div class="rp-input-line rp-input-line--wide"></div>
+    <div class="rp-input-line rp-input-line--wide"></div>
+  </div>
+</div>
+
+<div class="rp-tip">
+  <strong>Consejo:</strong> Medite siempre a la misma hora y en las mismas condiciones para que los datos sean comparables.
+  Llevá esta planilla impresa a tu próxima consulta médica para revisar las tendencias juntos.
+</div>
+
+</div><!-- /rp-doc -->
+
+<style>
+/* ── Glucosa-specific overrides ──────────────────────────── */
+.rp-doc--glucosa {
+  font-size: 0.82rem;
+}
+
+.rp-glucosa-header {
+  margin-bottom: 1.25rem;
+}
+
+.rp-glucosa-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.rp-glucosa-ref {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  padding: 0.4rem 0.75rem;
+  background: rgba(60,48,38,0.04);
+  border-radius: 6px;
+  font-size: 0.78rem;
+}
+
+.rp-ref-label {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.rp-ref-item { font-weight: 600; }
+.rp-ref--ok    { color: #38a169; }
+.rp-ref--warn  { color: #d69e2e; }
+.rp-ref--alert { color: #e53e3e; }
+.rp-ref-sep    { color: var(--color-border); }
+
+/* ── Table layout ────────────────────────────────────────── */
+.rp-glucosa-table-wrap {
+  overflow-x: auto;
+}
+
+.rp-glucosa-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.rp-glucosa-table th,
+.rp-glucosa-table td {
+  border: 1px solid rgba(60,48,38,0.15);
+  padding: 0.2rem 0.35rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.rp-glucosa-table thead th {
+  background: rgba(60,48,38,0.07);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  padding: 0.35rem 0.3rem;
+}
+
+.rp-glucosa-table small {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 400;
+  opacity: 0.7;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.row-a { background: #fff; }
+.row-b { background: rgba(60,48,38,0.025); }
+
+/* Column widths */
+.col-dia   { width: 28px; font-weight: 700; }
+.col-fecha { width: 60px; }
+.col-glucosa { width: 70px; }
+.col-med   { width: 110px; }
+.col-act   { width: 80px; }
+.col-notas { min-width: 100px; }
+
+/* Small input lines inside cells */
+.rp-input-line--sm {
+  border-bottom: 1px solid rgba(60,48,38,0.2);
+  height: 14px;
+  margin: 0;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.rp-glucosa-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.rp-glucosa-summary h3,
+.rp-glucosa-obs h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(60,48,38,0.1);
+}
+
+.rp-field-group--inline {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.rp-field--fifth {
+  flex: 1;
+  min-width: 90px;
+}
+
+.rp-input-line--wide {
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Print overrides ─────────────────────────────────────── */
+@media print {
+  @page { size: A4 landscape; margin: 8mm 10mm; }
+
+  .rp-doc--glucosa { font-size: 0.72rem; }
+
+  .rp-glucosa-table { font-size: 0.68rem; }
+  .rp-glucosa-table th,
+  .rp-glucosa-table td { padding: 0.15rem 0.25rem; }
+  .rp-glucosa-table thead th { font-size: 0.62rem; }
+
+  .rp-glucosa-footer { grid-template-columns: 1fr 1fr; }
+
+  .row-a { background: #fff !important; }
+  .row-b { background: #f9f9f9 !important; }
+
+  .rp-ref--ok    { color: #276749 !important; }
+  .rp-ref--warn  { color: #975a16 !important; }
+  .rp-ref--alert { color: #9b2c2c !important; }
+}
+</style>

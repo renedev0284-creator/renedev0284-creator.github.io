@@ -1,0 +1,775 @@
+---
+layout: default
+title: "Calculadora NaNoWriMo — Cuántas palabras escribir por día"
+description: "Calculá cuántas palabras necesitás escribir por día para terminar tu novela o desafío de escritura. Gratis, en español. Funciona para NaNoWriMo y cualquier meta."
+permalink: /calculadora-nanowrimo/
+---
+
+<div class="home">
+
+  <section class="intro intro-icons">
+    <div class="intro-badges">
+      <span class="badge" title="Escritura">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+        </svg>
+      </span>
+      <span class="badge" title="Meta">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+      </span>
+      <span class="badge" title="Calculadora">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+          <line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/>
+        </svg>
+      </span>
+    </div>
+
+    <h1>Calculadora NaNoWriMo</h1>
+    <p class="lead">
+      Ingresá tu meta de palabras, las fechas del desafío y cuánto llevás escrito.
+      Te digo exactamente cuánto necesitás escribir por día para llegar.
+    </p>
+  </section>
+
+  <section class="nano-section">
+
+    <!-- CALCULADORA -->
+    <div class="nano-card" id="nano-form-card">
+      <div class="nano-inputs">
+
+        <div class="nano-field">
+          <label for="meta">Meta de palabras</label>
+          <div class="nano-input-wrap">
+            <input type="number" id="meta" value="50000" min="100" step="1000" class="nano-input">
+            <span class="nano-unit">palabras</span>
+          </div>
+          <p class="nano-hint">NaNoWriMo clásico: 50,000 · Una novela corta: 20,000–40,000</p>
+        </div>
+
+        <div class="nano-field-row">
+          <div class="nano-field">
+            <label for="inicio">Fecha de inicio</label>
+            <input type="date" id="inicio" class="nano-input">
+          </div>
+          <div class="nano-field">
+            <label for="limite">Fecha límite</label>
+            <input type="date" id="limite" class="nano-input">
+          </div>
+        </div>
+
+        <div class="nano-field">
+          <label for="escritas">Palabras escritas hasta hoy</label>
+          <div class="nano-input-wrap">
+            <input type="number" id="escritas" value="0" min="0" class="nano-input">
+            <span class="nano-unit">palabras</span>
+          </div>
+          <p class="nano-hint">Si estás empezando, dejá en 0</p>
+        </div>
+
+        <button type="button" id="btn-calcular" class="nano-btn" onclick="calcularNano()">
+          Calcular →
+        </button>
+
+        <p id="nano-error" class="nano-error" style="display:none;"></p>
+      </div>
+    </div>
+
+    <!-- RESULTADOS (oculto hasta calcular) -->
+    <div class="nano-results" id="nano-results" style="display:none;">
+
+      <div class="nano-result-hero">
+        <p class="nano-result-label">Necesitás escribir</p>
+        <div class="nano-result-big" id="res-ppd">—</div>
+        <p class="nano-result-sublabel">palabras por día</p>
+      </div>
+
+      <div class="nano-progress-wrap">
+        <div class="nano-progress-bar">
+          <div class="nano-progress-fill" id="res-barra"></div>
+        </div>
+        <div class="nano-progress-labels">
+          <span id="res-escritas-label">0 escritas</span>
+          <span id="res-pct-label">0%</span>
+          <span id="res-meta-label">50,000 meta</span>
+        </div>
+      </div>
+
+      <div class="nano-stats-grid">
+        <div class="nano-stat">
+          <div class="nano-stat-val" id="res-dias-total">—</div>
+          <div class="nano-stat-key">días totales</div>
+        </div>
+        <div class="nano-stat">
+          <div class="nano-stat-val" id="res-dias-rest">—</div>
+          <div class="nano-stat-key">días restantes</div>
+        </div>
+        <div class="nano-stat">
+          <div class="nano-stat-val" id="res-palabras-rest">—</div>
+          <div class="nano-stat-key">palabras restantes</div>
+        </div>
+        <div class="nano-stat">
+          <div class="nano-stat-val" id="res-ppd-orig">—</div>
+          <div class="nano-stat-key">palabras/día (ritmo original)</div>
+        </div>
+      </div>
+
+      <div class="nano-status" id="nano-status"></div>
+      <div class="nano-msg" id="nano-msg"></div>
+
+      <button type="button" class="nano-btn-secondary" onclick="resetNano()">
+        ← Volver a calcular
+      </button>
+    </div>
+
+  </section>
+
+  <!-- CONTENIDO SEO / TIPS -->
+  <section class="posts nano-tips-section">
+    <h2 class="section-title">Cómo usar la calculadora</h2>
+
+    <div class="nano-tips-grid">
+      <div class="nano-tip-card">
+        <div class="nano-tip-num">01</div>
+        <h3>Para NaNoWriMo oficial</h3>
+        <p>Ingresá 50,000 como meta, noviembre 1 como inicio y noviembre 30 como límite. La calculadora te da exactamente cuánto necesitás escribir cada día del mes.</p>
+      </div>
+      <div class="nano-tip-card">
+        <div class="nano-tip-num">02</div>
+        <h3>Para cualquier desafío propio</h3>
+        <p>Funciona para cualquier meta: una novela corta de 30,000 palabras en 60 días, un ensayo, un manuscrito completo. Cambiá los números y listo.</p>
+      </div>
+      <div class="nano-tip-card">
+        <div class="nano-tip-num">03</div>
+        <h3>Actualizá a medida que avanzás</h3>
+        <p>Volvé cada día con las palabras actualizadas. Si un día escribiste más, la calculadora baja el objetivo para los días siguientes. Si faltaste, sube. Sin drama.</p>
+      </div>
+    </div>
+
+    <div class="nano-faq">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+
+      <div class="nano-faq-item">
+        <h3>¿Qué es NaNoWriMo?</h3>
+        <p>NaNoWriMo (National Novel Writing Month) es un desafío global de escritura que ocurre cada noviembre. El objetivo: escribir 50,000 palabras en 30 días, lo que equivale a una primera novela. Participan cientos de miles de escritores en todo el mundo.</p>
+      </div>
+
+      <div class="nano-faq-item">
+        <h3>¿Cuántas palabras por día son 50,000 en noviembre?</h3>
+        <p>Exactamente <strong>1,667 palabras por día</strong>. A un ritmo de escritura normal (60–80 palabras por minuto), son entre 20 y 30 minutos de escritura enfocada al día. Menos de lo que parece.</p>
+      </div>
+
+      <div class="nano-faq-item">
+        <h3>¿Tengo que empezar el 1 de noviembre?</h3>
+        <p>En el desafío oficial, sí. Pero podés usar esta calculadora para empezar cualquier día del año y con cualquier meta. Lo importante es tener una fecha de inicio, una fecha límite y un número concreto al que apuntar.</p>
+      </div>
+
+      <div class="nano-faq-item">
+        <h3>¿Qué pasa si me atraso?</h3>
+        <p>La calculadora te dice exactamente cuánto necesitás escribir por día para recuperarte. El número sube, sí, pero sigue siendo alcanzable. Un fin de semana de escritura intensa puede recuperar varios días de atraso.</p>
+      </div>
+    </div>
+
+    <div class="nano-related">
+      <p>¿Ya tenés tu meta clara? Estos recursos te ayudan a llegar:</p>
+      <div class="nano-related-links">
+        <a href="{{ '/recursos/' | relative_url }}" class="nano-rel-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Plantillas para escritores
+        </a>
+        <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="nano-rel-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Checklist de revisión final
+        </a>
+        <a href="{{ '/recursos/indice-de-novela/' | relative_url }}" class="nano-rel-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Plantilla de índice de novela
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+/* ═══════════════════════════════════════════════
+   CALCULADORA NANOWRIMO
+   ═══════════════════════════════════════════════ */
+
+.nano-section {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+/* ── Form card ─────────────────────────────────── */
+.nano-card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(60,48,38,0.12);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 8px 28px rgba(60,48,38,0.06);
+}
+
+.nano-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nano-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.nano-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.nano-field label {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.nano-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid rgba(60,48,38,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #faf9f7;
+  transition: border-color 0.2s;
+}
+
+.nano-input-wrap:focus-within {
+  border-color: var(--color-orange);
+  background: #fff;
+}
+
+.nano-input-wrap .nano-input {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+}
+
+.nano-unit {
+  padding: 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  border-left: 1px solid rgba(60,48,38,0.1);
+}
+
+.nano-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  border: 1.5px solid rgba(60,48,38,0.15);
+  border-radius: 8px;
+  background: #faf9f7;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+input[type="date"].nano-input {
+  cursor: pointer;
+}
+
+.nano-input:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  background: #fff;
+}
+
+.nano-hint {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.nano-btn {
+  padding: 0.9rem 1.5rem;
+  background: var(--color-orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 16px rgba(243,79,41,0.22);
+  letter-spacing: 0.01em;
+}
+
+.nano-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(243,79,41,0.28);
+}
+
+.nano-error {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: #c53030;
+  background: rgba(197,48,48,0.08);
+  border: 1px solid rgba(197,48,48,0.2);
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin: 0;
+}
+
+/* ── Results ───────────────────────────────────── */
+.nano-results {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(60,48,38,0.12);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 8px 28px rgba(60,48,38,0.06);
+  animation: gentleFadeIn 0.5s ease;
+}
+
+@keyframes gentleFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nano-result-hero {
+  text-align: center;
+  padding: 1.5rem 0 2rem;
+}
+
+.nano-result-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.nano-result-big {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 800;
+  color: var(--color-orange);
+  line-height: 1;
+  margin: 0.25rem 0;
+}
+
+.nano-result-sublabel {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Progress bar */
+.nano-progress-wrap {
+  margin: 0 0 1.75rem;
+}
+
+.nano-progress-bar {
+  height: 10px;
+  background: rgba(60,48,38,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.nano-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-orange), #ff7043);
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+
+.nano-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Stats grid */
+.nano-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.nano-stat {
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  background: #faf9f7;
+  border-radius: 8px;
+  border: 1px solid rgba(60,48,38,0.08);
+}
+
+.nano-stat-val {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.nano-stat-key {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.3;
+}
+
+/* Status + message */
+.nano-status {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.nano-status.adelante {
+  background: rgba(72,187,120,0.1);
+  border: 1px solid rgba(72,187,120,0.25);
+  color: #276749;
+}
+
+.nano-status.atras {
+  background: rgba(243,79,41,0.08);
+  border: 1px solid rgba(243,79,41,0.2);
+  color: #c05317;
+}
+
+.nano-status.exacto {
+  background: rgba(26,123,179,0.08);
+  border: 1px solid rgba(26,123,179,0.2);
+  color: var(--color-accent);
+}
+
+.nano-status.terminado {
+  background: rgba(72,187,120,0.15);
+  border: 1px solid rgba(72,187,120,0.35);
+  color: #276749;
+  font-size: 1rem;
+}
+
+.nano-msg {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.nano-btn-secondary {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid rgba(60,48,38,0.15);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.nano-btn-secondary:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  background: rgba(243,79,41,0.04);
+}
+
+/* ── Tips section ──────────────────────────────── */
+.nano-tips-section { margin-top: 0; }
+
+.nano-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+}
+
+.nano-tip-card {
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(60,48,38,0.1);
+  border-radius: 10px;
+}
+
+.nano-tip-num {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-orange);
+  margin-bottom: 0.75rem;
+}
+
+.nano-tip-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+  color: var(--color-text);
+}
+
+.nano-tip-card p {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* FAQ */
+.nano-faq {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+.nano-faq-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(60,48,38,0.08);
+}
+
+.nano-faq-item:last-child { border-bottom: none; }
+
+.nano-faq-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 0.6rem;
+  color: var(--color-text);
+}
+
+.nano-faq-item p {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Related links */
+.nano-related {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: rgba(243,79,41,0.04);
+  border-left: 3px solid var(--color-orange);
+  border-radius: 0 8px 8px 0;
+}
+
+.nano-related > p {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+.nano-related-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nano-rel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  background: rgba(243,79,41,0.07);
+  border: 1px solid rgba(243,79,41,0.2);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nano-rel-link:hover {
+  background: var(--color-orange);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nano-field-row { grid-template-columns: 1fr; }
+  .nano-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .nano-tips-grid { grid-template-columns: 1fr; }
+  .nano-related-links { flex-direction: column; }
+}
+</style>
+
+<script>
+(function() {
+  // Default dates: today → today + 30 days
+  var hoy = new Date();
+  var fin = new Date(hoy);
+  fin.setDate(fin.getDate() + 30);
+
+  // If November, default to Nov 1 → Nov 30
+  if (hoy.getMonth() === 10) {
+    var inicioNano = new Date(hoy.getFullYear(), 10, 1);
+    var finNano = new Date(hoy.getFullYear(), 10, 30);
+    document.getElementById('inicio').value = fmtDate(inicioNano);
+    document.getElementById('limite').value = fmtDate(finNano);
+  } else {
+    document.getElementById('inicio').value = fmtDate(hoy);
+    document.getElementById('limite').value = fmtDate(fin);
+  }
+
+  function fmtDate(d) {
+    var m = d.getMonth() + 1;
+    var day = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
+  }
+
+  function fmtNum(n) {
+    return n.toLocaleString('es-AR');
+  }
+
+  function fmtDateES(d) {
+    var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    return d.getDate() + ' de ' + meses[d.getMonth()] + ' de ' + d.getFullYear();
+  }
+
+  window.calcularNano = function() {
+    var meta = parseInt(document.getElementById('meta').value) || 50000;
+    var inicioVal = document.getElementById('inicio').value;
+    var limiteVal = document.getElementById('limite').value;
+    var escritas = parseInt(document.getElementById('escritas').value) || 0;
+
+    var errorEl = document.getElementById('nano-error');
+
+    if (!inicioVal || !limiteVal) {
+      errorEl.textContent = 'Completá las fechas de inicio y límite.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var startDate = new Date(inicioVal + 'T00:00:00');
+    var endDate = new Date(limiteVal + 'T00:00:00');
+    var hoyLocal = new Date();
+    hoyLocal.setHours(0, 0, 0, 0);
+
+    if (startDate >= endDate) {
+      errorEl.textContent = 'La fecha de inicio debe ser anterior a la fecha límite.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    if (meta < 100) {
+      errorEl.textContent = 'La meta debe ser de al menos 100 palabras.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+
+    var MS = 1000 * 60 * 60 * 24;
+    var diasTotal = Math.round((endDate - startDate) / MS) + 1;
+    var diasTranscurridos = Math.max(0, Math.min(diasTotal, Math.round((hoyLocal - startDate) / MS)));
+    var diasRestantes = Math.max(1, Math.round((endDate - hoyLocal) / MS) + 1);
+
+    var palabrasRestantes = Math.max(0, meta - escritas);
+    var ppdOriginal = Math.ceil(meta / diasTotal);
+    var ppdAjustado = Math.ceil(palabrasRestantes / diasRestantes);
+
+    var progreso = Math.min(100, Math.round((escritas / meta) * 100));
+    var esperadas = Math.min(meta, Math.round(ppdOriginal * diasTranscurridos));
+    var diferencia = escritas - esperadas;
+
+    // Estimated finish at current pace
+    var msgFin = '';
+    if (escritas >= meta) {
+      msgFin = '🎉 ¡Ya llegaste a tu meta!';
+    } else if (diasTranscurridos > 0 && escritas > 0) {
+      var ppdActual = escritas / diasTranscurridos;
+      var diasParaTerminar = Math.ceil(palabrasRestantes / ppdActual);
+      var fechaFin = new Date(hoyLocal);
+      fechaFin.setDate(fechaFin.getDate() + diasParaTerminar);
+      var antes = fechaFin <= endDate;
+      msgFin = 'Al ritmo actual, terminarías el <strong>' + fmtDateES(fechaFin) + '</strong> — ' +
+               (antes ? '✓ antes de tu límite.' : '⚠️ después de tu límite.');
+    }
+
+    // Status
+    var statusEl = document.getElementById('nano-status');
+    var statusMsg = '';
+    var statusClass = '';
+    if (escritas >= meta) {
+      statusMsg = '🏆 ¡Desafío completado!';
+      statusClass = 'terminado';
+    } else if (diferencia > 200) {
+      statusMsg = '↑ Vas ' + fmtNum(diferencia) + ' palabras adelante del ritmo. ¡Seguí así!';
+      statusClass = 'adelante';
+    } else if (diferencia < -200) {
+      statusMsg = '↓ Vas ' + fmtNum(Math.abs(diferencia)) + ' palabras atrás. Se puede recuperar.';
+      statusClass = 'atras';
+    } else if (diasTranscurridos === 0) {
+      statusMsg = '⚡ ¡Listo para arrancar! El primer día siempre cuesta más.';
+      statusClass = 'exacto';
+    } else {
+      statusMsg = '→ Vas exactamente al ritmo. Mantené el paso.';
+      statusClass = 'exacto';
+    }
+    statusEl.textContent = '';
+    statusEl.className = 'nano-status ' + statusClass;
+    statusEl.textContent = statusMsg;
+
+    // Motivational message
+    var msgs = [
+      'El primer borrador nunca tiene que ser bueno. Tiene que existir.',
+      'No escribís para publicar. Escribís para encontrar qué tenés para decir.',
+      'Cada palabra es una palabra menos que te falta. No hay otra magia.',
+      'El mejor momento para escribir era ayer. El segundo mejor es ahora.',
+      'Escribir es reescribir. Por ahora, solo llenás la página.',
+    ];
+    document.getElementById('nano-msg').innerHTML =
+      msgFin ? msgFin : '«' + msgs[Math.floor(Math.random() * msgs.length)] + '»';
+
+    // Fill results
+    document.getElementById('res-ppd').textContent = fmtNum(ppdAjustado);
+    document.getElementById('res-barra').style.width = progreso + '%';
+    document.getElementById('res-escritas-label').textContent = fmtNum(escritas) + ' escritas';
+    document.getElementById('res-pct-label').textContent = progreso + '%';
+    document.getElementById('res-meta-label').textContent = fmtNum(meta) + ' meta';
+    document.getElementById('res-dias-total').textContent = diasTotal;
+    document.getElementById('res-dias-rest').textContent = diasRestantes;
+    document.getElementById('res-palabras-rest').textContent = fmtNum(palabrasRestantes);
+    document.getElementById('res-ppd-orig').textContent = fmtNum(ppdOriginal);
+
+    // Show results, hide form
+    document.getElementById('nano-form-card').style.display = 'none';
+    document.getElementById('nano-results').style.display = 'block';
+  };
+
+  window.resetNano = function() {
+    document.getElementById('nano-form-card').style.display = 'block';
+    document.getElementById('nano-results').style.display = 'none';
+    document.getElementById('nano-results').style.animation = 'none';
+  };
+})();
+</script>

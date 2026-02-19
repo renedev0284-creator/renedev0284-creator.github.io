@@ -13,15 +13,15 @@ Hoy publico mi primer texto “de puño y letra” y lo dejo en modo borrador co
 
 ![Chica haciendo live en redes sociales](/assets/images/posts/youtube-gurus-videotutoriales.jpg)
  
-Cuando YouTube se volvió “universidad”, entendí algo incómodo: el problema no es que haya malos tutoriales… es que **la plataforma no está hecha para que aprendas, sino para que vuelvas**.
+Cuando YouTube se volvió “universidad”, entendí algo que pocos admiten: el problema no es que haya malos tutoriales… es que **la plataforma no está hecha para que aprendas, sino para que vuelvas**.
 
-El algoritmo no sirve a tu necesidad. Sirve a tu atención.  
+El algoritmo no sirve a tu necesidad. Sirve a la monetización que les da tu atención.  
 Y muchos creadores tampoco mienten: **te enseñan lo suficiente para que avances… pero no lo suficiente para que no los necesites**. No siempre por maldad: por negocio, por tiempo, por ego, o por simple estrategia.
 
 > “Una verdad a medias es una mentira cómoda.”
 
-**Mini-regla personal (para no perderme):**
-- Si después de verlo **no puedo ejecutar algo hoy**, era entretenimiento con maquillaje.
+**Memoriza esto:**
+- Si después de verlo **no puedo ejecutar algo hoy**, era entretenimiento maquillado.
 
 Al final, aprender en internet no es encontrar “el video correcto”.  
 Es construir criterio para detectar lo incompleto, ordenar lo útil y practicar lo aburrido.

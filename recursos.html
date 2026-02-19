@@ -1,0 +1,341 @@
+---
+layout: default
+title: "Recursos gratuitos para escritores — Plantillas y guías descargables"
+description: "Plantillas, guías y checklists gratis para escritores. Ficha de personaje, estructura de 3 actos, índice de novela y más. Descargalos en PDF."
+permalink: /recursos/
+---
+
+<div class="home">
+
+  <section class="intro intro-icons">
+    <div class="intro-badges">
+      <span class="badge" title="Escritura">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+          <path d="M2 2l7.586 7.586"/>
+        </svg>
+      </span>
+      <span class="badge" title="Plantillas">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </span>
+      <span class="badge" title="Gratis">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+    </div>
+
+    <h1>Recursos para escritores</h1>
+    <p class="lead">
+      Plantillas, guías y checklists que uso para escribir y que ahora podés descargar gratis.
+      Sin rodeos: cosas concretas que te ahorran tiempo desde el primer capítulo.
+    </p>
+
+    <div class="recursos-stats">
+      <span class="rstat"><strong>5</strong> recursos disponibles</span>
+      <span class="rstat-sep">·</span>
+      <span class="rstat">100% <strong>gratis</strong></span>
+      <span class="rstat-sep">·</span>
+      <span class="rstat">Optimizados para <strong>imprimir o PDF</strong></span>
+    </div>
+  </section>
+
+  <section class="posts">
+    <h2 class="section-title">Descargables</h2>
+
+    <div class="recursos-grid">
+      {% assign recursos_sorted = site.recursos | sort: 'order' %}
+      {% for recurso in recursos_sorted %}
+      <article class="recurso-card" style="--index: {{ forloop.index }};">
+        <div class="rc-icon rc-icon--{{ recurso.category }}">
+          {% if recurso.category == 'personajes' %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          {% elsif recurso.category == 'estructura' %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          {% elsif recurso.category == 'relato' %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          {% elsif recurso.category == 'planificacion' %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg>
+          {% else %}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          {% endif %}
+        </div>
+
+        <div class="rc-body">
+          <span class="rc-badge rc-badge--{{ recurso.category }}">{{ recurso.category | capitalize }}</span>
+          <h3 class="rc-title">{{ recurso.title }}</h3>
+          <p class="rc-desc">{{ recurso.description }}</p>
+
+          {% if recurso.benefits %}
+          <ul class="rc-benefits">
+            {% for b in recurso.benefits limit:3 %}
+            <li>{{ b }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        <a href="{{ recurso.url | relative_url }}" class="rc-btn">
+          Descargar gratis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+  </section>
+
+  <section class="recursos-cta">
+    <div class="recursos-cta-inner">
+      <p class="recursos-cta-eyebrow">¿Escribís regularmente?</p>
+      <h2 class="recursos-cta-title">Recibí recursos nuevos antes que nadie</h2>
+      <p class="recursos-cta-desc">Me suscribís al newsletter y te mando las próximas plantillas, guías y novedades del blog directamente a tu email.</p>
+      <a href="{{ '/newsletter/' | relative_url }}" class="rc-btn">Ver newsletter →</a>
+    </div>
+  </section>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recursos gratuitos para escritores",
+  "description": "Plantillas, guías y checklists gratuitos para escritores hispanohablantes",
+  "url": "{{ site.url }}/recursos/",
+  "numberOfItems": {% assign rc = site.recursos | size %}{{ rc }},
+  "itemListElement": [
+    {% for recurso in site.recursos %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "name": {{ recurso.title | jsonify }},
+      "url": "{{ site.url }}{{ recurso.url }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   RECURSOS HUB PAGE
+   ═══════════════════════════════════════════════════════════ */
+.recursos-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+.rstat strong { color: var(--color-orange); }
+.rstat-sep { color: var(--color-border); }
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.recursos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.recurso-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(60,48,38,0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(60,48,38,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  animation: gentleFadeIn 0.7s ease forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+  position: relative;
+  overflow: hidden;
+}
+
+.recurso-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-orange), #d94520);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.recurso-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(60,48,38,0.1);
+}
+.recurso-card:hover::before { opacity: 1; }
+
+/* ── Icon ─────────────────────────────────────────────────── */
+.rc-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rc-icon--personajes   { background: rgba(243,79,41,0.1);  color: var(--color-orange); }
+.rc-icon--estructura   { background: rgba(26,123,179,0.1); color: var(--color-accent); }
+.rc-icon--relato       { background: rgba(72,187,120,0.1); color: #38a169; }
+.rc-icon--planificacion{ background: rgba(237,137,54,0.1); color: #dd6b20; }
+.rc-icon--edicion      { background: rgba(128,90,213,0.1); color: #805ad5; }
+
+/* ── Body ─────────────────────────────────────────────────── */
+.rc-body { flex: 1; }
+
+.rc-badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.rc-badge--personajes    { background: rgba(243,79,41,0.1);  color: var(--color-orange); }
+.rc-badge--estructura    { background: rgba(26,123,179,0.1); color: var(--color-accent); }
+.rc-badge--relato        { background: rgba(72,187,120,0.1); color: #38a169; }
+.rc-badge--planificacion { background: rgba(237,137,54,0.1); color: #dd6b20; }
+.rc-badge--edicion       { background: rgba(128,90,213,0.1); color: #805ad5; }
+
+.rc-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.rc-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 0 0.75rem;
+}
+
+.rc-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.rc-benefits li {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.rc-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-orange);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* ── Button ───────────────────────────────────────────────── */
+.rc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  background: rgba(243,79,41,0.07);
+  border: 1.5px solid rgba(243,79,41,0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.rc-btn:hover {
+  background: var(--color-orange);
+  color: #fff;
+  border-color: var(--color-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243,79,41,0.25);
+}
+
+/* ── CTA section ──────────────────────────────────────────── */
+.recursos-cta {
+  margin-top: 4rem;
+  padding: 3rem 1.5rem;
+}
+.recursos-cta-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(60,48,38,0.1);
+  border-top: 3px solid var(--color-orange);
+  border-radius: 12px;
+}
+.recursos-cta-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin: 0 0 0.5rem;
+}
+.recursos-cta-title {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  color: var(--color-text);
+  margin: 0 0 0.75rem;
+}
+.recursos-cta-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+.recursos-cta .rc-btn {
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .recursos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .recursos-grid { grid-template-columns: 1fr; }
+  .recurso-card { padding: 1.25rem; }
+}
+</style>

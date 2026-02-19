@@ -50,6 +50,12 @@ exclude:
   - generate-tags.sh
   - relacionados.txt
 
+# Colecciones
+collections:
+  recursos:
+    output: true
+    permalink: /recursos/:name/
+
 # Configuración de posts
 defaults:
   - scope:

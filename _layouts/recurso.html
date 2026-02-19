@@ -887,6 +887,34 @@
 (function() {
   'use strict';
 
+  // ── Nav (siempre se inicializa, independiente del gate) ──
+  var toggle   = document.querySelector('.mobile-menu-toggle');
+  var nav      = document.querySelector('.main-nav');
+  var mOverlay = document.querySelector('.menu-overlay');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function() {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+      if (mOverlay) mOverlay.classList.toggle('is-active', open);
+    });
+    if (mOverlay) {
+      mOverlay.addEventListener('click', function() {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        mOverlay.classList.remove('is-active');
+      });
+    }
+  }
+  document.querySelectorAll('.nav-dropdown-toggle').forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      var menu = this.nextElementSibling;
+      if (menu) menu.classList.toggle('is-open', !expanded);
+    });
+  });
+
+  // ── Gate ─────────────────────────────────────────────────
   var API = 'https://comentarios.finanzasreales.com/api/newsletter.php';
   var GATE_KEY = 'gate_unlocked';
   var resourceSlug = '{{ page.slug | default: page.name }}';
@@ -903,9 +931,7 @@
     localStorage.setItem(GATE_KEY, '1');
     overlay.classList.add('unlocking');
     content.classList.add('visible');
-    setTimeout(function() {
-      overlay.style.display = 'none';
-    }, 500);
+    setTimeout(function() { overlay.style.display = 'none'; }, 500);
   }
 
   // Retornante: ya se suscribió antes
@@ -920,7 +946,6 @@
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-
     var email  = emailEl.value.trim();
     var nombre = nombreEl.value.trim();
     if (!email) return;
@@ -939,7 +964,6 @@
       if (data.success) {
         unlock();
       } else {
-        // Si el error es "ya suscrito", también damos acceso
         var msg = (data.error || '').toLowerCase();
         if (msg.indexOf('ya') !== -1 || msg.indexOf('exist') !== -1 || msg.indexOf('registr') !== -1) {
           unlock();
@@ -951,38 +975,7 @@
         }
       }
     })
-    .catch(function() {
-      // En caso de error de red, igual damos acceso (no bloqueamos)
-      unlock();
-    });
-  });
-
-  // Header dropdown (reusar lógica del default.html)
-  var toggle = document.querySelector('.mobile-menu-toggle');
-  var nav    = document.querySelector('.main-nav');
-  var mOverlay = document.querySelector('.menu-overlay');
-  if (toggle && nav) {
-    toggle.addEventListener('click', function() {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open);
-      if (mOverlay) mOverlay.classList.toggle('is-active', open);
-    });
-    if (mOverlay) {
-      mOverlay.addEventListener('click', function() {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        mOverlay.classList.remove('is-active');
-      });
-    }
-  }
-  var dropToggles = document.querySelectorAll('.nav-dropdown-toggle');
-  dropToggles.forEach(function(dt) {
-    dt.addEventListener('click', function() {
-      var expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !expanded);
-      var menu = this.nextElementSibling;
-      if (menu) menu.classList.toggle('is-open', !expanded);
-    });
+    .catch(function() { unlock(); });
   });
 
 })();

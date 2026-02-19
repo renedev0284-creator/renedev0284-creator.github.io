@@ -6,11 +6,11 @@ date: 2026-01-30
 tags: [meta, proceso, jekyll]
 ---
 
-Hoy logré por fin configurar mi blog personal. No un simple blog, porque de esos ya hice al menos 50 y no me llenaban, me terminaban estancando, ahora lo puedo decir con emoción que es **mi propio espacio** donde tengo control total del contenido y el diseño.
+Hoy logré por fin configurar mi blog personal. No un simple blog, porque de esos ya hice al menos 50 y no me llenaban, me terminaban estancando, ahora puedo decir con emoción que es **mi propio espacio** donde tengo control total del contenido y el diseño.
 
 ## El círculo vicioso de la procrastinación
 
-Durante años he intentado de todo para sentirme bien con el diseño, he usado todas las plantillas que hay, desde revista digital, multipropósito, ventas online, etc. Pero nada que me llene y esto que me pasé horas y horas configurándo todas estas plantillas a mi antojo. Compré libretas, probé apps, instalé software de escritura "definitivo". Nada funcionaba. El problema no eran las herramientas, era **la falta de un sistema claro**.
+Durante años he intentado de todo para sentirme bien con el diseño, he usado todas las plantillas que hay, desde revista digital, multipropósito, ventas online, etc. Pero nada que me llene y esto que me pasé horas y horas configurando todas estas plantillas a mi antojo. Compré libretas, probé apps, instalé software de escritura "definitivo". Nada funcionaba. El problema no eran las herramientas, era **la falta de un sistema claro**.
 
 ![Blog escrito en la pantalla de laptop](/assets/images/posts/mi-blog.jpg)
 

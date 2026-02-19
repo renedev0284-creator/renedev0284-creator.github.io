@@ -1,4 +1,5 @@
 ---
+published: false
 layout: recurso
 title: "Guía para escribir un relato corto"
 slug: guia-relato-corto

@@ -1,4 +1,5 @@
 ---
+published: false
 layout: recurso
 title: "Plantilla: Estructura de 3 Actos"
 slug: estructura-3-actos

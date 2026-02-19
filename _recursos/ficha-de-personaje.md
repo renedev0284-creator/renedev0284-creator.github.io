@@ -1,4 +1,5 @@
 ---
+published: false
 layout: recurso
 title: "Ficha de Personaje para Escritores"
 slug: ficha-de-personaje

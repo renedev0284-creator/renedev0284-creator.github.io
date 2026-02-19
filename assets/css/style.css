@@ -55,6 +55,7 @@ html {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* iOS Safari necesita esto en html, no solo en body */
 }
 
 body {
@@ -64,6 +65,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* ========================================
@@ -455,6 +457,17 @@ em {
   font-size: 1.25rem;
   line-height: 1.7;
   letter-spacing: 0.01em;
+  /* Evita que palabras largas o URLs desborden horizontalmente */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Tablas responsivas dentro de posts */
+.post-content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .post-content h2,
@@ -686,6 +699,11 @@ em {
 @media (max-width: 768px) {
   html {
     font-size: 16px;
+  }
+
+  /* Reducir padding lateral del contenedor en móvil */
+  .container {
+    padding: 0 1rem;
   }
 
   .post-preview {

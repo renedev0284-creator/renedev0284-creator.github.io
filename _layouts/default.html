@@ -692,8 +692,11 @@ body.menu-open {
 }
 
 /* ── Dropdown rich items (dd-link) — override ───────── */
-.dropdown-menu {
-  min-width: 310px;
+@media (min-width: 769px) {
+  /* min-width solo en desktop; en móvil el nav es 280px */
+  .dropdown-menu {
+    min-width: 310px;
+  }
 }
 .dropdown-menu .dd-link {
   display: flex;

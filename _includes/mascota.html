@@ -1,9 +1,8 @@
 <!-- ═══════════════════════════════════════════════════════
      MASCOTA FLOTANTE — Ornitorrinco con emociones
-     Imagen: assets/images/mascota.png (1536×1024, 3 poses)
-     Pose 1 (idle):    serio con libro    — left: -11px, top: -49px
-     Pose 2 (open):    feliz leyendo      — left: -96px, top: -49px
-     Pose 3 (sleeping): durmiendo         — left: -175px, top: -99px
+     orni-1.png → idle (normal/serio)
+     orni-2.png → open (feliz leyendo, al abrir burbuja)
+     orni-3.png → sleep (durmiendo, luego de 20s inactivo)
      ═══════════════════════════════════════════════════════ -->
 <div class="ms-wrap" id="ms-mascota">
 
@@ -39,26 +38,33 @@
     <a href="{{ '/recursos/' | relative_url }}" class="ms-ver-todos">Ver todos los recursos →</a>
   </div>
 
-  <!-- Botón: el ornitorrinco -->
-  <button class="ms-btn" id="ms-btn" aria-label="Recursos rápidos" aria-expanded="false" title="¿Buscás algo útil?">
-    <img class="ms-sprite"
-         src="{{ '/assets/images/mascota.png' | relative_url }}"
-         alt=""
-         aria-hidden="true"
-         draggable="false">
+  <!-- Personaje: las 3 poses apiladas, se muestran/ocultan con CSS -->
+  <button class="ms-btn" id="ms-btn"
+          aria-label="Recursos rápidos"
+          aria-expanded="false"
+          title="¿Buscás algo útil?">
+    <img class="ms-orni ms-orni--idle"
+         src="{{ '/assets/images/orni-1.png' | relative_url }}"
+         alt="" aria-hidden="true" draggable="false">
+    <img class="ms-orni ms-orni--open"
+         src="{{ '/assets/images/orni-2.png' | relative_url }}"
+         alt="" aria-hidden="true" draggable="false">
+    <img class="ms-orni ms-orni--sleep"
+         src="{{ '/assets/images/orni-3.png' | relative_url }}"
+         alt="" aria-hidden="true" draggable="false">
   </button>
 
 </div>
 
 <style>
 /* ═══════════════════════════════════════════════════════
-   MASCOTA FLOTANTE — Ornitorrinco
+   MASCOTA FLOTANTE
    ═══════════════════════════════════════════════════════ */
 
 .ms-wrap {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 997;
   display: flex;
   flex-direction: column;
@@ -66,93 +72,79 @@
   gap: 0.5rem;
 }
 
-/* ── Botón ────────────────────────────────────────────── */
+/* ── Botón / Personaje ───────────────────────────────── */
 .ms-btn {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
+  background: none;
   border: none;
-  background: #fff;
-  overflow: hidden;         /* clip the sprite image to the circle */
-  position: relative;
-  box-shadow:
-    0 4px 20px rgba(60,48,38,0.14),
-    0 1px 4px rgba(60,48,38,0.08),
-    0 0 0 2.5px rgba(232,112,112,0.18);
   cursor: pointer;
   padding: 0;
-  transition:
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.2s ease;
-  animation: ms-bounce 6s ease-in-out infinite;
+  margin: 0;
+
+  /* Grid stacking: las 3 imágenes comparten el mismo espacio */
+  display: grid;
+  width: 96px;
+
+  /* Animación de flotado idle */
+  animation: ms-float 4s ease-in-out infinite;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Las 3 imágenes apiladas en la misma celda del grid */
+.ms-btn > * {
+  grid-area: 1 / 1;
 }
 
 .ms-btn:hover {
-  transform: scale(1.12);
-  box-shadow:
-    0 8px 28px rgba(60,48,38,0.2),
-    0 0 0 3px rgba(232,112,112,0.3);
   animation: none;
 }
 
+/* Cuando está abierto: se detiene la animación, leve tilt */
 .ms-btn.is-open {
-  transform: scale(1.08) rotate(10deg);
   animation: none;
-  box-shadow:
-    0 8px 28px rgba(232,112,112,0.25),
-    0 0 0 3px rgba(232,112,112,0.35);
 }
 
-/* Animación suave al dormir */
+/* Cuando duerme: más ancho para que se vea mejor el horizontal */
 .ms-btn.is-sleeping {
-  animation: ms-sleep 3s ease-in-out infinite;
+  animation: ms-breathe 3.5s ease-in-out infinite;
+  width: 140px;
 }
 
-@keyframes ms-bounce {
-  0%,  100% { transform: translateY(0)    rotate(0deg); }
-  18%        { transform: translateY(-8px) rotate(-4deg); }
-  36%        { transform: translateY(0)    rotate(0deg); }
-  54%        { transform: translateY(-4px) rotate(3deg); }
-  72%        { transform: translateY(0)    rotate(0deg); }
+@keyframes ms-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
-@keyframes ms-sleep {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50%      { transform: translateY(-3px) rotate(1deg); }
+@keyframes ms-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-4px) scale(1.015); }
 }
 
-/* ── Sprite del ornitorrinco ──────────────────────────── */
-/*
-  Imagen: 1536×1024 — 3 poses lado a lado
-  Escala: 250px wide → cada pose ≈ 83px wide, alto ≈ 167px
-  Pose 1 (serio):    x center ≈  44px display → left: -11px
-  Pose 2 (feliz):    x center ≈ 129px display → left: -96px
-  Pose 3 (dormido):  x center ≈ 208px display → left: -175px
-*/
-.ms-sprite {
-  position: absolute;
-  width: 250px;
+/* ── Imágenes del personaje ──────────────────────────── */
+.ms-orni {
+  width: 100%;
   height: auto;
-  top: -49px;     /* centra verticalmente los personajes de pie */
-  left: -11px;    /* pose 1: serio/idle */
-  transition:
-    left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    top  0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: block;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  filter: drop-shadow(0 6px 18px rgba(60, 48, 38, 0.22));
   user-select: none;
   pointer-events: none;
 }
 
-/* Pose 2: feliz (burbuja abierta) */
-.ms-btn.is-open .ms-sprite {
-  left: -96px;
-  top: -49px;
-}
+/* Estado idle (default): muestra orni-1 */
+.ms-orni--idle  { opacity: 1; }
+.ms-orni--open  { opacity: 0; }
+.ms-orni--sleep { opacity: 0; }
 
-/* Pose 3: dormido (idle > 20 segundos) */
-.ms-btn.is-sleeping .ms-sprite {
-  left: -175px;
-  top: -99px;     /* el durmiendo está más abajo en la imagen */
-}
+/* Estado open: muestra orni-2 */
+.ms-btn.is-open .ms-orni--idle  { opacity: 0; }
+.ms-btn.is-open .ms-orni--open  { opacity: 1; }
+.ms-btn.is-open .ms-orni--sleep { opacity: 0; }
+
+/* Estado sleeping: muestra orni-3 */
+.ms-btn.is-sleeping .ms-orni--idle  { opacity: 0; }
+.ms-btn.is-sleeping .ms-orni--open  { opacity: 0; }
+.ms-btn.is-sleeping .ms-orni--sleep { opacity: 1; }
 
 /* ── Burbuja de texto ─────────────────────────────────── */
 .ms-bubble {
@@ -164,9 +156,9 @@
     0 8px 32px rgba(60,48,38,0.12),
     0 2px 8px rgba(60,48,38,0.06);
   padding: 1rem 1.1rem 0.85rem;
-  width: 230px;
+  width: 232px;
   opacity: 0;
-  transform: scale(0.82) translateY(10px);
+  transform: scale(0.84) translateY(12px);
   transform-origin: bottom right;
   pointer-events: none;
   transition:
@@ -180,12 +172,12 @@
   pointer-events: all;
 }
 
-/* Cola triangular de la burbuja */
+/* Cola triangular apuntando al personaje (abajo-derecha) */
 .ms-bubble::after {
   content: '';
   position: absolute;
   bottom: -8px;
-  right: 22px;
+  right: 24px;
   width: 0;
   height: 0;
   border-left: 8px solid transparent;
@@ -229,7 +221,7 @@
 .ms-link svg {
   flex-shrink: 0;
   opacity: 0.5;
-  transition: opacity 0.15s ease, color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .ms-link:hover {
@@ -266,17 +258,9 @@
     bottom: 1rem;
     right: 1rem;
   }
-  .ms-btn {
-    width: 56px;
-    height: 56px;
-  }
-  /* Reajustar sprite para botón más pequeño */
-  .ms-sprite          { width: 212px; top: -42px; left: -9px;   }
-  .ms-btn.is-open   .ms-sprite { left: -82px;  top: -42px;   }
-  .ms-btn.is-sleeping .ms-sprite { left: -149px; top: -84px; }
-  .ms-bubble {
-    width: 210px;
-  }
+  .ms-btn       { width: 78px; }
+  .ms-btn.is-sleeping { width: 115px; }
+  .ms-bubble    { width: 212px; }
 }
 
 @media (max-width: 370px) {
@@ -298,7 +282,7 @@
 
   if (!btn || !bubble) return;
 
-  /* ── Sleep timer: after 20s idle → pose 3 (durmiendo) ── */
+  /* ── Sleep: después de 20s sin actividad → orni-3 ── */
   function startSleepTimer() {
     clearTimeout(sleepTimer);
     sleepTimer = setTimeout(function () {
@@ -311,7 +295,7 @@
     btn.classList.remove('is-sleeping');
   }
 
-  /* ── Abrir / cerrar ──────────────────────────────────── */
+  /* ── Abrir / cerrar burbuja ─────────────────────── */
   function openBubble() {
     wakeUp();
     isOpen = true;
@@ -345,7 +329,7 @@
     if (e.key === 'Escape' && isOpen) { closeBubble(); }
   });
 
-  /* Arranca el timer de sleep al cargar la página */
+  /* Iniciar timer al cargar */
   startSleepTimer();
 }());
 </script>

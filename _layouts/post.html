@@ -211,15 +211,17 @@ layout: default
 @media (max-width: 1024px) {
   .post-container-with-sidebar {
     grid-template-columns: 1fr;
-    padding: var(--space-xl) var(--space-md);
+    /* Sin padding horizontal: el main.container ya lo provee (1-2rem c/lado) */
+    padding: var(--space-xl) 0;
   }
-  
+
   .post {
     max-width: 100%;
   }
-  
+
   .post-interactions {
-    padding: 0 var(--space-md) var(--space-xl);
+    /* Sin padding horizontal extra (el container ya lo tiene) */
+    padding: 0 0 var(--space-xl);
   }
 }
 

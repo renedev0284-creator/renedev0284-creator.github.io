@@ -516,7 +516,7 @@ body.menu-open {
 
 /* ── Dropdown rich items ─────────────────────────────── */
 .dropdown-menu {
-  min-width: 310px;
+  min-width: 310px; /* solo aplica en desktop (position: absolute) */
 }
 
 .dropdown-menu .dd-link {
@@ -581,6 +581,12 @@ body.menu-open {
 
 /* Mobile: altura mayor para ítems con descripción */
 @media (max-width: 768px) {
+  /* El nav panel en móvil es 280px; min-width mayor causaría overflow */
+  .dropdown-menu {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
   .nav-dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
     max-height: 550px;
   }

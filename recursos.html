@@ -330,6 +330,12 @@ permalink: /recursos/
   margin: 0 auto;
 }
 
+/* ── Animation ────────────────────────────────────────────── */
+@keyframes gentleFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 860px) {
   .recursos-grid { grid-template-columns: repeat(2, 1fr); }

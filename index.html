@@ -209,6 +209,24 @@ title: Inicio
     </div>
   </section>
 
+  <!-- ── Recursos strip ──────────────────────────────────── -->
+  <div class="recursos-strip">
+    <div class="rs-left">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span class="rs-label">Gratis para escritores</span>
+    </div>
+    <div class="rs-pills">
+      <a href="{{ '/recursos/ficha-de-personaje/' | relative_url }}" class="rs-pill">Ficha de personaje</a>
+      <a href="{{ '/recursos/estructura-3-actos/' | relative_url }}" class="rs-pill">Estructura 3 actos</a>
+      <a href="{{ '/recursos/guia-relato-corto/' | relative_url }}" class="rs-pill rs-pill--hidden-sm">Relato corto</a>
+      <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="rs-pill rs-pill--hidden-sm">Checklist revisión</a>
+    </div>
+    <a href="{{ '/recursos/' | relative_url }}" class="rs-cta">
+      Ver todos
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
   <section class="posts">
     <h2 class="section-title">Escritos Recientes</h2>
     
@@ -284,6 +302,101 @@ title: Inicio
     </div>
 
 <style>
+
+/* ══════════════════════════════════════════
+   RECURSOS STRIP
+   ══════════════════════════════════════════ */
+.recursos-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  margin: 0 0 2.5rem;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(60,48,38,0.1);
+  border-left: 3px solid var(--color-orange);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.rs-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  color: var(--color-orange);
+}
+
+.rs-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.rs-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid rgba(60,48,38,0.15);
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.rs-pill:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  background: rgba(243,79,41,0.05);
+}
+
+.rs-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-decoration: none;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid rgba(243,79,41,0.3);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.rs-cta:hover {
+  background: var(--color-orange);
+  color: #fff;
+  border-color: var(--color-orange);
+}
+
+@media (max-width: 640px) {
+  .rs-pill--hidden-sm { display: none; }
+  .rs-label { display: none; }
+  .rs-left svg { display: none; }
+}
+
+@media (max-width: 420px) {
+  .recursos-strip { padding: 0.55rem 1rem; gap: 0.5rem; }
+}
 
 /* ========================================
    FECHA + BADGE DE LECTURAS (post list)

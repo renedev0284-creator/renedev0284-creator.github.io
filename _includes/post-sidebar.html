@@ -92,6 +92,51 @@
     </a>
   </div>
 
+  <!-- Widget: Recursos descargables -->
+  <div class="sidebar-widget widget-recursos">
+    <h4 class="widget-heading">Plantillas gratis</h4>
+    <p class="widget-recursos-sub">Para escritores. Sin costo.</p>
+    <ul class="recursos-list">
+      <li class="recursos-item">
+        <a href="{{ '/recursos/ficha-de-personaje/' | relative_url }}" class="recursos-link">
+          <span class="recursos-icon recursos-icon--personajes">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span>Ficha de personaje</span>
+          <svg class="recursos-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+      <li class="recursos-item">
+        <a href="{{ '/recursos/estructura-3-actos/' | relative_url }}" class="recursos-link">
+          <span class="recursos-icon recursos-icon--estructura">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </span>
+          <span>Estructura de 3 actos</span>
+          <svg class="recursos-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+      <li class="recursos-item">
+        <a href="{{ '/recursos/guia-relato-corto/' | relative_url }}" class="recursos-link">
+          <span class="recursos-icon recursos-icon--relato">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </span>
+          <span>Guía del relato corto</span>
+          <svg class="recursos-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+      <li class="recursos-item">
+        <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="recursos-link">
+          <span class="recursos-icon recursos-icon--edicion">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <span>Checklist de revisión</span>
+          <svg class="recursos-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+    </ul>
+    <a href="{{ '/recursos/' | relative_url }}" class="btn-ver-recursos">Ver todos →</a>
+  </div>
+
   <!-- Widget: Posts Recientes -->
   <div class="sidebar-widget widget-recent-posts">
     <h4 class="widget-heading">Últimos Posts</h4>
@@ -435,6 +480,99 @@
   font-style: italic;
   margin: 0;
   text-align: center;
+}
+
+/* ── Widget Recursos ─────────────────────────────── */
+.widget-recursos {
+  background: linear-gradient(135deg,
+    rgba(243,79,41,0.04) 0%,
+    rgba(255,255,255,0.8) 100%);
+  border-top: 2px solid var(--color-orange);
+}
+
+.widget-recursos-sub {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: -0.5rem 0 0.85rem;
+}
+
+.recursos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.recursos-item { margin: 0; }
+
+.recursos-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.83rem;
+  color: var(--color-text);
+  transition: background 0.15s, color 0.15s;
+}
+
+.recursos-link:hover {
+  background: rgba(243,79,41,0.06);
+  color: var(--color-orange);
+}
+
+.recursos-link:hover .recursos-arrow {
+  transform: translateX(3px);
+  color: var(--color-orange);
+}
+
+.recursos-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recursos-icon--personajes    { background: rgba(243,79,41,0.1);  color: var(--color-orange); }
+.recursos-icon--estructura    { background: rgba(26,123,179,0.1); color: var(--color-accent); }
+.recursos-icon--relato        { background: rgba(72,187,120,0.1); color: #38a169; }
+.recursos-icon--planificacion { background: rgba(237,137,54,0.1); color: #dd6b20; }
+.recursos-icon--edicion       { background: rgba(128,90,213,0.1); color: #805ad5; }
+
+.recursos-link span:nth-child(2) { flex: 1; }
+
+.recursos-arrow {
+  flex-shrink: 0;
+  color: var(--color-border);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.btn-ver-recursos {
+  display: block;
+  text-align: center;
+  padding: 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(243,79,41,0.25);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-ver-recursos:hover {
+  background: var(--color-orange);
+  color: #fff;
+  border-color: var(--color-orange);
 }
 
 /* Responsive */

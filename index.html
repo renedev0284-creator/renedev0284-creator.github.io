@@ -454,13 +454,23 @@ title: Inicio
 
 .rec-slider-label {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  color: var(--color-orange);
   margin: 0 0 1rem 0;
-  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.rec-slider-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background: var(--color-orange);
+  border-radius: 2px;
 }
 
 .rec-track {
@@ -526,17 +536,37 @@ title: Inicio
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(60,48,38,0.04) 0%, rgba(60,48,38,0.09) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradientes rotativos por posición */
+.rec-card:nth-child(6n+1) .rec-card-no-img { background: linear-gradient(140deg, #f34f29, #e8703a); }
+.rec-card:nth-child(6n+2) .rec-card-no-img { background: linear-gradient(140deg, #1a7bb3, #2892cc); }
+.rec-card:nth-child(6n+3) .rec-card-no-img { background: linear-gradient(140deg, #38a169, #48bb78); }
+.rec-card:nth-child(6n+4) .rec-card-no-img { background: linear-gradient(140deg, #805ad5, #9f7aea); }
+.rec-card:nth-child(6n+5) .rec-card-no-img { background: linear-gradient(140deg, #dd6b20, #ed8936); }
+.rec-card:nth-child(6n)   .rec-card-no-img { background: linear-gradient(140deg, #d53f8c, #ed64a6); }
+
+/* Resplandor decorativo */
+.rec-card-no-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 40%, rgba(255,255,255,0.2) 0%, transparent 65%);
 }
 
 .rec-card-initial {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: rgba(60, 48, 38, 0.12);
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.15);
   line-height: 1;
   text-transform: uppercase;
   user-select: none;
+  position: relative;
+  z-index: 1;
 }
 
 .rec-card-body {
@@ -548,13 +578,16 @@ title: Inicio
 }
 
 .rec-card-tag {
+  display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--color-orange);
-  opacity: 0.85;
+  background: rgba(243,79,41,0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
 }
 
 .rec-card-title {
@@ -601,25 +634,29 @@ title: Inicio
 
 @media (max-width: 640px) {
   .rec-card {
-    flex: 0 0 72vw;
+    flex: 0 0 75vw;
   }
   .rec-card-image {
-    height: 85px;
+    height: 100px;
   }
   .rec-card-title {
     font-size: 0.9rem;
   }
   .rec-card-excerpt {
-    display: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.76rem;
   }
 }
 
 @media (max-width: 400px) {
   .rec-card {
-    flex: 0 0 80vw;
+    flex: 0 0 82vw;
   }
   .rec-card-image {
-    display: none;
+    height: 80px;
   }
 }
 

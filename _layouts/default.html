@@ -43,10 +43,10 @@
 <!-- ── Banner: Test de Bienestar ───────────────────────────── -->
 <div class="wb-banner" id="wb-banner" role="region" aria-label="Promoción">
   <div class="wb-inner">
-    <span class="wb-emoji" aria-hidden="true">🧠</span>
+    <span class="wb-badge" aria-hidden="true">Test gratis</span>
     <p class="wb-msg" id="wb-msg" aria-live="polite"></p>
     <a href="{{ '/test-bienestar/' | relative_url }}" class="wb-cta">
-      Hacer el test
+      Ver mi resultado
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
@@ -102,15 +102,18 @@
   gap: 0.65rem;
 }
 
-.wb-emoji {
-  font-size: 1.1rem;
+.wb-badge {
   flex-shrink: 0;
-  animation: wb-pulse 3s ease-in-out infinite;
-}
-
-@keyframes wb-pulse {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.15) rotate(-5deg); }
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--color-orange);
+  color: #fff;
+  padding: 0.18rem 0.55rem;
+  border-radius: 100px;
+  white-space: nowrap;
 }
 
 .wb-msg {
@@ -237,10 +240,10 @@
   }
 
   var messages = [
-    '¿Cómo estás realmente? Descúbrelo en 5 minutos',
-    'Tu bienestar importa · Conoce tu estado emocional hoy',
-    '¿Qué tan bien estás? El test revela más de lo que imaginas 👀',
-    'Psicología aplicada, gratis y sin rodeos · Haz el test'
+    '¿Cómo estás realmente? Test de bienestar emocional — gratis',
+    'Descubrí tu estado mental en 5 preguntas · Quiz psicológico',
+    'Ansiedad, energía, motivación — ¿cómo estás hoy? 👀',
+    'Test de bienestar: evaluá tu salud emocional sin costo'
   ];
   var current = 0;
 
@@ -611,13 +614,16 @@
   }
   
   .nav-dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
-    max-height: 300px;
+    max-height: 550px;
   }
-  
-  .dropdown-menu a {
-    padding: 0.875rem 2rem 0.875rem 3rem;
-    font-size: 0.95rem;
+
+  .dropdown-menu .dd-link {
+    padding: 0.9rem 1.5rem 0.9rem 1.25rem;
+    gap: 0.7rem;
   }
+  .dd-icon { width: 30px; height: 30px; }
+  .dd-title { font-size: 0.9rem; }
+  .dd-desc  { font-size: 0.72rem; }
   
   /* Animación X del hamburger */
   .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
@@ -684,92 +690,29 @@ body.menu-open {
   position: fixed;
   width: 100%;
 }
-</style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const mainNav = document.querySelector('.main-nav');
-  const menuOverlay = document.querySelector('.menu-overlay');
-  const body = document.body;
-  const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
-  
-  if (!menuToggle || !mainNav || !menuOverlay) return;
-  
-  function openMenu() {
-    mainNav.classList.add('active');
-    menuToggle.classList.add('active');
-    menuOverlay.classList.add('active');
-    body.classList.add('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-  }
-  
-  function closeMenu() {
-    mainNav.classList.remove('active');
-    menuToggle.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    body.classList.remove('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    
-    // Cerrar dropdown también
-    if (dropdownToggle) {
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-    }
-  }
-  
-  function toggleMenu() {
-    if (mainNav.classList.contains('active')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  }
-  
-  menuToggle.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleMenu();
-  });
-  
-  menuOverlay.addEventListener('click', function(e) {
-    e.preventDefault();
-    closeMenu();
-  });
-  
-  // Toggle dropdown en móvil
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function(e) {
-      // Solo toggle en móvil
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !isExpanded);
-      }
-    });
-  }
-  
-  // Cerrar menú al hacer click en links
-  document.querySelectorAll('.nav-link:not(.nav-dropdown-toggle), .dropdown-menu a').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-  });
-  
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-      closeMenu();
-    }
-  });
-  
-  // Marcar link activo
-  const currentPath = window.location.pathname;
-  document.querySelectorAll('.nav-link, .dropdown-menu a').forEach(function(link) {
-    const linkPath = link.getAttribute('href');
-    if (linkPath === currentPath || 
-        (currentPath === '{{ site.baseurl }}/' && linkPath === '{{ "/" | relative_url }}')) {
-      link.classList.add('active');
-    }
-  });
-});
-</script>
+/* ── Dropdown rich items (dd-link) — override ───────── */
+.dropdown-menu {
+  min-width: 310px;
+}
+.dropdown-menu .dd-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 1.1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+}
+.dropdown-menu .dd-link:hover {
+  background: rgba(243,79,41,0.05);
+  border-left-color: var(--color-orange);
+  color: var(--color-text);
+}
+.dd-link:hover .dd-title { color: var(--color-orange); }
+</style>
 
 <!-- MAIN CONTENT -->
 <main class="container">

@@ -2,22 +2,20 @@
 layout: default
 title: "Test de Bienestar Emocional - Metanoia"
 permalink: /test-bienestar/
-published: false
 ---
 
 <div class="quiz-page">
 
-  <!-- Paso 1: Captura de Email -->
   <section id="step-email" class="quiz-step active">
     <div class="quiz-container">
       <div class="quiz-intro">
         <div class="quiz-icon">🧠</div>
         <h1>Test de Bienestar Emocional</h1>
         <p class="quiz-lead">
-          Un cuestionario breve para ayudarte a identificar áreas de tu vida emocional 
+          Un cuestionario breve para ayudarte a identificar áreas de tu vida emocional
           que podrían necesitar atención.
         </p>
-        
+
         <div class="quiz-benefits">
           <div class="benefit">✓ 5 minutos para completar</div>
           <div class="benefit">✓ Resultados inmediatos</div>
@@ -26,8 +24,8 @@ published: false
 
         <div class="email-disclaimer">
           <p>
-            <strong>Importante:</strong> Este test es orientativo, no sustituye 
-            una evaluación profesional. Si sientes que necesitas ayuda, 
+            <strong>Importante:</strong> Este test es orientativo, no sustituye
+            una evaluación profesional. Si sientes que necesitas ayuda,
             consulta con un profesional de salud mental.
           </p>
         </div>
@@ -36,18 +34,18 @@ published: false
       <form id="email-form" class="email-form">
         <div class="form-group">
           <label for="user-email">Tu email para recibir los resultados</label>
-          <input type="email" 
-                 id="user-email" 
-                 name="email" 
-                 placeholder="tu@email.com" 
+          <input type="email"
+                 id="user-email"
+                 name="email"
+                 placeholder="tu@email.com"
                  required
                  class="email-input">
         </div>
-        
+
         <button type="submit" class="btn-start">
           Comenzar Test
         </button>
-        
+
         <p class="privacy-note">
           🔒 Tu email se guardará de forma segura. Puedes darte de baja cuando quieras.
         </p>
@@ -55,20 +53,16 @@ published: false
     </div>
   </section>
 
-  <!-- Paso 2: Preguntas del Quiz -->
   <section id="step-quiz" class="quiz-step">
     <div class="quiz-container">
-      
-      <!-- Progress Bar -->
+
       <div class="progress-bar">
         <div class="progress-fill" id="progress-fill"></div>
         <span class="progress-text" id="progress-text">Pregunta 1 de 8</span>
       </div>
 
-      <!-- Preguntas -->
       <div id="questions-container"></div>
 
-      <!-- Navegación -->
       <div class="quiz-nav">
         <button id="btn-prev" class="btn-nav" style="display: none;">
           ← Anterior
@@ -80,7 +74,6 @@ published: false
     </div>
   </section>
 
-  <!-- Paso 3: Resultados -->
   <section id="step-results" class="quiz-step">
     <div class="quiz-container">
       <div class="results-header">
@@ -104,7 +97,7 @@ published: false
 
       <div class="results-footer">
         <p>
-          <strong>Recuerda:</strong> Este test es orientativo. 
+          <strong>Recuerda:</strong> Este test es orientativo.
           Si tus resultados te preocupan, considera hablar con un profesional.
         </p>
         <p class="therapist-resources">
@@ -119,23 +112,14 @@ published: false
 </div>
 
 <style>
-/* ============================================
-   QUIZ STYLES - MINIMALISTA CLARO
-   ============================================ */
-
 .quiz-page {
   background: #fafaf9;
   min-height: 80vh;
   padding: 3rem 0;
 }
 
-.quiz-step {
-  display: none;
-}
-
-.quiz-step.active {
-  display: block;
-}
+.quiz-step { display: none; }
+.quiz-step.active { display: block; }
 
 .quiz-container {
   max-width: 700px;
@@ -143,16 +127,12 @@ published: false
   padding: 0 2rem;
 }
 
-/* Intro */
 .quiz-intro {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.quiz-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
+.quiz-icon { font-size: 4rem; margin-bottom: 1rem; }
 
 .quiz-intro h1 {
   font-family: 'Playfair Display', Georgia, serif;
@@ -176,11 +156,7 @@ published: false
   margin-bottom: 2rem;
 }
 
-.benefit {
-  font-size: 0.95rem;
-  color: #555;
-  font-weight: 500;
-}
+.benefit { font-size: 0.95rem; color: #555; font-weight: 500; }
 
 .email-disclaimer {
   padding: 1.5rem;
@@ -198,7 +174,6 @@ published: false
   color: #666;
 }
 
-/* Email Form */
 .email-form {
   background: #fff;
   padding: 2.5rem;
@@ -207,9 +182,7 @@ published: false
   box-shadow: 0 4px 16px rgba(60, 48, 38, 0.06);
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-}
+.form-group { margin-bottom: 1.5rem; }
 
 .form-group label {
   display: block;
@@ -226,6 +199,7 @@ published: false
   border: 2px solid rgba(60, 48, 38, 0.15);
   border-radius: 4px;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .email-input:focus {
@@ -262,7 +236,6 @@ published: false
   text-align: center;
 }
 
-/* Progress Bar */
 .progress-bar {
   position: relative;
   height: 8px;
@@ -289,7 +262,6 @@ published: false
   font-weight: 600;
 }
 
-/* Question */
 .question {
   background: #fff;
   padding: 2.5rem;
@@ -348,7 +320,6 @@ published: false
   color: #F34F29;
 }
 
-/* Navigation */
 .quiz-nav {
   display: flex;
   gap: 1rem;
@@ -366,37 +337,13 @@ published: false
   color: #666;
 }
 
-.btn-nav:hover {
-  border-color: #F34F29;
-  color: #F34F29;
-  background: rgba(243, 79, 41, 0.05);
-}
+.btn-nav:hover { border-color: #F34F29; color: #F34F29; background: rgba(243, 79, 41, 0.05); }
+.btn-nav.btn-primary { background: #F34F29; border-color: #F34F29; color: #fff; }
+.btn-nav.btn-primary:hover { background: #d94520; }
+.btn-nav:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.btn-nav.btn-primary {
-  background: #F34F29;
-  border-color: #F34F29;
-  color: #fff;
-}
-
-.btn-nav.btn-primary:hover {
-  background: #d94520;
-}
-
-.btn-nav:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Results */
-.results-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.results-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
+.results-header { text-align: center; margin-bottom: 3rem; }
+.results-icon { font-size: 4rem; margin-bottom: 1rem; }
 
 .results-header h2 {
   font-family: 'Playfair Display', serif;
@@ -406,10 +353,7 @@ published: false
   color: #3c3026;
 }
 
-.results-intro {
-  font-size: 1.1rem;
-  color: #666;
-}
+.results-intro { font-size: 1.1rem; color: #666; }
 
 .result-category {
   background: #fff;
@@ -420,17 +364,9 @@ published: false
   margin-bottom: 1.5rem;
 }
 
-.result-category.low {
-  border-left-color: #48bb78;
-}
-
-.result-category.medium {
-  border-left-color: #F59E0B;
-}
-
-.result-category.high {
-  border-left-color: #EF4444;
-}
+.result-category.low { border-left-color: #48bb78; }
+.result-category.medium { border-left-color: #F59E0B; }
+.result-category.high { border-left-color: #EF4444; }
 
 .category-header {
   display: flex;
@@ -447,11 +383,7 @@ published: false
   margin: 0;
 }
 
-.category-score {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
+.category-score { font-size: 2rem; font-weight: 700; }
 .category-score.low { color: #48bb78; }
 .category-score.medium { color: #F59E0B; }
 .category-score.high { color: #EF4444; }
@@ -497,11 +429,7 @@ published: false
   color: #3c3026;
 }
 
-.btn-blog:hover {
-  border-color: #F34F29;
-  color: #F34F29;
-  background: rgba(243, 79, 41, 0.05);
-}
+.btn-blog:hover { border-color: #F34F29; color: #F34F29; background: rgba(243, 79, 41, 0.05); }
 
 .btn-newsletter {
   background: #F34F29;
@@ -524,11 +452,7 @@ published: false
   margin-top: 3rem;
 }
 
-.results-footer p {
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
-}
+.results-footer p { margin: 0 0 0.5rem; font-size: 0.9rem; color: #666; }
 
 .therapist-resources a {
   color: #F34F29;
@@ -537,42 +461,20 @@ published: false
   border-bottom: 1px solid rgba(243, 79, 41, 0.3);
 }
 
-.therapist-resources a:hover {
-  border-bottom-color: #F34F29;
-}
+.therapist-resources a:hover { border-bottom-color: #F34F29; }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .quiz-intro h1 {
-    font-size: 2rem;
-  }
-
-  .email-form {
-    padding: 2rem;
-  }
-
-  .question {
-    padding: 2rem;
-  }
-
-  .question-title {
-    font-size: 1.5rem;
-  }
-
-  .results-actions {
-    flex-direction: column;
-  }
-
-  .btn-blog,
-  .btn-newsletter {
-    width: 100%;
-  }
+  .quiz-intro h1 { font-size: 2rem; }
+  .email-form { padding: 2rem; }
+  .question { padding: 2rem; }
+  .question-title { font-size: 1.5rem; }
+  .results-actions { flex-direction: column; }
+  .btn-blog, .btn-newsletter { width: 100%; }
 }
 </style>
 
 <script>
-// Configuración del Quiz
-const quizData = {
+var quizData = {
   categories: [
     { id: 'ansiedad', name: 'Ansiedad', icon: '😰' },
     { id: 'estres', name: 'Estrés', icon: '😓' },
@@ -583,7 +485,6 @@ const quizData = {
     { id: 'soledad', name: 'Soledad', icon: '😔' },
     { id: 'autocuidado', name: 'Descuido Personal', icon: '🥱' }
   ],
-  
   options: [
     { value: 0, label: 'Nada / Nunca' },
     { value: 1, label: 'Poco / Rara vez' },
@@ -593,178 +494,143 @@ const quizData = {
   ]
 };
 
-let userEmail = '';
-let currentQuestion = 0;
-let answers = {};
+var userEmail = '';
+var currentQuestion = 0;
+var answers = {};
 
-// Iniciar Quiz
 document.getElementById('email-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
   userEmail = document.getElementById('user-email').value;
-  
-  // Guardar email en BD
+
   try {
-    const response = await fetch('https://comentarios.finanzasreales.com/api/newsletter.php', {
+    await fetch('https://comentarios.finanzasreales.com/api/newsletter.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nombre: '',
-        email: userEmail,
-        fuente: 'quiz-bienestar'
-      })
+      body: JSON.stringify({ nombre: '', email: userEmail, fuente: 'quiz-bienestar' })
     });
-    
-    const result = await response.json();
-    console.log('Email guardado:', result);
   } catch (error) {
     console.error('Error guardando email:', error);
   }
-  
-  // Ir al quiz
+
   showStep('step-quiz');
   renderQuestions();
   showQuestion(0);
 });
 
-// Renderizar preguntas
 function renderQuestions() {
-  const container = document.getElementById('questions-container');
-  
-  quizData.categories.forEach((category, index) => {
-    const questionDiv = document.createElement('div');
+  var container = document.getElementById('questions-container');
+
+  quizData.categories.forEach(function(category, index) {
+    var questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.dataset.index = index;
-    
-    questionDiv.innerHTML = `
-      <h3 class="question-title">
-        ${category.icon} ¿Con qué frecuencia has sentido ${category.name.toLowerCase()} en las últimas 2 semanas?
-      </h3>
-      <div class="question-options">
-        ${quizData.options.map(opt => `
-          <div class="option" data-value="${opt.value}" onclick="selectOption(${index}, ${opt.value})">
-            ${opt.label}
-          </div>
-        `).join('')}
-      </div>
-    `;
-    
+
+    questionDiv.innerHTML =
+      '<h3 class="question-title">' + category.icon + ' ¿Con qué frecuencia has sentido ' + category.name.toLowerCase() + ' en las últimas 2 semanas?</h3>' +
+      '<div class="question-options">' +
+      quizData.options.map(function(opt) {
+        return '<div class="option" data-value="' + opt.value + '" onclick="selectOption(' + index + ', ' + opt.value + ')">' + opt.label + '</div>';
+      }).join('') +
+      '</div>';
+
     container.appendChild(questionDiv);
   });
 }
 
-// Mostrar pregunta
 function showQuestion(index) {
-  document.querySelectorAll('.question').forEach((q, i) => {
+  document.querySelectorAll('.question').forEach(function(q, i) {
     q.classList.toggle('active', i === index);
   });
-  
   currentQuestion = index;
   updateProgress();
   updateNavigation();
 }
 
-// Seleccionar opción
 function selectOption(questionIndex, value) {
   answers[quizData.categories[questionIndex].id] = value;
-  
-  const questionDiv = document.querySelector(`.question[data-index="${questionIndex}"]`);
-  questionDiv.querySelectorAll('.option').forEach(opt => {
+
+  var questionDiv = document.querySelector('.question[data-index="' + questionIndex + '"]');
+  questionDiv.querySelectorAll('.option').forEach(function(opt) {
     opt.classList.toggle('selected', parseInt(opt.dataset.value) === value);
   });
-  
-  // Actualizar navegación para habilitar botón
+
   updateNavigation();
-  
-  // Auto-avanzar después de 300ms (solo si no es la última pregunta)
-  setTimeout(() => {
+
+  setTimeout(function() {
     if (currentQuestion < quizData.categories.length - 1) {
       showQuestion(currentQuestion + 1);
     }
   }, 300);
 }
 
-// Actualizar progreso
 function updateProgress() {
-  const progress = ((currentQuestion + 1) / quizData.categories.length) * 100;
+  var progress = ((currentQuestion + 1) / quizData.categories.length) * 100;
   document.getElementById('progress-fill').style.width = progress + '%';
-  document.getElementById('progress-text').textContent = 
-    `Pregunta ${currentQuestion + 1} de ${quizData.categories.length}`;
+  document.getElementById('progress-text').textContent =
+    'Pregunta ' + (currentQuestion + 1) + ' de ' + quizData.categories.length;
 }
 
-// Actualizar navegación
 function updateNavigation() {
-  const btnPrev = document.getElementById('btn-prev');
-  const btnNext = document.getElementById('btn-next');
-  
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
   btnPrev.style.display = currentQuestion > 0 ? 'block' : 'none';
-  
+
   if (currentQuestion === quizData.categories.length - 1) {
     btnNext.textContent = 'Ver Resultados →';
     btnNext.onclick = showResults;
   } else {
     btnNext.textContent = 'Siguiente →';
-    btnNext.onclick = () => showQuestion(currentQuestion + 1);
+    btnNext.onclick = function() { showQuestion(currentQuestion + 1); };
   }
-  
-  btnNext.disabled = !answers[quizData.categories[currentQuestion].id] && 
+
+  btnNext.disabled = !answers[quizData.categories[currentQuestion].id] &&
                      answers[quizData.categories[currentQuestion].id] !== 0;
 }
 
-// Botón anterior
-document.getElementById('btn-prev').onclick = () => {
-  if (currentQuestion > 0) {
-    showQuestion(currentQuestion - 1);
-  }
+document.getElementById('btn-prev').onclick = function() {
+  if (currentQuestion > 0) { showQuestion(currentQuestion - 1); }
 };
 
-// Mostrar resultados
 function showResults() {
-  const resultsContainer = document.getElementById('results-content');
-  
-  quizData.categories.forEach(category => {
-    const score = answers[category.id] || 0;
-    let level, levelClass, description, recommendation;
-    
+  var resultsContainer = document.getElementById('results-content');
+
+  quizData.categories.forEach(function(category) {
+    var score = answers[category.id] || 0;
+    var level, levelClass, description, recommendation;
+
     if (score <= 1) {
-      level = 'Bajo';
-      levelClass = 'low';
-      description = `Tu nivel de ${category.name.toLowerCase()} está en un rango saludable.`;
-      recommendation = `Mantén tus hábitos actuales. Sigue cuidando tu bienestar.`;
+      level = 'Bajo'; levelClass = 'low';
+      description = 'Tu nivel de ' + category.name.toLowerCase() + ' está en un rango saludable.';
+      recommendation = 'Mantén tus hábitos actuales. Sigue cuidando tu bienestar.';
     } else if (score <= 2) {
-      level = 'Moderado';
-      levelClass = 'medium';
-      description = `Experimentas ${category.name.toLowerCase()} de forma ocasional.`;
-      recommendation = `Considera técnicas de manejo emocional como meditación, ejercicio o hablar con alguien de confianza.`;
+      level = 'Moderado'; levelClass = 'medium';
+      description = 'Experimentas ' + category.name.toLowerCase() + ' de forma ocasional.';
+      recommendation = 'Considera técnicas de manejo emocional como meditación, ejercicio o hablar con alguien de confianza.';
     } else {
-      level = 'Alto';
-      levelClass = 'high';
-      description = `Estás experimentando niveles significativos de ${category.name.toLowerCase()}.`;
-      recommendation = `Considera hablar con un profesional de salud mental. No estás solo y hay ayuda disponible.`;
+      level = 'Alto'; levelClass = 'high';
+      description = 'Estás experimentando niveles significativos de ' + category.name.toLowerCase() + '.';
+      recommendation = 'Considera hablar con un profesional de salud mental. No estás solo y hay ayuda disponible.';
     }
-    
-    const resultDiv = document.createElement('div');
-    resultDiv.className = `result-category ${levelClass}`;
-    resultDiv.innerHTML = `
-      <div class="category-header">
-        <h3 class="category-name">${category.icon} ${category.name}</h3>
-        <div class="category-score ${levelClass}">${level}</div>
-      </div>
-      <p class="category-description">${description}</p>
-      <div class="category-recommendation">
-        <strong>Recomendación:</strong> ${recommendation}
-      </div>
-    `;
-    
+
+    var resultDiv = document.createElement('div');
+    resultDiv.className = 'result-category ' + levelClass;
+    resultDiv.innerHTML =
+      '<div class="category-header">' +
+        '<h3 class="category-name">' + category.icon + ' ' + category.name + '</h3>' +
+        '<div class="category-score ' + levelClass + '">' + level + '</div>' +
+      '</div>' +
+      '<p class="category-description">' + description + '</p>' +
+      '<div class="category-recommendation"><strong>Recomendación:</strong> ' + recommendation + '</div>';
+
     resultsContainer.appendChild(resultDiv);
   });
-  
+
   showStep('step-results');
 }
 
-// Mostrar paso
 function showStep(stepId) {
-  document.querySelectorAll('.quiz-step').forEach(step => {
+  document.querySelectorAll('.quiz-step').forEach(function(step) {
     step.classList.remove('active');
   });
   document.getElementById(stepId).classList.add('active');

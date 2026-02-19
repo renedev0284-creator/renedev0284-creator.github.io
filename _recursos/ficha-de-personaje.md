@@ -86,14 +86,14 @@ benefits:
     <div class="rp-input-line"></div>
     <div class="rp-input-line"></div>
   </div>
-  <div class="rp-arc-arrow">→</div>
+  <div class="rp-arc-arrow">↓</div>
   <div class="rp-arc-item">
     <span class="rp-arc-label">Punto de quiebre</span>
     <p class="rp-arc-hint">¿Qué lo obliga a cambiar?</p>
     <div class="rp-input-line"></div>
     <div class="rp-input-line"></div>
   </div>
-  <div class="rp-arc-arrow">→</div>
+  <div class="rp-arc-arrow">↓</div>
   <div class="rp-arc-item">
     <span class="rp-arc-label">Final</span>
     <p class="rp-arc-hint">¿En qué se convierte?</p>

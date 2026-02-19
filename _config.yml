@@ -30,6 +30,9 @@ markdown: kramdown
 permalink: /:title/
 timezone: America/Guatemala
 
+kramdown:
+  parse_block_html: true
+
 # Plugins
 plugins:
   - jekyll-feed

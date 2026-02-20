@@ -55,7 +55,7 @@ html {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* iOS Safari necesita esto en html, no solo en body */
+  overflow-x: clip; /* clip en lugar de hidden: evita scroll horizontal sin romper position:sticky */
 }
 
 body {

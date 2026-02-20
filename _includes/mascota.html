@@ -1,14 +1,27 @@
 <!-- ═══════════════════════════════════════════════════════
      MASCOTA FLOTANTE — Ornitorrinco con emociones
      orni-1.png → idle (normal/serio)
-     orni-2.png → open (feliz leyendo, al abrir burbuja)
-     orni-3.png → sleep (durmiendo, luego de 20s inactivo)
+     orni-2.png → open (feliz, al abrir burbuja o vibrar)
+     orni-3.png → sleep (durmiendo en el ciclo de descanso)
+
+     CICLO AUTOMÁTICO:
+       1. Muestra un tip (escritura / psicología / sitio) — 7s
+       2. Descansa (duerme) — 25s
+       3. Vibra para llamar la atención — 5s
+       → Repite desde 1
+
+     CLIC: abre la burbuja de recursos gratuitos
      ═══════════════════════════════════════════════════════ -->
 <div class="ms-wrap" id="ms-mascota">
 
-  <!-- Burbuja de recursos -->
+  <!-- Burbuja de tip automático (no interactiva) -->
+  <div class="ms-tip" id="ms-tip" aria-hidden="true">
+    <p class="ms-tip-text" id="ms-tip-text"></p>
+  </div>
+
+  <!-- Burbuja de recursos (al hacer clic) -->
   <div class="ms-bubble" id="ms-bubble" aria-hidden="true" role="navigation" aria-label="Recursos rápidos">
-    <p class="ms-bubble-title">¡Te puede servir!</p>
+    <p class="ms-bubble-title">¡Recursos gratis!</p>
     <ul class="ms-links">
       <li>
         <a href="{{ '/calculadora-nanowrimo/' | relative_url }}" class="ms-link">
@@ -38,7 +51,7 @@
     <a href="{{ '/recursos/' | relative_url }}" class="ms-ver-todos">Ver todos los recursos →</a>
   </div>
 
-  <!-- Personaje: las 3 poses apiladas, se muestran/ocultan con CSS -->
+  <!-- Personaje: las 3 poses apiladas -->
   <button class="ms-btn" id="ms-btn"
           aria-label="Recursos rápidos"
           aria-expanded="false"
@@ -84,7 +97,6 @@
   display: grid;
   width: 96px;
 
-  /* Animación de flotado idle */
   animation: ms-float 4s ease-in-out infinite;
   transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -98,17 +110,23 @@
   animation: none;
 }
 
-/* Cuando está abierto: se detiene la animación, leve tilt */
+/* Estado abierto (recursos): sin animación de fondo */
 .ms-btn.is-open {
   animation: none;
 }
 
-/* Cuando duerme: más ancho para que se vea mejor el horizontal */
+/* Estado durmiendo */
 .ms-btn.is-sleeping {
   animation: ms-breathe 3.5s ease-in-out infinite;
   width: 140px;
 }
 
+/* Estado vibrando */
+.ms-btn.is-shaking {
+  animation: ms-shake 0.45s ease-in-out infinite;
+}
+
+/* ── Animaciones ─────────────────────────────────────── */
 @keyframes ms-float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-8px); }
@@ -117,6 +135,16 @@
 @keyframes ms-breathe {
   0%, 100% { transform: translateY(0) scale(1); }
   50%       { transform: translateY(-4px) scale(1.015); }
+}
+
+@keyframes ms-shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15%       { transform: translateX(-5px) rotate(-3deg); }
+  30%       { transform: translateX(5px) rotate(3deg); }
+  45%       { transform: translateX(-4px) rotate(-2deg); }
+  60%       { transform: translateX(4px) rotate(2deg); }
+  75%       { transform: translateX(-3px) rotate(-1deg); }
+  90%       { transform: translateX(3px) rotate(1deg); }
 }
 
 /* ── Imágenes del personaje ──────────────────────────── */
@@ -131,22 +159,71 @@
   pointer-events: none;
 }
 
-/* Estado idle (default): muestra orni-1 */
+/* idle: orni-1 */
 .ms-orni--idle  { opacity: 1; }
 .ms-orni--open  { opacity: 0; }
 .ms-orni--sleep { opacity: 0; }
 
-/* Estado open: muestra orni-2 */
+/* open (recursos): orni-2 */
 .ms-btn.is-open .ms-orni--idle  { opacity: 0; }
 .ms-btn.is-open .ms-orni--open  { opacity: 1; }
 .ms-btn.is-open .ms-orni--sleep { opacity: 0; }
 
-/* Estado sleeping: muestra orni-3 */
+/* sleeping: orni-3 */
 .ms-btn.is-sleeping .ms-orni--idle  { opacity: 0; }
 .ms-btn.is-sleeping .ms-orni--open  { opacity: 0; }
 .ms-btn.is-sleeping .ms-orni--sleep { opacity: 1; }
 
-/* ── Burbuja de texto ─────────────────────────────────── */
+/* shaking: orni-2 (cara feliz/alertada) */
+.ms-btn.is-shaking .ms-orni--idle  { opacity: 0; }
+.ms-btn.is-shaking .ms-orni--open  { opacity: 1; }
+.ms-btn.is-shaking .ms-orni--sleep { opacity: 0; }
+
+/* ── Burbuja de tip automático ───────────────────────── */
+.ms-tip {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(60,48,38,0.1);
+  border-radius: 12px 12px 4px 12px;
+  box-shadow: 0 4px 16px rgba(60,48,38,0.1), 0 1px 4px rgba(60,48,38,0.06);
+  padding: 0.7rem 0.85rem;
+  width: 220px;
+  opacity: 0;
+  transform: scale(0.88) translateY(10px);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition:
+    opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ms-tip.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Cola hacia el personaje */
+.ms-tip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 22px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 9px solid #fff;
+}
+
+.ms-tip-text {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ── Burbuja de recursos (clic) ──────────────────────── */
 .ms-bubble {
   position: relative;
   background: #fff;
@@ -172,7 +249,7 @@
   pointer-events: all;
 }
 
-/* Cola triangular apuntando al personaje (abajo-derecha) */
+/* Cola triangular */
 .ms-bubble::after {
   content: '';
   position: absolute;
@@ -195,7 +272,7 @@
   margin: 0 0 0.6rem;
 }
 
-/* ── Links ──────────────────────────────────────────────── */
+/* ── Links de recursos ──────────────────────────────── */
 .ms-links {
   list-style: none;
   padding: 0;
@@ -234,7 +311,7 @@
   color: var(--color-orange);
 }
 
-/* ── Ver todos ──────────────────────────────────────────── */
+/* ── Ver todos ──────────────────────────────────────── */
 .ms-ver-todos {
   display: block;
   text-align: center;
@@ -252,19 +329,19 @@
   color: #c03818;
 }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 520px) {
   .ms-wrap {
     bottom: 1rem;
     right: 0.75rem;
+    /* El contenedor no bloquea clicks; solo el botón y burbuja abierta sí */
+    pointer-events: none;
   }
-  .ms-btn       { width: 64px; }
-  .ms-btn.is-sleeping { width: 96px; }
-  .ms-bubble    { width: 210px; }
-  /* pointer-events solo en el botón, no en el contenedor */
-  .ms-wrap { pointer-events: none; }
-  .ms-btn  { pointer-events: auto; }
-  .ms-bubble.is-open { pointer-events: all; }
+  .ms-btn              { width: 64px; pointer-events: auto; }
+  .ms-btn.is-sleeping  { width: 96px; }
+  .ms-bubble           { width: 210px; }
+  .ms-tip              { width: 200px; }
+  .ms-bubble.is-open   { pointer-events: all; }
 }
 
 @media (max-width: 370px) {
@@ -278,30 +355,97 @@
 
 <script>
 (function () {
+  'use strict';
+
   var btn     = document.getElementById('ms-btn');
   var bubble  = document.getElementById('ms-bubble');
+  var tip     = document.getElementById('ms-tip');
+  var tipText = document.getElementById('ms-tip-text');
   var mascota = document.getElementById('ms-mascota');
-  var isOpen  = false;
-  var sleepTimer;
 
-  if (!btn || !bubble) return;
+  if (!btn || !bubble || !tip || !tipText) return;
 
-  /* ── Sleep: después de 20s sin actividad → orni-3 ── */
-  function startSleepTimer() {
-    clearTimeout(sleepTimer);
-    sleepTimer = setTimeout(function () {
-      if (!isOpen) btn.classList.add('is-sleeping');
-    }, 20000);
+  /* ── Tips por categoría ─────────────────────────── */
+  var tips = [
+    // Escritura
+    '✍️ Tu primer borrador no tiene que ser bueno. Tiene que existir.',
+    '💡 El conflicto no es lo que pasa. Es lo que le importa al personaje.',
+    '📖 1,667 palabras al día = una novela completa en 30 días.',
+    '✍️ Escribe la primera escena, no el primer capítulo "perfecto".',
+    '💡 Leer en voz alta revela lo que el ojo no ve al revisar.',
+    // Psicología
+    '🧠 Las micro-pausas de 2 min recargan más que el café.',
+    '💙 El progreso no lineal sigue siendo progreso.',
+    '🧠 El descanso es parte del proceso, no el enemigo.',
+    '💙 Tus hábitos definen quién eres, no tu motivación del momento.',
+    '🧠 Hacer una cosa bien vale más que cinco a medias.',
+    // Instrucciones del sitio
+    '📂 ¡Tengo plantillas gratis para escritores! Hacé clic para verlas.',
+    '🔢 ¿Usás NaNoWriMo? Tengo una calculadora de palabras diaria.',
+    '📊 Hay una plantilla de registro de glucosa descargable gratis.',
+    '📋 El checklist de revisión editorial te ahorra horas de edición.',
+    '🗺️ Explorá el blog: escritura, salud con datos y productividad.',
+  ];
+
+  var tipIndex  = 0;
+  var isOpen    = false; /* burbuja de recursos abierta */
+  var cycleTimer;
+
+  /* ── Ciclo automático ────────────────────────────
+     Fase 1 — tip (7s): muestra un tip
+     Fase 2 — sleep (25s): descansa con orni-3
+     Fase 3 — shake (5s): vibra con orni-2 para llamar la atención
+     → repite
+  ────────────────────────────────────────────────── */
+  function runCycle() {
+    if (isOpen) return;
+    clearTimeout(cycleTimer);
+
+    /* Fase 1: mostrar tip */
+    setIdle();
+    tipText.textContent = tips[tipIndex % tips.length];
+    tipIndex++;
+    tip.classList.add('is-visible');
+
+    cycleTimer = setTimeout(function () {
+      /* Fase 2: dormir */
+      tip.classList.remove('is-visible');
+      setSleeping();
+
+      cycleTimer = setTimeout(function () {
+        /* Fase 3: vibrar */
+        setShaking();
+
+        cycleTimer = setTimeout(function () {
+          /* Vuelta al inicio */
+          runCycle();
+        }, 5000);
+
+      }, 25000);
+
+    }, 7000);
   }
 
-  function wakeUp() {
-    clearTimeout(sleepTimer);
-    btn.classList.remove('is-sleeping');
+  /* ── Estados del personaje ───────────────────── */
+  function setIdle() {
+    btn.classList.remove('is-open', 'is-sleeping', 'is-shaking');
   }
 
-  /* ── Abrir / cerrar burbuja ─────────────────────── */
+  function setSleeping() {
+    btn.classList.remove('is-open', 'is-shaking');
+    btn.classList.add('is-sleeping');
+  }
+
+  function setShaking() {
+    btn.classList.remove('is-sleeping', 'is-open');
+    btn.classList.add('is-shaking');
+  }
+
+  /* ── Burbuja de recursos ─────────────────────── */
   function openBubble() {
-    wakeUp();
+    clearTimeout(cycleTimer);
+    tip.classList.remove('is-visible');
+    btn.classList.remove('is-sleeping', 'is-shaking');
     isOpen = true;
     bubble.classList.add('is-open');
     btn.classList.add('is-open');
@@ -315,9 +459,11 @@
     btn.classList.remove('is-open');
     bubble.setAttribute('aria-hidden', 'true');
     btn.setAttribute('aria-expanded', 'false');
-    startSleepTimer();
+    /* Retomar el ciclo desde el tip siguiente */
+    runCycle();
   }
 
+  /* ── Eventos ─────────────────────────────────── */
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
     if (isOpen) { closeBubble(); } else { openBubble(); }
@@ -333,7 +479,8 @@
     if (e.key === 'Escape' && isOpen) { closeBubble(); }
   });
 
-  /* Iniciar timer al cargar */
-  startSleepTimer();
+  /* Arrancar el ciclo al cargar */
+  runCycle();
+
 }());
 </script>

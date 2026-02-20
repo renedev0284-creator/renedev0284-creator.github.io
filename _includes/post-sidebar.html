@@ -1,6 +1,6 @@
 <!-- Sidebar para Posts -->
 <aside class="post-sidebar">
-  
+
   <!-- Widget: Sobre mí -->
   <div class="sidebar-widget widget-about">
     <div class="widget-avatar">
@@ -9,9 +9,14 @@
     <h3 class="widget-title">René Moya</h3>
     <p class="widget-bio">Escritor en proceso, programo y sé marketing. Escribo sobre sistemas, productividad y aprendizaje continuo.</p>
     <div class="widget-social">
-      <a href="https://twitter.com/rened_ev" target="_blank" title="Twitter">
+      <a href="https://twitter.com/rened_ev" target="_blank" title="Twitter / X">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://rmoya.substack.com/" target="_blank" title="Substack">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
         </svg>
       </a>
       <a href="https://github.com/renedev0284-creator" target="_blank" title="GitHub">
@@ -28,11 +33,49 @@
     </div>
   </div>
 
-  <!-- Widget: Servicios/Anuncios -->
+  <!-- Widget: Substack -->
+  <div class="sidebar-widget widget-substack">
+    <div class="substack-top">
+      <div class="substack-logo-wrap" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="substack-label">Substack</p>
+        <p class="substack-name">rmoya</p>
+      </div>
+    </div>
+
+    <p class="substack-desc">
+      Reflexiones más largas que un tweet. Escritura, sistemas y datos. Gratis, cuando algo vale la pena.
+    </p>
+
+    <ul class="substack-bullets">
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Artículos exclusivos
+      </li>
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Sin algoritmos, directo al inbox
+      </li>
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        100% gratis, sin spam
+      </li>
+    </ul>
+
+    <a href="https://rmoya.substack.com/" class="btn-substack" target="_blank" rel="noopener noreferrer">
+      Suscribirse gratis
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <!-- Widget: Servicios/Habilidades -->
   <div class="sidebar-widget widget-services">
     <h4 class="widget-heading">Habilidades</h4>
-    
-    <!-- Servicio 1: Landing Pages -->
+
     <a href="#" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
@@ -53,7 +96,6 @@
       </div>
     </a>
 
-    <!-- Servicio 2: Marketing Digital -->
     <a href="#" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
@@ -71,7 +113,6 @@
       </div>
     </a>
 
-    <!-- Servicio 3: Sistemas -->
     <a href="#" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
@@ -127,7 +168,7 @@
       <li class="recursos-item">
         <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="recursos-link">
           <span class="recursos-icon recursos-icon--edicion">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </span>
           <span>Checklist de revisión</span>
           <svg class="recursos-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -135,6 +176,35 @@
       </li>
     </ul>
     <a href="{{ '/recursos/' | relative_url }}" class="btn-ver-recursos">Ver todos →</a>
+  </div>
+
+  <!-- Widget: X / Twitter — últimos 2 tweets -->
+  <div class="sidebar-widget widget-twitter">
+    <div class="twitter-widget-header">
+      <div class="twitter-x-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </div>
+      <h4 class="widget-heading" style="margin:0; border:none; padding:0;">Últimos tweets</h4>
+    </div>
+
+    <div class="twitter-embed-wrap">
+      <a class="twitter-timeline"
+         data-tweet-limit="2"
+         data-chrome="noheader nofooter noborders transparent noscrollbar"
+         data-dnt="true"
+         href="https://twitter.com/Rened_ev">
+        Cargando tweets…
+      </a>
+    </div>
+
+    <a href="https://x.com/Rened_ev" class="btn-seguir-x" target="_blank" rel="noopener noreferrer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      Seguir a @Rened_ev
+    </a>
   </div>
 
   <!-- Widget: Posts Recientes -->
@@ -171,35 +241,14 @@
 
 </aside>
 
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <style>
 /* ========================================
    Sidebar Styles
    ======================================== */
 .post-sidebar {
-  position: sticky;
-  top: 2rem;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
   padding-left: 2rem;
-}
-
-/* Scrollbar personalizado */
-.post-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.post-sidebar::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
-  border-radius: 3px;
-}
-
-.post-sidebar::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
-}
-
-.post-sidebar::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
 }
 
 /* Widget Base */
@@ -218,17 +267,17 @@
 
 .widget-heading {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0 0 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--color-orange);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
 }
 
-/* Widget: Sobre mí */
+/* ── Widget: Sobre mí ──────────────────────────────── */
 .widget-about {
   text-align: center;
 }
@@ -283,7 +332,119 @@
   transform: translateY(-3px);
 }
 
-/* Widget: Servicios */
+/* ── Widget: Substack ───────────────────────────────── */
+.widget-substack {
+  background: linear-gradient(145deg, #fff8f5 0%, #fff 60%);
+  border: 1.5px solid rgba(255, 103, 25, 0.3);
+  border-top: 3px solid #FF6719;
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-substack::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,103,25,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.substack-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.substack-logo-wrap {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #FF6719;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.substack-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FF6719;
+  margin: 0 0 0.1rem;
+}
+
+.substack-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.substack-desc {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0 0 0.85rem;
+}
+
+.substack-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.substack-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: rgba(60,48,38,0.78);
+}
+
+.substack-bullets li svg {
+  flex-shrink: 0;
+  color: #FF6719;
+}
+
+.btn-substack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.68rem 1rem;
+  border-radius: 7px;
+  background: #FF6719;
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(255,103,25,0.25);
+}
+
+.btn-substack:hover {
+  background: #e05510;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,103,25,0.32);
+}
+
+/* ── Widget: Servicios ──────────────────────────────── */
 .widget-services {
   background: linear-gradient(135deg, #fefdfb 0%, #f9f7f3 100%);
 }
@@ -291,8 +452,8 @@
 .service-card {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
+  padding: 0.85rem;
+  margin-bottom: 0.65rem;
   background: white;
   border: 1px solid var(--color-border);
   border-radius: 6px;
@@ -319,170 +480,20 @@
 
 .service-info h5 {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--color-text);
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.2rem;
 }
 
 .service-info p {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
   margin: 0;
   line-height: 1.4;
 }
 
-/* Widget: Posts Recientes */
-.recent-posts-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.recent-post-item {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.recent-post-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.recent-post-item a {
-  text-decoration: none;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.recent-post-item a:hover {
-  transform: translateX(4px);
-}
-
-.recent-post-title {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-text);
-  line-height: 1.4;
-  margin-bottom: 0.25rem;
-  transition: color 0.2s;
-}
-
-.recent-post-item a:hover .recent-post-title {
-  color: var(--color-orange);
-}
-
-.recent-post-date {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: var(--color-text-light);
-}
-
-/* Widget: Tags */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag-cloud-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  background: var(--color-bg-secondary);
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.tag-cloud-item:hover {
-  background: rgba(243, 79, 41, 0.1);
-  color: var(--color-orange);
-  border-color: var(--color-orange);
-  transform: translateY(-2px);
-}
-
-.tag-count {
-  font-size: 0.7rem;
-  color: var(--color-text-light);
-  background: white;
-  padding: 0.1rem 0.4rem;
-  border-radius: 10px;
-}
-
-/* Widget: Newsletter */
-.widget-newsletter {
-  background: linear-gradient(135deg, #fff4ec 0%, #fef9f5 100%);
-  border: 2px solid var(--color-orange);
-}
-
-.newsletter-desc {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin: 0 0 1rem;
-}
-
-.newsletter-form-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.newsletter-input-sidebar {
-  padding: 0.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--color-text);
-  background: white;
-  border: 2px solid var(--color-border);
-  border-radius: 6px;
-  transition: border-color 0.2s;
-}
-
-.newsletter-input-sidebar:focus {
-  outline: none;
-  border-color: var(--color-orange);
-}
-
-.newsletter-button-sidebar {
-  padding: 0.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  background: var(--color-orange);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.newsletter-button-sidebar:hover {
-  background: #e04420;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
-}
-
-.newsletter-note {
-  font-size: 0.75rem;
-  color: var(--color-text-light);
-  font-style: italic;
-  margin: 0;
-  text-align: center;
-}
-
-/* ── Widget Recursos ─────────────────────────────── */
+/* ── Widget: Recursos ───────────────────────────────── */
 .widget-recursos {
   background: linear-gradient(135deg,
     rgba(243,79,41,0.04) 0%,
@@ -544,7 +555,6 @@
 .recursos-icon--personajes    { background: rgba(243,79,41,0.1);  color: var(--color-orange); }
 .recursos-icon--estructura    { background: rgba(26,123,179,0.1); color: var(--color-accent); }
 .recursos-icon--relato        { background: rgba(72,187,120,0.1); color: #38a169; }
-.recursos-icon--planificacion { background: rgba(237,137,54,0.1); color: #dd6b20; }
 .recursos-icon--edicion       { background: rgba(128,90,213,0.1); color: #805ad5; }
 
 .recursos-link span:nth-child(2) { flex: 1; }
@@ -575,10 +585,222 @@
   border-color: var(--color-orange);
 }
 
-/* Responsive */
+/* ── Widget: X / Twitter ────────────────────────────── */
+.widget-twitter {
+  padding-bottom: 1.1rem;
+}
+
+.twitter-widget-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-orange);
+}
+
+.twitter-x-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Contenedor del embed de Twitter/X */
+.twitter-embed-wrap {
+  margin: 0 -0.25rem 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  /* El iframe de Twitter ajusta su altura automáticamente con 2 tweets */
+  min-height: 60px;
+}
+
+/* Evitar que el iframe de Twitter desborde */
+.twitter-embed-wrap iframe {
+  border-radius: 8px !important;
+}
+
+.btn-seguir-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 7px;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-seguir-x:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+/* ── Widget: Posts Recientes ────────────────────────── */
+.recent-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-post-item {
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recent-post-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.recent-post-item a {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.recent-post-item a:hover {
+  transform: translateX(4px);
+}
+
+.recent-post-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+  transition: color 0.2s;
+}
+
+.recent-post-item a:hover .recent-post-title {
+  color: var(--color-orange);
+}
+
+.recent-post-date {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+}
+
+/* ── Widget: Tags ───────────────────────────────────── */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-cloud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tag-cloud-item:hover {
+  background: rgba(243, 79, 41, 0.1);
+  color: var(--color-orange);
+  border-color: var(--color-orange);
+  transform: translateY(-2px);
+}
+
+.tag-count {
+  font-size: 0.68rem;
+  color: var(--color-text-light);
+  background: white;
+  padding: 0.1rem 0.35rem;
+  border-radius: 10px;
+}
+
+/* ── Widget: Newsletter ─────────────────────────────── */
+.widget-newsletter {
+  background: linear-gradient(135deg, #fff4ec 0%, #fef9f5 100%);
+  border: 2px solid var(--color-orange);
+}
+
+.newsletter-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+.newsletter-form-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.newsletter-input-sidebar {
+  padding: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.newsletter-input-sidebar:focus {
+  outline: none;
+  border-color: var(--color-orange);
+}
+
+.newsletter-button-sidebar {
+  padding: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-orange);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-button-sidebar:hover {
+  background: #e04420;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.3);
+}
+
+.newsletter-note {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 1024px) {
   .post-sidebar {
-    display: none; /* Ocultar en tablets y móviles */
+    display: none;
   }
 }
 </style>

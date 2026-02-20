@@ -1,25 +1,15 @@
 <!-- ═══════════════════════════════════════════════════════
-     MASCOTA FLOTANTE — Ornitorrinco con emociones
-     orni-1.png → idle (normal/serio)
-     orni-2.png → open (feliz, al abrir burbuja o vibrar)
-     orni-3.png → sleep (durmiendo en el ciclo de descanso)
+     MASCOTA FLOTANTE — Ornitorrinco
+     orni-1.png → idle (normal)
+     orni-2.png → open (feliz, al abrir burbuja)
 
-     CICLO AUTOMÁTICO:
-       1. Muestra un tip (escritura / psicología / sitio) — 7s
-       2. Descansa (duerme) — 25s
-       3. Vibra para llamar la atención — 5s
-       → Repite desde 1
-
-     CLIC: abre la burbuja de recursos gratuitos
+     CLIC en mascota : abre/cierra burbuja de recursos
+     Botón ×         : minimiza la mascota
+     Botón restaurar : vuelve a mostrar la mascota
      ═══════════════════════════════════════════════════════ -->
 <div class="ms-wrap" id="ms-mascota">
 
-  <!-- Burbuja de tip automático (no interactiva) -->
-  <div class="ms-tip" id="ms-tip" aria-hidden="true">
-    <p class="ms-tip-text" id="ms-tip-text"></p>
-  </div>
-
-  <!-- Burbuja de recursos (al hacer clic) -->
+  <!-- Burbuja de recursos (al hacer clic en la mascota) -->
   <div class="ms-bubble" id="ms-bubble" aria-hidden="true" role="navigation" aria-label="Recursos rápidos">
     <p class="ms-bubble-title">¡Recursos gratis!</p>
     <ul class="ms-links">
@@ -51,23 +41,34 @@
     <a href="{{ '/recursos/' | relative_url }}" class="ms-ver-todos">Ver todos los recursos →</a>
   </div>
 
-  <!-- Personaje: las 3 poses apiladas -->
-  <button class="ms-btn" id="ms-btn"
-          aria-label="Recursos rápidos"
-          aria-expanded="false"
-          title="¿Buscás algo útil?">
-    <img class="ms-orni ms-orni--idle"
-         src="{{ '/assets/images/orni-1.png' | relative_url }}"
-         alt="" aria-hidden="true" draggable="false">
-    <img class="ms-orni ms-orni--open"
-         src="{{ '/assets/images/orni-2.png' | relative_url }}"
-         alt="" aria-hidden="true" draggable="false">
-    <img class="ms-orni ms-orni--sleep"
-         src="{{ '/assets/images/orni-3.png' | relative_url }}"
-         alt="" aria-hidden="true" draggable="false">
-  </button>
+  <!-- Fila inferior: botón minimizar + personaje -->
+  <div class="ms-bottom-row">
+    <button class="ms-minimize-btn" id="ms-minimize" aria-label="Ocultar mascota" title="Ocultar">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="1" y1="1" x2="9" y2="9"/>
+        <line x1="9" y1="1" x2="1" y2="9"/>
+      </svg>
+    </button>
+
+    <button class="ms-btn" id="ms-btn"
+            aria-label="Recursos rápidos"
+            aria-expanded="false"
+            title="¿Buscás algo útil?">
+      <img class="ms-orni ms-orni--idle"
+           src="{{ '/assets/images/orni-1.png' | relative_url }}"
+           alt="" aria-hidden="true" draggable="false">
+      <img class="ms-orni ms-orni--open"
+           src="{{ '/assets/images/orni-2.png' | relative_url }}"
+           alt="" aria-hidden="true" draggable="false">
+    </button>
+  </div>
 
 </div>
+
+<!-- Botón restaurar (aparece cuando la mascota está minimizada) -->
+<button class="ms-restore-btn" id="ms-restore" aria-label="Mostrar mascota" title="Mostrar mascota">
+  <img src="{{ '/assets/images/orni-1.png' | relative_url }}" alt="" draggable="false" aria-hidden="true">
+</button>
 
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -85,6 +86,40 @@
   gap: 0.5rem;
 }
 
+/* ── Fila inferior (minimizar + personaje) ───────────── */
+.ms-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+/* ── Botón minimizar (×) ─────────────────────────────── */
+.ms-minimize-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(60,48,38,0.18);
+  box-shadow: 0 2px 6px rgba(60,48,38,0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(60,48,38,0.5);
+  padding: 0;
+  flex-shrink: 0;
+  align-self: center;
+  margin-bottom: 10px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.ms-minimize-btn:hover {
+  background: #fff;
+  color: var(--color-orange);
+  transform: scale(1.12);
+  box-shadow: 0 3px 8px rgba(60,48,38,0.18);
+}
+
 /* ── Botón / Personaje ───────────────────────────────── */
 .ms-btn {
   background: none;
@@ -93,7 +128,7 @@
   padding: 0;
   margin: 0;
 
-  /* Grid stacking: las 3 imágenes comparten el mismo espacio */
+  /* Grid stacking: las 2 imágenes comparten el mismo espacio */
   display: grid;
   width: 96px;
 
@@ -101,7 +136,7 @@
   transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Las 3 imágenes apiladas en la misma celda del grid */
+/* Las imágenes apiladas en la misma celda del grid */
 .ms-btn > * {
   grid-area: 1 / 1;
 }
@@ -110,41 +145,14 @@
   animation: none;
 }
 
-/* Estado abierto (recursos): sin animación de fondo */
 .ms-btn.is-open {
   animation: none;
 }
 
-/* Estado durmiendo */
-.ms-btn.is-sleeping {
-  animation: ms-breathe 3.5s ease-in-out infinite;
-  width: 140px;
-}
-
-/* Estado vibrando */
-.ms-btn.is-shaking {
-  animation: ms-shake 0.45s ease-in-out infinite;
-}
-
-/* ── Animaciones ─────────────────────────────────────── */
+/* ── Animación flotante ──────────────────────────────── */
 @keyframes ms-float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-8px); }
-}
-
-@keyframes ms-breathe {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%       { transform: translateY(-4px) scale(1.015); }
-}
-
-@keyframes ms-shake {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  15%       { transform: translateX(-5px) rotate(-3deg); }
-  30%       { transform: translateX(5px) rotate(3deg); }
-  45%       { transform: translateX(-4px) rotate(-2deg); }
-  60%       { transform: translateX(4px) rotate(2deg); }
-  75%       { transform: translateX(-3px) rotate(-1deg); }
-  90%       { transform: translateX(3px) rotate(1deg); }
 }
 
 /* ── Imágenes del personaje ──────────────────────────── */
@@ -159,69 +167,13 @@
   pointer-events: none;
 }
 
-/* idle: orni-1 */
-.ms-orni--idle  { opacity: 1; }
-.ms-orni--open  { opacity: 0; }
-.ms-orni--sleep { opacity: 0; }
+/* idle: orni-1 por defecto */
+.ms-orni--idle { opacity: 1; }
+.ms-orni--open { opacity: 0; }
 
 /* open (recursos): orni-2 */
-.ms-btn.is-open .ms-orni--idle  { opacity: 0; }
-.ms-btn.is-open .ms-orni--open  { opacity: 1; }
-.ms-btn.is-open .ms-orni--sleep { opacity: 0; }
-
-/* sleeping: orni-3 */
-.ms-btn.is-sleeping .ms-orni--idle  { opacity: 0; }
-.ms-btn.is-sleeping .ms-orni--open  { opacity: 0; }
-.ms-btn.is-sleeping .ms-orni--sleep { opacity: 1; }
-
-/* shaking: orni-2 (cara feliz/alertada) */
-.ms-btn.is-shaking .ms-orni--idle  { opacity: 0; }
-.ms-btn.is-shaking .ms-orni--open  { opacity: 1; }
-.ms-btn.is-shaking .ms-orni--sleep { opacity: 0; }
-
-/* ── Burbuja de tip automático ───────────────────────── */
-.ms-tip {
-  position: relative;
-  background: #fff;
-  border: 1px solid rgba(60,48,38,0.1);
-  border-radius: 12px 12px 4px 12px;
-  box-shadow: 0 4px 16px rgba(60,48,38,0.1), 0 1px 4px rgba(60,48,38,0.06);
-  padding: 0.7rem 0.85rem;
-  width: 220px;
-  opacity: 0;
-  transform: scale(0.88) translateY(10px);
-  transform-origin: bottom right;
-  pointer-events: none;
-  transition:
-    opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.ms-tip.is-visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Cola hacia el personaje */
-.ms-tip::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  right: 22px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 3px solid transparent;
-  border-top: 9px solid #fff;
-}
-
-.ms-tip-text {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: var(--color-text);
-  margin: 0;
-}
+.ms-btn.is-open .ms-orni--idle { opacity: 0; }
+.ms-btn.is-open .ms-orni--open { opacity: 1; }
 
 /* ── Burbuja de recursos (clic) ──────────────────────── */
 .ms-bubble {
@@ -329,27 +281,67 @@
   color: #c03818;
 }
 
+/* ── Botón restaurar ────────────────────────────────── */
+.ms-restore-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 997;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(60,48,38,0.15);
+  box-shadow: 0 4px 14px rgba(60,48,38,0.18);
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ms-restore-btn.is-visible {
+  display: flex;
+}
+
+.ms-restore-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(60,48,38,0.24);
+}
+
+.ms-restore-btn img {
+  width: 36px;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(60,48,38,0.15));
+}
+
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 520px) {
   .ms-wrap {
     bottom: 1rem;
     right: 0.75rem;
-    /* El contenedor no bloquea clicks; solo el botón y burbuja abierta sí */
     pointer-events: none;
   }
-  .ms-btn              { width: 64px; pointer-events: auto; }
-  .ms-btn.is-sleeping  { width: 96px; }
-  .ms-bubble           { width: 210px; }
-  .ms-tip              { width: 200px; }
-  .ms-bubble.is-open   { pointer-events: all; }
+  .ms-btn          { width: 64px; pointer-events: auto; }
+  .ms-minimize-btn { pointer-events: auto; }
+  .ms-bubble       { width: 210px; }
+  .ms-bubble.is-open { pointer-events: all; }
+  .ms-restore-btn  { bottom: 1rem; right: 0.75rem; }
 }
 
 @media (max-width: 370px) {
-  .ms-wrap { display: none; }
+  .ms-wrap        { display: none; }
+  .ms-restore-btn { display: none !important; }
 }
 
 @media print {
-  .ms-wrap { display: none !important; }
+  .ms-wrap        { display: none !important; }
+  .ms-restore-btn { display: none !important; }
 }
 </style>
 
@@ -359,93 +351,16 @@
 
   var btn     = document.getElementById('ms-btn');
   var bubble  = document.getElementById('ms-bubble');
-  var tip     = document.getElementById('ms-tip');
-  var tipText = document.getElementById('ms-tip-text');
   var mascota = document.getElementById('ms-mascota');
+  var minBtn  = document.getElementById('ms-minimize');
+  var restBtn = document.getElementById('ms-restore');
 
-  if (!btn || !bubble || !tip || !tipText) return;
+  if (!btn || !bubble || !minBtn || !restBtn) return;
 
-  /* ── Tips por categoría ─────────────────────────── */
-  var tips = [
-    // Escritura
-    '✍️ Tu primer borrador no tiene que ser bueno. Tiene que existir.',
-    '💡 El conflicto no es lo que pasa. Es lo que le importa al personaje.',
-    '📖 1,667 palabras al día = una novela completa en 30 días.',
-    '✍️ Escribe la primera escena, no el primer capítulo "perfecto".',
-    '💡 Leer en voz alta revela lo que el ojo no ve al revisar.',
-    // Psicología
-    '🧠 Las micro-pausas de 2 min recargan más que el café.',
-    '💙 El progreso no lineal sigue siendo progreso.',
-    '🧠 El descanso es parte del proceso, no el enemigo.',
-    '💙 Tus hábitos definen quién eres, no tu motivación del momento.',
-    '🧠 Hacer una cosa bien vale más que cinco a medias.',
-    // Instrucciones del sitio
-    '📂 ¡Tengo plantillas gratis para escritores! Hacé clic para verlas.',
-    '🔢 ¿Usás NaNoWriMo? Tengo una calculadora de palabras diaria.',
-    '📊 Hay una plantilla de registro de glucosa descargable gratis.',
-    '📋 El checklist de revisión editorial te ahorra horas de edición.',
-    '🗺️ Explorá el blog: escritura, salud con datos y productividad.',
-  ];
+  var isOpen = false;
 
-  var tipIndex  = 0;
-  var isOpen    = false; /* burbuja de recursos abierta */
-  var cycleTimer;
-
-  /* ── Ciclo automático ────────────────────────────
-     Fase 1 — tip (7s): muestra un tip
-     Fase 2 — sleep (25s): descansa con orni-3
-     Fase 3 — shake (5s): vibra con orni-2 para llamar la atención
-     → repite
-  ────────────────────────────────────────────────── */
-  function runCycle() {
-    if (isOpen) return;
-    clearTimeout(cycleTimer);
-
-    /* Fase 1: mostrar tip */
-    setIdle();
-    tipText.textContent = tips[tipIndex % tips.length];
-    tipIndex++;
-    tip.classList.add('is-visible');
-
-    cycleTimer = setTimeout(function () {
-      /* Fase 2: dormir */
-      tip.classList.remove('is-visible');
-      setSleeping();
-
-      cycleTimer = setTimeout(function () {
-        /* Fase 3: vibrar */
-        setShaking();
-
-        cycleTimer = setTimeout(function () {
-          /* Vuelta al inicio */
-          runCycle();
-        }, 5000);
-
-      }, 25000);
-
-    }, 7000);
-  }
-
-  /* ── Estados del personaje ───────────────────── */
-  function setIdle() {
-    btn.classList.remove('is-open', 'is-sleeping', 'is-shaking');
-  }
-
-  function setSleeping() {
-    btn.classList.remove('is-open', 'is-shaking');
-    btn.classList.add('is-sleeping');
-  }
-
-  function setShaking() {
-    btn.classList.remove('is-sleeping', 'is-open');
-    btn.classList.add('is-shaking');
-  }
-
-  /* ── Burbuja de recursos ─────────────────────── */
+  /* ── Burbuja de recursos ─────────────────────────────── */
   function openBubble() {
-    clearTimeout(cycleTimer);
-    tip.classList.remove('is-visible');
-    btn.classList.remove('is-sleeping', 'is-shaking');
     isOpen = true;
     bubble.classList.add('is-open');
     btn.classList.add('is-open');
@@ -459,14 +374,36 @@
     btn.classList.remove('is-open');
     bubble.setAttribute('aria-hidden', 'true');
     btn.setAttribute('aria-expanded', 'false');
-    /* Retomar el ciclo desde el tip siguiente */
-    runCycle();
   }
 
-  /* ── Eventos ─────────────────────────────────── */
+  /* ── Minimizar / Restaurar ───────────────────────────── */
+  function minimize() {
+    closeBubble();
+    mascota.style.display = 'none';
+    restBtn.classList.add('is-visible');
+    try { localStorage.setItem('ms-minimized', '1'); } catch (e) {}
+  }
+
+  function restore() {
+    mascota.style.display = '';
+    restBtn.classList.remove('is-visible');
+    try { localStorage.setItem('ms-minimized', '0'); } catch (e) {}
+  }
+
+  /* ── Eventos ─────────────────────────────────────────── */
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
     if (isOpen) { closeBubble(); } else { openBubble(); }
+  });
+
+  minBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    minimize();
+  });
+
+  restBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    restore();
   });
 
   document.addEventListener('click', function (e) {
@@ -479,8 +416,13 @@
     if (e.key === 'Escape' && isOpen) { closeBubble(); }
   });
 
-  /* Arrancar el ciclo al cargar */
-  runCycle();
+  /* Restaurar estado guardado entre páginas */
+  try {
+    if (localStorage.getItem('ms-minimized') === '1') {
+      mascota.style.display = 'none';
+      restBtn.classList.add('is-visible');
+    }
+  } catch (e) {}
 
 }());
 </script>

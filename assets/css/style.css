@@ -64,7 +64,7 @@ body {
   line-height: 1.75;
   color: var(--color-text);
   background-color: var(--color-bg);
-  overflow-x: hidden;
+  overflow-x: clip; /* clip en lugar de hidden: no rompe position:sticky */
   max-width: 100%;
 }
 
@@ -152,7 +152,10 @@ em {
 .site-header {
   padding: var(--space-xl) 0;
   border-bottom: 1px solid var(--color-border);
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
 }
 
 .site-header::after {

@@ -277,7 +277,6 @@
     btnNewsletter.disabled = true;
     btnNewsletter.textContent = 'Enviando...';
     nlMessage.className = 'newsletter-message';
-    nlMessage.style.display = 'none';
     
     try {
       const respuesta = await fetch(`${API_BASE}/newsletter.php`, {
@@ -294,18 +293,18 @@
         nlMessage.className = 'newsletter-message success';
         nlMessage.textContent = resultado.mensaje || '¡Gracias por suscribirte! Te mantendremos informado.';
         form.reset();
-        
+
         // Ocultar después de 8 segundos
         setTimeout(() => {
-          nlMessage.style.display = 'none';
+          nlMessage.className = 'newsletter-message';
         }, 8000);
       } else {
         nlMessage.className = 'newsletter-message error';
         nlMessage.textContent = resultado.error || 'Error al procesar tu suscripción. Intenta de nuevo.';
-        
+
         // Ocultar error después de 5 segundos
         setTimeout(() => {
-          nlMessage.style.display = 'none';
+          nlMessage.className = 'newsletter-message';
         }, 5000);
       }
       
@@ -313,9 +312,9 @@
       console.error('Error:', error);
       nlMessage.className = 'newsletter-message error';
       nlMessage.textContent = 'Error de conexión. Por favor, verifica tu internet e intenta de nuevo.';
-      
+
       setTimeout(() => {
-        nlMessage.style.display = 'none';
+        nlMessage.className = 'newsletter-message';
       }, 5000);
     }
     

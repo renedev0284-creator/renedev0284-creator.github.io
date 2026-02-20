@@ -148,6 +148,17 @@ layout: default
 .post {
   max-width: 42rem;
   padding: 0;
+  min-width: 0; /* Evita que el grid item desborde horizontalmente */
+}
+
+.post-header h1 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.post-excerpt {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Interacciones abajo (ancho completo) */
@@ -213,15 +224,18 @@ layout: default
     grid-template-columns: 1fr;
     /* Sin padding horizontal: el main.container ya lo provee (1-2rem c/lado) */
     padding: var(--space-xl) 0;
+    overflow-x: hidden;
   }
 
   .post {
     max-width: 100%;
+    width: 100%;
   }
 
   .post-interactions {
     /* Sin padding horizontal extra (el container ya lo tiene) */
     padding: 0 0 var(--space-xl);
+    overflow-x: hidden;
   }
 }
 

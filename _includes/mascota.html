@@ -256,11 +256,15 @@
 @media (max-width: 520px) {
   .ms-wrap {
     bottom: 1rem;
-    right: 1rem;
+    right: 0.75rem;
   }
-  .ms-btn       { width: 78px; }
-  .ms-btn.is-sleeping { width: 115px; }
-  .ms-bubble    { width: 212px; }
+  .ms-btn       { width: 64px; }
+  .ms-btn.is-sleeping { width: 96px; }
+  .ms-bubble    { width: 210px; }
+  /* pointer-events solo en el botón, no en el contenedor */
+  .ms-wrap { pointer-events: none; }
+  .ms-btn  { pointer-events: auto; }
+  .ms-bubble.is-open { pointer-events: all; }
 }
 
 @media (max-width: 370px) {

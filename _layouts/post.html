@@ -87,6 +87,9 @@ layout: default
       {% include post-author-minimal.html %}
     </header>
 
+    <!-- TOC inline (mobile/tablet, desktop la muestra el sidebar) -->
+    {% include toc.html %}
+
     <!-- Contenido del Post -->
     <div class="post-content">
       {{ content }}
@@ -124,8 +127,11 @@ layout: default
   {% include post-sidebar.html %}
 </div>
 
-<!-- Newsletter, Reacciones y Comentarios (ancho completo) -->
+<!-- Posts relacionados + Newsletter + Reacciones y Comentarios (ancho completo) -->
 <div class="post-interactions">
+  <!-- Posts relacionados -->
+  {% include related-posts.html %}
+
   <!-- Newsletter -->
 {% include newsletter.html %}
 

@@ -1,0 +1,241 @@
+{% comment %}
+  Posts relacionados por tag.
+  Busca hasta 3 posts que compartan al menos un tag con el post actual.
+  Si no hay suficientes, completa con posts recientes.
+{% endcomment %}
+
+{% assign max_related = 3 %}
+{% assign related_posts = "" | split: "" %}
+
+{% for tag in page.tags %}
+  {% for post in site.posts %}
+    {% if post.url != page.url and post.tags contains tag %}
+      {% assign already = false %}
+      {% for rp in related_posts %}
+        {% if rp.url == post.url %}{% assign already = true %}{% endif %}
+      {% endfor %}
+      {% unless already %}
+        {% if related_posts.size < max_related %}
+          {% assign related_posts = related_posts | push: post %}
+        {% endif %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  {% if related_posts.size >= max_related %}{% break %}{% endif %}
+{% endfor %}
+
+{% comment %} Completar con posts recientes si hacen falta {% endcomment %}
+{% if related_posts.size < max_related %}
+  {% for post in site.posts limit: 8 %}
+    {% if post.url != page.url %}
+      {% assign already = false %}
+      {% for rp in related_posts %}
+        {% if rp.url == post.url %}{% assign already = true %}{% endif %}
+      {% endfor %}
+      {% unless already %}
+        {% if related_posts.size < max_related %}
+          {% assign related_posts = related_posts | push: post %}
+        {% endif %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if related_posts.size > 0 %}
+<section class="related-posts" aria-label="Artículos relacionados">
+  <h3 class="related-posts-title">También te puede interesar</h3>
+  <div class="related-grid">
+    {% for post in related_posts %}
+      {% assign read_time = post.content | number_of_words | divided_by: 200 | plus: 1 %}
+      {% assign first_tag  = post.tags[0] %}
+      <a href="{{ post.url | relative_url }}" class="rpc">
+        <div class="rpc-img">
+          {% if post.image %}
+            <img src="{{ post.image | relative_url }}"
+                 alt="{{ post.title | escape }}"
+                 loading="lazy">
+          {% else %}
+            {% comment %} Letra inicial con color por tag {% endcomment %}
+            {% assign tag_colors = "escritura:#f34f29,productividad:#1a7bb3,salud:#38a169,diabetes:#805ad5,psicologia:#dd6b20,sistemas:#0ea5e9,marketing:#ef4444,default:#6e6658" | split: "," %}
+            {% assign rpc_color = "#6e6658" %}
+            {% for tc in tag_colors %}
+              {% assign pair = tc | split: ":" %}
+              {% if first_tag == pair[0] %}{% assign rpc_color = pair[1] %}{% endif %}
+            {% endfor %}
+            <div class="rpc-initial" style="background:{{ rpc_color }}">
+              {{ post.title | slice: 0 | upcase }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="rpc-body">
+          {% if first_tag %}
+            <span class="rpc-tag">{{ first_tag }}</span>
+          {% endif %}
+          <h4 class="rpc-title">{{ post.title | truncate: 70 }}</h4>
+          <div class="rpc-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {% assign rpc_months = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," %}
+              {% assign rpc_m = post.date | date: "%-m" | minus: 1 %}
+              {{ post.date | date: "%-d" }} {{ rpc_months[rpc_m] }} {{ post.date | date: "%Y" }}
+            </time>
+            <span>· {{ read_time }} min</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   Posts Relacionados
+   ═══════════════════════════════════════════════════════ */
+.related-posts {
+  max-width: 900px;
+  margin: 3.5rem auto 0;
+  padding: 0;
+}
+
+.related-posts-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid var(--color-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Grid: 3 columnas en desktop, 1 en móvil */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Tarjeta */
+.rpc {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #fff;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.rpc:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(60,48,38,0.1);
+}
+
+/* Imagen */
+.rpc-img {
+  height: 140px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color-bg-secondary);
+}
+
+.rpc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.rpc:hover .rpc-img img {
+  transform: scale(1.04);
+}
+
+.rpc-initial {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Cuerpo */
+.rpc-body {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.rpc-tag {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-orange);
+}
+
+.rpc-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.35;
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.rpc:hover .rpc-title {
+  color: var(--color-orange);
+}
+
+.rpc-meta {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  padding-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+  .rpc {
+    flex-direction: row;
+  }
+  .rpc-img {
+    width: 110px;
+    height: auto;
+    min-height: 90px;
+    flex-shrink: 0;
+  }
+  .rpc-body {
+    padding: 0.75rem 0.9rem;
+  }
+  .rpc-initial {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .rpc {
+    flex-direction: column;
+  }
+  .rpc-img {
+    width: 100%;
+    height: 120px;
+  }
+}
+</style>
+{% endif %}

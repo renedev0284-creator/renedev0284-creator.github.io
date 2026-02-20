@@ -1,6 +1,12 @@
 <!-- Sidebar para Posts -->
 <aside class="post-sidebar">
 
+  <!-- Widget: TOC (poblado por JS en toc.html si el post tiene ≥2 headings) -->
+  <div class="sidebar-widget widget-toc" id="toc-widget-container" style="display:none">
+    <h4 class="widget-heading">En este artículo</h4>
+    <nav class="toc-nav" id="toc-nav-list" aria-label="Tabla de contenidos"></nav>
+  </div>
+
   <!-- Widget: Sobre mí -->
   <div class="sidebar-widget widget-about">
     <div class="widget-avatar">
@@ -76,7 +82,7 @@
   <div class="sidebar-widget widget-services">
     <h4 class="widget-heading">Habilidades</h4>
 
-    <a href="#" class="service-card">
+    <a href="{{ '/servicios/' | relative_url }}" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
           <rect x="10" y="15" width="80" height="60" rx="4" stroke="#f34f29" stroke-width="3" fill="#fef9f5"/>
@@ -96,7 +102,7 @@
       </div>
     </a>
 
-    <a href="#" class="service-card">
+    <a href="{{ '/servicios/' | relative_url }}" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
           <circle cx="50" cy="50" r="35" stroke="#1a7bb3" stroke-width="3" fill="#f0f7fb"/>
@@ -113,7 +119,7 @@
       </div>
     </a>
 
-    <a href="#" class="service-card">
+    <a href="{{ '/servicios/' | relative_url }}" class="service-card">
       <div class="service-icon">
         <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
           <rect x="20" y="25" width="60" height="50" rx="3" stroke="#6e6658" stroke-width="3" fill="#fefdfb"/>

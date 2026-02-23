@@ -63,7 +63,7 @@ title: Inicio
       <div class="rec-track" id="rec-track">
         <!-- Fallback estático: se reemplaza por JS si la API responde -->
         {% assign featured_posts = site.posts | where: "featured", true %}
-        {% if featured_posts.size < 3 %}
+        {% if featured_posts.size < 8 %}
           {% assign featured_posts = site.posts %}
         {% endif %}
         {% for post in featured_posts limit: 10 %}
@@ -140,7 +140,7 @@ title: Inicio
           return post ? { post: post, views: item.views } : null;
         }).filter(Boolean);
 
-        if (ordered.length < 3) return; // muy pocos datos aún, mantener fallback
+        if (ordered.length < 1) return; // sin datos aún, mantener fallback
 
         track.innerHTML = ordered.map(function(item) {
           return cardHTML(item.post, item.views);

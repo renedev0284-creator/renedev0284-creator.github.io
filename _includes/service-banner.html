@@ -1,0 +1,279 @@
+<!-- ═══════════════════════════════════════════════════════
+     Banner de servicios — dismissible por sesión
+     ═══════════════════════════════════════════════════════ -->
+<script>
+if (sessionStorage.getItem('svc-dismissed') === '1') {
+  document.write('<style>#svc-banner{display:none!important}</style>');
+}
+</script>
+
+<section class="svc-banner" id="svc-banner" aria-label="Servicios de desarrollo web y sistemas ERP">
+  <div class="svc-bg-grid" aria-hidden="true"></div>
+  <div class="svc-glow" aria-hidden="true"></div>
+
+  <div class="svc-inner">
+
+    <div class="svc-left">
+      <span class="svc-badge">
+        <span class="svc-dot"></span>
+        Disponible ahora
+      </span>
+      <h2 class="svc-title">Landing pages &amp; sistemas ERP<br class="svc-br"> para pequeños negocios</h2>
+      <p class="svc-desc">Desarrollo web profesional, rápido y a medida. Sitios que convierten y sistemas que ordenan tu operación desde el primer día.</p>
+    </div>
+
+    <div class="svc-right">
+      <a href="https://wa.me/50245610507?text=Hola%20René%2C%20vi%20tu%20sitio%20y%20me%20interesa%20hablar%20sobre%20tu%20servicio"
+         class="svc-btn svc-btn-wp"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Contactar por WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+      <a href="mailto:renedev0284@gmail.com?subject=Consulta%20sobre%20servicios%20web"
+         class="svc-btn svc-btn-mail"
+         aria-label="Enviar correo electrónico">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Escribime
+      </a>
+    </div>
+
+  </div>
+
+  <button class="svc-close" id="svc-banner-close" aria-label="Cerrar banner de servicios" title="Cerrar">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+</section>
+
+<style>
+/* ═══════════════════════════════
+   SERVICE BANNER
+   ═══════════════════════════════ */
+.svc-banner {
+  position: relative;
+  background: linear-gradient(135deg, #0b1220 0%, #10192e 55%, #0b1220 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0 0 2.5rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-top: 2px solid #f34f29;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1px 0 rgba(255,255,255,0.03) inset;
+}
+
+/* Grid de puntos de fondo */
+.svc-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+/* Glow naranja en esquina izquierda */
+.svc-glow {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(243,79,41,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.svc-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.75rem 2rem 1.75rem 2rem;
+}
+
+/* ── Left (texto) ── */
+.svc-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.svc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4ade80;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.18);
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  margin-bottom: 0.8rem;
+}
+
+.svc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: svc-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes svc-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(1.35); }
+}
+
+.svc-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #f1f5f9;
+  margin: 0 0 0.55rem;
+  letter-spacing: -0.02em;
+}
+
+.svc-desc {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(241,245,249,0.5);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ── Right (CTAs) ── */
+.svc-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.svc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.svc-btn-wp {
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(37,211,102,0.28);
+}
+.svc-btn-wp:hover {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.38);
+  color: #fff;
+}
+
+.svc-btn-mail {
+  background: transparent;
+  color: rgba(241,245,249,0.75);
+  border: 1px solid rgba(241,245,249,0.18);
+}
+.svc-btn-mail:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(241,245,249,0.38);
+  color: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+/* ── Botón cerrar ── */
+.svc-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  padding: 0;
+  z-index: 2;
+}
+.svc-close:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+/* ── Responsive ── */
+.svc-br { display: none; }
+
+@media (max-width: 720px) {
+  .svc-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.25rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .svc-title {
+    font-size: 1.15rem;
+    padding-right: 1.5rem;
+  }
+  .svc-br { display: inline; }
+  .svc-right {
+    flex-direction: row;
+    width: 100%;
+  }
+  .svc-btn {
+    flex: 1;
+    font-size: 0.82rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .svc-right { flex-direction: column; }
+  .svc-btn { width: 100%; }
+}
+</style>
+
+<script>
+(function () {
+  var banner  = document.getElementById('svc-banner');
+  var closeBtn = document.getElementById('svc-banner-close');
+  if (!banner || !closeBtn) return;
+
+  closeBtn.addEventListener('click', function () {
+    banner.style.opacity  = '0';
+    banner.style.transform = 'scale(0.98)';
+    banner.style.pointerEvents = 'none';
+    setTimeout(function () { banner.style.display = 'none'; }, 280);
+    sessionStorage.setItem('svc-dismissed', '1');
+  });
+})();
+</script>

@@ -59,7 +59,17 @@ title: Inicio
 
     <!-- Slider: posts más populares (dinámico) con fallback estático -->
     <div class="rec-slider">
-      <p class="rec-slider-label">Lo más leído</p>
+      <div class="rec-slider-header">
+        <p class="rec-slider-label">Lo más leído</p>
+        <div class="rec-slider-arrows">
+          <button class="rec-arrow" id="rec-prev" aria-label="Anterior">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="rec-arrow" id="rec-next" aria-label="Siguiente">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
       <div class="rec-track" id="rec-track">
         <!-- Fallback estático: se reemplaza por JS si la API responde -->
         {% assign featured_posts = site.posts | where: "featured", true %}
@@ -187,6 +197,64 @@ title: Inicio
           });
         })
         .catch(function () { /* sin datos, badges permanecen ocultos */ });
+    })();
+    </script>
+
+    <script>
+    /* Flechas y auto-avance del slider */
+    (function () {
+      var track = document.getElementById('rec-track');
+      var prev  = document.getElementById('rec-prev');
+      var next  = document.getElementById('rec-next');
+      if (!track || !prev || !next) return;
+
+      var GAP = 14;
+      var autoTimer = null;
+      var userPaused = false;
+
+      function cardW() {
+        var first = track.querySelector('.rec-card');
+        return first ? first.offsetWidth + GAP : 244;
+      }
+
+      function scrollBy(dir) {
+        track.scrollBy({ left: dir * cardW(), behavior: 'smooth' });
+      }
+
+      function updateArrows() {
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      }
+
+      function tick() {
+        var atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+        if (atEnd) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollBy(1);
+        }
+      }
+
+      function startAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = setInterval(tick, 4000);
+      }
+
+      function stopAuto() {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+
+      prev.addEventListener('click', function () { userPaused = true; stopAuto(); scrollBy(-1); });
+      next.addEventListener('click', function () { userPaused = true; stopAuto(); scrollBy(1); });
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      track.addEventListener('mouseenter', stopAuto);
+      track.addEventListener('mouseleave', function () { if (!userPaused) startAuto(); });
+      track.addEventListener('touchstart', function () { userPaused = true; stopAuto(); }, { passive: true });
+
+      updateArrows();
+      startAuto();
     })();
     </script>
 
@@ -452,6 +520,13 @@ title: Inicio
   width: 100%;
 }
 
+.rec-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 1rem 0;
+}
+
 .rec-slider-label {
   font-family: var(--font-sans);
   font-size: 0.72rem;
@@ -459,7 +534,7 @@ title: Inicio
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-orange);
-  margin: 0 0 1rem 0;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -471,6 +546,39 @@ title: Inicio
   height: 2px;
   background: var(--color-orange);
   border-radius: 2px;
+}
+
+.rec-slider-arrows {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.rec-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(60,48,38,0.15);
+  background: rgba(255,255,255,0.6);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.rec-arrow:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  background: rgba(243,79,41,0.05);
+}
+
+.rec-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }
 
 .rec-track {

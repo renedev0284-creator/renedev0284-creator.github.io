@@ -70,3 +70,10 @@ defaults:
 
 # Idioma
 lang: es
+
+# Google AdSense
+# Agrega los slot IDs cuando seas aprobado (Crear unidades de anuncio en adsense.google.com)
+adsense:
+  slot_post_content: ""   # Anuncio dentro del artículo (después del contenido)
+  slot_post_bottom: ""    # Anuncio debajo del artículo (antes de posts relacionados)
+  slot_index: ""          # Anuncio entre posts en la página de inicio

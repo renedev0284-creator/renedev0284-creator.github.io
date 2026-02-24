@@ -351,6 +351,10 @@ title: Inicio
               <a href="{{ post.url | relative_url }}" class="read-link-minimal">Leer completo</a>
             </div>
           </article>
+
+          {% if forloop.index == 3 %}
+            {% include adsense-unit.html slot=site.adsense.slot_index %}
+          {% endif %}
         {% endfor %}
       </div>
     {% else %}

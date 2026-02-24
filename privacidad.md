@@ -2,7 +2,7 @@
 layout: default
 title: Política de Privacidad
 permalink: /privacidad/
-published: false
+published: true
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">
@@ -59,6 +59,18 @@ published: false
       <p>Este blog utiliza los siguientes servicios externos que pueden recopilar datos:</p>
       
       <div class="service-list">
+        <div class="service-item">
+          <h4>Google AdSense</h4>
+          <p>Mostramos anuncios a través de Google AdSense, que puede usar cookies para personalizar los anuncios según tus visitas a este y otros sitios web.</p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Ver política de privacidad de Google →</a>
+        </div>
+
+        <div class="service-item">
+          <h4>Google Analytics</h4>
+          <p>Analítica web para entender el tráfico y comportamiento de los visitantes.</p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Ver política de privacidad de Google →</a>
+        </div>
+
         <div class="service-item">
           <h4>GitHub Pages</h4>
           <p>Alojamiento del sitio web.</p>

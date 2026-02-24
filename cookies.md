@@ -2,7 +2,7 @@
 layout: default
 title: Política de Cookies
 permalink: /cookies/
-published: false
+published: true
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">
@@ -71,8 +71,10 @@ published: false
     <section class="legal-section">
       <h2>Cookies de terceros</h2>
       <p>Este blog puede incluir contenido de servicios externos que establecen sus propias cookies:</p>
-      
+
       <ul>
+        <li><strong>Google AdSense:</strong> Para mostrar anuncios relevantes. Google puede usar cookies de publicidad para personalizar los anuncios que ves en función de tus visitas a este y otros sitios. Puedes optar por no recibir publicidad personalizada en <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Configuración de anuncios de Google</a>.</li>
+        <li><strong>Google Analytics:</strong> Para análisis de tráfico web</li>
         <li><strong>GitHub (Utterances/Giscus):</strong> Para el sistema de comentarios</li>
         <li><strong>YouTube:</strong> Si hay videos embebidos</li>
         <li><strong>Twitter:</strong> Si hay tweets embebidos</li>

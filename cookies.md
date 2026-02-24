@@ -2,7 +2,7 @@
 layout: default
 title: Política de Cookies
 permalink: /cookies/
-published: true
+published: false
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/legal-pages.css' | relative_url }}">

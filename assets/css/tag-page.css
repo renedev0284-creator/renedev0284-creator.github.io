@@ -1,0 +1,77 @@
+.tag-count-highlight {
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.tag-back-link {
+  color: var(--color-orange);
+}
+
+.tags-cloud-section {
+  margin-top: var(--space-xxl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.tags-cloud-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.tags-cloud-wrapper .tag-cloud-item {
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border-width: 2px;
+  font-weight: 500;
+}
+
+.tags-cloud-wrapper .tag-cloud-item:hover {
+  background: rgba(243, 79, 41, 0.05);
+  box-shadow: 0 4px 12px rgba(243, 79, 41, 0.15);
+  transform: translateY(-2px);
+}
+
+.tags-cloud-wrapper .tag-cloud-item.active {
+  background: var(--color-orange);
+  color: white;
+  border-color: var(--color-orange);
+  font-weight: 600;
+}
+
+.tags-cloud-wrapper .tag-cloud-item .tag-count {
+  font-size: 0.75rem;
+  color: currentColor;
+  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.tags-cloud-wrapper .tag-cloud-item.active .tag-count {
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+
+.intro h1 {
+  text-transform: capitalize;
+  margin-bottom: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .tags-cloud-wrapper {
+    justify-content: flex-start;
+  }
+
+  .tags-cloud-wrapper .tag-cloud-item {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

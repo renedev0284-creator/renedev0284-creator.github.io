@@ -17,14 +17,7 @@ layout: default
             <line x1="8" y1="2" x2="8" y2="6"></line>
             <line x1="3" y1="10" x2="21" y2="10"></line>
           </svg>
-          <time datetime="{{ page.date | date_to_xmlschema }}">
-            {% assign day = page.date | date: "%-d" %}
-            {% assign month = page.date | date: "%-m" %}
-            {% assign year = page.date | date: "%Y" %}
-            {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-            {% assign month_index = month | minus: 1 %}
-            {{ day }} de {{ months[month_index] }} de {{ year }}
-          </time>
+          <time datetime="{{ page.date | date_to_xmlschema }}">{% include formatted-date.html date=page.date %}</time>
         </div>
         
         <span class="meta-divider">•</span>

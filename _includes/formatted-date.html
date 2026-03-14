@@ -1,0 +1,6 @@
+{% assign formatted_day = include.date | date: "%-d" %}
+{% assign formatted_month = include.date | date: "%-m" %}
+{% assign formatted_year = include.date | date: "%Y" %}
+{% assign formatted_months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
+{% assign formatted_month_index = formatted_month | minus: 1 %}
+{{ formatted_day }} de {{ formatted_months[formatted_month_index] }}{{ include.separator | default: " de " }}{{ formatted_year }}

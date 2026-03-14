@@ -45,14 +45,7 @@ layout: default
 
             <div class="post-body">
               <!-- Fecha minimalista -->
-              <time class="post-date-minimal" datetime="{{ post.date | date_to_xmlschema }}">
-                {% assign day = post.date | date: "%-d" %}
-                {% assign month = post.date | date: "%-m" %}
-                {% assign year = post.date | date: "%Y" %}
-                {% assign months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-                {% assign month_index = month | minus: 1 %}
-                {{ day }} de {{ months[month_index] }}, {{ year }}
-              </time>
+              <time class="post-date-minimal" datetime="{{ post.date | date_to_xmlschema }}">{% include formatted-date.html date=post.date separator=", " %}</time>
 
               <!-- Título -->
               <h3 class="post-title-minimal">

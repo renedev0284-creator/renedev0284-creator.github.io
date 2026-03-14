@@ -141,8 +141,6 @@ image: /assets/images/og-image.jpg
     </a>
   </div>
 
-  {% include service-banner.html %}
-
   <section class="posts">
     <h2 class="section-title">Escritos Recientes</h2>
 
@@ -183,6 +181,10 @@ image: /assets/images/og-image.jpg
               <a href="{{ post.url | relative_url }}" class="read-link-minimal">Leer completo</a>
             </div>
           </article>
+
+          {% if forloop.index == 3 %}
+            {% include adsense-unit.html slot=site.adsense.slot_index %}
+          {% endif %}
 
         {% endfor %}
       </div>

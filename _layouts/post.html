@@ -82,6 +82,7 @@ layout: default
       {% include post-disclaimer.html %}
     </div>
 
+    {% include adsense-unit.html slot=site.adsense.slot_post_content %}
     {% include share-buttons.html %}
 
     <footer class="post-footer">
@@ -109,7 +110,7 @@ layout: default
 </div>
 
 <div class="post-interactions">
-  {% include service-banner.html %}
+  {% include adsense-unit.html slot=site.adsense.slot_post_bottom %}
   {% include related-posts.html %}
   {% include newsletter.html %}
   {% include reactions-database.html %}

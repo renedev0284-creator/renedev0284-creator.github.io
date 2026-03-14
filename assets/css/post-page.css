@@ -116,15 +116,6 @@
     display: none;
   }
 
-  .inline-related-post .inline-cta {
-    flex-direction: column !important;
-    padding: 1.25rem !important;
-    gap: 0.75rem !important;
-  }
-
-  .inline-related-post .inline-cta > div:first-child {
-    font-size: 1.75rem !important;
-  }
 }
 
 .related-posts {

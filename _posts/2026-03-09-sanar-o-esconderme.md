@@ -1,11 +1,14 @@
 ---
 layout: post
 title: "Es más fácil esconderse que sanar"
+description: "A veces no buscamos ayuda porque distraernos duele menos que enfrentarnos. El ruido anestesia, pero no sana."
 image: /assets/images/posts/esconderse-antes-que-sanar.jpg
 date: 2026-03-09
 tags: [ansiedad, salud mental, evasión, redes sociales]
 categories: [psicologia, vida]
 excerpt: "A veces no buscamos ayuda porque distraernos duele menos que enfrentarnos. Nos escondemos en el ruido, en las pantallas, en lo superficial. No para vivir mejor, sino para no sentir tanto."
+lead: "A veces no buscamos ayuda porque distraernos duele menos que enfrentarnos. El ruido da alivio rápido, pero no resuelve nada."
+featured: true
 ---
 
 Recordar también cansa.
@@ -53,5 +56,7 @@ Tal vez por eso llega un momento en que uno tiene que decidir si quiere seguir a
 No para resolver toda la vida en un día.
 
 Solo para dejar de fingir que no duele.
+
+Y si el patrón se parece más a empujar la vida que a habitarla, quizás también te resuene [cuando no sabes pedir, terminas empujando](/cuando-no-sabes-pedir/).
 
 **¿Te has descubierto escondiéndote en el ruido para no sentir lo que llevas dentro?**

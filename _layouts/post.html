@@ -2,13 +2,13 @@
 layout: default
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/post-page.css' | relative_url }}">
+
 <div class="post-container-with-sidebar">
-  <!-- Contenido Principal del Post -->
   <article class="post">
     {% include reading-progress.html %}
-    
+
     <header class="post-header">
-      <!-- Meta: Fecha y Tiempo de Lectura -->
       <div class="post-meta">
         <div class="meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -19,20 +19,19 @@ layout: default
           </svg>
           <time datetime="{{ page.date | date_to_xmlschema }}">{% include formatted-date.html date=page.date %}</time>
         </div>
-        
+
         <span class="meta-divider">•</span>
-        
-        <!-- Contador de lecturas -->
-        <div class="meta-item meta-views" id="post-views-meta">
+
+        <div class="meta-item meta-views" id="post-views-meta" data-post-slug="{{ page.url | remove: '.html' | split: '/' | join: '-' | remove_first: '-' }}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
           <span id="post-view-count"></span>
         </div>
-        
+
         <span class="meta-divider">•</span>
-        
+
         <div class="meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
@@ -40,9 +39,9 @@ layout: default
           </svg>
           <span>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
         </div>
-        
+
         <span class="meta-divider">•</span>
-        
+
         <div class="meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -52,10 +51,8 @@ layout: default
         </div>
       </div>
 
-      <!-- Título del Post -->
       <h1>{{ page.title }}</h1>
 
-      <!-- Tags -->
       {% if page.tags %}
         <div class="post-tags">
           {% for tag in page.tags %}
@@ -66,7 +63,6 @@ layout: default
         </div>
       {% endif %}
 
-      <!-- Excerpt -->
       {%- assign _lead = page.lead | default: "" -%}
       {%- assign _fallback = page.excerpt | default: "" -%}
 
@@ -76,27 +72,19 @@ layout: default
         <p class="post-excerpt">{{ _fallback | strip_html | strip_newlines | truncate: 220 }}</p>
       {% endif %}
 
-      <!-- Info de autor -->
       {% include post-author-minimal.html %}
     </header>
 
-    <!-- TOC inline (mobile/tablet, desktop la muestra el sidebar) -->
     {% include toc.html %}
 
-    <!-- Contenido del Post -->
     <div class="post-content">
       {{ content }}
-      <!-- Disclaimer automático -->
       {% include post-disclaimer.html %}
     </div>
 
-    <!-- Anuncio AdSense: dentro del artículo -->
     {% include adsense-unit.html slot=site.adsense.slot_post_content %}
-
-    <!-- Botones para compartir -->
     {% include share-buttons.html %}
 
-    <!-- Navegación anterior/siguiente -->
     <footer class="post-footer">
       <nav class="post-nav">
         {% if page.previous.url %}
@@ -105,7 +93,7 @@ layout: default
             <span class="post-nav-title">{{ page.previous.title }}</span>
           </a>
         {% endif %}
-        
+
         {% if page.next.url %}
           <a href="{{ page.next.url | relative_url }}" class="post-nav-item next">
             <span class="post-nav-label">Siguiente →</span>
@@ -114,205 +102,20 @@ layout: default
         {% endif %}
       </nav>
     </footer>
-    
-    <!-- Tooltips -->
+
     {% include tooltips.html %}
   </article>
 
-  <!-- Sidebar -->
   {% include post-sidebar.html %}
 </div>
 
-<!-- Posts relacionados + Newsletter + Reacciones y Comentarios (ancho completo) -->
 <div class="post-interactions">
-
   {% include service-banner.html %}
-
-  <!-- Anuncio AdSense: debajo del artículo -->
   {% include adsense-unit.html slot=site.adsense.slot_post_bottom %}
-
-  <!-- Posts relacionados -->
   {% include related-posts.html %}
-
-  <!-- Newsletter -->
-{% include newsletter.html %}
-
-{% include reactions-database.html %}
-{% include comments-database.html %}
+  {% include newsletter.html %}
+  {% include reactions-database.html %}
+  {% include comments-database.html %}
 </div>
 
-<style>
-/* Layout con Sidebar */
-.post-container-with-sidebar {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: var(--space-xxl) var(--space-lg);
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 3rem;
-  align-items: start;
-}
-
-.post {
-  max-width: 42rem;
-  padding: 0;
-  min-width: 0; /* Evita que el grid item desborde horizontalmente */
-}
-
-.post-header h1 {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.post-excerpt {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* Interacciones abajo (ancho completo) */
-.post-interactions {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg) var(--space-xxl);
-}
-
-/* Post Meta (Fecha + Stats) */
-.post-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.post-meta .meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.post-meta .meta-item svg {
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-.post-meta .meta-item time,
-.post-meta .meta-item span {
-  line-height: 1;
-}
-
-.post-meta .meta-item img {
-  height: 18px;
-  vertical-align: middle;
-}
-
-.post-meta .meta-divider {
-  opacity: 0.3;
-  line-height: 1;
-}
-
-/* Animación del enlace relacionado */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive: Sin sidebar en tablets/móviles */
-@media (max-width: 1024px) {
-  .post-container-with-sidebar {
-    grid-template-columns: 1fr;
-    /* Sin padding horizontal: el main.container ya lo provee (1-2rem c/lado) */
-    padding: var(--space-xl) 0;
-    overflow-x: hidden;
-  }
-
-  .post {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .post-interactions {
-    /* Sin padding horizontal extra (el container ya lo tiene) */
-    padding: 0 0 var(--space-xl);
-    overflow-x: hidden;
-  }
-}
-
-/* Responsive para móvil */
-@media (max-width: 768px) {
-  .post-meta {
-    font-size: 0.8rem;
-    gap: 0.5rem;
-  }
-  
-  .post-meta .meta-divider {
-    display: none;
-  }
-  
-  .inline-related-post .inline-cta {
-    flex-direction: column !important;
-    padding: 1.25rem !important;
-    gap: 0.75rem !important;
-  }
-  
-  .inline-related-post .inline-cta > div:first-child {
-    font-size: 1.75rem !important;
-  }
-}
-</style>
-
-<style>
-.meta-views {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.meta-views.loaded {
-  opacity: 1;
-}
-#post-view-count {
-  font-variant-numeric: tabular-nums;
-}
-</style>
-
-<script>
-/* Tracking + contador de lecturas */
-(function () {
-  var BASE    = 'https://comentarios.finanzasreales.com/api/visitas.php';
-  var slug    = '{{ page.url | remove: ".html" | split: "/" | join: "-" | remove_first: "-" }}';
-  var countEl = document.getElementById('post-view-count');
-  var metaEl  = document.getElementById('post-views-meta');
-
-  function fmt(n) {
-    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
-    if (n >= 1000)    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
-    return n.toLocaleString('es');
-  }
-
-  // 1. Registrar visita → 2. Mostrar contador actualizado
-  fetch(BASE, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ post_slug: slug })
-  })
-  .then(function () {
-    return fetch(BASE + '?slug=' + encodeURIComponent(slug));
-  })
-  .then(function (r) { return r.json(); })
-  .then(function (data) {
-    if (!data.success || !countEl || !metaEl) return;
-    var n = data.views || 0;
-    countEl.textContent = fmt(n) + (n === 1 ? ' lectura' : ' lecturas');
-    metaEl.classList.add('loaded');
-  })
-  .catch(function () { /* silencioso */ });
-})();
-</script>
+<script src="{{ '/assets/js/post-page.js' | relative_url }}"></script>

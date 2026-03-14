@@ -27,7 +27,63 @@
         "https://x.com/{{ site.twitter_username }}",
         "https://github.com/{{ site.github_username }}"
       ]
-    }{% if page.layout == 'recurso' %},
+    }{% if page.url == '/' %},
+    {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}#webpage",
+      "url": "{{ page.url | absolute_url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": {
+        "@id": "{{ site.url }}/#website"
+      },
+      "about": {
+        "@id": "{{ site.url }}/#author"
+      },
+      "inLanguage": "es"
+    }{% endif %}{% if page.url == '/blog/' %},
+    {
+      "@type": "Blog",
+      "@id": "{{ site.url }}/blog#blog",
+      "url": "{{ site.url }}/blog/",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "publisher": {
+        "@id": "{{ site.url }}/#author"
+      },
+      "inLanguage": "es"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "{{ page.url | absolute_url }}#webpage",
+      "url": "{{ page.url | absolute_url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": {
+        "@id": "{{ site.url }}/#website"
+      },
+      "mainEntity": {
+        "@id": "{{ site.url }}/blog#blog"
+      },
+      "about": {
+        "@id": "{{ site.url }}/#author"
+      },
+      "inLanguage": "es"
+    }{% endif %}{% if page.url == '/about/' %},
+    {
+      "@type": "AboutPage",
+      "@id": "{{ page.url | absolute_url }}#webpage",
+      "url": "{{ page.url | absolute_url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": {
+        "@id": "{{ site.url }}/#website"
+      },
+      "about": {
+        "@id": "{{ site.url }}/#author"
+      },
+      "inLanguage": "es"
+    }{% endif %}{% if page.layout == 'recurso' %},
     {
       "@type": "DigitalDocument",
       "@id": "{{ page.url | absolute_url }}#document",

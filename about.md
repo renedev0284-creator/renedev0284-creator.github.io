@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Acerca de René
+title: Acerca de René | Metanoia
 permalink: /about/
+description: Quién es René Moya, qué es Metanoia y desde qué principios escribe sobre sistemas, aprendizaje, programación y vida real.
+image: /assets/images/og-image.jpg
 ---
 
 <div class="about-content">

@@ -9,45 +9,43 @@
         </svg>
       </div>
       <div>
-        <h3 class="newsletter-title">Suscríbete al Newsletter</h3>
+        <h3 class="newsletter-title">Suscr&iacute;bete al newsletter</h3>
         <p class="newsletter-description">
-          Recibe mis nuevos artículos directamente en tu correo. Sin spam, solo contenido de valor.
+          Recibe mis nuevos art&iacute;culos directamente en tu correo. Sin spam, solo contenido de valor.
         </p>
       </div>
     </div>
-    
+
     <form id="newsletter-form" class="newsletter-form">
       <div class="form-row">
-        <input type="text" 
-               id="nl-nombre" 
-               name="nombre" 
-               placeholder="Tu nombre" 
+        <input type="text"
+               id="nl-nombre"
+               name="nombre"
+               placeholder="Tu nombre"
                maxlength="100"
                class="nl-input">
-        
-        <input type="email" 
-               id="nl-email" 
-               name="email" 
-               placeholder="tu@email.com *" 
-               required 
+
+        <input type="email"
+               id="nl-email"
+               name="email"
+               placeholder="tu@email.com *"
+               required
                maxlength="150"
                class="nl-input">
-        
+
         <button type="submit" class="btn-newsletter" id="btn-newsletter">
           Suscribirme
         </button>
       </div>
-      
-      <!-- MENSAJE MEJORADO -->
+
       <div class="newsletter-message" id="nl-message"></div>
-      
-      <p class="newsletter-privacy">Tu email está seguro. Puedes cancelar cuando quieras.</p>
+
+      <p class="newsletter-privacy">Tu email est&aacute; seguro. Puedes cancelar cuando quieras.</p>
     </form>
   </div>
 </div>
 
 <style>
-/* Newsletter */
 .newsletter-section {
   max-width: 720px;
   margin: 3rem auto;
@@ -101,7 +99,6 @@
   line-height: 1.5;
 }
 
-/* Formulario */
 .newsletter-form {
   margin: 0;
 }
@@ -155,7 +152,6 @@
   transform: none;
 }
 
-/* MENSAJE MEJORADO Y MÁS VISIBLE */
 .newsletter-message {
   padding: 1rem 1.25rem;
   font-family: var(--font-sans);
@@ -188,7 +184,7 @@
 }
 
 .newsletter-message.success::before {
-  content: "✓ ";
+  content: "\\2713 ";
   font-size: 1.2rem;
   margin-right: 0.5rem;
 }
@@ -202,7 +198,7 @@
 }
 
 .newsletter-message.error::before {
-  content: "✗ ";
+  content: "\\2715 ";
   font-size: 1.2rem;
   margin-right: 0.5rem;
 }
@@ -215,7 +211,6 @@
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .newsletter-container {
     padding: 1.5rem;
@@ -254,30 +249,30 @@
 <script>
 (function() {
   'use strict';
-  
+
   const API_BASE = 'https://comentarios.finanzasreales.com/api';
-  
+
   const form = document.getElementById('newsletter-form');
   const btnNewsletter = document.getElementById('btn-newsletter');
   const nlMessage = document.getElementById('nl-message');
   const nombreField = document.getElementById('nl-nombre');
   const emailField = document.getElementById('nl-email');
-  
+
   if (!form) return;
-  
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
     const datos = {
       nombre: nombreField.value.trim(),
       email: emailField.value.trim(),
       fuente: 'blog'
     };
-    
+
     btnNewsletter.disabled = true;
     btnNewsletter.textContent = 'Enviando...';
     nlMessage.className = 'newsletter-message';
-    
+
     try {
       const respuesta = await fetch(`${API_BASE}/newsletter.php`, {
         method: 'POST',
@@ -286,38 +281,36 @@
         },
         body: JSON.stringify(datos)
       });
-      
+
       const resultado = await respuesta.json();
-      
+
       if (resultado.success) {
         nlMessage.className = 'newsletter-message success';
-        nlMessage.textContent = resultado.mensaje || '¡Gracias por suscribirte! Te mantendremos informado.';
+        nlMessage.textContent = resultado.mensaje || '\u00a1Gracias por suscribirte! Te mantendremos informado.';
         form.reset();
 
-        // Ocultar después de 8 segundos
         setTimeout(() => {
           nlMessage.className = 'newsletter-message';
         }, 8000);
       } else {
         nlMessage.className = 'newsletter-message error';
-        nlMessage.textContent = resultado.error || 'Error al procesar tu suscripción. Intenta de nuevo.';
+        nlMessage.textContent = resultado.error || 'Error al procesar tu suscripci\u00f3n. Intenta de nuevo.';
 
-        // Ocultar error después de 5 segundos
         setTimeout(() => {
           nlMessage.className = 'newsletter-message';
         }, 5000);
       }
-      
+
     } catch (error) {
       console.error('Error:', error);
       nlMessage.className = 'newsletter-message error';
-      nlMessage.textContent = 'Error de conexión. Por favor, verifica tu internet e intenta de nuevo.';
+      nlMessage.textContent = 'Error de conexi\u00f3n. Por favor, verifica tu internet e intenta de nuevo.';
 
       setTimeout(() => {
         nlMessage.className = 'newsletter-message';
       }, 5000);
     }
-    
+
     btnNewsletter.disabled = false;
     btnNewsletter.textContent = 'Suscribirme';
   });

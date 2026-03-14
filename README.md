@@ -59,6 +59,22 @@ git commit -m "Nuevo post: [título]"
 git push
 ```
 
+## Validación del build
+
+La forma más estable de validar este blog ahora mismo es con GitHub Actions.
+El repo ya incluye un workflow que corre `bundle exec jekyll build` en Linux con Ruby 3.3 cada vez que haces `push`, abres un `pull request` o lo lanzas manualmente.
+
+### Ver el resultado
+
+1. Ve a la pestaña `Actions` del repositorio
+2. Abre el workflow `Jekyll Build`
+3. Revisa si el job `build` pasó o falló
+
+### Nota sobre Windows
+
+En esta máquina se pudo instalar Ruby y Bundler, pero el stack local de Jekyll en Windows dio problemas de compatibilidad y encoding.  
+Si más adelante quieres correrlo local de forma confiable, la recomendación práctica es usar WSL con Ruby 3.3.
+
 ## 🎨 Personalización
 
 ### Cambiar tu información

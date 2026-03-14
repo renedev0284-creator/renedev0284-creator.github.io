@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
 # Jekyll
-gem "jekyll", "~> 4.3.2"
+gem "jekyll", "= 4.3.3"
+gem "csv"
+gem "base64"
 
 # Plugins de Jekyll
 group :jekyll_plugins do
@@ -19,5 +21,5 @@ end
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
-# Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+# Optional file watcher for older Windows Ruby builds.
+# Ruby 3.4 on Windows fails compiling `wdm`, and it's not required for `jekyll build`.

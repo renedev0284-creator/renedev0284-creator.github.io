@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Metanoia | Blog de René Moya
-description: Blog personal de René Moya sobre escritura, aprendizaje, programación, marketing y cambio personal.
+title: Metanoia | Blog de Rene Moya
+description: Blog personal de Rene Moya sobre escritura, aprendizaje, programacion, marketing y cambio personal.
 image: /assets/images/og-image.jpg
 ---
 
@@ -10,7 +10,7 @@ image: /assets/images/og-image.jpg
 <div class="home">
   <section class="intro intro-icons">
     <div class="intro-badges">
-      <span class="badge" title="Código">
+      <span class="badge" title="Codigo">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
@@ -54,15 +54,15 @@ image: /assets/images/og-image.jpg
     <p class="lead">
       Este es mi espacio personal para compartir mis pensamientos, aprendizajes y reflexiones.
 
-      Estudio escritura y filosofía por mi cuenta.
-      Ojalá con el tiempo este espacio se vuelva una comunidad de gente que disfruta leer sin filtros.
+      Estudio escritura y filosofia por mi cuenta.
+      Ojala con el tiempo este espacio se vuelva una comunidad de gente que disfruta leer sin filtros.
     </p>
 
     {% include blog-stats.html %}
 
     <div class="rec-slider">
       <div class="rec-slider-header">
-        <p class="rec-slider-label">Lo más leído</p>
+        <p class="rec-slider-label">Lo mas leido</p>
         <div class="rec-slider-arrows">
           <button class="rec-arrow" id="rec-prev" aria-label="Anterior">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -95,7 +95,7 @@ image: /assets/images/og-image.jpg
               <h3 class="rec-card-title">{{ post.title | truncate: 60 }}</h3>
               <div class="rec-card-meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b, %Y" }}</time>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true">&middot;</span>
                 <span>{{ read_time }} min</span>
               </div>
               <p class="rec-card-excerpt">{{ post.excerpt | strip_html | truncate: 95 }}</p>
@@ -133,7 +133,7 @@ image: /assets/images/og-image.jpg
       <a href="{{ '/recursos/ficha-de-personaje/' | relative_url }}" class="rs-pill">Ficha de personaje</a>
       <a href="{{ '/recursos/estructura-3-actos/' | relative_url }}" class="rs-pill">Estructura 3 actos</a>
       <a href="{{ '/recursos/guia-relato-corto/' | relative_url }}" class="rs-pill rs-pill--hidden-sm">Relato corto</a>
-      <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="rs-pill rs-pill--hidden-sm">Checklist revisión</a>
+      <a href="{{ '/recursos/checklist-revision/' | relative_url }}" class="rs-pill rs-pill--hidden-sm">Checklist revision</a>
     </div>
     <a href="{{ '/recursos/' | relative_url }}" class="rs-cta">
       Ver todos
@@ -189,20 +189,20 @@ image: /assets/images/og-image.jpg
         {% endfor %}
       </div>
     {% else %}
-      <p class="lead">Próximamente comenzaré a publicar contenido. Mientras tanto, puedes conocerme mejor en la página <a href="{{ '/about' | relative_url }}">Acerca de</a>.</p>
+      <p class="lead">Proximamente comenzare a publicar contenido. Mientras tanto, puedes conocerme mejor en la pagina <a href="{{ '/about' | relative_url }}">Acerca de</a>.</p>
     {% endif %}
   </section>
 </div>
 
 <div class="view-all-cta">
   <a href="{{ '/blog' | relative_url }}" class="btn-view-all">
-    <span>Ver todos los artículos</span>
+    <span>Ver todos los articulos</span>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <line x1="5" y1="12" x2="19" y2="12"></line>
       <polyline points="12 5 19 12 12 19"></polyline>
     </svg>
   </a>
-  <p class="posts-count">{{ site.posts.size }} artículos publicados</p>
+  <p class="posts-count">{{ site.posts.size }} articulos publicados</p>
 </div>
 
 <script src="{{ '/assets/js/home-page.js' | relative_url }}"></script>

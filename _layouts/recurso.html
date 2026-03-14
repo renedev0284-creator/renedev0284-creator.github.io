@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ site.lang | default: 'es' }}">
 <head>
   <meta charset="UTF-8">
@@ -35,15 +35,15 @@
   <div class="container">
     <ol class="breadcrumb-list">
       <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
-      <li aria-hidden="true">â€º</li>
+      <li aria-hidden="true">&rsaquo;</li>
       <li><a href="{{ '/recursos/' | relative_url }}">Recursos</a></li>
-      <li aria-hidden="true">â€º</li>
+      <li aria-hidden="true">&rsaquo;</li>
       <li aria-current="page">{{ page.title }}</li>
     </ol>
   </div>
 </nav>
 
-<!-- â”€â”€ EMAIL GATE OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- EMAIL GATE OVERLAY -->
 <div class="gate-overlay" id="gate-overlay">
   <div class="gate-card">
 
@@ -86,13 +86,13 @@
         </button>
       </div>
       <p class="gate-msg" id="gate-msg"></p>
-      <p class="gate-privacy">ðŸ”’ Sin spam. Puedes darte de baja cuando quieras.</p>
+      <p class="gate-privacy">Sin spam. Puedes darte de baja cuando quieras.</p>
     </form>
 
   </div>
 </div>
 
-<!-- â”€â”€ CONTENIDO IMPRIMIBLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- CONTENIDO IMPRIMIBLE -->
 <main class="recurso-printable" id="recurso-content">
 
   <div class="recurso-header no-print">
@@ -109,9 +109,9 @@
     </div>
   </div>
 
-  <!-- Cabecera de impresiÃ³n (solo visible al imprimir) -->
+  <!-- Cabecera de impresion (solo visible al imprimir) -->
   <div class="print-header">
-    <div class="print-logo">Metanoia Â· renemoya.com</div>
+    <div class="print-logo">Metanoia · renemoya.com</div>
     <div class="print-resource-title">{{ page.title }}</div>
   </div>
 
@@ -120,7 +120,7 @@
   </div>
 
   <div class="print-footer">
-    Descargado en renemoya.com Â· Recursos gratuitos para escritores Â· {{ 'now' | date: "%Y" }}
+    Descargado en renemoya.com · Recursos gratuitos para escritores · {{ 'now' | date: "%Y" }}
   </div>
 
 </main>
@@ -132,4 +132,3 @@
 
 </body>
 </html>
-
